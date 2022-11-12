@@ -1,6 +1,5 @@
 function nupd --description 'update system and home'
-    cd ~/nix-config
-    nix flake update
-    sudo nixos-rebuild switch --flake .
-    home-manager switch --flake .
+    nix flake update ~/nix-config
+    sudo nixos-rebuild switch --flake ~/nix-config
+    home-manager switch --flake ~/nix-config
 end
