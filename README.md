@@ -1,1 +1,1 @@
-# nix-config
+nix config files

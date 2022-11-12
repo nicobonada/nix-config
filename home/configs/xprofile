@@ -1,0 +1,13 @@
+#!/bin/sh
+
+. "$HOME/.bash_profile"
+
+[ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
+
+if [ "$(hostname)" = "oakhill" ]; then
+    numlockx
+    xrandr --output DP-2 --mode 1920x1080 --rate 60.00\
+           --output DP-0 --primary --mode 1920x1080 --rate 144.00 --left-of DP-2
+fi
+
+xsetroot -cursor_name left_ptr
