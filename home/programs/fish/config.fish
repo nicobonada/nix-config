@@ -21,11 +21,10 @@ if status --is-interactive
     alias zzz     'systemctl suspend'
 
     # nix related aliases
-    alias HH      'home-manager edit'
+    alias HH      'nvim ~/nix-config/home/nico.nix'
     alias gens    'sudo nix-env -p /nix/var/nix/profiles/system --list-generations'
     alias ndiff   'nix profile diff-closures --profile /nix/var/nix/profiles/system'
     alias hdiff   'nix profile diff-closures --profile /nix/var/nix/profiles/per-user/nico/home-manager'
-    alias nupd    'sudo nix-channel --update && sudo nixos-rebuild switch && nix-channel --update && home-manager switch'
 
     set -gx LESS "-iRSX"
 
