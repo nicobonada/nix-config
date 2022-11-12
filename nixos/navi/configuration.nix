@@ -218,6 +218,9 @@
 
   programs.fish.enable = true;
 
+  programs.gamemode.enable = true;
+  programs.gamemode.settings.general.inhibit_screensaver = 0;
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   networking.firewall.allowedTCPPorts = [ 6600 ];
