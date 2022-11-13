@@ -13,12 +13,7 @@
     # hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
+  outputs = { nixpkgs, home-manager, ... }@inputs: {
       nixosConfigurations = {
         navi = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
@@ -32,14 +27,8 @@
       };
 
       homeConfigurations = {
-        "nico@navi" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./home/nico.nix ];
-        };
-
-        "nico@oakhill" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
+        nico = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           modules = [ ./home/nico.nix ];
         };
