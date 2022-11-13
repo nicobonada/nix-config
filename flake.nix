@@ -21,16 +21,12 @@
     {
       nixosConfigurations = {
         navi = nixpkgs.lib.nixosSystem {
-          # pkgs = nixpkgs.legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main nixos configuration file <
           modules = [ ./nixos/navi/configuration.nix ];
         };
 
         oakhill = nixpkgs.lib.nixosSystem {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
           specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main nixos configuration file <
           modules = [ ./nixos/oakhill/configuration.nix ];
         };
       };
@@ -39,14 +35,12 @@
         "nico@navi" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main home-manager configuration file <
           modules = [ ./home/nico.nix ];
         };
 
         "nico@oakhill" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          inherit pkgs;
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          # > Our main home-manager configuration file <
           modules = [ ./home/nico.nix ];
         };
       };
