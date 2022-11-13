@@ -122,6 +122,7 @@ cmd [[autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /]]
 cmd [[autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
 cmd [[autocmd BufEnter *.nix setlocal tabstop=2 shiftwidth=2 softtabstop=2 commentstring=#\ %s]]
 cmd [[autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2 softtabstop=2]]
+cmd [[autocmd BufEnter flake.lock setlocal filetype=json]]
 
 require 'lspsetup'
 require 'minisetup'
