@@ -54,7 +54,6 @@
     atool
     bandwhich
     breeze-qt5
-    broot
     calibre
     cowsay
     crawlTiles
