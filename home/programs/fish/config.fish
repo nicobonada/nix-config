@@ -3,7 +3,7 @@ set BROWSER "vivaldi"
 set -gx EDITOR nvim
 
 if status --is-interactive
-    set -gx LS_COLORS (vivid generate nord)
+    set -gx LS_COLORS (vivid generate iceberg-dark)
 
     alias VV      'nvim ~/.config/nixpkgs/configs/nviminit.lua'
     alias aria    'aria2c -j 1 -s 1 -c'
