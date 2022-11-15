@@ -15,7 +15,7 @@
     ./hardware-configuration.nix
   ];
 
-  swapDevices = [ { device = "/swap"; size = 8192; } ];
+  swapDevices = [{ device = "/swap"; size = 8192; }];
 
   nixpkgs = {
     # You can add overlays here
