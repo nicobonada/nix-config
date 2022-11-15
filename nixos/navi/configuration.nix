@@ -56,8 +56,13 @@
 
   boot = {
     loader = {
-      # Use the systemd-boot EFI boot loader.
-      systemd-boot.enable = true;
+      grub = {
+        enable = true;
+        efiSupport = true;
+        devices = [ "nodev" ];
+        font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
+        fontSize = 32;
+      };
       efi.canTouchEfiVariables = true;
     };
     # kernelPackages = pkgs.linuxPackages_zen;
