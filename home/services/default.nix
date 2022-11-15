@@ -13,8 +13,9 @@
   };
 
   services.playerctld.enable = true;
-
   services.syncthing.enable = true;
+  services.flameshot.enable = true;
+  services.network-manager-applet.enable = true;
 
   services.gammastep = {
     enable = true;
