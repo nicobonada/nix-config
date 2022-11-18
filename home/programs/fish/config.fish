@@ -47,4 +47,6 @@ if status --is-interactive
         kitty + complete setup fish | source
     end
 
+    zoxide init fish | source
+
 end

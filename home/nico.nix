@@ -124,6 +124,7 @@
     xorg.xkill
     xorg.xmessage
     xsel
+    zoxide
     (gwenview.overrideAttrs (oldAttrs: {
       propagatedUserEnvPkgs = oldAttrs.propagatedUserEnvPkgs ++ [ libsForQt5.kio-extras ];
     }))
