@@ -52,16 +52,7 @@
       luasnip
       cmp_luasnip
 
-      (nvim-treesitter.withPlugins (
-        plugins: with plugins; [
-          tree-sitter-bash
-          tree-sitter-fish
-          tree-sitter-lua
-          tree-sitter-nix
-          tree-sitter-python
-          tree-sitter-vim
-        ]
-      ))
+      nvim-treesitter.withAllGrammars
     ];
   };
 
