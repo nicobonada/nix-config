@@ -101,6 +101,7 @@
     r128gain
     ranger
     renameutils
+    ripgrep # used mainly for telescope
     sgtpuzzles
     shellcheck
     syncthingtray
