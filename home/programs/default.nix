@@ -2,17 +2,13 @@
 {
   imports = [
     ./bat
+    ./fish
     ./git
     ./kitty
     ./mpv
     ./nvim
     ./rofi
   ];
-
-  programs.fish.enable = true;
-  xdg.configFile."fish/config.fish".source = ./fish/config.fish;
-  xdg.configFile."fish/tokyonight_storm.fish".source = ./fish/tokyonight_storm.fish;
-  xdg.configFile."fish/functions".source = ./fish/functions;
 
   programs.bashmount = {
     enable = true;
@@ -33,6 +29,12 @@
   programs.btop.enable = true;
   programs.btop.settings = { color_theme = "tokyo-storm"; };
 
+  programs.fzf.enable = true;
+  programs.fzf.enableFishIntegration = true;
+
+  programs.zoxide.enable = true;
+  programs.zoxide.enableFishIntegration = true;
+
   programs.ncmpcpp = {
     enable = true;
     settings = {
@@ -42,5 +44,4 @@
       external_editor = "nvim";
     };
   };
-
 }

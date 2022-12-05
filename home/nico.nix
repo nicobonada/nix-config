@@ -64,7 +64,6 @@
     duf
     fd
     flameshot
-    fzf
     htop
     inxi
     ipcalc
@@ -125,7 +124,6 @@
     xorg.xkill
     xorg.xmessage
     xsel
-    zoxide
     (gwenview.overrideAttrs (oldAttrs: {
       propagatedUserEnvPkgs = oldAttrs.propagatedUserEnvPkgs ++ [ libsForQt5.kio-extras ];
     }))
