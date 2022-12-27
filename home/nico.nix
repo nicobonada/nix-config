@@ -145,6 +145,12 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+  systemd.user.targets.tray = {
+    Unit = {
+      Description = "Home Manager System Tray";
+      Requires = [ "graphical-session-pre.target" ];
+    };
+  };
 
   xdg.configFile."i3/config".source  = ./configs/i3config;
   xdg.configFile."i3status".source   = ./configs/i3status;
