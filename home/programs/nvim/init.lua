@@ -17,6 +17,7 @@ require("telescope").setup {
   },
 }
 require("telescope").load_extension "file_browser"
+kmap('n', '<leader>fb', ':Telescope file_browser<cr>')
 
 require('legendary').setup({
   which_key = {
