@@ -168,7 +168,6 @@
     git
     file
     alsa-utils
-    mullvad-vpn
     psmisc
     usbutils
     brightnessctl
@@ -211,6 +210,7 @@
   };
 
   services.mullvad-vpn.enable = true;
+  services.mullvad-vpn.package = pkgs.mullvad-vpn;
 
   services.journald.extraConfig = "SystemMaxUse=500M";
   services.logind.lidSwitch = "ignore";
