@@ -171,7 +171,6 @@
     git
     file
     alsa-utils
-    mullvad-vpn
     psmisc
     usbutils
     sshfs
