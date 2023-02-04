@@ -1,5 +1,5 @@
 ! vi:ft=xdefaults
-#if SERVERHOST == navi
+#ifdef SRVR_navi
 Xcursor.size: 32
 Xft.dpi: 168
 #endif
