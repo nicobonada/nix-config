@@ -104,7 +104,6 @@
     ripgrep # used mainly for telescope
     sgtpuzzles
     shellcheck
-    tetrio-desktop
     tree
     unrar # required by atool
     unzip # required by atool
