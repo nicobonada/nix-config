@@ -104,7 +104,6 @@
     ripgrep # used mainly for telescope
     sgtpuzzles
     shellcheck
-    syncthingtray
     tetrio-desktop
     tree
     unrar # required by atool

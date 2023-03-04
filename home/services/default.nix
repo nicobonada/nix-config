@@ -14,6 +14,7 @@
 
   services.playerctld.enable = true;
   services.syncthing.enable = true;
+  # services.syncthing.tray.enable = true;
   services.flameshot.enable = true;
   services.network-manager-applet.enable = true;
 
