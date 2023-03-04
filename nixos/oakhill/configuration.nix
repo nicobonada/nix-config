@@ -63,6 +63,7 @@
     kernelModules = [ "nct6775" ]; # from lm_sensors
     kernelParams = [ "nohibernate" ]; # zfs doesn't support hibernate
     supportedFilesystems = [ "zfs" ];
+    initrd.kernelModules = [ "amdgpu" ];
     initrd.supportedFilesystems = ["zfs"]; # boot from zfs
     extraModulePackages = with config.boot.kernelPackages; [ zfsUnstable ];
     zfs.enableUnstable = true;
@@ -105,7 +106,7 @@
   services.xserver = {
     enable = true;
     enableCtrlAltBackspace = true;
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = [ "amdgpu" ];
 
     xkbOptions = "terminate:ctrl_alt_bksp,compose:caps";
     autoRepeatDelay = 250;
