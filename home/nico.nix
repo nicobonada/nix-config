@@ -18,7 +18,6 @@
     overlays = [
       # If you want to use overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
-      inputs.prismlauncher.overlay
 
       # Or define it inline, for example:
       # (final: prev: {
@@ -126,8 +125,6 @@
     (gwenview.overrideAttrs (oldAttrs: {
       propagatedUserEnvPkgs = oldAttrs.propagatedUserEnvPkgs ++ [ libsForQt5.kio-extras ];
     }))
-
-    prismlauncher
 
     # fonts
     noto-fonts
