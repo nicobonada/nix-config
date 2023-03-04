@@ -78,7 +78,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- Mostly stolen from https://vonheikemen.github.io/devlog/tools/setup-nvim-lspconfig-plus-nvim-cmp/
 local lspconfig = require 'lspconfig'
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
   capabilities = capabilities,
   single_file_support = true,
   settings = {
