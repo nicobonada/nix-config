@@ -11,7 +11,7 @@
       nodePackages.bash-language-server
       nodePackages.pyright
       nil
-      sumneko-lua-language-server
+      lua-language-server
       # null-ls
       nixpkgs-fmt
       stylua
