@@ -109,7 +109,6 @@
     # (vivaldi.override { enableWidevine = true; proprietaryCodecs = true; })
     (vivaldi.override {
       commandLineArgs = ''
-        --use-gl=desktop \
         --ignore-gpu-blocklist \
         --enable-gpu-rasterization \
         --enable-zero-copy \
