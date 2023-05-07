@@ -149,16 +149,12 @@
 
   hardware.opengl = {
     enable = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       vaapiIntel
       libvdpau-va-gl
       intel-media-driver
     ];
   };
-
-  hardware.steam-hardware.enable = true;
-  programs.steam.enable = true;
 
   hardware.logitech.wireless = {
     enable = true;
