@@ -62,6 +62,7 @@
     dua
     duc
     duf
+    erdtree
     fd
     flameshot
     htop
