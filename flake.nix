@@ -10,7 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # hardware.url = "github:nixos/nixos-hardware";
-    prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
