@@ -32,6 +32,11 @@
           extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
           modules = [ ./home/nico.nix ];
         };
+        nobonada = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          modules = [ ./home/nobonada.nix ];
+        };
       };
     };
 }
