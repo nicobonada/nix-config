@@ -80,8 +80,6 @@
     unzip # required by atool
     vivaldi
     vivid
-    xorg.xkill
-    xorg.xmessage
     xsel
 
     # fonts
