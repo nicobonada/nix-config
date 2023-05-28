@@ -10,6 +10,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    ../common
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -72,9 +73,11 @@
     initrd.kernelModules = [ "i915" ];
   };
 
-  networking.hostName = "navi";
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.backend = "iwd";
+  networking = {
+    hostName = "navi";
+    networkmanager.enable = true;
+    networkmanager.wifi.backend = "iwd";
+  };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Set your time zone.
@@ -83,18 +86,6 @@
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  i18n = {
-    defaultLocale = "en_CA.UTF-8";
-    extraLocaleSettings = { LC_COLLATE = "C.UTF-8"; };
-  };
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
 
   # Enable the X11 windowing system.
   services.xserver = {
@@ -130,22 +121,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is
-    # enabled by default, no need to redefine it in your config for now)
-    # media-session.enable = true;
-  };
 
   hardware.opengl = {
     enable = true;
@@ -161,76 +136,9 @@
     enableGraphical = true;
   };
 
-  users.users.nico = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
-  };
-
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    git
-    file
-    alsa-utils
-    psmisc
-    usbutils
     brightnessctl
-    sshfs
-    smartmontools
   ];
-
-
-  environment.variables.EDITOR = "nvim";
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  services.locate = {
-    enable = true;
-    locate = pkgs.plocate;
-    localuser = null;
-  };
-
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    publish = {
-      enable = true;
-      userServices = true;
-    };
-  };
-
-  services.smartd = {
-    enable = true;
-    notifications.x11.enable = true;
-  };
-
-  services.thermald.enable = true;
-
-  services.tlp.enable = true;
-  services.tlp.settings = {
-    DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-    USB_ALLOWLIST = "32ac:0002"; # Framework HDMI adapter
-  };
-
-  services.mullvad-vpn.enable = true;
-  services.mullvad-vpn.package = pkgs.mullvad-vpn;
-
-  services.journald.extraConfig = "SystemMaxUse=500M";
-  services.logind.lidSwitch = "ignore";
-  services.logind.extraConfig = "HandlePowerKey=suspend";
-
-  services.fstrim.enable = true;
-
-  services.upower.enable = true;
-  services.udisks2.enable = true;
-
-  services.dictd.enable = true;
-
-  programs.fish.enable = true;
-
-  programs.gamemode.enable = true;
-  programs.gamemode.settings.general.inhibit_screensaver = 0;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
