@@ -225,6 +225,8 @@
   services.upower.enable = true;
   services.udisks2.enable = true;
 
+  services.dictd.enable = true;
+
   programs.fish.enable = true;
 
   programs.gamemode.enable = true;
