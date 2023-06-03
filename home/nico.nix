@@ -74,7 +74,6 @@
     kora-icon-theme
     lazygit
     libqalculate
-    libreoffice-fresh
     lsof
     lxappearance
     mate.mate-themes
