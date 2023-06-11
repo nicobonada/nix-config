@@ -28,7 +28,7 @@
       alias HH      'nvim ~/nix-config/home/nico.nix'
       alias gens    'sudo nix-env -p /nix/var/nix/profiles/system --list-generations'
       alias ndiff   'nix profile diff-closures --profile /nix/var/nix/profiles/system'
-      alias hdiff   'nix profile diff-closures --profile /nix/var/nix/profiles/per-user/nico/home-manager'
+      alias hdiff   'nix profile diff-closures --profile /nix/var/nix/profiles/per-user/nico/profile'
 
       set -gx LESS "-iRSX"
 
