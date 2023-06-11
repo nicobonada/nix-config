@@ -11,6 +11,7 @@
 
     # hardware.url = "github:nixos/nixos-hardware";
     # prismlauncher.url = "github:PrismLauncher/PrismLauncher";
+    nixneovimplugins.url = "github:jooooscha/nixpkgs-vim-extra-plugins";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
