@@ -12,7 +12,9 @@
       nodePackages.pyright
       nil
       lua-language-server
+
       # null-ls
+      python3Packages.flake8
       nixpkgs-fmt
       stylua
       statix
@@ -42,6 +44,7 @@
       nvim-lspconfig
       null-ls-nvim
       lspkind-nvim
+      trouble-nvim
 
       # completion
       cmp-nvim-lsp
