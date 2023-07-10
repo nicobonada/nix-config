@@ -3,5 +3,7 @@ function nupd --description 'update system and home'
     if test (hostname) != 'ost-nobonada'
         sudo nixos-rebuild switch --flake ~/nix-config
     end
-    home-manager switch --flake ~/nix-config
+    if test (nmcli networking connectivity check) = 'full'
+        home-manager switch --flake ~/nix-config
+    end
 end
