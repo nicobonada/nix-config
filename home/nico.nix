@@ -54,6 +54,7 @@
     aria2
     atool
     bandwhich
+    beets-unstable
     breeze-qt5
     calibre
     cowsay
@@ -80,6 +81,7 @@
     mate.mate-themes
     mediainfo
     mp3gain
+    mp3splt
     mpc_cli
     neofetch
     networkmanagerapplet
