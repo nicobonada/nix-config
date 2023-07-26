@@ -52,6 +52,8 @@
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
+    gvfs.enable = true;
+
     locate = {
       enable = true;
       locate = pkgs.plocate;

@@ -60,7 +60,6 @@
     cowsay
     crawlTiles
     discord
-    dolphin
     dua
     duc
     duf
@@ -106,6 +105,7 @@
     ripgrep # used mainly for telescope
     sgtpuzzles
     shellcheck
+    xfce.thunar
     tree
     unrar # required by atool
     unzip # required by atool
