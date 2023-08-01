@@ -258,8 +258,6 @@ for_window [class="^zoom$"]  floating enable
 
 workspace_layout tabbed
 
-# mpdris2 complains about no notifications (?)
-exec systemctl --user restart mpdris2.service
 exec --no-startup-id jamesdsp --tray
 exec --no-startup-id solaar -w hide
 

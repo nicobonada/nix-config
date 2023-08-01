@@ -6,10 +6,9 @@
     ./xidlehook
   ];
 
-  services.mpdris2 = {
+  services.mpd-mpris = {
     enable = true;
-    mpd.host = "127.0.0.1";
-    notifications = true;
+    mpd.useLocal = true;
   };
 
   services.playerctld.enable = true;
