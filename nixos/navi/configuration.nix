@@ -76,7 +76,7 @@
   networking = {
     hostName = "navi";
     networkmanager.enable = true;
-    networkmanager.wifi.backend = "iwd";
+    # networkmanager.wifi.backend = "iwd";
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
