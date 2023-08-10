@@ -90,7 +90,7 @@
     nmap
     numlockx #oakhill
     okular
-    perl534Packages.FileMimeInfo
+    perlPackages.FileMimeInfo
     plasma5Packages.ffmpegthumbs
     plasma5Packages.kdegraphics-thumbnailers
     playerctl
