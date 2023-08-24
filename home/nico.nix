@@ -152,6 +152,8 @@
     };
   };
 
+  xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
+
   xdg.configFile."i3/config".source  = ./configs/i3config;
   xdg.configFile."i3status".source   = ./configs/i3status;
 

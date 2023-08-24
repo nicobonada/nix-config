@@ -1,0 +1,75 @@
+directory: ~/music
+import:
+    move: yes
+    log: ~/.config/beets/log
+paths:
+    default: Album/%upper{%left{$albumartist,1}}/$albumartist/$year $album%aunique{}/$disc_and_track $title
+    albumtypes:soundtrack: Album/OST/$year $albumartist - $album%aunique{}/$track $title
+    album:'Kiss 100': Mixes/Kiss 100/$artist - $title
+    album:'Essential Mix': Mixes/Essential Mix/$artist - $title
+    artist:Cinortele: Mixes/Cinortele/$title
+    djmix:true: Mixes/$artist - $title
+    popcorn:true: Non-Album/Popcorn/$artist - $title
+    singleton:true Gloomy: Non-Album/Gloomy Sunday/$artist - $title
+    singleton: Non-Album/%bucket{$artist}/$artist - $title
+    comp: Album/Compilations/$year $album%aunique{}/$disc_and_track $artist - $title
+plugins:
+    - bucket
+    - discogs
+    - duplicates
+    - edit
+    - fetchart
+    - fish
+    - ftintitle
+    - info
+    - inline
+    - lastgenre
+    - mbsync
+    - missing
+    - replaygain
+    - scrub
+pluginpath:
+    - ~/.config/beets/substitute/
+original_date: yes
+format_album: $year $albumartist - $album
+sort_album: albumartist+ year+ album+
+# musicbrainz:
+#   enabled: no
+edit:
+    itemfields: track title artist album genre disc disctotal year
+    albumfields: album albumartist genre year
+languages: en es
+replaygain:
+  backend: ffmpeg
+lastgenre:
+  source: album
+  count: 3
+fetchart:
+    sources:
+        - filesystem
+        - coverart: release
+        - itunes
+        - coverart: releasegroup
+        - '*'
+bucket:
+  bucket_alpha: ['_', 'A - D', 'E - L', 'M - R', 'S - Z']
+  bucket_alpha_regex:
+    '_': ^[^A-Za-z]
+item_fields:
+    disc_and_track: u'%01i%02i' % (disc, track) if
+                    disctotal > 1 else u'%02i' % (track)
+# rewrite:
+#   genre (Bhangra|Blues|Country|Bluegrass|Flamenco|Cumbia|Orchestral|Soul|Neofolk|Folktronica): Misc
+#   genre .*Metal: Metal
+#   genre (.*Rock|Britpop|Grunge): Rock
+#   genre Electropop: Synthpop
+#   genre Indie Pop: Pop
+#   genre (Goa.*|Full On|Psychedelic Trance): Psytrance
+#   genre Idm: IDM
+#   genre (Hip Hop|Rapcore): Rap
+#   genre Electro-Industrial: Darkwave
+#   genre (Deep|Hard|Progressive) House: House
+#   genre (Dark Ambient|Chillout): Ambient
+#   genre Techno: Dance
+#   genre Deep Trance: Psychill
+#   genre Trip-Hop: Downtempo
