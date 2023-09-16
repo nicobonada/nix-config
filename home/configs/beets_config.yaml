@@ -25,6 +25,7 @@ plugins:
     - inline
     - lastgenre
     - mbsync
+    - mpdupdate
     - missing
     - replaygain
     - scrub
