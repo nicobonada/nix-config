@@ -55,6 +55,7 @@
     atool
     bandwhich
     beets-unstable
+    bibata-cursors
     breeze-qt5
     calibre
     cowsay
