@@ -104,7 +104,7 @@
     ranger
     renameutils
     ripgrep # used mainly for telescope
-    sgtpuzzles
+    sgt-puzzles
     shellcheck
     xfce.thunar
     tree
