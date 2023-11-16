@@ -20,15 +20,6 @@ require("telescope").load_extension "file_browser"
 kmap('n', '<leader>fb', ':Telescope file_browser<cr>')
 kmap('n', '<leader>d', ':Telescope diagnostics<cr>')
 
-require('legendary').setup({
-  which_key = {
-    -- Automatically add which-key tables to legendary
-    -- see ./doc/WHICH_KEY.md for more details
-    auto_register = false,
-  },
-})
-kmap('n', '<c-p>', ':Legendary<cr>')
-
 require('gitsigns').setup()
 require('colorizer').setup { user_default_options = { names = false } }
 require('which-key').setup()
