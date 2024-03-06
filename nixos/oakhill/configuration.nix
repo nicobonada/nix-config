@@ -66,8 +66,7 @@
     supportedFilesystems = [ "zfs" ];
     initrd.kernelModules = [ "amdgpu" ];
     initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-    extraModulePackages = with config.boot.kernelPackages; [ zfsUnstable ];
-    zfs.enableUnstable = true;
+    zfs.package = pkgs.zfs_unstable;
   };
 
   services.udev.extraRules = ''
