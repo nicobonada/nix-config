@@ -99,7 +99,7 @@
       Option "TappingButtonMap" "lmr"
     '';
 
-    xkbOptions = "terminate:ctrl_alt_bksp,compose:caps";
+    xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
     autoRepeatDelay = 250;
     autoRepeatInterval = 40;
 
