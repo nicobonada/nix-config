@@ -38,6 +38,21 @@
       fsType = "zfs";
     };
 
+  fileSystems."/home/nico/stuff" =
+    { device = "tank/home/stuff";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home/nico/stuff/music" =
+    { device = "tank/home/music";
+      fsType = "zfs";
+    };
+
+  fileSystems."/home/nico/stuff/seyruun" =
+    { device = "tank/home/seyruun";
+      fsType = "zfs";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ccd927bf-d32b-408c-a0f2-9074caecf98a"; }
     ];
