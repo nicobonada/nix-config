@@ -6,23 +6,25 @@
     ./xidlehook
   ];
 
-  services.mpd-mpris = {
-    enable = true;
-    mpd.useLocal = true;
-  };
+  services = {
+    mpd-mpris = {
+      enable = true;
+      mpd.useLocal = true;
+    };
 
-  services.playerctld.enable = true;
-  services.syncthing.enable = true;
-  # services.syncthing.tray.enable = true;
-  services.flameshot.enable = true;
-  services.network-manager-applet.enable = true;
+    playerctld.enable = true;
+    syncthing.enable = true;
+    # syncthing.tray.enable = true;
+    flameshot.enable = true;
+    network-manager-applet.enable = true;
 
-  services.gammastep = {
-    enable = true;
-    latitude = 43.6532;
-    longitude = -79.3832;
-    temperature.day = 5600;
-    temperature.night = 4600;
-    tray = true;
+    gammastep = {
+      enable = true;
+      latitude = 43.6532;
+      longitude = -79.3832;
+      temperature.day = 5600;
+      temperature.night = 4600;
+      tray = true;
+    };
   };
 }

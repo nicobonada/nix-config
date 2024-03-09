@@ -101,7 +101,6 @@
     qbittorrent
     qt5ct
     r128gain
-    ranger
     renameutils
     ripgrep # used mainly for telescope
     sgt-puzzles
