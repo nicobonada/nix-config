@@ -60,24 +60,14 @@ runrest_stop_message ^= Your transformation is almost over.
 
 
 # Portal Timers
-force_more_message += distant snort
-force_more_message += interdimensional caravan
-force_more_message += invites you to visit
-force_more_message += oppressive heat
-force_more_message += roar of battle
-force_more_message += sound of rushing water
-force_more_message += The drain falls to bits
-force_more_message += There is an entrance to a bailey on this level
-force_more_message += tolling of a bell
-force_more_message += wave of frost
-force_more_message += You hear the drain falling apart
-force_more_message += You hear.*crackle.*magical portal
-force_more_message += You hear.*crackling.*archway
-force_more_message += You hear.*creaking.*(oriflamme|portcullis)
-force_more_message += You hear.*hiss.*sand
-force_more_message += You hear.*rumble.*avalanche
-force_more_message += You hear.*rusting.*drain
-force_more_message += You hear.*ticking.*clock
+force_more_message += portcullis      # bailey, creaking
+force_more_message += tolling         # bazaar, bell
+force_more_message += whistling       # desolation, wind
+force_more_message += melting archway # ice cave, crackling
+force_more_message += avalanche of    # ossuary and volcano, hiss ... sand, rumble ... rocks
+force_more_message += rusting         # sewer, drain
+force_more_message += magical portal  # wizlab, crackle
+force_more_message += beating         # gauntlet. drum
 
 ##### Other files ###################################################
 # You can include other files from your options file using the 'include'
