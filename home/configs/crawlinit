@@ -51,23 +51,31 @@ explore_stop += greedy_pickup,stairs,shops,altars,portals,branches,runed_doors
 
 default_manual_training = true
 show_more = false
-force_more_message += finished your manual
 
-flash_screen_message += attacks as you move away
-
-force_more_message += Your transformation is almost over.
-runrest_stop_message ^= Your transformation is almost over.
-
+more := force_more_message
+more += Training target .* reached!
+more += You have finished your manual
+more += Your transformation is almost over
+more += Vehument offers you knowledge more += You now have enough gold to
+more += Space .* around you
+more += .orbs? of fire. comes? into view
+more += .pandemonium comes? into view
+more += .lich. comes? into view
+more += The mighty Pandemonium lord .* resides here
+more += * wielding wand of *
+more += (?!.(Here|Aim):).*wielding.*of distortion
+more += Found .* abyssal rune of Zot
+more += A sentinel's mark forms upon you
 
 # Portal Timers
-force_more_message += portcullis      # bailey, creaking
-force_more_message += tolling         # bazaar, bell
-force_more_message += whistling       # desolation, wind
-force_more_message += melting archway # ice cave, crackling
-force_more_message += avalanche of    # ossuary and volcano, hiss ... sand, rumble ... rocks
-force_more_message += rusting         # sewer, drain
-force_more_message += magical portal  # wizlab, crackle
-force_more_message += beating         # gauntlet. drum
+more += You hear.*crackle.*magical portal
+more += You hear.*crackling.*archway
+more += You hear.*creaking.*(oriflamme|portcullis)
+more += You hear.*hiss.*sand
+more += You hear.*rumble.*avalanche
+more += You hear.*rusting.*drain
+more += You hear.*beating.*drum
+more += You hear.*whisling
 
 ##### Other files ###################################################
 # You can include other files from your options file using the 'include'
