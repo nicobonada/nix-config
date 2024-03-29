@@ -105,6 +105,7 @@
     ripgrep # used mainly for telescope
     sgt-puzzles
     shellcheck
+    soulseekqt
     xfce.thunar
     tree
     unrar # required by atool
