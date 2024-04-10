@@ -16,7 +16,7 @@ general {
 
 order += "disk /"
 order += "wireless _first_"
-order += "ethernet wg-mullvad"
+order += "ethernet wg0-mullvad"
 order += "path_exists VPN"
 order += "volume_status mic"
 order += "lm_sensors"
@@ -28,7 +28,7 @@ wireless _first_ {
     format_down = " down"
 }
 
-ethernet wg-mullvad {
+ethernet wg0-mullvad {
     format_up = ""
     format_down = ""
 }
