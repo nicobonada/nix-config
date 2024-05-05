@@ -65,6 +65,7 @@
     duc
     duf
     erdtree
+    fastfetch
     fd
     flameshot
     htop
@@ -83,7 +84,6 @@
     mp3gain
     mp3splt
     mpc_cli
-    neofetch
     networkmanagerapplet
     nix-prefetch-git
     nix-tree
