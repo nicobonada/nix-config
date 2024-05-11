@@ -88,30 +88,33 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    dpi = 168;
-    enableCtrlAltBackspace = true;
-
-    # Enable touchpad support (enabled default in most desktopManager).
-    libinput.enable = true;
-    libinput.touchpad.additionalOptions = ''
-      Option "TappingButtonMap" "lmr"
-    '';
-
-    xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
-    autoRepeatDelay = 250;
-    autoRepeatInterval = 40;
-
-    windowManager.i3 = {
+  services = {
+    xserver = {
       enable = true;
-      extraPackages = with pkgs; [
-        rofi
-        i3status
-        python3Packages.py3status
-        i3lock
-        dunst
-      ];
+      dpi = 168;
+      enableCtrlAltBackspace = true;
+
+      xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
+      autoRepeatDelay = 250;
+      autoRepeatInterval = 40;
+
+      windowManager.i3 = {
+        enable = true;
+        extraPackages = with pkgs; [
+          rofi
+            i3status
+            python3Packages.py3status
+            i3lock
+            dunst
+        ];
+      };
+    };
+
+    libinput = {
+      enable = true;
+      touchpad.additionalOptions = ''
+        Option "TappingButtonMap" "lmr"
+      '';
     };
   };
   # Configure keymap in X11
