@@ -134,11 +134,6 @@
     ];
   };
 
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
-  };
-
   environment.systemPackages = with pkgs; [
     brightnessctl
   ];
