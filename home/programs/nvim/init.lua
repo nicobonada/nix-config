@@ -79,7 +79,6 @@ o.undofile = true -- persistent undo
 o.ignorecase = true
 o.smartcase = true
 o.list = true
-o.pastetoggle = '<F10>'
 o.scrolloff = 3
 o.sidescrolloff = 2
 o.timeoutlen = 500 -- mainly for which-key
