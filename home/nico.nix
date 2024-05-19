@@ -125,6 +125,8 @@
     xorg.xkill
     xorg.xmessage
     xsel
+    yubikey-manager
+    yubioath-flutter
     (gwenview.overrideAttrs (oldAttrs: {
       propagatedUserEnvPkgs = oldAttrs.propagatedUserEnvPkgs ++ [ libsForQt5.kio-extras ];
     }))

@@ -95,6 +95,10 @@
     udisks2.enable = true;
 
     dictd.enable = true;
+
+    # yubikey stuff
+    udev.packages = [ pkgs.yubikey-personalization ];
+    pcscd.enable = true;
   };
 
   programs = {
