@@ -124,6 +124,10 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  security.pam.services = {
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
 
   hardware.opengl = {
     enable = true;
