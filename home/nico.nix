@@ -73,6 +73,7 @@
     ipcalc
     jamesdsp
     kdiff3
+    keepassxc
     kid3
     kora-icon-theme
     lazygit
