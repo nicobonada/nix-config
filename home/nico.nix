@@ -134,7 +134,6 @@
 
     # fonts
     noto-fonts
-    corefonts
     comic-neue
     font-awesome_5
     inter
