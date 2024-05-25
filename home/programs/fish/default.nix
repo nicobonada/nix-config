@@ -11,7 +11,7 @@
 
       alias VV      'nvim ~/.config/nixpkgs/configs/nviminit.lua'
       alias aria    'aria2c -j 1 -s 1 -c'
-      alias aunpack 'aunpack -e'
+      alias aunpack 'patool extract'
       alias bm      'bashmount'
       alias df      'duf -hide special'
       alias diff    'diff --color=auto'

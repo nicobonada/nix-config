@@ -52,7 +52,6 @@
     appimage-run
     arandr
     aria2
-    atool
     bandwhich
     beets-unstable
     bibata-cursors
@@ -92,6 +91,7 @@
     nmap
     numlockx #oakhill
     okular
+    patool
     perlPackages.FileMimeInfo
     plasma5Packages.ffmpegthumbs
     plasma5Packages.kdegraphics-thumbnailers
