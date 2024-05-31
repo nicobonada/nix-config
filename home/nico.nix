@@ -91,6 +91,7 @@
     numlockx #oakhill
     okular
     patool
+    pavucontrol
     perlPackages.FileMimeInfo
     plasma5Packages.ffmpegthumbs
     plasma5Packages.kdegraphics-thumbnailers
