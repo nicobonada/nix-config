@@ -64,7 +64,6 @@
     duc
     duf
     erdtree
-    fastfetch
     fd
     flameshot
     htop

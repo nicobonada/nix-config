@@ -38,6 +38,8 @@
 
     ranger.enable = true;
 
+    fastfetch.enable = true;
+
     ncmpcpp = {
       enable = true;
       settings = {
