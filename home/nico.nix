@@ -49,7 +49,6 @@
 
   home.packages = with pkgs; [
     android-file-transfer
-    appimage-run
     arandr
     aria2
     bandwhich
