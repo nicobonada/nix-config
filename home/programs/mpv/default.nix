@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   programs.mpv = {
     enable = true;
@@ -11,5 +12,6 @@
       term-osd-bar = true;
       term-osd-bar-chars = "[=>-]";
     };
+    scripts = with pkgs.mpvScripts; [ uosc thumbfast ];
   };
 }
