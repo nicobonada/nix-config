@@ -260,5 +260,6 @@ workspace_layout tabbed
 
 exec --no-startup-id jamesdsp --tray
 exec --no-startup-id solaar -w hide
+exec --no-startup-id keepassxc
 
 exec --no-startup-id kitty
