@@ -70,6 +70,8 @@
     ipcalc
     jamesdsp
     kdiff3
+    kdePackages.gwenview
+    kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
     kid3
     kora-icon-theme
@@ -127,9 +129,6 @@
     xsel
     yubikey-manager
     yubioath-flutter
-    (gwenview.overrideAttrs (oldAttrs: {
-      propagatedUserEnvPkgs = oldAttrs.propagatedUserEnvPkgs ++ [ libsForQt5.kio-extras ];
-    }))
 
     # fonts
     noto-fonts
