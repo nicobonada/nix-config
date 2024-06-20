@@ -117,4 +117,9 @@
     appimage.enable = true;
     appimage.binfmt = true;
   };
+
+  security.pam.u2f = {
+    enable = true;
+    cue = true;
+  };
 }

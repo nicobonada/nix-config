@@ -124,11 +124,6 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  security.pam.u2f = {
-    enable = true;
-    cue = true;
-  };
-
   hardware.opengl = {
     enable = true;
     extraPackages = with pkgs; [
