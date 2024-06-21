@@ -8,8 +8,8 @@
 
     extraPackages = with pkgs; [
       # language servers
-      nodePackages.bash-language-server
-      nodePackages.pyright
+      bash-language-server
+      pyright
       nil
       lua-language-server
 
