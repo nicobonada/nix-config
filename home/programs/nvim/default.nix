@@ -22,7 +22,6 @@
     ];
 
     plugins = with pkgs.vimPlugins; [
-      catppuccin-nvim
       tokyonight-nvim
 
       dressing-nvim
