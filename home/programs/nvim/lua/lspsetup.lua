@@ -110,7 +110,7 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
   single_file_support = true,
 }
-lspconfig.nil_ls.setup {
+lspconfig.nixd.setup {
   capabilities = capabilities,
 }
 

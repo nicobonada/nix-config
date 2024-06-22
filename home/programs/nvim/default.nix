@@ -11,6 +11,7 @@
       bash-language-server
       pyright
       nil
+      nixd
       lua-language-server
 
       # null-ls
