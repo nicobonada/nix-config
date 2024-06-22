@@ -41,7 +41,6 @@
   home.homeDirectory = "/home/nico";
 
   home.sessionVariables = {
-    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_AUTO_SCREEN_SCALE_FACTOR = 0;
     TERMINAL = "kitty";
   };
@@ -53,7 +52,6 @@
     bandwhich
     beets-unstable
     bibata-cursors
-    breeze-qt5
     calibre
     cowsay
     crawlTiles
@@ -69,6 +67,7 @@
     ipcalc
     jamesdsp
     kdiff3
+    kdePackages.breeze
     kdePackages.gwenview
     kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
@@ -100,7 +99,6 @@
     pulseaudio # needed for pactl
     pulsemixer
     qbittorrent
-    qt5ct
     r128gain
     renameutils
     ripgrep # used mainly for telescope
@@ -150,6 +148,12 @@
       Description = "Home Manager System Tray";
       Requires = [ "graphical-session-pre.target" ];
     };
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    style.name = "kvantum";
   };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
