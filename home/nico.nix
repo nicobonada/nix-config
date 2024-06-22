@@ -73,6 +73,7 @@
     keepassxc
     kid3
     kora-icon-theme
+    ksnip
     lazygit
     libqalculate
     lsof
@@ -99,6 +100,7 @@
     pulseaudio # needed for pactl
     pulsemixer
     qbittorrent
+    qimgv
     r128gain
     renameutils
     ripgrep # used mainly for telescope
