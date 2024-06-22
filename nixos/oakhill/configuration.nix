@@ -106,7 +106,6 @@
         rofi
         i3status
         python3Packages.py3status
-        i3lock
         dunst
       ];
     };

@@ -112,6 +112,9 @@
 
     appimage.enable = true;
     appimage.binfmt = true;
+
+    i3lock.enable = true;
+    i3lock.u2fSupport = true;
   };
 
   security.pam.u2f = {
