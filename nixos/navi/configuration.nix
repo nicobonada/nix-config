@@ -102,10 +102,10 @@
         enable = true;
         extraPackages = with pkgs; [
           rofi
-            i3status
-            python3Packages.py3status
-            i3lock
-            dunst
+          i3status
+          python3Packages.py3status
+          i3lock
+          dunst
         ];
       };
     };
