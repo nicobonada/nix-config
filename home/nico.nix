@@ -67,7 +67,6 @@
     ipcalc
     jamesdsp
     kdiff3
-    kdePackages.breeze
     kdePackages.gwenview
     kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
