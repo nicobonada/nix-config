@@ -69,8 +69,8 @@
     jamesdsp
     kdiff3
     kdePackages.ffmpegthumbs # used by gwenview
-    kdePackages.kdegraphics-thumbnailers # used by gwenview
     kdePackages.gwenview
+    kdePackages.kdegraphics-thumbnailers # used by gwenview
     kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
     kid3
