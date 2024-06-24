@@ -132,8 +132,9 @@
     ];
   };
 
+  hardware.brillo.enable = true;
+
   environment.systemPackages = with pkgs; [
-    brightnessctl
   ];
 
   # Open ports in the firewall.
