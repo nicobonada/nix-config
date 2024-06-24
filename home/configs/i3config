@@ -258,6 +258,7 @@ for_window [class="^zoom$"]  floating enable
 
 workspace_layout tabbed
 
+exec --no-startup-id lxqt-policykit-agent
 exec --no-startup-id jamesdsp --tray
 exec --no-startup-id solaar -w hide
 

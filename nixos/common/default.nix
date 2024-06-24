@@ -46,6 +46,8 @@
     usbutils
     sshfs
     smartmontools
+
+    lxqt.lxqt-policykit
   ];
 
   services = {
@@ -117,8 +119,11 @@
     i3lock.u2fSupport = true;
   };
 
-  security.pam.u2f = {
-    enable = true;
-    cue = true;
+  security = {
+    polkit.enable = true;
+    pam.u2f = {
+      enable = true;
+      cue = true;
+    };
   };
 }
