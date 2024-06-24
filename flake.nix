@@ -10,6 +10,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # hardware.url = "github:nixos/nixos-hardware";
+    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

@@ -40,6 +40,8 @@
 
     fastfetch.enable = true;
 
+    hyprcursor-phinger.enable = true;
+
     ncmpcpp = {
       enable = true;
       settings = {
