@@ -62,7 +62,6 @@
     duf
     erdtree
     fd
-    flameshot
     htop
     inxi
     ipcalc
@@ -124,7 +123,6 @@
     })
     vivid
     wavemon
-    xidlehook
     xorg.xkill
     xorg.xmessage
     xsel
