@@ -112,6 +112,7 @@
     tree
     unrar # required by atool
     unzip # required by atool
+    vesktop
     # (vivaldi.override { enableWidevine = true; proprietaryCodecs = true; })
     (vivaldi.override {
       commandLineArgs = ''
