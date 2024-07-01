@@ -52,7 +52,6 @@
     aria2
     bandwhich
     beets-unstable
-    bibata-cursors
     calibre
     cowsay
     crawlTiles
@@ -73,7 +72,6 @@
     kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
     kid3
-    kora-icon-theme
     ksnip
     lazygit
     libqalculate
@@ -91,6 +89,7 @@
     nmap
     numlockx #oakhill
     okular
+    papirus-icon-theme
     patool
     pavucontrol
     perlPackages.FileMimeInfo

@@ -8,7 +8,7 @@
     extraConfig = {
       modi = "window,run,ssh,drun";
       show-icons = true;
-      icon-theme = "kora";
+      icon-theme = "Papirus-Dark";
       dpi = 0;
     };
   };
