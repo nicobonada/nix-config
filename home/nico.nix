@@ -160,6 +160,9 @@
   xdg.configFile."i3/config".source  = ./configs/i3config;
   xdg.configFile."i3status".source   = ./configs/i3status;
 
+  xdg.configFile."hypr".source = ./configs/hypr;
+  xdg.configFile."waybar".source = ./configs/waybar;
+
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
   home.file.".xprofile".source       = ./configs/xprofile;
   home.file.".Xresources".source     = ./configs/xresources;
