@@ -3,7 +3,6 @@
   imports = [
     ./dunst
     ./mpd
-    ./xidlehook
   ];
 
   services = {
@@ -15,7 +14,6 @@
     playerctld.enable = true;
     syncthing.enable = true;
     # syncthing.tray.enable = true;
-    flameshot.enable = true;
     network-manager-applet.enable = true;
 
     gammastep = {

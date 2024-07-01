@@ -11,6 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     ../common
+    ../common/hypr.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -88,34 +89,34 @@
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable the X11 windowing system.
-  services = {
-    xserver = {
-      enable = true;
-      dpi = 168;
-      enableCtrlAltBackspace = true;
+  # services = {
+    # xserver = {
+    #   enable = true;
+    #   dpi = 168;
+    #   enableCtrlAltBackspace = true;
+    #
+    #   xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
+    #   autoRepeatDelay = 250;
+    #   autoRepeatInterval = 40;
+    #
+    #   windowManager.i3 = {
+    #     enable = true;
+    #     extraPackages = with pkgs; [
+    #       rofi
+    #       i3status
+    #       python3Packages.py3status
+    #       dunst
+    #     ];
+    #   };
+    # };
 
-      xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
-      autoRepeatDelay = 250;
-      autoRepeatInterval = 40;
-
-      windowManager.i3 = {
-        enable = true;
-        extraPackages = with pkgs; [
-          rofi
-          i3status
-          python3Packages.py3status
-          dunst
-        ];
-      };
-    };
-
-    libinput = {
-      enable = true;
-      touchpad.additionalOptions = ''
-        Option "TappingButtonMap" "lmr"
-      '';
-    };
-  };
+  #   libinput = {
+  #     enable = true;
+  #     touchpad.additionalOptions = ''
+  #       Option "TappingButtonMap" "lmr"
+  #     '';
+  #   };
+  # };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
@@ -133,9 +134,6 @@
   };
 
   hardware.brillo.enable = true;
-
-  environment.systemPackages = with pkgs; [
-  ];
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

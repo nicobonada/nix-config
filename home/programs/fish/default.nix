@@ -16,7 +16,7 @@
       alias df      'duf -hide special'
       alias diff    'diff --color=auto'
       alias dmesg   'dmesg --ctime'
-      alias dvid    'yt-dlp (xsel -ob)'
+      alias dvid    'yt-dlp (wl-paste)'
       alias locate  'locate -i'
       alias map     'map 60x30n180dn'
       alias psg     'procs'
@@ -36,12 +36,14 @@
           command ls --group-directories-first --classify --human-readable --time-style=long-iso --color=auto $argv
       end
 
-      abbr --add --global ns     'nix search nixpkgs'
+      if test $hostname = "navi"
+        abbr --add --global mz     'mpv --autofit-smaller=75%'
+      else
+        abbr --add --global mz     'mpv --autofit-smaller=50%'
+      end
       abbr --add --global jc     journalctl
-      abbr --add --global mz     'mpv --autofit-smaller=50%'
       abbr --add --global sc     'sudo systemctl'
       abbr --add --global scu    'systemctl --user'
-      abbr --add --global broken 'sudo env NIXPKGS_ALLOW_BROKEN=1 nixos-rebuild switch'
 
       fish_add_path ~/bin
 

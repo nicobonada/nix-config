@@ -52,7 +52,6 @@
     aria2
     bandwhich
     beets-unstable
-    bibata-cursors
     calibre
     cowsay
     crawlTiles
@@ -62,8 +61,8 @@
     duf
     erdtree
     fd
-    flameshot
     htop
+    gnome.dconf-editor
     inxi
     ipcalc
     jamesdsp
@@ -74,12 +73,11 @@
     kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
     kid3
-    kora-icon-theme
     ksnip
     lazygit
     libqalculate
     lsof
-    lxappearance
+    lxqt.pcmanfm-qt
     mate.mate-themes
     mediainfo
     mp3gain
@@ -90,8 +88,9 @@
     nix-tree
     nixpkgs-fmt
     nmap
-    numlockx #oakhill
+    nwg-look
     okular
+    papirus-icon-theme
     patool
     pavucontrol
     perlPackages.FileMimeInfo
@@ -108,10 +107,10 @@
     sgt-puzzles
     shellcheck
     soulseekqt
-    xfce.thunar
     tree
     unrar # required by atool
     unzip # required by atool
+    vesktop
     # (vivaldi.override { enableWidevine = true; proprietaryCodecs = true; })
     (vivaldi.override {
       commandLineArgs = ''
@@ -123,10 +122,6 @@
     })
     vivid
     wavemon
-    xidlehook
-    xorg.xkill
-    xorg.xmessage
-    xsel
     yubikey-manager
     yubioath-flutter
 
@@ -163,6 +158,9 @@
 
   xdg.configFile."i3/config".source  = ./configs/i3config;
   xdg.configFile."i3status".source   = ./configs/i3status;
+
+  xdg.configFile."hypr".source = ./configs/hypr;
+  xdg.configFile."waybar".source = ./configs/waybar;
 
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
   home.file.".xprofile".source       = ./configs/xprofile;
