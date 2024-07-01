@@ -25,6 +25,7 @@
     hypridle
     hyprlock
     hyprshot
+    nwg-displays
     qt5.qtwayland
     qt6.qtwayland
     rofi-wayland
