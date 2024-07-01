@@ -77,6 +77,7 @@
     lazygit
     libqalculate
     lsof
+    lxqt.pcmanfm-qt
     mate.mate-themes
     mediainfo
     mp3gain
@@ -107,7 +108,6 @@
     sgt-puzzles
     shellcheck
     soulseekqt
-    xfce.thunar
     tree
     unrar # required by atool
     unzip # required by atool
