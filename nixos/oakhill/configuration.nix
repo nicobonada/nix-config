@@ -11,6 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
     ../common
+    ../common/hypr.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -90,26 +91,26 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    enableCtrlAltBackspace = true;
-    videoDrivers = [ "amdgpu" ];
-
-    xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
-    autoRepeatDelay = 250;
-    autoRepeatInterval = 40;
-
-    windowManager.i3 = {
-      enable = true;
-      extraPackages = with pkgs; [
-        rofi
-        i3status
-        python3Packages.py3status
-        dunst
-      ];
-    };
-  };
+  # # Enable the X11 windowing system.
+  # services.xserver = {
+  #   enable = true;
+  #   enableCtrlAltBackspace = true;
+  #   videoDrivers = [ "amdgpu" ];
+  #
+  #   xkb.options = "terminate:ctrl_alt_bksp,compose:caps";
+  #   autoRepeatDelay = 250;
+  #   autoRepeatInterval = 40;
+  #
+  #   windowManager.i3 = {
+  #     enable = true;
+  #     extraPackages = with pkgs; [
+  #       rofi
+  #       i3status
+  #       python3Packages.py3status
+  #       dunst
+  #     ];
+  #   };
+  # };
   # Configure keymap in X11
   # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";

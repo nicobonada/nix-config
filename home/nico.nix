@@ -88,7 +88,6 @@
     nix-tree
     nixpkgs-fmt
     nmap
-    numlockx #oakhill
     nwg-look
     okular
     papirus-icon-theme
