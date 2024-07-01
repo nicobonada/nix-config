@@ -16,7 +16,7 @@
       alias df      'duf -hide special'
       alias diff    'diff --color=auto'
       alias dmesg   'dmesg --ctime'
-      alias dvid    'yt-dlp (xsel -ob)'
+      alias dvid    'yt-dlp (wl-paste)'
       alias locate  'locate -i'
       alias map     'map 60x30n180dn'
       alias psg     'procs'

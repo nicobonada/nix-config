@@ -123,9 +123,6 @@
     })
     vivid
     wavemon
-    xorg.xkill
-    xorg.xmessage
-    xsel
     yubikey-manager
     yubioath-flutter
 
