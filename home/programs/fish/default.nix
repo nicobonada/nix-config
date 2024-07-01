@@ -36,7 +36,6 @@
           command ls --group-directories-first --classify --human-readable --time-style=long-iso --color=auto $argv
       end
 
-      abbr --add --global ns     'nix search nixpkgs'
       if test $hostname = "navi"
         abbr --add --global mz     'mpv --autofit-smaller=75%'
       else
@@ -45,7 +44,6 @@
       abbr --add --global jc     journalctl
       abbr --add --global sc     'sudo systemctl'
       abbr --add --global scu    'systemctl --user'
-      abbr --add --global broken 'sudo env NIXPKGS_ALLOW_BROKEN=1 nixos-rebuild switch'
 
       fish_add_path ~/bin
 
