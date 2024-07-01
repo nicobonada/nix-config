@@ -62,6 +62,7 @@
     erdtree
     fd
     htop
+    gnome.dconf-editor
     inxi
     ipcalc
     jamesdsp
@@ -76,7 +77,6 @@
     lazygit
     libqalculate
     lsof
-    lxappearance
     mate.mate-themes
     mediainfo
     mp3gain
@@ -88,6 +88,7 @@
     nixpkgs-fmt
     nmap
     numlockx #oakhill
+    nwg-look
     okular
     papirus-icon-theme
     patool
