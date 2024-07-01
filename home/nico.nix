@@ -161,6 +161,7 @@
 
   xdg.configFile."hypr".source = ./configs/hypr;
   xdg.configFile."waybar".source = ./configs/waybar;
+  xdg.configFile."xdg-desktop-portal".source = ./configs/xdg-desktop-portal;
 
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
   home.file.".xprofile".source       = ./configs/xprofile;
