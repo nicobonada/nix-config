@@ -124,14 +124,12 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-    extraPackages = with pkgs; [
+  hardware.graphics.extraPackages = with pkgs; [
       vaapiIntel
       libvdpau-va-gl
       intel-media-driver
-    ];
-  };
+  ];
+
 
   hardware.brillo.enable = true;
 
