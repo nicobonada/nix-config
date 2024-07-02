@@ -111,7 +111,6 @@
 
     gamescope.enable = true;
     gamescope.args = [ "--backend sdl" ];
-    gamescope.capSysNice = true;
 
     nh.enable = true;
     nh.flake = /home/nico/nix-config;
