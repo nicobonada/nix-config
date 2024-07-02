@@ -24,9 +24,6 @@
 
     yt-dlp.enable = true;
 
-    mangohud.enable = true;
-    mangohud.settings = { fps_limit = 60; };
-
     btop.enable = true;
     btop.settings = { color_theme = "tokyo-storm"; };
 
