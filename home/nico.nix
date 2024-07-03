@@ -156,9 +156,6 @@
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
 
-  xdg.configFile."i3/config".source  = ./configs/i3config;
-  xdg.configFile."i3status".source   = ./configs/i3status;
-
   xdg.configFile."hypr/hypridle.conf".source = ./configs/hypr/hypridle.conf;
   xdg.configFile."hypr/hyprlock.conf".source = ./configs/hypr/hyprlock.conf;
   xdg.configFile."xdg-desktop-portal".source = ./configs/xdg-desktop-portal;
