@@ -8,6 +8,7 @@
     ./mpv
     ./nvim
     ./rofi
+    ./waybar
   ];
 
   programs = {
