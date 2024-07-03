@@ -161,8 +161,6 @@
   xdg.configFile."xdg-desktop-portal".source = ./configs/xdg-desktop-portal;
 
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
-  home.file.".xprofile".source       = ./configs/xprofile;
-  home.file.".Xresources".source     = ./configs/xresources;
   home.file.".bash_profile".source   = ./configs/bash_profile;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
