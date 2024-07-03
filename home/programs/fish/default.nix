@@ -36,12 +36,9 @@
           command ls --group-directories-first --classify --human-readable --time-style=long-iso --color=auto $argv
       end
 
-      if test $hostname = "navi"
-        abbr --add --global mz     'mpv --autofit-smaller=75%'
-      else
-        abbr --add --global mz     'mpv --autofit-smaller=50%'
-      end
+      # abbr --add --global mz     'mpv --autofit-smaller=50%'
       abbr --add --global gmpv   'gamescope -f -m 1.5 -- mpv'
+      abbr --add --global gz     'gamescope -f -m 1 -- mpv --autofit-smaller=50%'
       abbr --add --global jc     journalctl
       abbr --add --global sc     'sudo systemctl'
       abbr --add --global scu    'systemctl --user'
