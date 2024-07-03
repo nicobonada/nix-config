@@ -15,7 +15,6 @@
 
   security.pam.services.hyprlock = {};
   programs.hyprland.enable = true;
-  services.hypridle.enable = true;
 
   # hint electron apps to use wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
