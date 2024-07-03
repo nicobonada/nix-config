@@ -4,6 +4,7 @@
 
     settings = {
       global = {
+        follow = "keyboard";
         font = "Inter 12";
         frame_color = "#8aadf4";
         separator_color = "frame";
