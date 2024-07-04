@@ -109,9 +109,6 @@
     gamemode.enable = true;
     gamemode.settings.general.inhibit_screensaver = 0;
 
-    gamescope.enable = true;
-    gamescope.args = [ "--backend sdl" ];
-
     nh.enable = true;
     nh.flake = /home/nico/nix-config;
 

@@ -12,6 +12,12 @@
       term-osd-bar = true;
       term-osd-bar-chars = "[=>-]";
     };
+
+    bindings = {
+      "Alt+="  = "add video-zoom 0.1";    # zoom in
+      "ctrl+=" = "add audio-delay 0.100"; # change audio/video sync by delaying the audio
+    };
+
     scripts = with pkgs.mpvScripts; [ uosc thumbfast ];
   };
 }
