@@ -15,6 +15,7 @@
 
   security.pam.services.hyprlock = {};
   programs.hyprland.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # hint electron apps to use wayland:
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
