@@ -17,21 +17,19 @@
   programs.hyprland.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
-  # hint electron apps to use wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment = {
+    # hint electron apps to use wayland:
+    sessionVariables.NIXOS_OZONE_WL = "1";
 
-  environment.systemPackages = with pkgs; [
-    dunst
-    grim
-    hypridle
-    hyprlock
-    hyprshot
-    nwg-displays
-    qt5.qtwayland
-    qt6.qtwayland
-    rofi-wayland
-    waybar
-    wayland-pipewire-idle-inhibit
-    wl-clipboard-rs
-  ];
+    systemPackages = with pkgs; [
+      grim
+      hyprlock
+      hyprshot
+      nwg-displays
+      qt5.qtwayland
+      qt6.qtwayland
+      wayland-pipewire-idle-inhibit
+      wl-clipboard-rs
+    ];
+  };
 }
