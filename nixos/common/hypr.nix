@@ -23,7 +23,6 @@
 
     systemPackages = with pkgs; [
       grim
-      hyprlock
       hyprshot
       nwg-displays
       qt5.qtwayland

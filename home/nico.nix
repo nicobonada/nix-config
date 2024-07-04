@@ -156,8 +156,6 @@
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
 
-  xdg.configFile."hypr/hyprlock.conf".source = ./configs/hypr/hyprlock.conf;
-
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
   home.file.".bash_profile".source   = ./configs/bash_profile;
 
