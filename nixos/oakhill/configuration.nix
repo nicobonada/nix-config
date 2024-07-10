@@ -99,12 +99,14 @@
   hardware.steam-hardware.enable = true;
   programs.steam.enable = true;
 
-  hardware.xpadneo.enable = true;
-
   hardware.logitech.wireless = {
     enable = true;
     enableGraphical = true;
   };
+  # hardware.logitech.wireless = {
+  #   enable = true;
+  #   enableGraphical = true;
+  # };
 
   environment.systemPackages = with pkgs; [
     lm_sensors
