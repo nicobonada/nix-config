@@ -110,7 +110,6 @@
     fish.enable = true;
 
     gamemode.enable = true;
-    gamemode.settings.general.inhibit_screensaver = 0;
 
     nh.enable = true;
     nh.flake = /home/nico/nix-config;
