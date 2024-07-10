@@ -71,10 +71,7 @@
       };
     };
 
-    smartd = {
-      enable = true;
-      notifications.x11.enable = true;
-    };
+    smartd.enable = true;
 
     thermald.enable = true;
 

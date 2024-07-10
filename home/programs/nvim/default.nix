@@ -26,7 +26,6 @@
 
       dressing-nvim
       gitsigns-nvim
-      i3config-vim
       mini-nvim
       nvim-colorizer-lua
       nvim-web-devicons
