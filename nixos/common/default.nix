@@ -2,6 +2,7 @@
 {
   imports = [
     ./keyring.nix
+    ./hypr.nix
   ];
 
   # Select internationalisation properties.
