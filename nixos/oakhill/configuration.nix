@@ -103,10 +103,6 @@
     enable = true;
     enableGraphical = true;
   };
-  # hardware.logitech.wireless = {
-  #   enable = true;
-  #   enableGraphical = true;
-  # };
 
   environment.systemPackages = with pkgs; [
     lm_sensors
