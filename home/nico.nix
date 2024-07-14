@@ -52,6 +52,7 @@
     aria2
     bandwhich
     beets-unstable
+    bemoji # emoji picker, needs rofi and wtype
     calibre
     cowsay
     crawlTiles

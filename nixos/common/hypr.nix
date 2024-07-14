@@ -29,6 +29,7 @@
       qt6.qtwayland
       wayland-pipewire-idle-inhibit
       wl-clipboard-rs
+      wtype
     ];
   };
 }
