@@ -1,0 +1,3 @@
+filemanager() {
+    ( cd "$1" && fish )
+}

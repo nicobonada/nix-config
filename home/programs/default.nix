@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./bashmount
     ./bat
     ./fish
     ./git
@@ -12,15 +13,6 @@
   ];
 
   programs = {
-    bashmount = {
-      enable = true;
-      extraConfig = ''
-        filemanager() {
-            ( cd "$1" && fish )
-        }
-      '';
-    };
-
     man.generateCaches = true;
 
     yt-dlp.enable = true;
