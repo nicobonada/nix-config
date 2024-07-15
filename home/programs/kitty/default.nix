@@ -11,6 +11,6 @@
       tab_bar_style = "powerline";
       cursor_blink_interval = 0;
     };
-    extraConfig = builtins.readFile (./themes/tokyonight_storm.conf);
+    extraConfig = builtins.readFile ./themes/tokyonight_storm.conf;
   };
 }
