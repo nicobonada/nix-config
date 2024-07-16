@@ -1,4 +1,3 @@
-{ ... }:
 {
   programs.bashmount = {
       enable = true;
