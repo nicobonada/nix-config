@@ -110,6 +110,9 @@
         "tooltip-format": "{ipaddr}",
         "tooltip-format-disabled": "VPN - Disconnected"
     },
+    "load": {
+        "format": "{} "
+    },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
