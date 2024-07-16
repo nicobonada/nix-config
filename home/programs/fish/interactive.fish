@@ -27,7 +27,7 @@ function ls --description "List directory contents"
     command ls --group-directories-first --classify --human-readable --time-style=long-iso --color=auto $argv
 end
 
-abbr --add --global mf     'mpv --fullscreen --video-unscaled'
+abbr --add --global mf     'mpv --fullscreen --video-unscaled=downscale-big'
 abbr --add --global jc     journalctl
 abbr --add --global sc     'sudo systemctl'
 abbr --add --global scu    'systemctl --user'
