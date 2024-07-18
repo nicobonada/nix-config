@@ -90,6 +90,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  services.fwupd.enable = true;
+
   hardware.graphics.extraPackages = with pkgs; [
       vaapiIntel
       libvdpau-va-gl
