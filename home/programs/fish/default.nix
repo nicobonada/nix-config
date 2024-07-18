@@ -1,7 +1,7 @@
 {
   programs.fish = {
     enable = true;
-    shellInit = ''
+    shellInit = /*fish*/ ''
       set BROWSER "vivaldi"
       set -gx EDITOR nvim
     '';
