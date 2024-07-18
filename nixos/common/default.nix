@@ -112,7 +112,7 @@
     gamemode.enable = true;
 
     nh.enable = true;
-    nh.flake = /home/nico/nix-config;
+    # nh.flake = /home/nico/nix-config;
 
     appimage.enable = true;
     appimage.binfmt = true;
