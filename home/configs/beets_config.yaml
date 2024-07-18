@@ -34,8 +34,6 @@ pluginpath:
 original_date: yes
 format_album: $year $albumartist - $album
 sort_album: albumartist+ year+ album+
-# musicbrainz:
-#   enabled: no
 edit:
     itemfields: track title artist album genre disc disctotal year
     albumfields: album albumartist genre year
@@ -59,18 +57,3 @@ bucket:
 item_fields:
     disc_and_track: u'%01i%02i' % (disc, track) if
                     disctotal > 1 else u'%02i' % (track)
-# rewrite:
-#   genre (Bhangra|Blues|Country|Bluegrass|Flamenco|Cumbia|Orchestral|Soul|Neofolk|Folktronica): Misc
-#   genre .*Metal: Metal
-#   genre (.*Rock|Britpop|Grunge): Rock
-#   genre Electropop: Synthpop
-#   genre Indie Pop: Pop
-#   genre (Goa.*|Full On|Psychedelic Trance): Psytrance
-#   genre Idm: IDM
-#   genre (Hip Hop|Rapcore): Rap
-#   genre Electro-Industrial: Darkwave
-#   genre (Deep|Hard|Progressive) House: House
-#   genre (Dark Ambient|Chillout): Ambient
-#   genre Techno: Dance
-#   genre Deep Trance: Psychill
-#   genre Trip-Hop: Downtempo
