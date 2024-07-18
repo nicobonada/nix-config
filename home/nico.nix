@@ -89,7 +89,6 @@
     nix-tree
     nixpkgs-fmt
     nmap
-    nwg-look
     okular
     papirus-icon-theme
     patool
@@ -108,6 +107,7 @@
     sgt-puzzles
     shellcheck
     soulseekqt
+    themechanger
     tree
     unrar # required by atool
     unzip # required by atool
