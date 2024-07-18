@@ -32,7 +32,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nico = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    extraGroups = [ "wheel" "networkmanager" "video" "adbusers" ];
   };
 
   environment.variables.EDITOR = "nvim";
@@ -109,13 +109,15 @@
   programs = {
     fish.enable = true;
 
-    gamemode.enable = true;
+    # gamemode.enable = true;
 
     nh.enable = true;
     nh.flake = /home/nico/nix-config;
 
     appimage.enable = true;
     appimage.binfmt = true;
+
+    adb.enable = true;
   };
 
   security = {
