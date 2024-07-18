@@ -44,6 +44,7 @@
   home.sessionVariables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = 0;
     TERMINAL = "kitty";
+    FLAKE = "$HOME/nix-config";
   };
 
   home.packages = with pkgs; [
@@ -89,7 +90,6 @@
     nix-tree
     nixpkgs-fmt
     nmap
-    nwg-look
     okular
     papirus-icon-theme
     patool
@@ -108,6 +108,7 @@
     sgt-puzzles
     shellcheck
     soulseekqt
+    themechanger
     tree
     unrar # required by atool
     unzip # required by atool
