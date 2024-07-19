@@ -59,19 +59,19 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    # kernelPackages = pkgs.linuxPackages_zen;
     kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    kernelModules = [ "nct6775" ]; # from lm_sensors
-    kernelParams = [ "nohibernate" ]; # zfs doesn't support hibernate
+    kernelModules = [ "nct6775" ];         # from lm_sensors
+    kernelParams = [ "nohibernate" ];      # zfs doesn't support hibernate
     supportedFilesystems = [ "zfs" ];
     initrd.kernelModules = [ "amdgpu" ];
     initrd.supportedFilesystems = ["zfs"]; # boot from zfs
     zfs.package = pkgs.zfs_unstable;
   };
 
-  services.udev.extraRules = ''
+  # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
+  services.udev.extraRules = /*udev*/''
     ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
-  ''; # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
+  '';
 
   hardware.cpu.amd.updateMicrocode = true;
 
@@ -109,9 +109,10 @@
     prismlauncher
   ];
 
-  services.zfs.autoScrub.enable = true;
-  services.zfs.trim.enable = true;
-
+  services.zfs = {
+    autoScrub.enable = true;
+    zfs.trim.enable = true;
+  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
