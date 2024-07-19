@@ -14,24 +14,24 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
-      nixosConfigurations = {
-        navi = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./nixos/navi/configuration.nix ];
-        };
-
-        oakhill = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./nixos/oakhill/configuration.nix ];
-        };
+    nixosConfigurations = {
+      navi = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ ./nixos/navi/configuration.nix ];
       };
 
-      homeConfigurations = {
-        nico = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./home/nico.nix ];
-        };
+      oakhill = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ ./nixos/oakhill/configuration.nix ];
       };
     };
+
+    homeConfigurations = {
+      nico = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ ./home/nico.nix ];
+      };
+    };
+  };
 }
