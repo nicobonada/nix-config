@@ -3,6 +3,7 @@
   imports = [
     ./keyring.nix
     ./hypr.nix
+    ./sound.nix
   ];
 
   # Select internationalisation properties.
@@ -15,19 +16,6 @@
   #   font = "Lat2-Terminus16";
   #   keyMap = "us";
   # };
-
-  # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    # jack.enable = true;
-  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nico = {
@@ -42,7 +30,6 @@
     wget
     git
     file
-    alsa-utils
     psmisc
     usbutils
     sshfs
