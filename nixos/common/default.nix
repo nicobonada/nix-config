@@ -4,6 +4,7 @@
     ./keyring.nix
     ./hypr.nix
     ./sound.nix
+    ./yubi.nix
   ];
 
   # Select internationalisation properties.
@@ -87,10 +88,6 @@
     udev.extraRules = /*udev*/''
       ACTION=="add", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="3109", RUN+="/sbin/modprobe xpad", RUN+="/bin/sh -c 'echo 2dc8 3109 > /sys/bus/usb/drivers/xpad/new_id'"
     '';
-
-    # yubikey stuff
-    udev.packages = [ pkgs.yubikey-personalization ];
-    pcscd.enable = true;
   };
 
   programs = {
@@ -107,11 +104,5 @@
     adb.enable = true;
   };
 
-  security = {
-    polkit.enable = true;
-    pam.u2f = {
-      enable = true;
-      cue = true;
-    };
-  };
+  security.polkit.enable = true;
 }
