@@ -3,7 +3,7 @@
   services.greetd = {
     enable = true;
     settings = {
-      default_session.command = ''
+      default_session.command = /*bash*/''
         ${pkgs.greetd.tuigreet}/bin/tuigreet \
           --time \
           --asterisks \

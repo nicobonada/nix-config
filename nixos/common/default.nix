@@ -97,7 +97,7 @@
     dictd.enable = true;
 
     # Treat 8bitdo ultimate controller as xbox controller
-    udev.extraRules = ''
+    udev.extraRules = /*udev*/''
       ACTION=="add", ATTRS{idVendor}=="2dc8", ATTRS{idProduct}=="3109", RUN+="/sbin/modprobe xpad", RUN+="/bin/sh -c 'echo 2dc8 3109 > /sys/bus/usb/drivers/xpad/new_id'"
     '';
 
