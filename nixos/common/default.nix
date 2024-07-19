@@ -21,7 +21,12 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.nico = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" "adbusers" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+      "adbusers"
+    ];
   };
 
   environment.variables.EDITOR = "nvim";
