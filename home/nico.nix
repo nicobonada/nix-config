@@ -59,7 +59,6 @@
     cowsay
     crawlTiles
     dua
-    duc
     duf
     erdtree
     fd
@@ -83,7 +82,6 @@
     mediainfo
     mp3gain
     mp3splt
-    nix-prefetch-git
     nix-tree
     nixpkgs-fmt
     nmap
