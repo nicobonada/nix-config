@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./bashmount
@@ -25,4 +26,7 @@
 
     hyprcursor-phinger.enable = true;
   };
+
+  # needed for gtk apps as they don't support hardware cursors
+  home.packages = [ pkgs.phinger-cursors ];
 }

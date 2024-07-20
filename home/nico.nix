@@ -97,7 +97,6 @@
     patool
     pavucontrol
     perlPackages.FileMimeInfo
-    phinger-cursors
     playerctl
     procs
     pulseaudio # needed for pactl
