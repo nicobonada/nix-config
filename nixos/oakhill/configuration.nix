@@ -10,6 +10,9 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./users.nix
+    ./boot.nix
+    ./zfs.nix
+
     ../common
 
     # Import your generated (nixos-generate-config) hardware configuration
@@ -53,34 +56,12 @@
     };
   };
 
-  boot = {
-    loader = {
-      # Use the systemd-boot EFI boot loader.
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
-    kernelModules = [ "nct6775" ];         # from lm_sensors
-    kernelParams = [ "nohibernate" ];      # zfs doesn't support hibernate
-    supportedFilesystems = [ "zfs" ];
-    initrd.kernelModules = [ "amdgpu" ];
-    initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-    zfs.package = pkgs.zfs_unstable;
-  };
-
-  # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
-  services.udev.extraRules = /*udev*/''
-    ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
-  '';
-
   hardware.cpu.amd.updateMicrocode = true;
 
 
   networking = {
-    hostId = "23c95f57"; # for zfs
     hostName = "oakhill"; # Define your hostname.
     networkmanager.enable = true;
-    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   };
 
   # Set your time zone.
@@ -108,11 +89,6 @@
     lm_sensors
     prismlauncher
   ];
-
-  services.zfs = {
-    autoScrub.enable = true;
-    trim.enable = true;
-  };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
