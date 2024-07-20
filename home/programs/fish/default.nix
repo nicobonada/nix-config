@@ -1,11 +1,16 @@
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
+
     shellInit = /*fish*/ ''
       set BROWSER "vivaldi"
       set -gx EDITOR nvim
     '';
-    interactiveShellInit = builtins.readFile ./interactive.fish;
+
+    interactiveShellInit = ''
+      set -gx LS_COLORS (${pkgs.vivid}/bin/vivid generate tokyonight-storm-vivid-nobold)
+    '' + builtins.readFile ./interactive.fish;
   };
 
   xdg.configFile = {

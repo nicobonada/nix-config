@@ -121,7 +121,6 @@
         --enable-features=VaapiVideoDecoder
       '';
     })
-    vivid
     wavemon
     yubikey-manager
     yubioath-flutter

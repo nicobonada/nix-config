@@ -1,5 +1,3 @@
-set -gx LS_COLORS (vivid generate tokyonight-storm-vivid-nobold)
-
 alias VV      'nvim ~/.config/nixpkgs/configs/nviminit.lua'
 alias aria    'aria2c -j 1 -s 1 -c'
 alias aunpack 'patool extract'
