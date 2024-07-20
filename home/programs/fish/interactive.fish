@@ -35,7 +35,3 @@ abbr --add --global scu    'systemctl --user'
 fish_add_path ~/bin
 
 source ~/.config/fish/tokyonight_storm.fish
-
-if test $TERM = "xterm-kitty"
-    kitty + complete setup fish | source
-end
