@@ -95,12 +95,9 @@
     okular
     papirus-icon-theme
     patool
-    pavucontrol
     perlPackages.FileMimeInfo
     playerctl
     procs
-    pulseaudio # needed for pactl
-    pulsemixer
     qbittorrent
     qimgv
     r128gain
