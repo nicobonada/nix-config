@@ -18,11 +18,7 @@
     btop.settings = { color_theme = "tokyo-storm"; };
 
     fzf.enable = true;
-    fzf.enableFishIntegration = true;
-
     zoxide.enable = true;
-    zoxide.enableFishIntegration = true;
-
     ranger.enable = true;
     fastfetch.enable = true;
     yt-dlp.enable = true;
