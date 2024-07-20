@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   services = {
     mpd = {
@@ -22,4 +23,6 @@
       browser_display_mode = "columns";
     };
   };
+
+  home.packages = [ pkgs.mpc_cli ];
 }

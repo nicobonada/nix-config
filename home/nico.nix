@@ -83,7 +83,6 @@
     mediainfo
     mp3gain
     mp3splt
-    mpc_cli
     nix-prefetch-git
     nix-tree
     nixpkgs-fmt
