@@ -111,7 +111,7 @@
 
   services.zfs = {
     autoScrub.enable = true;
-    zfs.trim.enable = true;
+    trim.enable = true;
   };
 
   # Open ports in the firewall.
