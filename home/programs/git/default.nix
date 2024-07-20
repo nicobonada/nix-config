@@ -2,11 +2,16 @@
 {
   programs.git = {
     enable = true;
+
     package = pkgs.gitFull;
+
     userName = "Nicolás Bonada";
     userEmail = "nico.bonada@gmail.com";
+
     aliases.st = "status";
+
     delta.enable = true;
+
     extraConfig = {
       diff.tool = "kdiff3";
       merge.tool = "kdiff3";

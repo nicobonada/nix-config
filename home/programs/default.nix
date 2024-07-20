@@ -14,8 +14,6 @@
   programs = {
     man.generateCaches = true;
 
-    yt-dlp.enable = true;
-
     btop.enable = true;
     btop.settings = { color_theme = "tokyo-storm"; };
 
@@ -26,8 +24,8 @@
     zoxide.enableFishIntegration = true;
 
     ranger.enable = true;
-
     fastfetch.enable = true;
+    yt-dlp.enable = true;
 
     hyprcursor-phinger.enable = true;
 
