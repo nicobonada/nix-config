@@ -10,6 +10,8 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./fonts.nix
+
     ./programs
     ./services
   ];
@@ -126,17 +128,7 @@
     wavemon
     yubikey-manager
     yubioath-flutter
-
-    # fonts
-    noto-fonts
-    comic-neue
-    font-awesome_5
-    inter
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
-    noto-fonts-emoji
   ];
-
-  fonts.fontconfig.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
