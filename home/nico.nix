@@ -51,7 +51,6 @@
 
   home.packages = with pkgs; [
     android-file-transfer
-    arandr
     aria2
     bandwhich
     beets-unstable
@@ -59,7 +58,6 @@
     calibre
     cowsay
     crawlTiles
-    discord
     dua
     duc
     duf
@@ -82,12 +80,10 @@
     libqalculate
     lsof
     lxqt.pcmanfm-qt
-    mate.mate-themes
     mediainfo
     mp3gain
     mp3splt
     mpc_cli
-    networkmanagerapplet
     nix-prefetch-git
     nix-tree
     nixpkgs-fmt
