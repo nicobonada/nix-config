@@ -1,4 +1,3 @@
-alias VV      'nvim ~/.config/nixpkgs/configs/nviminit.lua'
 alias aria    'aria2c -j 1 -s 1 -c'
 alias aunpack 'patool extract'
 alias bm      'bashmount'
@@ -16,8 +15,6 @@ alias zzz     'systemctl suspend'
 # nix related aliases
 alias HH      'nvim ~/nix-config/home/nico.nix'
 alias gens    'sudo nix-env -p /nix/var/nix/profiles/system --list-generations'
-alias ndiff   'nix profile diff-closures --profile /nix/var/nix/profiles/system'
-alias hdiff   'nix profile diff-closures --profile /nix/var/nix/profiles/per-user/nico/profile'
 
 set -gx LESS "-iRSX"
 
