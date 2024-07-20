@@ -40,8 +40,6 @@
     usbutils
     sshfs
     smartmontools
-
-    lxqt.lxqt-policykit
   ];
 
   services = {

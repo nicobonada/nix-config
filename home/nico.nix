@@ -122,8 +122,6 @@
       '';
     })
     wavemon
-    yubikey-manager
-    yubioath-flutter
   ];
 
   # Let Home Manager install and manage itself.

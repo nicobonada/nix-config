@@ -30,6 +30,7 @@
       wayland-pipewire-idle-inhibit
       wl-clipboard-rs
       wtype
+      lxqt.lxqt-policykit
     ];
   };
 }

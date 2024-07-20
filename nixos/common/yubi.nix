@@ -9,4 +9,9 @@
     udev.packages = [ pkgs.yubikey-personalization ];
     pcscd.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    yubikey-manager
+    yubioath-flutter
+  ];
 }
