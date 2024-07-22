@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
+    inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+
     ./bashmount
     ./bat
     ./fish
