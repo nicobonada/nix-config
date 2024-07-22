@@ -22,8 +22,9 @@
 
   security.pam.services.hyprlock = {};
   programs.hyprland.enable = true;
-  programs.hyprland.portalPackage =
-    inputs.xdg-desktop-portal-hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
+  programs.hyprland.portalPackage = inputs.xdph.packages.${pkgs.system}.xdg-desktop-portal-hyprland.override {
+    inherit (pkgs) mesa;
+  };
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   environment = {

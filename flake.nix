@@ -12,7 +12,7 @@
     # hardware.url = "github:nixos/nixos-hardware";
     hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
 
-    xdg-desktop-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
