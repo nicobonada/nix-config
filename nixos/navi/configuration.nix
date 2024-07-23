@@ -82,7 +82,6 @@
       intel-media-driver
   ];
 
-
   hardware.brillo.enable = true;
 
   # Open ports in the firewall.

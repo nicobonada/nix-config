@@ -116,6 +116,7 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
+
   systemd.user.targets.tray = {
     Unit = {
       Description = "Home Manager System Tray";
