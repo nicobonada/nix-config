@@ -80,8 +80,6 @@
     lsof
     lxqt.pcmanfm-qt
     mediainfo
-    mp3gain
-    mp3splt
     nix-tree
     nixpkgs-fmt
     nmap
