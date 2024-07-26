@@ -99,14 +99,9 @@
     themechanger
     tree
     vesktop
-    # (vivaldi.override { enableWidevine = true; proprietaryCodecs = true; })
     (vivaldi.override {
-      commandLineArgs = ''
-        --ignore-gpu-blocklist \
-        --enable-gpu-rasterization \
-        --enable-zero-copy \
-        --enable-features=VaapiVideoDecoder
-      '';
+      # don't use multiline string here: see https://github.com/NixOS/nixpkgs/issues/197243#issuecomment-1775803207
+      commandLineArgs = "--ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder";
     })
     wavemon
   ];
