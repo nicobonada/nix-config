@@ -1,0 +1,14 @@
+// -*- mode: jsonc -*-
+{
+    "modules-right": [
+        "idle_inhibitor",
+        "pulseaudio",
+        "network",
+        "network#wg0-mullvad",
+        "temperature#oakhill",
+        "disk",
+        "load",
+        "clock",
+        "tray"
+    ],
+}

@@ -1,8 +1,6 @@
+{ ... }:
 {
-  programs.waybar = {
-    enable = true;
-    style = ./translucent.css;
-  };
+  programs.waybar.enable = true;
 
-  xdg.configFile."waybar/config.jsonc".source = ./config.jsonc;
+  xdg.configFile."waybar".source = ./settings;
 }
