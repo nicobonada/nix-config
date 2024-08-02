@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+
+  # prevent nixd from bloating the lsp.log file
+  home.sessionVariables.NIXD_FLAGS = "-log=error";
+
   programs.neovim = {
     enable = true;
 
