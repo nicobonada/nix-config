@@ -57,12 +57,12 @@
     calibre
     cowsay
     crawlTiles
+    dconf-editor
     dua
     duf
     erdtree
     fd
     htop
-    gnome.dconf-editor
     inxi
     ipcalc
     jamesdsp
