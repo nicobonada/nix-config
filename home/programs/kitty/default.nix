@@ -14,6 +14,8 @@
 
       # Close the window when the child process (usually the shell) exits
       close_on_child_death = "yes";
+
+      scrollback_pager_history_size = 20;  # size is in MB
     };
     extraConfig = builtins.readFile ./themes/tokyonight_storm.conf;
   };
