@@ -62,6 +62,7 @@
     duf
     erdtree
     fd
+    floorp
     htop
     inxi
     ipcalc

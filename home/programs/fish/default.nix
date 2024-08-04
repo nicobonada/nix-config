@@ -4,7 +4,7 @@
     enable = true;
 
     shellInit = /*fish*/ ''
-      set BROWSER "vivaldi"
+      set BROWSER "floorp"
       set -gx EDITOR nvim
     '';
 
