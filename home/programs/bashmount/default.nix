@@ -1,6 +1,12 @@
+{ pkgs, ... }:
 {
   programs.bashmount = {
       enable = true;
-      extraConfig = builtins.readFile ./config;
+
+      extraConfig = /*bash*/''
+        filemanager() {
+            ( cd "$1" && ${pkgs.fish}/bin/fish )
+        }
+      '';
   };
 }
