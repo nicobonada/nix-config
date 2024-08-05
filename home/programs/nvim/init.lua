@@ -87,7 +87,6 @@ opt.virtualedit = { 'block', 'onemore' }
 kmap('n', '<leader>;', ':bp<cr>')
 kmap('n', '<leader>.', ':bn<cr>')
 kmap('n', '<leader>he', 'yypVr')
-kmap('n', '<leader>v', ':e ~/.config/nixpkgs/configs/nvim/init.lua<cr>')
 kmap('n', '<c-c>', '<esc>:set cursorline! cursorcolumn!<cr>', { silent = true })
 
 kmap('n', '<f6>', ':number!<cr>')
