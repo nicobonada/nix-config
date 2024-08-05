@@ -181,17 +181,3 @@ vim.diagnostic.config {
     prefix = '',
   },
 }
-
-
-local null_ls = require('null-ls')
-
-local sources = {
-  null_ls.builtins.diagnostics.flake8,
-  null_ls.builtins.formatting.stylua,
-  null_ls.builtins.formatting.nixpkgs_fmt,
-  null_ls.builtins.code_actions.statix
-}
-
-null_ls.setup({ sources = sources })
-
-vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>')

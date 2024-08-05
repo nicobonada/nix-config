@@ -83,7 +83,6 @@
     lxqt.pcmanfm-qt
     mediainfo
     nix-tree
-    nixpkgs-fmt
     nmap
     okular
     papirus-icon-theme

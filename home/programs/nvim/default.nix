@@ -17,12 +17,6 @@
       nil
       nixd
       lua-language-server
-
-      # null-ls
-      python3Packages.flake8
-      nixpkgs-fmt
-      stylua
-      statix
     ];
 
     plugins = with pkgs.vimPlugins; [
@@ -43,7 +37,6 @@
 
       # lsp stuff
       nvim-lspconfig
-      null-ls-nvim
       lspkind-nvim
       trouble-nvim
 
