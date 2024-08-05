@@ -10,6 +10,7 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./fonts.nix
+    ./dconf.nix
 
     ./programs
     ./services
@@ -57,6 +58,7 @@
     calibre
     cowsay
     crawlTiles
+    dconf2nix
     dconf-editor
     dua
     duf
