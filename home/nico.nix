@@ -69,11 +69,8 @@
     inxi
     ipcalc
     jamesdsp
+    jellyfin-media-player
     kdiff3
-    kdePackages.ffmpegthumbs # used by gwenview
-    kdePackages.gwenview
-    kdePackages.kdegraphics-thumbnailers # used by gwenview
-    kdePackages.kio-extras # for showing folder previews in gwenview
     keepassxc
     kid3
     ksnip
@@ -98,7 +95,6 @@
     sgt-puzzles
     shellcheck
     soulseekqt
-    themechanger
     tree
     vesktop
     (vivaldi.override {
