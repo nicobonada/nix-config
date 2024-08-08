@@ -24,13 +24,15 @@
     systemPackages = with pkgs; [
       grim
       hyprshot
+      lxqt.lxqt-policykit
       nwg-displays
       qt5.qtwayland
       qt6.qtwayland
+      slurp # needed for wl-screenrec
       wayland-pipewire-idle-inhibit
       wl-clipboard-rs
+      wl-screenrec
       wtype
-      lxqt.lxqt-policykit
     ];
   };
 }
