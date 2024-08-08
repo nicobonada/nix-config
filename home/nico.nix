@@ -73,7 +73,6 @@
     kdiff3
     keepassxc
     kid3
-    ksnip
     lazygit
     libqalculate
     lsof

@@ -28,6 +28,7 @@
       nwg-displays
       qt5.qtwayland
       qt6.qtwayland
+      satty
       slurp # needed for wl-screenrec
       wayland-pipewire-idle-inhibit
       wl-clipboard-rs
