@@ -27,6 +27,4 @@ abbr --add --global jc     journalctl
 abbr --add --global sc     'sudo systemctl'
 abbr --add --global scu    'systemctl --user'
 
-fish_add_path ~/bin
-
 source ~/.config/fish/tokyonight_storm.fish
