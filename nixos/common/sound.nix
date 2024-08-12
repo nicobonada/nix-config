@@ -27,7 +27,6 @@
   environment.systemPackages = with pkgs; [
     alsa-utils
     pavucontrol
-    pulseaudio # needed for pactl
     pulsemixer
   ];
 }
