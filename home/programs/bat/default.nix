@@ -1,7 +1,7 @@
 {
   programs.bat = {
     enable = true;
-    config.theme = "Enki-Tokyo-Night";
-    themes.Enki-Tokyo-Night = { src = ./themes/Enki-Tokyo-Night.tmTheme; };
+    config.theme = "tokyonight_storm";
+    themes.tokyonight_storm = { src = ./themes/tokyonight_storm.tmTheme; };
   };
 }
