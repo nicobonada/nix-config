@@ -20,9 +20,11 @@
     btop.enable = true;
     btop.settings = { color_theme = "tokyo-storm"; };
 
+    yazi.enable = true;
+    yazi.enableFishIntegration = true;
+
     fzf.enable = true;
     zoxide.enable = true;
-    ranger.enable = true;
     fastfetch.enable = true;
     yt-dlp.enable = true;
 
