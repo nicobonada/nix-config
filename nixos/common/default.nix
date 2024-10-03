@@ -26,6 +26,7 @@
       "networkmanager"
       "video"
       "adbusers"
+      "wireshark"
     ];
   };
 
@@ -105,6 +106,9 @@
     appimage.binfmt = true;
 
     adb.enable = true;
+
+    wireshark.enable = true;
+    wireshark.package = pkgs.wireshark;
   };
 
   security.polkit.enable = true;
