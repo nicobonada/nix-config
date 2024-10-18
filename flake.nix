@@ -11,9 +11,11 @@
 
     # hardware.url = "github:nixos/nixos-hardware";
     hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+
+    stable.url = "github:nixos/nixpkgs/nixos-24.05";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, stable, ... }@inputs: {
     nixosConfigurations = {
       navi = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
@@ -29,7 +31,7 @@
     homeConfigurations = {
       nico = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        extraSpecialArgs = { inherit inputs; pkgs-stable = stable.legacyPackages.x86_64-linux; }; # Pass flake inputs to our config
         modules = [ ./home/nico.nix ];
       };
     };
