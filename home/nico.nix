@@ -55,7 +55,7 @@
     bandwhich
     beets-unstable
     bemoji # emoji picker, needs rofi and wtype
-    calibre
+    pkgs-stable.calibre
     cowsay
     crawlTiles
     dconf2nix
