@@ -109,6 +109,8 @@
 
     wireshark.enable = true;
     wireshark.package = pkgs.wireshark;
+
+    partition-manager.enable = true;
   };
 
   security.polkit.enable = true;
