@@ -24,7 +24,7 @@
     systemPackages = with pkgs; [
       grim
       hyprshot
-      lxqt.lxqt-policykit
+      hyprpolkitagent
       nwg-displays
       qt5.qtwayland
       qt6.qtwayland
