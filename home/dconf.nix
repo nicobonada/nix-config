@@ -15,12 +15,36 @@ with lib.hm.gvariant;
     };
 
     "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/gtk/settings/file-chooser/";
-      saved-view = "/org/gtk/settings/file-chooser/";
+      saved-pathbar-path = "/org/blueman/plugins/";
+      saved-view = "/org/blueman/plugins/";
       show-warning = false;
       window-height = 500;
       window-is-maximized = true;
       window-width = 540;
+    };
+
+    "org/blueman/general" = {
+      window-properties = [ 691 903 0 0 ];
+    };
+
+    "org/blueman/network" = {
+      nap-enable = false;
+    };
+
+    "org/blueman/plugins/powermanager" = {
+      auto-power-on = false;
+    };
+
+    "org/blueman/plugins/recentconns" = {
+      recent-connections = [ {
+        adapter = "60:E3:2B:4C:15:C5";
+        address = "50:C2:75:95:26:8B";
+        alias = "Nico's Jabra";
+        icon = "audio-headset";
+        name = "Audio and input profiles";
+        uuid = "00000000-0000-0000-0000-000000000000";
+        time = "1730245512.501296";
+      } ];
     };
 
     "org/gnome/desktop/interface" = {
@@ -45,6 +69,26 @@ with lib.hm.gvariant;
     "org/gnome/desktop/sound" = {
       event-sounds = true;
       input-feedback-sounds = false;
+    };
+
+    "org/gnome/nm-applet/eap/057d7511-27f5-4be9-ab20-6d0ade48d9f4" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/nm-applet/eap/322fc470-0282-43d3-bb75-958331a0f27a" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/nm-applet/eap/fbca9679-39ce-425c-920f-436162f91cf8" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gtk/gtk4/settings/color-chooser" = {
+      custom-colors = [ (mkTuple [ 0.7843137383460999 0.14509804546833038 0.7215686440467834 1.0 ]) ];
+      selected-color = mkTuple [ true 1.0 0.47058823704719543 0.0 1.0 ];
     };
 
     "org/gtk/settings/file-chooser" = {
