@@ -19,7 +19,7 @@
   # };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.nico = {
+  users.extraUsers.nico = {
     isNormalUser = true;
     extraGroups = [
       "wheel"
