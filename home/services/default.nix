@@ -11,5 +11,8 @@
     syncthing.enable = true;
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
+
+    kdeconnect.enable = true;
+    kdeconnect.indicator = true;
   };
 }
