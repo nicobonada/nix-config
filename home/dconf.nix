@@ -35,18 +35,6 @@ with lib.hm.gvariant;
       auto-power-on = false;
     };
 
-    "org/blueman/plugins/recentconns" = {
-      recent-connections = [ {
-        adapter = "60:E3:2B:4C:15:C5";
-        address = "50:C2:75:95:26:8B";
-        alias = "Nico's Jabra";
-        icon = "audio-headset";
-        name = "Audio and input profiles";
-        uuid = "00000000-0000-0000-0000-000000000000";
-        time = "1730245512.501296";
-      } ];
-    };
-
     "org/gnome/desktop/interface" = {
       color-scheme = "prefer-dark";
       cursor-size = 24;
