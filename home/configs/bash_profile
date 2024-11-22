@@ -4,3 +4,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 [[ -f ~/.nix-profile/etc/profile.d/hm-session-vars.sh ]] && . ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+
+if uwsm check may-start; then
+    exec uwsm start hyprland-uwsm.desktop
+fi

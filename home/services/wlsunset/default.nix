@@ -1,3 +1,4 @@
+{ lib, ... }:
 {
   services.wlsunset = {
     enable = true;
@@ -10,4 +11,6 @@
       night = 4600;
     };
   };
+
+  systemd.user.services.wlsunset.Unit.After = lib.mkForce "graphical-session.target";
 }

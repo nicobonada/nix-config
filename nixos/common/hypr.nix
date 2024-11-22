@@ -1,15 +1,11 @@
-{ pkgs , ...}:
+{ pkgs , lib, config, ...}:
 {
-  services.greetd = {
+  programs.uwsm = {
     enable = true;
-    settings = {
-      default_session.command = /*bash*/''
-        ${pkgs.greetd.tuigreet}/bin/tuigreet \
-          --time \
-          --asterisks \
-          --user-menu \
-          --cmd Hyprland
-      '';
+    waylandCompositors.hyprland = {
+      binPath = "/run/current-system/sw/bin/Hyprland";
+      comment = "Hyprland session managed by uwsm";
+      prettyName = "Hyprland";
     };
   };
 
