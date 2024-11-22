@@ -94,6 +94,7 @@
     sgt-puzzles
     shellcheck
     soulseekqt
+    ticktick
     tree
     vesktop
     (vivaldi.override {

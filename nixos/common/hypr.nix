@@ -16,6 +16,8 @@
   environment = {
     # hint electron apps to use wayland:
     sessionVariables.NIXOS_OZONE_WL = "1";
+    # For packages that dont yet support the above
+    sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
 
     systemPackages = with pkgs; [
       grim
