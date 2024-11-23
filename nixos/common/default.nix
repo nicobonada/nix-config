@@ -44,6 +44,8 @@
   ];
 
   services = {
+    printing.enable = true;
+
     # Enable the OpenSSH daemon.
     openssh.enable = true;
 
