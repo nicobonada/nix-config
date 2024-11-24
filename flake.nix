@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    stable.url =  "github:nixos/nixpkgs/nixos-24.05";
 
     # Home manager
     home-manager.url = "github:nix-community/home-manager";
@@ -11,8 +12,6 @@
 
     # hardware.url = "github:nixos/nixos-hardware";
     hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
-
-    stable.url = "github:nixos/nixpkgs/nixos-24.05";
   };
 
   outputs = { nixpkgs, home-manager, stable, ... }@inputs: {
