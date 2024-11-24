@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.kitty = {
     enable = true;
@@ -7,7 +7,7 @@
       size = 11;
     };
     settings = {
-      shell = "${pkgs.fish}/bin/fish";
+      shell = "${lib.getExe pkgs.fish}";
       enable_audio_bell = "no";
       tab_bar_style = "powerline";
       cursor_blink_interval = 0;

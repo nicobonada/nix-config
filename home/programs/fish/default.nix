@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   programs.fish = {
     enable = true;
@@ -9,9 +9,9 @@
     '';
 
     interactiveShellInit = ''
-      set -gx LS_COLORS (${pkgs.vivid}/bin/vivid generate tokyonight-storm-vivid-nobold)
+      set -gx LS_COLORS (${lib.getExe pkgs.vivid} generate tokyonight-storm-vivid-nobold)
 
-      ${pkgs.any-nix-shell}/bin/any-nix-shell fish --info-right | source
+      ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
     '' + builtins.readFile ./interactive.fish;
   };
 
