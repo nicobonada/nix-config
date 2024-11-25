@@ -1,6 +1,7 @@
-export XCURSOR_SIZE = 24
-export HYPRCURSOR_THEME = phinger-cursors-light
-export HYPRCURSOR_SIZE = 24
-export QT_QPA_PLATFORM = wayland
-export QT_QPA_PLATFORMTHEME = qt6ct
+# vi:ft=sh
+export XCURSOR_SIZE=24
+export HYPRCURSOR_THEME="phinger-cursors-light"
+export HYPRCURSOR_SIZE=24
+export QT_QPA_PLATFORM="wayland"
+export QT_QPA_PLATFORMTHEME="qt6ct"
 
