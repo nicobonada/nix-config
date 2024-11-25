@@ -70,11 +70,12 @@
 
     thermald.enable = true;
 
-    tlp.enable = true;
-    tlp.settings = {
-      DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
-      USB_ALLOWLIST = "32ac:0002"; # Framework HDMI adapter
-    };
+    # tlp.enable = true;
+    # tlp.settings = {
+    #   DEVICES_TO_DISABLE_ON_STARTUP = "bluetooth";
+    #   USB_ALLOWLIST = "32ac:0002"; # Framework HDMI adapter
+    # };
+    auto-cpufreq.enable = true;
 
     mullvad-vpn.enable = true;
     mullvad-vpn.package = pkgs.mullvad-vpn;
