@@ -3,6 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
+      package = pkgs.nerd-fonts.fira-code;
       name = "FiraCode Nerd Font";
       size = 11;
     };
