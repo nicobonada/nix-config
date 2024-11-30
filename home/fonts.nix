@@ -7,7 +7,7 @@
     comic-neue
     font-awesome_5
     inter
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    nerd-fonts.fira-code
     noto-fonts-emoji
   ];
 }
