@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   services = {
     mpd = {
@@ -24,5 +24,37 @@
     };
   };
 
-  home.packages = [ pkgs.mpc_cli ];
+  home.packages = with pkgs; [
+    mpc_cli
+    mpd-notification
+  ];
+
+  xdg.configFile."mpd-notification.conf".text = ''
+    music-dir = ${config.services.mpd.musicDirectory}
+  '';
+
+  systemd.user.services.mpd-notification = {
+    Unit = {
+      Description = "MPD Notification";
+      Requires = "dbus.socket";
+      PartOf= "graphical-session.target";
+      After = [
+        "mpd.service"
+        "network.target"
+        "network-online.target"
+        "graphical-session.target"
+        "dunst.service"
+      ];
+    };
+
+    Service = {
+      Type = "notify";
+      Restart = "on-failure";
+      ExecStart="${lib.getExe pkgs.mpd-notification}";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
 }
