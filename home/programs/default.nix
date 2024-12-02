@@ -28,7 +28,6 @@
     zoxide.enable = true;
     fastfetch.enable = true;
     yt-dlp.enable = true;
-    nix-index.enable = true;
 
     hyprcursor-phinger.enable = true;
   };
