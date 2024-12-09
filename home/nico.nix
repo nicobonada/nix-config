@@ -92,7 +92,7 @@
     qimgv
     r128gain
     renameutils
-    ripgrep # used mainly for telescope
+    ripgrep
     sgt-puzzles
     shellcheck
     soulseekqt
