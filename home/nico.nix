@@ -61,6 +61,7 @@
     crawlTiles
     dconf2nix
     dconf-editor
+    discord-canary
     dua
     duf
     erdtree
@@ -97,7 +98,6 @@
     soulseekqt
     ticktick
     tree
-    vesktop
     (vivaldi.override {
       # don't use multiline string here: see https://github.com/NixOS/nixpkgs/issues/197243#issuecomment-1775803207
       commandLineArgs = "--ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder";
