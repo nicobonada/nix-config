@@ -1,16 +1,12 @@
 { pkgs , lib, config, ...}:
 {
-  programs.uwsm = {
+  security.pam.services.hyprlock = {};
+
+  programs.hyprland = {
     enable = true;
-    waylandCompositors.hyprland = {
-      binPath = "/run/current-system/sw/bin/Hyprland";
-      comment = "Hyprland session managed by uwsm";
-      prettyName = "Hyprland";
-    };
+    withUWSM = true;
   };
 
-  security.pam.services.hyprlock = {};
-  programs.hyprland.enable = true;
   xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   environment = {
