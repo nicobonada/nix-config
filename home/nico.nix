@@ -114,6 +114,29 @@
 
   systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 
+  # this systemd unit is needed to get fumon from the uwsm package working
+  # properly
+  systemd.user.services.fumon = {
+    Unit = {
+      Description = "Failed unit monitor";
+      Documentation = "man:fumon(1) man:busctl(1)";
+      Requisite = "graphical-session.target";
+      After = "graphical-session.target" ;
+    };
+
+    Service = {
+      Type= "exec";
+      ExecCondition = "/bin/sh -c 'command -v notify-send > /dev/null'";
+      ExecStart = lib.getExe' pkgs.uwsm "fumon";
+      Restart = "on-failure";
+      Slice = "background-graphical.slice";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
   qt = {
     enable = true;
     platformTheme.name = "qtct";
