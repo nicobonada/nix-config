@@ -112,12 +112,7 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  systemd.user.targets.tray = {
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = [ "graphical-session-pre.target" ];
-    };
-  };
+  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
 
   qt = {
     enable = true;
