@@ -5,8 +5,8 @@
 
     settings = {
       main = {
-        dpi-aware = true;
-        font = "Inter Regular 12";
+        dpi-aware = "no";
+        font = "Inter Regular:size=14";
         icon-theme = "Papirus-Dark";
         terminal = "${lib.getExe pkgs.kitty} -e";
         launch-prefix = "uwsm app --";
