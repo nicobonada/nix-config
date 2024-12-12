@@ -15,5 +15,11 @@
   xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
   systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
 
-  xdg.configFile."uwsm/env".source = ./uwsm-env;
+  xdg.configFile."uwsm/env".text = /*sh*/''
+    export XCURSOR_SIZE=24
+    export HYPRCURSOR_THEME="phinger-cursors-light"
+    export HYPRCURSOR_SIZE=24
+    export QT_QPA_PLATFORM="wayland"
+    export QT_QPA_PLATFORMTHEME="qt6ct"
+  '';
 }
