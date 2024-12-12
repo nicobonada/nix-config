@@ -3,6 +3,7 @@
   services.wlsunset = {
     enable = true;
 
+    # Toronto
     latitude  = 43.65;
     longitude = -79.38;
 
