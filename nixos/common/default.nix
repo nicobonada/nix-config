@@ -82,7 +82,7 @@
 
     journald.extraConfig = "SystemMaxUse=500M";
     logind.lidSwitch = "ignore";
-    logind.extraConfig = "HandlePowerKey=suspend";
+    logind.powerKey = "suspend";
 
     fstrim.enable = true;
 
