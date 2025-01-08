@@ -26,5 +26,7 @@ abbr --add --global mf     'mpv --fullscreen --video-unscaled=downscale-big'
 abbr --add --global jc     journalctl
 abbr --add --global sc     'sudo systemctl'
 abbr --add --global scu    'systemctl --user'
+abbr --add --global st     'sudo systemctl-tui'
+abbr --add --global stu    'systemctl-tui -s user'
 
 source ~/.config/fish/tokyonight_storm.fish

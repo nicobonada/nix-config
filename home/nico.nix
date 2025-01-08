@@ -96,6 +96,8 @@
     sgt-puzzles
     shellcheck
     soulseekqt
+    systemctl-tui
+    sysz
     ticktick
     tree
     vdhcoapp # used with video downloadhelper addon
