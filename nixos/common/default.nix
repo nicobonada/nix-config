@@ -51,11 +51,7 @@
 
     gvfs.enable = true;
 
-    locate = {
-      enable = true;
-      package = pkgs.plocate;
-      localuser = null;
-    };
+    locate.enable = true;
 
     avahi = {
       enable = true;
