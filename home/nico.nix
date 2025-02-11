@@ -106,6 +106,8 @@
       commandLineArgs = "--ignore-gpu-blocklist --enable-gpu-rasterization --enable-zero-copy --enable-features=VaapiVideoDecoder";
     })
     wavemon
+
+    inputs.zen-browser.packages."${system}".default
   ];
 
   # Let Home Manager install and manage itself.
