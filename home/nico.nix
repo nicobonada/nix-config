@@ -100,7 +100,6 @@
     sysz
     ticktick
     tree
-    vdhcoapp # used with video downloadhelper addon
     wavemon
 
     inputs.zen-browser.packages."${system}".default
