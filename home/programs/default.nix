@@ -22,7 +22,7 @@
     btop.settings = { color_theme = "tokyo-storm"; };
 
     yazi.enable = true;
-    yazi.enableFishIntegration = true;
+    yazi.enableFishIntegration = false;
 
     fzf.enable = true;
     zoxide.enable = true;
