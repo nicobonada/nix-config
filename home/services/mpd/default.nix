@@ -43,7 +43,7 @@
         "network.target"
         "network-online.target"
         "graphical-session.target"
-        "dunst.service"
+        "swaync.service"
       ];
     };
 
