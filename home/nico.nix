@@ -82,7 +82,7 @@
     mediainfo
     nix-tree
     nmap
-    okular
+    kdePackages.okular
     papirus-icon-theme
     patool
     perlPackages.FileMimeInfo
