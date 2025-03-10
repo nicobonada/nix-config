@@ -111,8 +111,6 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  systemd.user.targets.tray.Unit.Requires = lib.mkForce ["graphical-session.target"];
-
   # this systemd unit is needed to get fumon from the uwsm package working
   # properly
   systemd.user.services.fumon = {

@@ -13,7 +13,6 @@
 
   services.hypridle.enable = true;
   xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
-  systemd.user.services.hypridle.Unit.After = lib.mkForce "graphical-session.target";
 
   xdg.configFile."uwsm/env".text = /*sh*/''
     export XCURSOR_SIZE=24

@@ -18,12 +18,4 @@
 
     swaync.enable = true;
   };
-
-  systemd.user.services = {
-    network-manager-applet.Unit.After = lib.mkForce "graphical-session.target";
-    blueman-applet.Unit.After = lib.mkForce "graphical-session.target";
-    kdeconnect.Unit.After = lib.mkForce "graphical-session.target";
-    kdeconnect-indicator.Unit.After = lib.mkForce "graphical-session.target";
-    swaync.Unit.After = lib.mkForce "graphical-session.target";
-  };
 }
