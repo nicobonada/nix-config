@@ -53,7 +53,7 @@
     android-file-transfer
     aria2
     bandwhich
-    beets-unstable
+    beets
     bemoji # emoji picker, needs rofi and wtype
     cavalier
     calibre
@@ -66,7 +66,6 @@
     duf
     erdtree
     fd
-    floorp
     htop
     inxi
     ipcalc
