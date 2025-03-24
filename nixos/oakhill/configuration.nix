@@ -12,7 +12,7 @@
     # ./users.nix
     ./boot.nix
     ./zfs.nix
-    ./vm.nix
+    # ./vm.nix
 
     ../common
 
