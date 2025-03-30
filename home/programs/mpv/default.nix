@@ -18,6 +18,10 @@
       "ctrl+=" = "add audio-delay 0.100"; # change audio/video sync by delaying the audio
     };
 
-    scripts = with pkgs.mpvScripts; [ uosc thumbfast ];
+    scripts = with pkgs.mpvScripts; [
+      #uosc
+      modernz
+      thumbfast
+    ];
   };
 }
