@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   boot = {
     loader = {
@@ -7,5 +7,6 @@
       efi.canTouchEfiVariables = true;
     };
     initrd.kernelModules = [ "amdgpu" ];
+    kernelPackages = pkgs.linuxPackages_6_6;
   };
 }
