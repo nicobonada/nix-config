@@ -27,7 +27,12 @@
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./nixos/oakhill/configuration.nix ];
       };
-    };
+
+      seyruun = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+        modules = [ ./nixos/seyruun/configuration.nix ];
+      };
+   };
 
     homeConfigurations = {
       nico = home-manager.lib.homeManagerConfiguration {
