@@ -70,7 +70,6 @@
     inxi
     ipcalc
     jamesdsp
-    jellyfin-media-player
     kdiff3
     keepassxc
     kid3
