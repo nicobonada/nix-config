@@ -110,8 +110,6 @@
     wireshark.package = pkgs.wireshark;
 
     partition-manager.enable = true;
-
-    kdeconnect.enable = true;
   };
 
   security.polkit.enable = true;
