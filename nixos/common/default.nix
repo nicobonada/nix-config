@@ -110,6 +110,7 @@
     wireshark.package = pkgs.wireshark;
 
     partition-manager.enable = true;
+    partition-manager.package = pkgs.kdePackages.partitionmanager;
   };
 
   security.polkit.enable = true;
