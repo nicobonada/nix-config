@@ -20,4 +20,6 @@
     pavucontrol
     pulsemixer
   ];
+
+  networking.firewall.allowedTCPPorts = [ 6600 ]; # for mpd
 }
