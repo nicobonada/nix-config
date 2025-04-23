@@ -114,4 +114,10 @@
   };
 
   security.polkit.enable = true;
+
+  # Allow kde connect via home-manager
+  networking.firewall = rec {
+    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
+  };
 }
