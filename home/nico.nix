@@ -46,7 +46,7 @@
   home.sessionVariables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = 0;
     TERMINAL = "kitty";
-    FLAKE = "$HOME/nix-config";
+    NH_FLAKE = "$HOME/nix-config";
   };
 
   home.packages = with pkgs; [
