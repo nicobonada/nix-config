@@ -1,9 +1,10 @@
 { lib, pkgs, ... }:
 {
   programs.bashmount = {
-      enable = true;
+    enable = true;
 
-      extraConfig = /*bash*/''
+    extraConfig = # bash
+      ''
         filemanager() {
             ( cd "$1" && ${lib.getExe pkgs.fish} )
         }
