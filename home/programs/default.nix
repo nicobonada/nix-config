@@ -24,10 +24,11 @@
     yazi.enable = true;
     yazi.enableFishIntegration = false;
 
-    fzf.enable = true;
-    zoxide.enable = true;
     fastfetch.enable = true;
+    fzf.enable = true;
+    television.enable = true;
     yt-dlp.enable = true;
+    zoxide.enable = true;
 
     hyprcursor-phinger.enable = true;
   };
