@@ -71,7 +71,7 @@
     ipcalc
     jamesdsp
     kdiff3
-    keepassxc
+    # keepassxc
     kid3
     lazygit
     libqalculate
