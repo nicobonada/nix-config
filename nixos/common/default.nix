@@ -6,6 +6,7 @@
     ./keyring.nix
     ./hypr.nix
     ./sound.nix
+    ./wireshark.nix
     ./yubi.nix
   ];
 
@@ -27,7 +28,6 @@
       "wheel"
       "networkmanager"
       "video"
-      "wireshark"
     ];
   };
 
@@ -100,9 +100,6 @@
 
     appimage.enable = true;
     appimage.binfmt = true;
-
-    wireshark.enable = true;
-    wireshark.package = pkgs.wireshark;
 
     partition-manager.enable = true;
     partition-manager.package = pkgs.kdePackages.partitionmanager;
