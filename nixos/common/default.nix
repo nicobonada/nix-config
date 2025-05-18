@@ -95,9 +95,6 @@
   };
 
   programs = {
-
-    # gamemode.enable = true;
-
     nh.enable = true;
     # nh.flake = /home/nico/nix-config;
 
