@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./fish.nix
     ./keyring.nix
     ./hypr.nix
     ./sound.nix
@@ -94,7 +95,6 @@
   };
 
   programs = {
-    fish.enable = true;
 
     # gamemode.enable = true;
 
