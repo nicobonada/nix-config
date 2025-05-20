@@ -10,6 +10,8 @@
     extraConfig = builtins.readFile ./hyprlock.conf;
   };
 
+  services.hyprpolkitagent.enable = true;
+
   services.hypridle.enable = true;
   xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
 
