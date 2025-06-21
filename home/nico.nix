@@ -76,6 +76,7 @@
     lsof
     lxqt.pcmanfm-qt
     mediainfo
+    nicotine-plus
     nix-tree
     nmap
     kdePackages.okular
@@ -91,7 +92,6 @@
     ripgrep
     sgt-puzzles
     shellcheck
-    soulseekqt
     systemctl-tui
     sysz
     ticktick
