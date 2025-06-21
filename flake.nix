@@ -14,6 +14,9 @@
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+
+    # amd microcode
+    ucodenix.url = "github:e-tho/ucodenix";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
