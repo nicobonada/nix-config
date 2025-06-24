@@ -16,6 +16,7 @@
 
     ../common
     ../common/amd.nix
+    ../common/gaming.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
@@ -76,9 +77,6 @@
 
   hardware.graphics.enable32Bit = true;
 
-  hardware.steam-hardware.enable = true;
-  programs.steam.enable = true;
-
   programs.streamcontroller.enable = true;
 
   hardware.logitech.wireless = {
@@ -88,7 +86,6 @@
 
   environment.systemPackages = with pkgs; [
     lm_sensors
-    prismlauncher
   ];
 
   # Open ports in the firewall.
