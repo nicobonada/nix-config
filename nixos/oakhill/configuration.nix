@@ -12,7 +12,6 @@
     # ./users.nix
     ./boot.nix
     ./zfs.nix
-    # ./vm.nix
 
     ../common
     ../common/amd.nix
