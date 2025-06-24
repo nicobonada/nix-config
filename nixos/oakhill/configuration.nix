@@ -58,9 +58,6 @@
     };
   };
 
-  hardware.cpu.amd.updateMicrocode = true;
-
-
   networking = {
     hostName = "oakhill"; # Define your hostname.
     networkmanager.enable = true;
