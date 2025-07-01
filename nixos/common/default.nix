@@ -73,8 +73,6 @@
     mullvad-vpn.package = pkgs.mullvad-vpn;
 
     journald.extraConfig = "SystemMaxUse=500M";
-    logind.lidSwitch = "ignore";
-    logind.powerKey = "suspend";
 
     fstrim.enable = true;
 

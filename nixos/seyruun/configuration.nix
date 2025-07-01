@@ -19,8 +19,6 @@
     ./hardware-configuration.nix
   ];
 
-  swapDevices = [{ device = "/swap"; size = 8192; }];
-
   nixpkgs = {
     # You can add overlays here
     overlays = [
@@ -74,6 +72,9 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
+
+  logind.lidSwitch = "ignore";
+  logind.powerKey = "hibernate";
 
   services.fwupd.enable = true;
 
