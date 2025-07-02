@@ -73,8 +73,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  logind.lidSwitch = "ignore";
-  logind.powerKey = "hibernate";
+  services.logind.lidSwitch = "ignore";
+  services.logind.powerKey = "hibernate";
 
   services.fwupd.enable = true;
 
