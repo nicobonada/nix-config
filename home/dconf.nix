@@ -15,8 +15,8 @@ with lib.hm.gvariant;
     };
 
     "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/blueman/plugins/";
-      saved-view = "/org/blueman/plugins/";
+      saved-pathbar-path = "/org/gnome/desktop/interface/";
+      saved-view = "/org/gnome/desktop/interface/";
       show-warning = false;
       window-height = 500;
       window-is-maximized = true;
@@ -69,14 +69,36 @@ with lib.hm.gvariant;
       ignore-phase2-ca-cert = false;
     };
 
+    "org/gnome/nm-applet/eap/adc15f0e-9fc6-46c2-8c74-4b8468e20107" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
+    "org/gnome/nm-applet/eap/d062764a-a696-47e8-865b-843023a21a53" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
+    };
+
     "org/gnome/nm-applet/eap/fbca9679-39ce-425c-920f-436162f91cf8" = {
       ignore-ca-cert = false;
       ignore-phase2-ca-cert = false;
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.7843137383460999 0.14509804546833038 0.7215686440467834 1.0 ]) ];
-      selected-color = mkTuple [ true 1.0 0.47058823704719543 0.0 1.0 ];
+      custom-colors = [ (mkTuple [ 0.784314 0.145098 0.721569 1.0 ]) ];
+      selected-color = mkTuple [ true 1.0 0.470588 0.0 1.0 ];
+    };
+
+    "org/gtk/gtk4/settings/file-chooser" = {
+      date-format = "regular";
+      location-mode = "path-bar";
+      show-hidden = false;
+      sidebar-width = 140;
+      sort-column = "name";
+      sort-directories-first = true;
+      sort-order = "ascending";
+      type-format = "category";
+      view-type = "list";
     };
 
     "org/gtk/settings/file-chooser" = {
