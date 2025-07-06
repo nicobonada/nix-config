@@ -24,6 +24,12 @@
         "format": "{free} ",
         "unit": "GiB"
     },
+    "disk#steam2": {
+        "path": "/home/nico/stuff/steam2",
+        "interval": 30,
+        "format": "{free} ",
+        "unit": "GiB"
+    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
