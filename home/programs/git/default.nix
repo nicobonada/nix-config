@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./jujutsu.nix
+  ];
+
   programs.git = {
     enable = true;
 
