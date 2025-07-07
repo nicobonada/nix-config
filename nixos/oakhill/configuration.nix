@@ -15,6 +15,7 @@
 
     ../common
     ../common/amd.nix
+    ../common/amd-gpu.nix
     ../common/gaming.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
