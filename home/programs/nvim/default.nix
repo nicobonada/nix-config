@@ -30,6 +30,7 @@
       vim-fish
       vim-matchup
       which-key-nvim
+      vim-jjdescription
 
       # telescope
       telescope-nvim

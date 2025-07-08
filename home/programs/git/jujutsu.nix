@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   programs.jujutsu = {
     enable = true;
     settings = {
       user = {
-        name = "Nicolás Bonada";
-        email = "nico.bonada@gmail.com";
+        name = config.programs.git.userName;
+        email = config.programs.git.userEmail;
       };
 
       ui = {
@@ -14,4 +14,9 @@
       };
     };
   };
+
+  home.packages = with pkgs; [
+    jj-fzf
+    lazyjj
+  ];
 }
