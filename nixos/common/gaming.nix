@@ -6,6 +6,10 @@
   programs.gamemode.enable = true;
   users.extraUsers.nico.extraGroups = [ "gamemode" ];
 
+  programs.gamescope = {
+    enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     dualsensectl
     mangohud
