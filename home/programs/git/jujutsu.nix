@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   programs.jujutsu = {
     enable = true;
@@ -11,6 +11,8 @@
       ui = {
         default-command = "status";
         graph.style = "curved";
+        pager = "${lib.getExe pkgs.delta}";
+        diff-formatter = ":git";  # delta needs this
       };
     };
   };
