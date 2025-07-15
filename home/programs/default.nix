@@ -25,6 +25,7 @@
     yazi.enableFishIntegration = false;
 
     fastfetch.enable = true;
+    nix-index.enable = true;
     television.enable = true;
     yt-dlp.enable = true;
     zoxide.enable = true;
