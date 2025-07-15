@@ -24,9 +24,12 @@
       export QT_QPA_PLATFORM="wayland"
       export QT_QPA_PLATFORMTHEME="qt6ct"
       export UWSM_APP_UNIT_TYPE="service"
+      export APP2UNIT_SLICES='a=app-graphical.slice b=background-graphical.slice s=session-graphical.slice'
+      export APP2UNIT_TYPE=service
     '';
 
   home.packages = with pkgs; [
     xorg.xrandr
+    app2unit      # alternative to 'uwsm app' (faster)
   ];
 }

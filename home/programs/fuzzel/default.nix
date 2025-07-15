@@ -9,7 +9,7 @@
         font = "Inter Regular:size=14";
         icon-theme = "Papirus-Dark";
         terminal = "${lib.getExe pkgs.kitty} -e";
-        launch-prefix = "uwsm app -- ";
+        launch-prefix = "${lib.getExe pkgs.app2unit} --fuzzel-compat -- ";
       };
 
       border.width = 3;
