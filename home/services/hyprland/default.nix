@@ -23,6 +23,7 @@
       export HYPRCURSOR_SIZE=24
       export QT_QPA_PLATFORM="wayland"
       export QT_QPA_PLATFORMTHEME="qt6ct"
+      export UWSM_APP_UNIT_TYPE="service"
     '';
 
   home.packages = with pkgs; [
