@@ -14,13 +14,14 @@
 
     ../common
     ../common/amd-gpu.nix
-    ../common/gaming.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
 
   amd-cpu.enable = true;
+  gaming.enable = true;
+
   nixpkgs = {
     # You can add overlays here
     overlays = [

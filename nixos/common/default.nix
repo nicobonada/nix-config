@@ -4,6 +4,7 @@
     ./adb.nix
     ./amd-cpu.nix
     ./fish.nix
+    ./gaming.nix
     ./keyring.nix
     ./hypr.nix
     ./sound.nix
