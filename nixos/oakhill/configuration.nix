@@ -13,13 +13,13 @@
     ./boot.nix
 
     ../common
-    ../common/amd-gpu.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
 
   amd-cpu.enable = true;
+  amd-gpu.enable = true;
   gaming.enable = true;
 
   nixpkgs = {

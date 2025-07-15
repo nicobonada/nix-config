@@ -3,6 +3,7 @@
   imports = [
     ./adb.nix
     ./amd-cpu.nix
+    ./amd-gpu.nix
     ./fish.nix
     ./gaming.nix
     ./keyring.nix

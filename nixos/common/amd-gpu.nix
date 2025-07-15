@@ -1,5 +1,14 @@
-{
-  services.lact.enable = true;
+{ config, lib,  ... }:
+let
+  cfg = config.amd-gpu;
+in {
+  options.amd-gpu = {
+    enable = lib.mkEnableOption "support for AMD GPUs (overclocking and undervolting)";
+  };
 
-  hardware.amdgpu.overdrive.enable = true;
+  config = lib.mkIf cfg.enable {
+    services.lact.enable = true;
+
+    hardware.amdgpu.overdrive.enable = true;
+  };
 }
