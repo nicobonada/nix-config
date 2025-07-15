@@ -2,6 +2,7 @@
 {
   imports = [
     inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
+    inputs.nix-index-database.homeModules.nix-index
 
     ./bashmount
     ./bat
