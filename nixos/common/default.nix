@@ -2,6 +2,7 @@
 {
   imports = [
     ./adb.nix
+    ./amd-cpu.nix
     ./fish.nix
     ./keyring.nix
     ./hypr.nix

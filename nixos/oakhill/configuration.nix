@@ -13,7 +13,6 @@
     ./boot.nix
 
     ../common
-    ../common/amd.nix
     ../common/amd-gpu.nix
     ../common/gaming.nix
 
@@ -21,6 +20,7 @@
     ./hardware-configuration.nix
   ];
 
+  amd-cpu.enable = true;
   nixpkgs = {
     # You can add overlays here
     overlays = [

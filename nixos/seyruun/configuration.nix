@@ -13,11 +13,12 @@
     ./boot.nix
 
     ../common
-    ../common/amd.nix
 
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
+
+  amd-cpu.enable = true;
 
   nixpkgs = {
     # You can add overlays here
