@@ -13,7 +13,7 @@
   environment.systemPackages = with pkgs; [
     dualsensectl
     mangohud
-    prismlauncher
+    # prismlauncher
     protonup-qt
   ];
 
