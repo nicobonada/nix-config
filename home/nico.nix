@@ -51,7 +51,7 @@
     android-file-transfer
     aria2
     bandwhich
-    beets
+    # beets
     bemoji # emoji picker, needs rofi and wtype
     cavalier
     calibre
