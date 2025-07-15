@@ -25,11 +25,6 @@
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
-      navi = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; }; # Pass flake inputs to our config
-        modules = [ ./nixos/navi/configuration.nix ];
-      };
-
       oakhill = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./nixos/oakhill/configuration.nix ];
