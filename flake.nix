@@ -11,6 +11,7 @@
 
     # hardware.url = "github:nixos/nixos-hardware";
     hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
+    hyprcursor-phinger.inputs.nixpkgs.follows = "nixpkgs";
 
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
