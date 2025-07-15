@@ -19,6 +19,7 @@
     alsa-utils
     pavucontrol
     pulsemixer
+    wiremix
   ];
 
   networking.firewall.allowedTCPPorts = [ 6600 ]; # for mpd
