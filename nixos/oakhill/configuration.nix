@@ -77,7 +77,8 @@
 
   hardware.graphics.enable32Bit = true;
 
-  programs.streamcontroller.enable = true;
+  # programs.streamcontroller.enable = true;
+  services.flatpak.enable = true;
 
   hardware.logitech.wireless = {
     enable = true;
