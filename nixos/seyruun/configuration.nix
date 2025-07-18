@@ -76,8 +76,6 @@
   services.logind.lidSwitch = "ignore";
   services.logind.powerKey = "hibernate";
 
-  services.fwupd.enable = true;
-
   # services.keyd = {
   #   enable = true;
   #   keyboards.default.settings.main = {

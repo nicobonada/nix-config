@@ -80,6 +80,8 @@
     udisks2.enable = true;
 
     dictd.enable = true;
+
+    fwupd.enable = true;
   };
 
   programs = {
