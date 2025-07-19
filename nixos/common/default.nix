@@ -68,8 +68,6 @@
 
     smartd.enable = true;
 
-    thermald.enable = true;
-
     auto-cpufreq.enable = true;
 
     mullvad-vpn.enable = true;
