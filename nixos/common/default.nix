@@ -4,12 +4,13 @@
     ./adb.nix
     ./amd-cpu.nix
     ./amd-gpu.nix
+    ./avahi.nix
+    ./bluetooth.nix
     ./fish.nix
     ./gaming.nix
     ./keyring.nix
     ./hypr.nix
     ./sound.nix
-    ./wireshark.nix
     ./yubi.nix
   ];
 
@@ -57,15 +58,6 @@
 
     locate.enable = true;
 
-    avahi = {
-      enable = true;
-      nssmdns4 = true;
-      publish = {
-        enable = true;
-        userServices = true;
-      };
-    };
-
     smartd.enable = true;
 
     auto-cpufreq.enable = true;
@@ -94,6 +86,9 @@
 
     partition-manager.enable = true;
     partition-manager.package = pkgs.kdePackages.partitionmanager;
+
+    wireshark.enable = true;
+    wireshark.package = pkgs.wireshark;
   };
 
   security.polkit.enable = true;
