@@ -17,8 +17,6 @@
   ];
 
   programs = {
-    man.generateCaches = true;
-
     btop.enable = true;
     btop.settings = { color_theme = "tokyo-storm"; };
 
