@@ -7,7 +7,6 @@
     ./bashmount
     ./bat
     ./fish
-    ./fuzzel
     ./git
     ./kitty
     ./mpv
