@@ -6,6 +6,7 @@
     ./amd-gpu.nix
     ./avahi.nix
     ./bluetooth.nix
+    ./container.nix
     ./fish.nix
     ./gaming.nix
     ./keyring.nix
