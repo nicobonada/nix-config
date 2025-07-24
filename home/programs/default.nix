@@ -11,6 +11,7 @@
     ./kitty
     ./mpv
     ./nvim
+    ./obs
     ./rofi
     ./waybar
   ];
