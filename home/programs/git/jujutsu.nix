@@ -19,6 +19,7 @@
 
   home.packages = with pkgs; [
     jj-fzf
+    jjui
     lazyjj
   ];
 }
