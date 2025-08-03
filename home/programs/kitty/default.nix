@@ -3,8 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
+      name = "Comic Code Ligatures";
       size = 12;
     };
     settings = {
