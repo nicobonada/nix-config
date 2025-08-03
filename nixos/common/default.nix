@@ -78,8 +78,6 @@
 
     smartd.enable = true;
 
-    auto-cpufreq.enable = true;
-
     mullvad-vpn.enable = true;
     mullvad-vpn.package = pkgs.mullvad-vpn;
 
@@ -93,6 +91,8 @@
     dictd.enable = true;
 
     fwupd.enable = true;
+
+    power-profiles-daemon.enable = true;
   };
 
   programs = {
