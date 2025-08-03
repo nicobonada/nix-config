@@ -87,7 +87,6 @@
     qbittorrent
     qimgv
     r128gain
-    renameutils
     ripgrep
     sgt-puzzles
     shellcheck
