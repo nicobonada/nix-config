@@ -76,6 +76,11 @@
     lm_sensors
   ];
 
+  environment.variables = {
+    DESKTOP = "true";    # used in hyprland config
+  };
+
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
