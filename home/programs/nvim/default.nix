@@ -21,7 +21,6 @@
       formatter.conform-nvim.enable = true;
       binds.whichKey.enable = true;
       git.gitsigns.enable = true;
-      visuals.nvim-web-devicons.enable = true;
 
       telescope = {
         enable = true;
@@ -49,12 +48,15 @@
       ui.noice.enable = true;
 
       mini = {
-        align.enable      = true;
-        align.setupOpts   = { mappings = { start_with_preview = "<cr>"; }; };
-        bufremove.enable  = true;
-        starter.enable    = true;
-        statusline.enable = true;
-        tabline.enable    = true;
+        align.enable          = true;
+        align.setupOpts       = { mappings = { start_with_preview = "<cr>"; }; };
+        bufremove.enable      = true;
+        icons.enable          = true;
+        indentscope.enable    = true;
+        indentscope.setupOpts = { symbol = "▏"; };
+        starter.enable        = true;
+        statusline.enable     = true;
+        tabline.enable        = true;
       };
 
       luaConfigRC.bufremove = /* lua */ ''
