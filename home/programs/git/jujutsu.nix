@@ -41,7 +41,7 @@
   };
 
   home.packages = with pkgs; [
-    jj-fzf
+    # jj-fzf
     jjui
     lazyjj
   ];
