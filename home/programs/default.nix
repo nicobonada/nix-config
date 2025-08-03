@@ -5,7 +5,6 @@
     inputs.nix-index-database.homeModules.nix-index
 
     ./bashmount
-    ./bat
     ./fish
     ./git
     ./kitty
@@ -17,17 +16,17 @@
   ];
 
   programs = {
-    btop.enable = true;
-    btop.settings = { color_theme = "tokyo-storm"; };
-
     delta.enable = true;
     delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
 
-    yazi.enable = true;
+    bat.enable = true;
+    btop.enable = true;
     discord.enable = true;
     fastfetch.enable = true;
     nix-index.enable = true;
     television.enable = true;
+    vivid.enable = true;
+    yazi.enable = true;
     yt-dlp.enable = true;
     zoxide.enable = true;
 

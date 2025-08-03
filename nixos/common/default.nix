@@ -16,6 +16,7 @@
     ./royal-kludge.nix
 
     inputs.auto-cpufreq.nixosModules.default
+    inputs.catppuccin.nixosModules.catppuccin
   ];
 
   nix = {
@@ -121,4 +122,7 @@
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
+
+  catppuccin.enable = true;
+  catppuccin.flavor = "macchiato";
 }

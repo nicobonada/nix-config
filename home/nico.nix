@@ -14,6 +14,8 @@
 
     ./programs
     ./services
+
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   nixpkgs = {
@@ -135,6 +137,13 @@
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
+  };
+
+  catppuccin = {
+    enable = true;
+    flavor = "macchiato";
+    hyprland.enable = false;
+    waybar.enable = false;
   };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;

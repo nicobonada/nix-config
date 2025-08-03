@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
 {
   imports = [ inputs.nvf.homeManagerModules.default ];
 
@@ -11,8 +11,8 @@
 
       theme = {
         enable = true;
-        name   = "tokyonight";
-        style  = "storm";
+        name = "catppuccin";
+        style = config.catppuccin.flavor;
       };
 
       autocomplete.blink-cmp.enable = true;

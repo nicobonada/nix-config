@@ -2,8 +2,6 @@
 {
   programs.rofi = {
     enable = true;
-    # package = pkgs.rofi-wayland;
-    theme = ./themes/catppuccin-macchiato.rasi;
     font = "Inter Regular 12";
     extraConfig = {
       modi = "window,run,ssh,drun";

@@ -6,7 +6,7 @@
         enable = true;
         efiSupport = true;
         devices = [ "nodev" ];
-        font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
+        # font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
         fontSize = 32;
       };
       efi.canTouchEfiVariables = true;
