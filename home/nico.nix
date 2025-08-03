@@ -97,6 +97,7 @@
     sysz
     ticktick
     tree
+    trilium-next-desktop
     wavemon
 
     inputs.zen-browser.packages."${system}".default
