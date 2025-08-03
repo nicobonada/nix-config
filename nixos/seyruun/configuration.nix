@@ -57,8 +57,8 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services.logind.lidSwitch = "ignore";
-  services.logind.powerKey = "suspend";
+  services.logind.settings.Login.HandleLidSwitch = "ignore";
+  services.logind.settings.Login.HandlePowerKey = "suspend";
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   # services.keyd = {
