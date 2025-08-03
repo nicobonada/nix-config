@@ -3,8 +3,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.nerd-fonts.jetbrains-mono;
-      name = "JetBrainsMono Nerd Font";
+      package = pkgs.cascadia-code;
+      name = "Cascadia Code";
       size = 12;
     };
     settings = {
