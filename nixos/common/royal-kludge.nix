@@ -9,7 +9,7 @@ in {
   config = lib.mkIf cfg.enable {
     hardware.keyboard.qmk.enable = true;
 
-    services.udev.extraRules = ''
+    services.udev.extraRules = /* udev */ ''
     # Royal Kludge R87 Pro - prevent joystick classification (it's a keyboard)
     SUBSYSTEM=="input", ATTRS{idVendor}=="342d", ATTRS{idProduct}=="e48e", ENV{ID_INPUT_JOYSTICK}="0"
 

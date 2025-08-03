@@ -42,6 +42,11 @@
         nix.lsp.servers = [ "nixd" ];
       };
 
+      treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+        fish
+        udev
+      ];
+
       ui.noice.enable = true;
 
       mini = {
