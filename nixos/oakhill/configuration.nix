@@ -58,7 +58,7 @@
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
-  services.logind.powerKey = "sleep";
+  services.logind.powerKey = "suspend";
 
   hardware.graphics.enable32Bit = true;
 

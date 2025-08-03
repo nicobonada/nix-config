@@ -58,7 +58,7 @@
   # services.printing.enable = true;
 
   services.logind.lidSwitch = "ignore";
-  services.logind.powerKey = "sleep";
+  services.logind.powerKey = "suspend";
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   # services.keyd = {
