@@ -58,7 +58,7 @@
   # services.printing.enable = true;
 
   services.logind.lidSwitch = "ignore";
-  services.logind.powerKey = "hibernate";
+  services.logind.powerKey = "sleep";
 
   # services.keyd = {
   #   enable = true;
