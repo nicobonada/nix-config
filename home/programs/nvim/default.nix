@@ -16,20 +16,17 @@
       };
 
       autocomplete.blink-cmp.enable = true;
-      utility.sleuth.enable = true;
       lsp.enable = true;
       formatter.conform-nvim.enable = true;
       binds.whichKey.enable = true;
       git.gitsigns.enable = true;
 
-      telescope = {
-        enable = true;
-        extensions = [
-          {
-            name = "file_browser";
-            packages = [ pkgs.vimPlugins.telescope-file-browser-nvim ];
-          }
-        ];
+      telescope.enable = true;
+
+      utility = {
+        sleuth.enable = true;
+        oil-nvim.enable = true;
+        oil-nvim.gitStatus.enable = true;
       };
 
       languages = {
