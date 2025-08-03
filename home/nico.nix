@@ -143,6 +143,7 @@
     flavor = "macchiato";
     hyprland.enable = false;
     waybar.enable = false;
+    vicinae.enable = false;   # using vicinae's gui to set up for now
   };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
