@@ -24,8 +24,6 @@
     delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
 
     yazi.enable = true;
-    yazi.enableFishIntegration = false;
-
     discord.enable = true;
     fastfetch.enable = true;
     nix-index.enable = true;
