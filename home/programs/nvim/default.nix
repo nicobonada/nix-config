@@ -15,7 +15,15 @@
         style = config.catppuccin.flavor;
       };
 
-      autocomplete.blink-cmp.enable = true;
+      autocomplete.blink-cmp = {
+        enable = true;
+        friendly-snippets.enable = true;
+        setupOpts.cmdline = {
+          keymap.preset = "cmdline";
+          completion.menu.auto_show = true;
+        };
+      };
+
       lsp.enable = true;
       formatter.conform-nvim.enable = true;
       binds.whichKey.enable = true;
@@ -57,6 +65,7 @@
         icons.enable          = true;
         indentscope.enable    = true;
         indentscope.setupOpts = { symbol = "▏"; };
+        snippets.enable       = true;
         starter.enable        = true;
         statusline.enable     = true;
         tabline.enable        = true;
