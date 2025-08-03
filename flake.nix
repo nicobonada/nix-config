@@ -30,6 +30,8 @@
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
     catppuccin.url = "github:catppuccin/nix";
+
+    wayscriber.url = "github:devmobasa/wayscriber";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

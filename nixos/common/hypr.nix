@@ -1,4 +1,4 @@
-{ pkgs , lib, config, ...}:
+{ pkgs , lib, config, inputs, ...}:
 {
   security.pam.services.hyprlock = {};
 
@@ -23,10 +23,11 @@
       satty
       slurp # needed for wl-screenrec
       wayland-pipewire-idle-inhibit
-      wayscriber
       wl-clipboard-rs
       wl-screenrec
       wtype
+
+      inputs.wayscriber.packages.x86_64-linux.default
     ];
   };
 }
