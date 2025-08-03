@@ -21,6 +21,10 @@
 
     # amd microcode
     ucodenix.url = "github:e-tho/ucodenix";
+
+    # neovim
+    nvf.url = "github:NotAShelf/nvf";
+    nvf.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
