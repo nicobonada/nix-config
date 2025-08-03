@@ -1,7 +1,5 @@
 { config, pkgs, lib, ... }:
 {
-  imports = [ ./rmpc.nix ];
-
   services = {
     mpd = {
       enable = true;

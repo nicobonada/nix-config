@@ -1,7 +1,6 @@
 { lib, ...}:
 {
   imports = [
-    # ./dunst
     ./hyprland
     ./mpd
     ./wlsunset
