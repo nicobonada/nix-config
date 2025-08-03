@@ -11,13 +11,15 @@
     ./mpv
     ./nvim
     ./obs
-    ./rofi
     ./waybar
   ];
 
   programs = {
     delta.enable = true;
     delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
+
+    vicinae.enable = true;
+    vicinae.systemd.enable = true;
 
     bat.enable = true;
     btop.enable = true;

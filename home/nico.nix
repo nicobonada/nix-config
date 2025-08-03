@@ -54,7 +54,6 @@
     aria2
     bandwhich
     beets
-    bemoji # emoji picker, needs rofi and wtype
     cavalier
     calibre
     cowsay
