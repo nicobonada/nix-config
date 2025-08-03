@@ -3,8 +3,8 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.cascadia-code;
-      name = "Cascadia Code";
+      package = pkgs.nerd-fonts.fira-code;
+      name = "FiraCode Nerd Font";
       size = 12;
     };
     settings = {
