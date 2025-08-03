@@ -93,6 +93,8 @@
     fwupd.enable = true;
 
     power-profiles-daemon.enable = true;
+
+    chrony.enable = true;
   };
 
   programs = {
