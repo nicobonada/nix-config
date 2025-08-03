@@ -59,6 +59,7 @@
 
   services.logind.lidSwitch = "ignore";
   services.logind.powerKey = "sleep";
+  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
   # services.keyd = {
   #   enable = true;
