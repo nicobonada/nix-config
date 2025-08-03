@@ -71,7 +71,6 @@
     kdiff3
     # keepassxc
     kid3
-    lazygit
     libqalculate
     lsof
     lxqt.pcmanfm-qt

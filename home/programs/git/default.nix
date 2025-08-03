@@ -23,4 +23,8 @@
       pull.rebase = "false";
     };
   };
+
+  home.packages = with pkgs; [
+    lazygit
+  ];
 }
