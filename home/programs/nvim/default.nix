@@ -25,8 +25,8 @@
 
       utility = {
         sleuth.enable = true;
-        oil-nvim.enable = true;
-        oil-nvim.gitStatus.enable = true;
+        yazi-nvim.enable = true;
+        yazi-nvim.setupOpts.open_for_directories = true;
       };
 
       languages = {
@@ -45,6 +45,7 @@
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         fish
         udev
+        yaml
       ];
 
       ui.noice.enable = true;
