@@ -1,6 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
+    ./abbrs-aliases.nix
     ./functions.nix
   ];
 
@@ -13,10 +14,13 @@
     '';
 
     interactiveShellInit = /* fish */ ''
+      set -gx LESS "-iRSX"
       set -gx LS_COLORS (${lib.getExe pkgs.vivid} generate tokyonight-storm-vivid-nobold)
 
       ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
-    '' + builtins.readFile ./interactive.fish;
+
+      source ~/.config/fish/tokyonight_storm.fish
+    '';
   };
 
   xdg.configFile = {
