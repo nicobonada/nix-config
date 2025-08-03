@@ -115,5 +115,11 @@ cmd [[autocmd BufEnter *.nix setlocal tabstop=2 shiftwidth=2 softtabstop=2 comme
 cmd [[autocmd BufEnter *.lua setlocal tabstop=2 shiftwidth=2 softtabstop=2]]
 cmd [[autocmd BufEnter flake.lock setlocal filetype=json]]
 
-require 'lspsetup'
 require 'minisetup'
+
+vim.lsp.enable({
+    'bash',
+    'lua',
+    'nix',
+    'python',
+})
