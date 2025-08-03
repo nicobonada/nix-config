@@ -92,8 +92,6 @@
     upower.enable = true;
     udisks2.enable = true;
 
-    dictd.enable = true;
-
     fwupd.enable = true;
 
     chrony.enable = true;
