@@ -63,6 +63,7 @@
     duf
     erdtree
     fd
+    gallery-dl
     htop
     inxi
     ipcalc
