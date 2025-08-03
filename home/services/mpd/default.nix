@@ -6,6 +6,7 @@
     mpd = {
       enable = true;
       network.listenAddress = "any";
+      enableSessionVariables = false;   # MPD_HOST doesn't support "any"
       extraConfig = builtins.readFile ./mpd.conf;
     };
 
