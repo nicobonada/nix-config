@@ -5,7 +5,8 @@
       description = "ip address";
       body = /* fish */''
         ip --brief -4 address | \
-        awk -v OFS="\t" '$1 != "lo" {print $1,$3}' | \
+        awk '$1 != "lo" {print $1,$3}' | \
+        column -t -s ' /' | \
         ${lib.getExe pkgs.cowsay} -dn
       '';
     };
