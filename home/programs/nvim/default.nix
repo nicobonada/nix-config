@@ -12,7 +12,7 @@
       theme = {
         enable = true;
         name = "tokyonight";
-        style = "storm";
+        style = "moon";
       };
 
       autocomplete.blink-cmp = {
