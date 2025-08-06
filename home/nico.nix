@@ -59,7 +59,6 @@
     crawlTiles
     dconf2nix
     dconf-editor
-    discord
     dua
     duf
     erdtree
