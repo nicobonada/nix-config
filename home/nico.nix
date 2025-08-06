@@ -99,7 +99,7 @@
     wavemon
     zoom-us
 
-    inputs.zen-browser.packages."${system}".default
+    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
   ];
 
   # Let Home Manager install and manage itself.
