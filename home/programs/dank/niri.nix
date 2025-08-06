@@ -54,5 +54,14 @@
       { proportion = 5. / 8.; }
       { proportion = 2. / 3.; }
     ];
+
+    window-rules = [
+      {
+        matches = [ { title = "MikuLogiS\+"; } ];
+        # matches = [ { app-id = "steam_app_3446190"; } ];
+        open-fullscreen = false;
+        open-floating = true;
+      }
+    ];
   };
 }
