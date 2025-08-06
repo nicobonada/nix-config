@@ -5,7 +5,7 @@
         "pulseaudio",
         "network",
         "network#wg0-mullvad",
-        "temperature#navi",
+        "temperature#seyruun",
         "disk",
         "battery",
         "load",
