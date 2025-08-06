@@ -27,7 +27,7 @@
   };
 
   home.packages = with pkgs; [
-    mpc_cli
+    mpc
     mpd-notification
   ];
 
