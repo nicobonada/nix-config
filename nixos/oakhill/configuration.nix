@@ -70,6 +70,8 @@
     enableGraphical = true;
   };
 
+  hardware.opentabletdriver.enable = true;
+
   environment.systemPackages = with pkgs; [
     lm_sensors
   ];
