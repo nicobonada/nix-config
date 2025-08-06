@@ -2,10 +2,7 @@
 {
   programs.kitty = {
     enable = true;
-    font = {
-      name = "Comic Code Ligatures";
-      size = 12;
-    };
+
     settings = {
       shell = "${lib.getExe pkgs.fish}";
       enable_audio_bell = "no";

@@ -2,16 +2,29 @@
 {
   imports = [ inputs.stylix.homeModules.stylix ];
 
-  stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix = {
+    enable = true;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
-  # stylix.fonts = {
-  #   sansSerif = {
-  #     name = "Comic Neue";
-  #     package = pkgs.comic-neue;
-  #   };
-  #   monospace = {
-  #     name = "Comic Code Ligatures";
-  #   };
-  # };
+    fonts = {
+      sansSerif.name = "Comic Neue";
+      monospace.name = "Comic Code Ligatures";
+
+      sizes = {
+        applications = 12;
+        desktop = 12;
+      };
+    };
+
+    targets = {
+      gnome.enable = false;
+      kde.enable = false;
+      hyprland.enable = false;
+      hyprlock.enable = false;
+      waybar.enable = false;
+      vicinae.enable = false;
+
+      nvf.enable = false;
+    };
+  };
 }

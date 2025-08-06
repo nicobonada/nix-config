@@ -9,11 +9,11 @@
       viAlias  = false;
       vimAlias = true;
 
-      # theme = {
-      #   enable = true;
-      #   name = "catppuccin";
-      #   style = config.catppuccin.flavor;
-      # };
+      theme = {
+        enable = true;
+        name = "tokyonight";
+        style = "storm";
+      };
 
       autocomplete.blink-cmp = {
         enable = true;
