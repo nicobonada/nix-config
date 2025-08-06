@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, config, ... }:
 {
   imports = [
     inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
@@ -19,6 +19,9 @@
   programs = {
     btop.enable = true;
     btop.settings = { color_theme = "tokyo-storm"; };
+
+    delta.enable = true;
+    delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
 
     yazi.enable = true;
     yazi.enableFishIntegration = false;

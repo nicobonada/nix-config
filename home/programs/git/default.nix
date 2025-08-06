@@ -9,14 +9,10 @@
 
     package = pkgs.gitFull;
 
-    userName = "Nicolás Bonada";
-    userEmail = "nico.bonada@gmail.com";
-
-    aliases.st = "status";
-
-    delta.enable = true;
-
-    extraConfig = {
+    settings = {
+      user.name = "Nicolás Bonada";
+      user.email = "nico.bonada@gmail.com";
+      alias.st = "status";
       diff.tool = "kdiff3";
       merge.tool = "kdiff3";
       init.defaultBranch = "main";
