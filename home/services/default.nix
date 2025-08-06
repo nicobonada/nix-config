@@ -14,7 +14,7 @@
     kdeconnect.enable = true;
     kdeconnect.indicator = true;
 
-    swaync.enable = true;
+    # swaync.enable = true;
     wl-clip-persist.enable = true;
   };
 }
