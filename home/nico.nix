@@ -9,7 +9,6 @@
     # inputs.nix-colors.homeManagerModule
 
     # You can also split up your configuration and import pieces of it here:
-    # ./nvim.nix
     ./fonts.nix
     ./stylix.nix
 
