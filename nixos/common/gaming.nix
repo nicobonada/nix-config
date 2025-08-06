@@ -17,8 +17,6 @@ in {
 
     environment.systemPackages = with pkgs; [
       dualsensectl
-      mangohud
-      protonup-qt
     ];
   };
 }
