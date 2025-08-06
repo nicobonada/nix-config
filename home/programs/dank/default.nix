@@ -72,5 +72,6 @@
     qt6Packages.qt6ct
     cliphist wl-clipboard
     app2unit
+    satty
   ];
 }
