@@ -11,6 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./fonts.nix
     ./stylix.nix
+    ./dconf.nix
 
     ./programs
     ./services
@@ -128,12 +129,6 @@
     Install = {
       WantedBy = [ "graphical-session.target" ];
     };
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "qtct";
-    style.name = "kvantum";
   };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
