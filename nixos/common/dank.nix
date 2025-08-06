@@ -16,6 +16,7 @@
   };
 
   programs.niri.enable = true;
+  programs.niri.package = pkgs.niri;
 
   systemd.user.services.niri-flake-polkit.enable = false;
 }
