@@ -2,7 +2,9 @@
 {
   imports = [ inputs.niri.homeModules.niri ];
 
-  programs. niri.settings = {
+  programs.niri.package = pkgs.niri;
+
+  programs.niri.settings = {
     xwayland-satellite.enable = true;
     xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
