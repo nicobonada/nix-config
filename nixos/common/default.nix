@@ -13,6 +13,8 @@
     ./hypr.nix
     ./sound.nix
     ./yubi.nix
+
+    inputs.auto-cpufreq.nixosModules.default
   ];
 
   nix = {
@@ -92,8 +94,6 @@
 
     fwupd.enable = true;
 
-    power-profiles-daemon.enable = true;
-
     chrony.enable = true;
   };
 
@@ -109,6 +109,8 @@
 
     wireshark.enable = true;
     wireshark.package = pkgs.wireshark;
+
+    auto-cpufreq.enable = true;
   };
 
   security.polkit.enable = true;
