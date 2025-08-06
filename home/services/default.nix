@@ -3,7 +3,7 @@
   imports = [
     # ./hyprland
     ./mpd
-    ./wlsunset
+    # ./wlsunset
   ];
 
   services = {
