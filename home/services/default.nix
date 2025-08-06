@@ -1,7 +1,7 @@
 { lib, ...}:
 {
   imports = [
-    ./hyprland
+    # ./hyprland
     ./mpd
     ./wlsunset
   ];

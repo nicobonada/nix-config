@@ -11,7 +11,7 @@
     ./mpv
     ./nvim
     ./obs
-    ./waybar
+    # ./waybar
 
     ./dank
   ];
