@@ -11,7 +11,7 @@
     # You can also split up your configuration and import pieces of it here:
     ./fonts.nix
     ./stylix.nix
-    ./dconf.nix
+    # ./dconf.nix
 
     ./programs
     ./services
