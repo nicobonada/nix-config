@@ -38,6 +38,8 @@
       xwayland-satellite.enable = true;
       xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
 
+      prefer-no-csd = true;
+
       input = {
         focus-follows-mouse.enable = true;
 
