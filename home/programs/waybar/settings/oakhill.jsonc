@@ -7,7 +7,6 @@
         "network#wg0-mullvad",
         "temperature#oakhill",
         "disk",
-        "disk#steam2",
         "load",
         "clock",
         "tray"

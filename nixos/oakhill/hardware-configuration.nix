@@ -48,10 +48,6 @@
       fsType = "zfs";
     };
 
-  fileSystems."/home/nico/stuff/steam2" =
-    { device = "/dev/disk/by-uuid/cca3a024-c87b-46f6-81e1-b7da379b7e20";
-    };
-
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ccd927bf-d32b-408c-a0f2-9074caecf98a"; }
     ];
