@@ -25,6 +25,7 @@
       satty
       slurp # needed for wl-screenrec
       wayland-pipewire-idle-inhibit
+      wayscriber
       wl-clipboard-rs
       wl-screenrec
       wtype
