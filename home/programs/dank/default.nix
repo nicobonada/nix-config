@@ -62,6 +62,7 @@
 
   home.packages = with pkgs; [
     qt6Packages.qt6ct
+    cliphist wl-clipboard
   ];
 
   home.sessionVariables = {
