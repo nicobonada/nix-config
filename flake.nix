@@ -30,9 +30,6 @@
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
-
-    wayscriber.url = "github:devmobasa/wayscriber";
-    wayscriber.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
