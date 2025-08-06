@@ -9,6 +9,11 @@
       viAlias  = false;
       vimAlias = true;
 
+      clipboard = {
+        enable = true;
+        providers.wl-copy.enable = true;
+      };
+
       theme = {
         enable = true;
         name = "everforest";
