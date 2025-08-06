@@ -22,7 +22,12 @@ in
       efi.canTouchEfiVariables = true;
     };
     kernelModules = [ "nct6775" ];         # from lm_sensors
-    kernelParams = [ "nohibernate" ];      # zfs doesn't support hibernate
+    kernelParams = [
+      "nohibernate"      # zfs doesn't support hibernate
+
+      "zswap.enabled=1"           # enables zswap
+      "zswap.shrinker_enabled=1"  # whether to shrink the pool proactively on high memory pressure
+    ];
     initrd.kernelModules = [ "amdgpu" ];
 
     supportedFilesystems = [ "zfs" ];
