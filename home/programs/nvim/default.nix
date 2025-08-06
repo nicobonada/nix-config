@@ -52,6 +52,7 @@
 
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
         fish
+        kdl
         udev
         yaml
       ];
