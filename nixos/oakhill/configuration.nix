@@ -60,14 +60,15 @@
 
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
-  hardware.graphics.enable32Bit = true;
-
-  hardware.logitech.wireless = {
-    enable = true;
-    enableGraphical = true;
+  hardware = {
+    graphics.enable32Bit = true;
+    logitech.wireless = {
+      enable = true;
+      enableGraphical = true;
+    };
+    opentabletdriver.enable = true;
+    keyboard.qmk.enable = true;
   };
-
-  hardware.opentabletdriver.enable = true;
 
   environment.systemPackages = with pkgs; [
     lm_sensors
