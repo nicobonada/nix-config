@@ -63,9 +63,11 @@
   home.packages = with pkgs; [
     qt6Packages.qt6ct
     cliphist wl-clipboard
+    app2unit
   ];
 
   home.sessionVariables = {
+      APP2UNIT_TYPE = "service";
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt6ct";
   };
