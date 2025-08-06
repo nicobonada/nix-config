@@ -12,6 +12,8 @@
     ./nvim
     ./obs
     ./waybar
+
+    ./dank
   ];
 
   programs = {
