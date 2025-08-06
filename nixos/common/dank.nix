@@ -11,4 +11,6 @@
       path = "/var/log/dms-greeter.log";
     };
   };
+
+  programs.niri.enable = true;
 }
