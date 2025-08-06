@@ -33,5 +33,13 @@
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt6ct";
     };
+
+    layout.preset-column-widths = [
+      { proportion = 1. / 3.; }
+      { proportion = 3. / 8.; }
+      { proportion = 1. / 2.; }
+      { proportion = 5. / 8.; }
+      { proportion = 2. / 3.; }
+    ];
   };
 }
