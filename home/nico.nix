@@ -79,7 +79,6 @@
     nicotine-plus
     nix-tree
     nmap
-    obsidian
     kdePackages.okular
     papirus-icon-theme
     patool
