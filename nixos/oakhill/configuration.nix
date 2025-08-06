@@ -22,6 +22,7 @@
   amd-gpu.enable = true;
   container.enable = true;
   gaming.enable = true;
+  royal-kludge.enable = true;
 
   nixpkgs = {
     # You can add overlays here
@@ -67,7 +68,6 @@
       enableGraphical = true;
     };
     opentabletdriver.enable = true;
-    keyboard.qmk.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
