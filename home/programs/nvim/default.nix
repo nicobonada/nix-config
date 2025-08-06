@@ -40,8 +40,10 @@
 
         bash.enable   = true;
         lua.enable    = true;
-        nix.enable    = true;
         python.enable = true;
+
+        nix.enable    = true;
+        nix.lsp.servers = [ "nixd" ];
       };
 
       ui.noice.enable = true;
