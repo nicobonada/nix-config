@@ -90,6 +90,7 @@
     ripgrep
     sgt-puzzles
     shellcheck
+    signal-desktop
     systemctl-tui
     sysz
     ticktick
