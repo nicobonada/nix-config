@@ -59,6 +59,12 @@
         { command = [ "kitty" ]; }
         { command = [ "wayland-pipewire-idle-inhibit" ]; }
       ];
+
+      environment = {
+        APP2UNIT_TYPE = "service";
+        QT_QPA_PLATFORM = "wayland";
+        QT_QPA_PLATFORMTHEME = "qt6ct";
+      };
     };
   };
 
@@ -67,10 +73,4 @@
     cliphist wl-clipboard
     app2unit
   ];
-
-  home.sessionVariables = {
-      APP2UNIT_TYPE = "service";
-      QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt6ct";
-  };
 }
