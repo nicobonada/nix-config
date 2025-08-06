@@ -49,6 +49,14 @@
           xkb.options = "compose:caps";
         };
       };
+
+      spawn-at-startup = [
+        { sh = "type solaar >/dev/null 2>&1 && solaar -w hide"; }
+        { command = [ "jamesdsp" "--tray" ]; }
+        { command = [ "trilium" ]; }
+        { command = [ "kitty" ]; }
+        { command = [ "wayland-pipewire-idle-inhibit" ]; }
+      ];
     };
   };
 
