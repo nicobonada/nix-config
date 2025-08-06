@@ -11,7 +11,7 @@
 
     logs = {
       save = true;
-      path = "/var/log/dms-greeter.log";
+      path = "/tmp/dms-greeter.log";
     };
   };
 
