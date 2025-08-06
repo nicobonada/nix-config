@@ -40,6 +40,8 @@
 
       prefer-no-csd = true;
 
+      gestures.hot-corners.enable = false;
+
       input = {
         focus-follows-mouse.enable = true;
 
