@@ -115,6 +115,11 @@
 
   security.polkit.enable = true;
 
+  services.udev.extraRules = ''
+    # Royal Kludge R87 Pro - prevent joystick classification (it's a keyboard)
+    SUBSYSTEM=="input", ATTRS{idVendor}=="342d", ATTRS{idProduct}=="e48e", ENV{ID_INPUT_JOYSTICK}="0"
+  '';
+
   # Allow kde connect via home-manager
   networking.firewall = rec {
     allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
