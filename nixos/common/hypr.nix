@@ -7,8 +7,6 @@
     withUWSM = true;
   };
 
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-
   environment = {
     # hint electron apps to use wayland:
     sessionVariables.NIXOS_OZONE_WL = "1";

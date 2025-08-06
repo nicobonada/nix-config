@@ -6,6 +6,16 @@
     extraConfig = builtins.readFile ./hyprland.conf;
   };
 
+  xdg = {
+    enable = true;
+    portal = {
+      enable = true;
+      # config.common.default = [ "hyprland" "gtk" ];
+      xdgOpenUsePortal = true;
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    };
+  };
+
   programs.hyprlock = {
     enable = true;
     extraConfig = builtins.readFile ./hyprlock.conf;
