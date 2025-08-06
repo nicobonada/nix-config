@@ -3,9 +3,9 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.nerd-fonts.fira-code;
-      name = "FiraCode Nerd Font";
-      size = 11;
+      package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono Nerd Font";
+      size = 12;
     };
     settings = {
       shell = "${lib.getExe pkgs.fish}";

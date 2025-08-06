@@ -8,6 +8,7 @@
     font-awesome_5
     inter
     nerd-fonts.fira-code
+    nerd-fonts.jetbrains-mono
     noto-fonts-color-emoji
   ];
 }
