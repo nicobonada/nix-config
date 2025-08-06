@@ -54,6 +54,7 @@
     aria2
     bandwhich
     beets
+    bibata-cursors
     cavalier
     calibre
     cowsay
