@@ -1,7 +1,8 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }:
+{
   # You can import other home-manager modules here
   imports = [
     # If you want to use home-manager modules from other flakes (such as nix-colors):
@@ -10,12 +11,10 @@
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
     ./fonts.nix
-    ./dconf.nix
+    ./stylix.nix
 
     ./programs
     ./services
-
-    inputs.catppuccin.homeModules.catppuccin
   ];
 
   nixpkgs = {
@@ -136,14 +135,6 @@
     enable = true;
     platformTheme.name = "qtct";
     style.name = "kvantum";
-  };
-
-  catppuccin = {
-    enable = true;
-    flavor = "macchiato";
-    hyprland.enable = false;
-    waybar.enable = false;
-    vicinae.enable = false;   # using vicinae's gui to set up for now
   };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;

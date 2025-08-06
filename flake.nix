@@ -28,7 +28,8 @@
     auto-cpufreq.url = "github:AdnanHodzic/auto-cpufreq";
     auto-cpufreq.inputs.nixpkgs.follows = "nixpkgs";
 
-    catppuccin.url = "github:catppuccin/nix";
+    stylix.url = "github:nix-community/stylix";
+    stylix.inputs.nixpkgs.follows = "nixpkgs";
 
     wayscriber.url = "github:devmobasa/wayscriber";
   };
@@ -44,7 +45,7 @@
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./nixos/seyruun/configuration.nix ];
       };
-   };
+    };
 
     homeConfigurations = {
       nico = home-manager.lib.homeManagerConfiguration {
