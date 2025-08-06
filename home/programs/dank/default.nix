@@ -55,4 +55,9 @@
   home.packages = with pkgs; [
     qt6Packages.qt6ct
   ];
+
+  home.sessionVariables = {
+      QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt6ct";
+  };
 }
