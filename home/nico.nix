@@ -97,6 +97,7 @@
     tree
     trilium-desktop
     wavemon
+    zoom-us
 
     inputs.zen-browser.packages."${system}".default
   ];
