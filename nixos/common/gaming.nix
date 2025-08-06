@@ -17,6 +17,8 @@ in {
       enable = true;
     };
 
+    services.flatpak.enable = true;   # for Hytale
+
     environment.systemPackages = with pkgs; [
       dualsensectl
       lutris
