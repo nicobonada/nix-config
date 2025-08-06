@@ -16,8 +16,7 @@
   services.hypridle.enable = true;
   xdg.configFile."hypr/hypridle.conf".source = ./hypridle.conf;
 
-  xdg.configFile."uwsm/env".text = # sh
-    ''
+  xdg.configFile."uwsm/env".text = /* sh */ ''
       export XCURSOR_SIZE=24
       export HYPRCURSOR_THEME="phinger-cursors-light"
       export HYPRCURSOR_SIZE=24
@@ -26,6 +25,7 @@
       export UWSM_APP_UNIT_TYPE="service"
       export APP2UNIT_SLICES='a=app-graphical.slice b=background-graphical.slice s=session-graphical.slice'
       export APP2UNIT_TYPE=service
+      export XDG_CURRENT_DESKTOP="Hyprland"
     '';
 
   home.packages = with pkgs; [
