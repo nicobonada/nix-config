@@ -27,9 +27,6 @@
     yazi.enableFishIntegration = false;
 
     discord.enable = true;
-
-    man.generateCaches = false;
-
     fastfetch.enable = true;
     nix-index.enable = true;
     television.enable = true;
