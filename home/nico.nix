@@ -65,6 +65,7 @@
     erdtree
     fd
     gallery-dl
+    kdePackages.gwenview
     htop
     inxi
     ipcalc
@@ -86,7 +87,6 @@
     playerctl
     procs
     qbittorrent
-    qimgv
     r128gain
     ripgrep
     sgt-puzzles
