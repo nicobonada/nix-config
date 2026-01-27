@@ -15,6 +15,10 @@
       scrollback_pager_history_size = 20;  # size is in MB
     };
 
+    themeFile = "tokyo_night_moon";
+    font.name = "Comic Code Ligatures";
+    font.size = 12;
+
     # this is to stop other random fonts from taking over the symbols
     extraConfig = ''
       symbol_map U+E5FA-U+E6B7 Symbols Nerd Font
