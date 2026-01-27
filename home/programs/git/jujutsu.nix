@@ -12,6 +12,7 @@
         default-command = "status";
         graph.style = "curved";
         pager = "${lib.getExe pkgs.delta}";
+        diff-editor = ":builtin";
         diff-formatter = ":git";  # delta needs this
       };
 
