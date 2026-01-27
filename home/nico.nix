@@ -59,6 +59,7 @@
     crawlTiles
     dconf2nix
     dconf-editor
+    dgop
     dua
     duf
     erdtree
