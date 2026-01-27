@@ -86,6 +86,7 @@
     playerctl
     procs
     qbittorrent
+    qview
     r128gain
     ripgrep
     sgt-puzzles
