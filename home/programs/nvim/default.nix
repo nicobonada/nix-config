@@ -11,8 +11,8 @@
 
       theme = {
         enable = true;
-        name = "tokyonight";
-        style = "storm";
+        name = "everforest";
+        style = "hard";
       };
 
       autocomplete.blink-cmp = {
