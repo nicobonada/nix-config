@@ -29,7 +29,7 @@
 
       hyprland.enable = false;
       hyprlock.enable = false;
-
+      waybar.enable = false;
       # using the built-in theme support for these
       vicinae.enable = false;
       nvf.enable = false;
