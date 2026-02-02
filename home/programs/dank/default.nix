@@ -41,5 +41,6 @@
     cliphist wl-clipboard
     app2unit
     satty
+    wayland-pipewire-idle-inhibit
   ];
 }
