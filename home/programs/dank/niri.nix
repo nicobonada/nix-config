@@ -37,6 +37,12 @@
 
     environment = {
       APP2UNIT_TYPE = "service";
+
+      # hint electron apps to use wayland:
+      NIXOS_OZONE_WL = "1";
+      # For packages that dont yet support the above
+      ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
       QT_QPA_PLATFORM = "wayland";
       QT_QPA_PLATFORMTHEME = "qt6ct";
     };
