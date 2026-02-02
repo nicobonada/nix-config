@@ -2,6 +2,8 @@
 {
   imports = [ inputs.niri.homeModules.niri ];
 
+  home.packages = [ pkgs.nautilus ];  # for the gnome portal file chooser to work
+
   programs.niri = {
     enable = true;
     package = pkgs.niri;
