@@ -9,9 +9,6 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprcursor-phinger.url = "github:jappie3/hyprcursor-phinger";
-    hyprcursor-phinger.inputs.nixpkgs.follows = "nixpkgs";
-
     zen-browser.url = "github:youwen5/zen-browser-flake";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -30,6 +27,18 @@
 
     stylix.url = "github:nix-community/stylix";
     stylix.inputs.nixpkgs.follows = "nixpkgs";
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    everforest-wallpapers.url = "github:Gurjaka/Everforest-Wallpapers";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

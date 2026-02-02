@@ -11,7 +11,8 @@
     # You can also split up your configuration and import pieces of it here:
     ./fonts.nix
     ./stylix.nix
-    ./dconf.nix
+    # ./dconf.nix
+    ./wallpapars.nix
 
     ./programs
     ./services
@@ -53,6 +54,7 @@
     aria2
     bandwhich
     beets
+    bibata-cursors
     cavalier
     calibre
     cowsay

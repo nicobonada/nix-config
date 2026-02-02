@@ -4,6 +4,7 @@
 
   stylix = {
     enable = true;
+    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
     polarity = "dark";
 
@@ -17,25 +18,14 @@
       };
     };
 
-    icons = {
-      enable = true;
-      dark = "Papirus-Dark";
-    };
-
+    # icons = {
+    #   enable = true;
+    #   dark = "Papirus-Dark";
+    # };
+    #
     targets = {
-      gnome.enable = false;
-      gtk.enable = false;
-      kde.enable = false;
-
-      hyprland.enable = false;
-      hyprlock.enable = false;
-      waybar.enable = false;
-      # using the built-in theme support for these
-      vicinae.enable = false;
-      nvf.enable = false;
-      kitty.enable = false;
-
-      qt.enable = true;
+      fish.enable = true;
+      vivid.enable = true;
     };
   };
 }

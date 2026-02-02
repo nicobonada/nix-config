@@ -7,10 +7,11 @@
     ./avahi.nix
     ./bluetooth.nix
     ./container.nix
+    ./dank.nix
     ./fish.nix
     ./gaming.nix
     ./keyring.nix
-    ./hypr.nix
+    # ./hypr.nix
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix

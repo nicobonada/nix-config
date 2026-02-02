@@ -1,7 +1,6 @@
 { inputs, pkgs, lib, config, ... }:
 {
   imports = [
-    inputs.hyprcursor-phinger.homeManagerModules.hyprcursor-phinger
     inputs.nix-index-database.homeModules.nix-index
 
     ./bashmount
@@ -11,7 +10,9 @@
     ./mpv
     ./nvim
     ./obs
-    ./waybar
+    # ./waybar
+
+    ./dank
   ];
 
   programs = {
@@ -31,7 +32,5 @@
     yazi.enable = true;
     yt-dlp.enable = true;
     zoxide.enable = true;
-
-    hyprcursor-phinger.enable = true;
   };
 }
