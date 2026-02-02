@@ -11,7 +11,10 @@
 
       clipboard = {
         enable = true;
-        providers.wl-copy.enable = true;
+        providers.wl-copy = {
+          enable = true;
+          package = pkgs.wl-clipboard-rs;
+        };
       };
 
       theme = {
