@@ -15,6 +15,8 @@
     input = {
       focus-follows-mouse.enable = true;
 
+      touchpad.natural-scroll = false;
+
       keyboard = {
         repeat-delay = 250;
         repeat-rate = 40;
