@@ -38,9 +38,12 @@
 
   home.packages = with pkgs; [
     qt6Packages.qt6ct
-    cliphist wl-clipboard
+    cliphist wl-clipboard-rs
     app2unit
     satty
     wayland-pipewire-idle-inhibit
+
+    wayscriber
+    wl-screenrec
   ];
 }
