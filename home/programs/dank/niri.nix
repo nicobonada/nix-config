@@ -28,7 +28,7 @@
     };
 
     spawn-at-startup = [
-      { sh = "type solaar >/dev/null 2>&1 && solaar -w hide"; }
+      { sh = "type solaar >/dev/null 2>&1 && app2unit -- solaar -w hide"; }
       { command = [ "jamesdsp" "--tray" ]; }
       { command = [ "trilium" ]; }
       { command = [ "kitty" ]; }
