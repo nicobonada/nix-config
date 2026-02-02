@@ -15,7 +15,10 @@
     input = {
       focus-follows-mouse.enable = true;
 
-      touchpad.natural-scroll = false;
+      touchpad = {
+        natural-scroll = false;
+        tap-button-map = "left-middle-right";
+      };
 
       keyboard = {
         repeat-delay = 250;
