@@ -13,6 +13,8 @@
       close_on_child_death = "yes";
 
       scrollback_pager_history_size = 20;  # size is in MB
+
+      window_margin_width = 1;
     };
 
     themeFile = "kanagawa";
