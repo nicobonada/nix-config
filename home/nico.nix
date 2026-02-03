@@ -74,6 +74,7 @@
     kdiff3
     # keepassxc
     kid3
+    lazyjournal
     libqalculate
     lsof
     lxqt.pcmanfm-qt
@@ -100,6 +101,7 @@
     tree
     trilium-desktop
     wavemon
+    wifitui
     zoom-us
 
     inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
