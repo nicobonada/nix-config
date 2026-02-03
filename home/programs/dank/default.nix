@@ -43,12 +43,12 @@
 
   home.packages = with pkgs; [
     qt6Packages.qt6ct
-    cliphist wl-clipboard-rs
+    cliphist
     app2unit
     satty
     wayland-pipewire-idle-inhibit
-
     wayscriber
     wl-screenrec
+    wl-clipboard-rs # needed for emoji picker
   ];
 }

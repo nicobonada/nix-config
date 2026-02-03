@@ -9,6 +9,5 @@
     kdeconnect.indicator = true;
 
     syncthing.enable = true;
-    wl-clip-persist.enable = true;
   };
 }

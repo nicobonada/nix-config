@@ -11,11 +11,22 @@
 
       clipboard = {
         enable = true;
-        providers.wl-copy = {
-          enable = true;
-          package = pkgs.wl-clipboard-rs;
-        };
       };
+
+      luaConfigRC.clipboard = /* lua */ ''
+        vim.g.clipboard = {
+          name = "dms",
+          copy = {
+            ["+"] = { "dms", "cl", "copy" },
+            ["*"] = { "dms", "cl", "copy" },
+          },
+          paste = {
+            ["+"] = { "dms", "cl", "paste" },
+            ["*"] = { "dms", "cl", "paste" },
+          },
+          cache_enabled = 0,
+        }
+      '';
 
       autocomplete.blink-cmp = {
         enable = true;
