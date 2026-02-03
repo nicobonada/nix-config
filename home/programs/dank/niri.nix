@@ -63,11 +63,11 @@
 
   xdg.configFile."niri/dms/custom.kdl".text = /* kdl */ ''
     window-rule {
-        match title="MikuLogiS+"
-        open-fullscreen false
-        open-floating true
-        geometry-corner-radius 0
-        clip-to-geometry false
+      match title="MikuLogiS+"
+      open-fullscreen false
+      open-floating true
+      geometry-corner-radius 0
+      clip-to-geometry false
     }
   '';
 }
