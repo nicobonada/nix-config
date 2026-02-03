@@ -3,24 +3,20 @@
   imports = [
     inputs.nix-index-database.homeModules.nix-index
 
-    ./bashmount
-    ./fish
-    ./git
-    ./kitty
-    ./mpv
-    ./nvim
-    ./obs
-    # ./waybar
+    ./bashmount.nix
+    ./kitty.nix
+    ./mpv.nix
+    ./nvim.nix
+    ./obs.nix
 
     ./dank
+    ./fish
+    ./git
   ];
 
   programs = {
     delta.enable = true;
     delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
-
-    vicinae.enable = true;
-    vicinae.systemd.enable = true;
 
     bat.enable = true;
     btop.enable = true;
