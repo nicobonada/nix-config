@@ -58,15 +58,16 @@
         { proportion = 5. / 8.; }
         { proportion = 2. / 3.; }
       ];
-
-      window-rules = [
-        {
-          matches = [ { title = "MikuLogiS\+"; } ];
-          # matches = [ { app-id = "steam_app_3446190"; } ];
-          open-fullscreen = false;
-          open-floating = true;
-        }
-      ];
     };
   };
+
+  xdg.configFile."niri/dms/custom.kdl".text = /* kdl */ ''
+    window-rule {
+        match title="MikuLogiS+"
+        open-fullscreen false
+        open-floating true
+        geometry-corner-radius 0
+        clip-to-geometry false
+    }
+  '';
 }
