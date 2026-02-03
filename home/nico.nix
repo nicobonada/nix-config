@@ -12,7 +12,6 @@
     ./fonts.nix
     ./stylix.nix
     # ./dconf.nix
-    ./wallpapars.nix
 
     ./programs
     ./services
