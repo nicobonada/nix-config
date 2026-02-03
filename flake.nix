@@ -37,8 +37,6 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    everforest-wallpapers.url = "github:Gurjaka/Everforest-Wallpapers";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {

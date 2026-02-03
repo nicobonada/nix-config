@@ -5,7 +5,7 @@
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/everforest-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/kanagawa.yaml";
     polarity = "dark";
 
     fonts = {
@@ -26,6 +26,8 @@
     targets = {
       fish.enable = true;
       vivid.enable = true;
+      yazi.enable = true;
+      jjui.enable = true;
     };
   };
 }

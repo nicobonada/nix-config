@@ -15,7 +15,7 @@
       scrollback_pager_history_size = 20;  # size is in MB
     };
 
-    themeFile = "everforest_dark_hard";
+    themeFile = "kanagawa";
     font.name = "Comic Code Ligatures";
     font.size = 12;
 

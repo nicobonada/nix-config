@@ -17,12 +17,6 @@
         };
       };
 
-      theme = {
-        enable = true;
-        name = "everforest";
-        style = "hard";
-      };
-
       autocomplete.blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
@@ -113,6 +107,17 @@
         sidescrolloff = 2;
         virtualedit   = "block,onemore";
       };
+
+      extraPlugins = {
+        kanagawa-nvim = {
+          package = pkgs.vimPlugins.kanagawa-nvim;
+        };
+      };
+
+      luaConfigRC.colorscheme = /* lua */ ''
+          local cmd = vim.cmd
+          cmd.colorscheme("kanagawa-wave")
+        '';
 
       luaConfigRC.keymaps = /* lua */ ''
         local kmap = vim.keymap.set
