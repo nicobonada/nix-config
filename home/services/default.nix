@@ -1,20 +1,17 @@
 { lib, ...}:
 {
   imports = [
-    # ./hyprland
-    ./mpd
-    # ./wlsunset
+    ./mpd.nix
   ];
 
   services = {
-    syncthing.enable = true;
     network-manager-applet.enable = true;
     blueman-applet.enable = true;
 
     kdeconnect.enable = true;
     kdeconnect.indicator = true;
 
-    # swaync.enable = true;
+    syncthing.enable = true;
     wl-clip-persist.enable = true;
   };
 }

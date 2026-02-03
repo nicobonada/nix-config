@@ -5,7 +5,19 @@
       enable = true;
       network.listenAddress = "any";
       enableSessionVariables = false;   # MPD_HOST doesn't support "any"
-      extraConfig = builtins.readFile ./mpd.conf;
+
+      extraConfig = ''
+        zeroconf_enabled "yes"
+
+        audio_output {
+          type "pipewire"
+          name "Pipewire Sound Server"
+        }
+
+        replaygain "album"
+        replaygain_preamp "0"
+        replaygain_missing_preamp "-6"
+      '';
     };
 
     mpd-mpris = {
