@@ -11,7 +11,6 @@
     ./fish.nix
     ./gaming.nix
     ./keyring.nix
-    # ./hypr.nix
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix
