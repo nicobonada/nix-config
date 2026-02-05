@@ -46,6 +46,7 @@
     cliphist
     app2unit
     satty
+    slurp
     wayland-pipewire-idle-inhibit
     wayscriber
     wl-screenrec
