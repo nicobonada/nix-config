@@ -13,11 +13,17 @@ in {
     programs.gamemode.enable = true;
     users.extraUsers.nico.extraGroups = [ "gamemode" ];
 
+    programs.gamescope = {
+      enable = true;
+      capSysNice = false;
+    };
+
     services.flatpak.enable = true;   # for Hytale
 
     environment.systemPackages = with pkgs; [
       dualsensectl
       protonup-rs
+      gamescope-wsi # HDR won't work without this
     ];
   };
 }
