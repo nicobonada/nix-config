@@ -2,7 +2,6 @@
 {
   imports = [
     inputs.dms.homeModules.dank-material-shell
-    inputs.dms.homeModules.niri
 
     ./niri.nix
   ];
@@ -23,21 +22,6 @@
       enableAudioWavelength = true;      # Audio visualizer (cava)
       enableCalendarEvents = true;       # Calendar integration (khal)
       enableClipboardPaste = true;       # Pasting items from the clipboard (wtype)
-
-      niri.includes.filesToInclude = [
-        # Please note that niri will throw an error if any of these files are missing.
-        "alttab"
-        "binds"
-        "colors"
-        "cursor"
-        "layout"
-        "outputs"
-        "wpblur"
-
-        # my settings, hacky way to support includes until niri-flake updates,
-        # see niri.nix for contents
-        "custom"
-      ];
     };
   };
 

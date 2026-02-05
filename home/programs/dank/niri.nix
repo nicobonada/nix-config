@@ -1,73 +1,94 @@
 { inputs, pkgs, lib, config, ... }:
 {
-  imports = [ inputs.niri.homeModules.niri ];
+  imports = [ inputs.niri-nix.homeModules.default ];
 
-  home.packages = [ pkgs.nautilus ];  # for the gnome portal file chooser to work
-
-  programs.niri = {
+  wayland.windowManager.niri = {
     enable = true;
-    package = pkgs.niri;
 
-    settings = {
-      xwayland-satellite.enable = true;
-      xwayland-satellite.path = lib.getExe pkgs.xwayland-satellite;
+    extraConfig = /* kdl */ ''
+      input {
+          keyboard {
+              xkb {
+                  layout ""
+                  model ""
+                  rules ""
+                  variant ""
+                  options "compose:caps"
+              }
+              repeat-delay 250
+              repeat-rate 40
+              track-layout "global"
+          }
+          touchpad {
+              tap
+              tap-button-map "left-middle-right"
+          }
+          focus-follows-mouse
+      }
 
-      prefer-no-csd = true;
+      screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
-      gestures.hot-corners.enable = false;
+      prefer-no-csd
 
-      input = {
-        focus-follows-mouse.enable = true;
+      layout {
+          gaps 16
+          struts {
+              left 0
+              right 0
+              top 0
+              bottom 0
+          }
+          focus-ring { width 4; }
+          border { off; }
+          default-column-width
+          preset-column-widths {
+              proportion 0.333333
+              proportion 0.375000
+              proportion 0.500000
+              proportion 0.625000
+              proportion 0.666667
+          }
+          center-focused-column "never"
+      }
 
-        touchpad = {
-          natural-scroll = false;
-          tap-button-map = "left-middle-right";
-        };
+      cursor {
+          xcursor-theme "default"
+          xcursor-size 24
+      }
 
-        keyboard = {
-          repeat-delay = 250;
-          repeat-rate = 40;
-          xkb.options = "compose:caps";
-        };
-      };
+      environment {
+          "APP2UNIT_TYPE" "service"
+          "ELECTRON_OZONE_PLATFORM_HINT" "auto"
+          "NIXOS_OZONE_WL" "1"
+          "QT_QPA_PLATFORM" "wayland"
+          "QT_QPA_PLATFORMTHEME" "qt6ct"
+      }
 
-      spawn-at-startup = [
-        { sh = "type solaar >/dev/null 2>&1 && app2unit -- solaar -w hide"; }
-        { command = [ "jamesdsp" "--tray" ]; }
-        { command = [ "trilium" ]; }
-        { command = [ "kitty" ]; }
-        { command = [ "wayland-pipewire-idle-inhibit" ]; }
-      ];
+      spawn-sh-at-startup "type solaar >/dev/null 2>&1 && app2unit -- solaar -w hide"
+      spawn-at-startup "jamesdsp" "--tray"
+      spawn-at-startup "trilium"
+      spawn-at-startup "kitty"
+      spawn-at-startup "wayland-pipewire-idle-inhibit"
 
-      environment = {
-        APP2UNIT_TYPE = "service";
+      gestures { hot-corners { off; }; }
+ 
+      xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
 
-        # hint electron apps to use wayland:
-        NIXOS_OZONE_WL = "1";
-        # For packages that dont yet support the above
-        ELECTRON_OZONE_PLATFORM_HINT = "auto";
+      include "dms/alttab.kdl"
+      include "dms/binds.kdl"
+      include "dms/colors.kdl"
+      include "dms/cursor.kdl"
+      include "dms/layout.kdl"
+      include "dms/outputs.kdl"
+      include "dms/wpblur.kdl"
 
-        QT_QPA_PLATFORM = "wayland";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
-      };
-
-      layout.preset-column-widths = [
-        { proportion = 1. / 3.; }
-        { proportion = 3. / 8.; }
-        { proportion = 1. / 2.; }
-        { proportion = 5. / 8.; }
-        { proportion = 2. / 3.; }
-      ];
-    };
+      window-rule {
+        match title="MikuLogiS+"
+        open-fullscreen false
+        open-floating true
+        geometry-corner-radius 0
+        clip-to-geometry false
+      }
+    '';
   };
-
-  xdg.configFile."niri/dms/custom.kdl".text = /* kdl */ ''
-    window-rule {
-      match title="MikuLogiS+"
-      open-fullscreen false
-      open-floating true
-      geometry-corner-radius 0
-      clip-to-geometry false
-    }
-  '';
 }
