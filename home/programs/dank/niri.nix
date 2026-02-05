@@ -38,8 +38,10 @@
           top 0
           bottom 0
         }
-        focus-ring { width 4; }
-        default-column-width
+
+
+        focus-ring { width 3; }
+
         preset-column-widths {
           proportion 0.333333
           proportion 0.375000
@@ -59,6 +61,7 @@
           gaps 0
           focus-ring { off; }
           border { off; }
+          default-column-width { fixed 1920; }
         }
       }
 
@@ -75,6 +78,8 @@
             top 15
             bottom 15
           }
+
+          default-column-width { proportion 0.5; }
         }
       }
 
