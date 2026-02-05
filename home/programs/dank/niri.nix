@@ -9,20 +9,17 @@
       input {
         keyboard {
           xkb {
-            layout ""
-            model ""
-            rules ""
-            variant ""
             options "compose:caps"
           }
+
           repeat-delay 250
           repeat-rate 40
-          track-layout "global"
         }
+
         touchpad {
-          tap
           tap-button-map "left-middle-right"
         }
+
         focus-follows-mouse
       }
 
@@ -32,13 +29,13 @@
 
       layout {
         gaps 5
+
         struts {
           left 0
           right 0
           top 0
           bottom 0
         }
-
 
         focus-ring { width 3; }
 
@@ -49,6 +46,7 @@
           proportion 0.625000
           proportion 0.666667
         }
+
         center-focused-column "never"
       }
 
@@ -126,6 +124,7 @@
       // window rules need to be placed after the dms/layout.kdl include
       window-rule {
         match title="MikuLogiS+"
+
         open-fullscreen false
         open-floating true
         geometry-corner-radius 0
