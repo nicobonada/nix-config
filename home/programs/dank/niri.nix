@@ -70,10 +70,10 @@
 
         layout {
           struts {
-            left 10
-            right 10
-            top 20
-            bottom 20
+            left 8
+            right 8
+            top 15
+            bottom 15
           }
         }
       }
