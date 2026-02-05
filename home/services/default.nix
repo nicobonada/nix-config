@@ -6,8 +6,6 @@
 
   services = {
     kdeconnect.enable = true;
-    kdeconnect.indicator = true;
-
     syncthing.enable = true;
   };
 }
