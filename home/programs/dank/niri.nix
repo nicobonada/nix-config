@@ -131,6 +131,12 @@
         geometry-corner-radius 0
         clip-to-geometry false
       }
+
+      window-rule {
+        match app-id="kitty"
+
+        default-column-width { proportion 0.333333; }
+      }
     '';
   };
 }
