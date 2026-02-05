@@ -17,7 +17,7 @@
       window_margin_width = 1;
     };
 
-    themeFile = "kanagawa";
+    themeFile = "kanagawabones";
     font.name = "Comic Code Ligatures";
     font.size = 12;
 
