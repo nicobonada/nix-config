@@ -39,7 +39,6 @@
           bottom 0
         }
         focus-ring { width 4; }
-        border { off; }
         default-column-width
         preset-column-widths {
           proportion 0.333333
@@ -55,6 +54,12 @@
         mode "1920x1080@144.001"
         scale 1
         position x=731 y=0
+
+        layout {
+          gaps 0
+          focus-ring { off; }
+          border { off; }
+        }
       }
 
       output "LG Electronics LG ULTRAWIDE 501NTDV76274" {
@@ -62,8 +67,11 @@
         scale 1
         position x=0 y=1080
         focus-at-startup
+
         layout {
           struts {
+            left 10
+            right 10
             top 20
             bottom 20
           }
