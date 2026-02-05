@@ -31,7 +31,6 @@
     app2unit
     satty
     slurp
-    wayland-pipewire-idle-inhibit
     wayscriber
     wl-screenrec
     wl-clipboard-rs # needed for emoji picker
