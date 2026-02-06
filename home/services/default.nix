@@ -7,5 +7,6 @@
   services = {
     kdeconnect.enable = true;
     syncthing.enable = true;
+    tailscale-systray.enable = true;
   };
 }

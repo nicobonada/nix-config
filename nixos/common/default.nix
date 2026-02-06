@@ -81,9 +81,6 @@
 
     smartd.enable = true;
 
-    mullvad-vpn.enable = true;
-    mullvad-vpn.package = pkgs.mullvad-vpn;
-
     journald.extraConfig = "SystemMaxUse=500M";
 
     fstrim.enable = true;
@@ -94,6 +91,9 @@
     fwupd.enable = true;
 
     chrony.enable = true;
+
+    tailscale.enable = true;
+    tailscale.useRoutingFeatures = "client"; # needed for mullvad exit node
   };
 
   programs = {
