@@ -57,7 +57,7 @@
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
   services.logind.settings.Login.HandlePowerKey = "suspend";
-  systemd.sleep.extraConfig = "HibernateDelaySec=1h";
+  systemd.sleep.settings.Sleep = { HibernateDelaySec= "1h"; };
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
