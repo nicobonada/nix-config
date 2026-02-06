@@ -17,6 +17,7 @@
         }
 
         touchpad {
+          tap
           tap-button-map "left-middle-right"
         }
 
