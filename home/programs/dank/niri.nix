@@ -54,6 +54,7 @@
         mode "1920x1080@144.001"
         scale 1
         position x=731 y=0
+        variable-refresh-rate on-demand=true
 
         layout {
           gaps 0
@@ -68,6 +69,7 @@
         scale 1
         position x=0 y=1080
         focus-at-startup
+        variable-refresh-rate on-demand=true
 
         layout {
           struts {
