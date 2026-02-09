@@ -121,9 +121,12 @@
       include "dms/cursor.kdl"
       include "dms/layout.kdl"
       include "dms/outputs.kdl"
+      include "dms/windowrules.kdl"
       include "dms/wpblur.kdl"
 
       // window rules need to be placed after the dms/layout.kdl include
+
+      // Hatsune Miku Logic Paint S+ only supports 1920x800 (?)
       window-rule {
         match title="MikuLogiS+"
 
@@ -133,10 +136,22 @@
         clip-to-geometry false
       }
 
+      // terminal
       window-rule {
-        match app-id="kitty"
-
+        match app-id="^kitty$"
         default-column-width { proportion 0.333333; }
+      }
+
+      // this should hopefully only match dms windows
+      window-rule {
+        match app-id="^org.quickshell$"
+        default-column-width { fixed 925; }
+      }
+
+      // don't open steam notifications in the center of the screen
+      window-rule {
+        match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+        default-floating-position x=10 y=10 relative-to="bottom-right"
       }
     '';
   };
