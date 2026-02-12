@@ -48,6 +48,11 @@
       fsType = "zfs";
     };
 
+  fileSystems."/home/nico/stuff/games" =
+    { device = "/dev/disk/by-label/games";
+      fsType = "ext4";
+    };
+
   swapDevices =
     [ { device = "/dev/disk/by-uuid/ccd927bf-d32b-408c-a0f2-9074caecf98a"; }
     ];
