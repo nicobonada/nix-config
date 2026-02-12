@@ -33,6 +33,6 @@
     slurp
     wayscriber
     wl-screenrec
-    wl-clipboard-rs # needed for emoji picker
+    wl-clipboard-rs # needed for emoji picker and neovim
   ];
 }
