@@ -19,7 +19,6 @@
     initrd.supportedFilesystems = ["zfs"]; # boot from zfs
 
     kernelPackages = pkgs.linuxPackages_zen;
-    zfs.package = pkgs.zfs_2_4;
   };
 
   networking.hostId = "23c95f57";
