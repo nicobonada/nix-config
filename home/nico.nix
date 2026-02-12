@@ -66,6 +66,7 @@
     erdtree
     fd
     gallery-dl
+    gemini-cli
     htop
     inxi
     ipcalc
