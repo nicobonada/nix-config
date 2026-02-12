@@ -94,6 +94,7 @@
 
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "client"; # needed for mullvad exit node
+    resolved.enable = true; # needed to fix resume issues with tailscale dns settings
   };
 
   programs = {
