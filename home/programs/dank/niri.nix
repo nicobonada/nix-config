@@ -122,14 +122,25 @@
 
       // window rules need to be placed after the dms/layout.kdl include
 
+      window-rule {
+        open-floating false
+      }
+
+      window-rule {
+        match app-id=r#"steam_app_\d+"#
+
+        open-fullscreen true
+        variable-refresh-rate true
+        open-floating true
+        geometry-corner-radius 0
+        clip-to-geometry false
+      }
+
       // Hatsune Miku Logic Paint S+ only supports 1920x800 (?)
       window-rule {
         match title="MikuLogiS+"
 
         open-fullscreen false
-        open-floating true
-        geometry-corner-radius 0
-        clip-to-geometry false
       }
 
       // terminal
