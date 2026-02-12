@@ -79,8 +79,6 @@
             top 15
             bottom 15
           }
-
-          default-column-width { proportion 0.5; }
         }
       }
 
