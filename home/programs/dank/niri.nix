@@ -52,7 +52,7 @@
       }
 
       output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
-        mode "1920x1080@144.001"
+        mode "1920x1080@60.000"
         scale 1
         position x=731 y=0
         variable-refresh-rate on-demand=true
@@ -66,7 +66,7 @@
       }
 
       output "LG Electronics LG ULTRAWIDE 501NTDV76274" {
-        mode "3440x1440@143.965"
+        mode "3440x1440@159.962"
         scale 1
         position x=0 y=1080
         focus-at-startup
