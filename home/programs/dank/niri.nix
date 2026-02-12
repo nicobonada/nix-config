@@ -157,6 +157,14 @@
         match app-id="discord"
         default-column-width { proportion 0.375000; }
       }
+
+      // block out sensitive components from screencasts
+      layer-rule {
+        match namespace="^dms:clipboard$"
+        match namespace="^dms:notification$"
+
+        block-out-from "screencast"
+      }
     '';
   };
 }
