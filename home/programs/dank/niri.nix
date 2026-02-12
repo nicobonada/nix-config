@@ -161,7 +161,7 @@
       // block out sensitive components from screencasts
       layer-rule {
         match namespace="^dms:clipboard$"
-        match namespace="^dms:notification$"
+        match namespace="^dms:notification"
 
         block-out-from "screencast"
       }
