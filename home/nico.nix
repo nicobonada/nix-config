@@ -66,7 +66,6 @@
     erdtree
     fd
     gallery-dl
-    kdePackages.gwenview
     htop
     inxi
     ipcalc
