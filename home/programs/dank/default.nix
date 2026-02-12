@@ -27,7 +27,6 @@
 
   home.packages = with pkgs; [
     qt6Packages.qt6ct
-    cliphist
     app2unit
     satty
     slurp
