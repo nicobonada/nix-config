@@ -59,13 +59,6 @@
   services.logind.settings.Login.HandlePowerKey = "suspend";
   systemd.sleep.extraConfig = "HibernateDelaySec=1h";
 
-  # services.keyd = {
-  #   enable = true;
-  #   keyboards.default.settings.main = {
-  #     "leftshift+leftmeta+f23" = "layer(control)";
-  #   };
-  # };
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
