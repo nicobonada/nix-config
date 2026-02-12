@@ -28,6 +28,7 @@
       vivid.enable = true;
       yazi.enable = true;
       jjui.enable = true;
+      bat.enable = true;
     };
   };
 }
