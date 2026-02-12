@@ -95,12 +95,15 @@
     sgt-puzzles
     shellcheck
     signal-desktop
+    snitch
     systemctl-tui
     sysz
     ticktick
     tree
     trilium-desktop
     wavemon
+    whosthere
+    whois
     wifitui
     zoom-us
 
