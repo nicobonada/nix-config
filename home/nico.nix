@@ -83,6 +83,7 @@
     nix-tree
     nmap
     kdePackages.okular
+    opencode
     papirus-icon-theme
     patool
     perlPackages.FileMimeInfo
