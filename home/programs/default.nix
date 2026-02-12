@@ -26,6 +26,7 @@
     television.enable = true;
     vivid.enable = true;
     yazi.enable = true;
+    yazi.shellWrapperName = "y";
     yt-dlp.enable = true;
     zoxide.enable = true;
   };
