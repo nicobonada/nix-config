@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  imports = [ ./toggle-audio-profile.nix ];
+
   security.rtkit.enable = true;
 
   services.pipewire = {
