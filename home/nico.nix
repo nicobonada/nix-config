@@ -60,6 +60,7 @@
     cowsay
     dconf2nix
     dconf-editor
+    dig
     dgop
     dua
     duf
