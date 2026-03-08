@@ -115,6 +115,8 @@
     auto-cpufreq.enable = true;
   };
 
+  hardware.i2c.enable = true; # used for external monitor brightness control
+
   security.polkit.enable = true;
 
   # Allow kde connect via home-manager
