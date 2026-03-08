@@ -15,8 +15,6 @@
     ./yubi.nix
     ./royal-kludge.nix
 
-    ./fix-less.nix
-
     inputs.auto-cpufreq.nixosModules.default
   ];
 
