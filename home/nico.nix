@@ -50,6 +50,7 @@
 
   home.packages = with pkgs; [
     android-file-transfer
+    anydesk
     aria2
     bandwhich
     beets
