@@ -58,7 +58,6 @@
     cavalier
     calibre
     cowsay
-    crawlTiles
     dconf2nix
     dconf-editor
     dgop
