@@ -69,7 +69,6 @@
     htop
     inxi
     ipcalc
-    jamesdsp
     kdiff3
     # keepassxc
     kid3

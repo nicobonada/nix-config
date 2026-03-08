@@ -8,5 +8,7 @@
     kdeconnect.enable = true;
     syncthing.enable = true;
     trayscale.enable = true;
+
+    easyeffects.enable = true;
   };
 }
