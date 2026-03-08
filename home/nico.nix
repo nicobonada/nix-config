@@ -65,7 +65,6 @@
     erdtree
     fd
     gallery-dl
-    gemini-cli
     htop
     inxi
     ipcalc
@@ -82,7 +81,6 @@
     nixpkgs-track
     nmap
     kdePackages.okular
-    opencode
     papirus-icon-theme
     patool
     perlPackages.FileMimeInfo
