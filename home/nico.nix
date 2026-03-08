@@ -82,6 +82,7 @@
     mediainfo
     nicotine-plus
     nix-tree
+    nixpkgs-track
     nmap
     kdePackages.okular
     opencode
