@@ -95,7 +95,6 @@
       // startup background and tray apps
       spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- solaar -w hide"
       spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
-      spawn-sh-at-startup "[ $(hostname) = 'seyruun' ] && app2unit -- mullvad-vpn"
       spawn-at-startup "jamesdsp" "--tray"
       spawn-at-startup "${lib.getExe pkgs.wayland-pipewire-idle-inhibit}"
 
