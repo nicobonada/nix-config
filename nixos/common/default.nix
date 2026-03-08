@@ -53,6 +53,7 @@
       "wheel"
       "networkmanager"
       "video"
+      "i2c"      # for external monitor brightness control
     ];
   };
 
