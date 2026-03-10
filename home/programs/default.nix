@@ -23,6 +23,7 @@
     discord.enable = true;
     fastfetch.enable = true;
     nix-index.enable = true;
+    nix-index-database.comma.enable = true;
     television.enable = true;
     vivid.enable = true;
     yazi.enable = true;
