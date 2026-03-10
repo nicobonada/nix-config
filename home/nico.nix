@@ -94,6 +94,7 @@
     qview
     r128gain
     ripgrep
+    rustdesk-flutter
     sgt-puzzles
     shellcheck
     signal-desktop
