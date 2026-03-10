@@ -18,16 +18,4 @@
 
   programs.niri.enable = true;
   programs.niri.withUWSM = true;
-
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors = {
-      niri = {
-        prettyName = "Niri";
-        comment = "A scrollable-tiling Wayland compositor";
-        binPath = "/run/current-system/sw/bin/niri-session";
-      };
-    };
-  };
-
 }
