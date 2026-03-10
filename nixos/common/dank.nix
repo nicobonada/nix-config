@@ -12,6 +12,8 @@
       save = true;
       path = "/tmp/dms-greeter.log";
     };
+
+    package = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   programs.niri.enable = true;
