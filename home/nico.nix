@@ -11,7 +11,6 @@
     # You can also split up your configuration and import pieces of it here:
     ./fonts.nix
     ./stylix.nix
-    # ./dconf.nix
 
     ./programs
     ./services
@@ -58,7 +57,6 @@
     cavalier
     calibre
     cowsay
-    dconf2nix
     dconf-editor
     dig
     dgop
