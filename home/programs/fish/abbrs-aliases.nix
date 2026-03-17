@@ -22,12 +22,9 @@
       ls      = "ls --group-directories-first --classify --human-readable --time-style=long-iso --color=auto";
       map     = "map 60x30n180dn";
       psg     = "procs";
-      qmv     = "qmv --options=spaces";
       rescan  = "nmcli dev wifi rescan";
       zzz     = "systemctl suspend";
-      # nix related aliases
       HH      = "nvim ~/nix-config/home/nico.nix";
-      gens    = "sudo nix-env -p /nix/var/nix/profiles/system --list-generations";
     };
   };
 }
