@@ -13,7 +13,7 @@
 binds {
   // ── Noctalia ──────────────────────────────────────────────
   Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
-  Mod+S     { spawn-sh "noctalia msg panel-toggle control-center"; }
+  Mod+N     { spawn-sh "noctalia msg panel-toggle control-center"; }
   Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
   Mod+X     { spawn-sh "noctalia msg panel-toggle session"; }
 
@@ -116,7 +116,7 @@ binds {
   Mod+Shift+equal { set-window-height "+10%"; }
 
   // ── Floating ──────────────────────────────────────────────
-  Super+V     { toggle-window-floating; }
+  Mod+V       { toggle-window-floating; }
   Mod+Shift+V { switch-focus-between-floating-and-tiling; }
 
   // ── Window / session ──────────────────────────────────────
@@ -130,18 +130,20 @@ binds {
   Mod+Shift+E { spawn-sh "uwsm stop"; }
 
   // ── Apps (spawn for simple argv; spawn-sh when a shell is useful) ──
-  Super+Return hotkey-overlay-title="Open Terminal"       { spawn "kitty"; }
-  Super+O      hotkey-overlay-title="Launch Zen Browser"  { spawn "zen"; }
-  Super+A      hotkey-overlay-title="Switch audio device" { spawn "cycle-audio-profile"; }
-  Super+W      hotkey-overlay-title="Volume Control"      {
+  Mod+Return hotkey-overlay-title="Open Terminal"       { spawn "kitty"; }
+  Mod+O      hotkey-overlay-title="Launch Zen Browser"  { spawn "zen"; }
+  Mod+A      hotkey-overlay-title="Annotate last screenshot" { spawn-sh "satty-last-screenshot"; }
+  Mod+W      hotkey-overlay-title="Volume Control"      {
     spawn-sh "kitten quick-access-terminal --instance-group vol wiremix";
   }
 
-  // ── Screenshots (Print + Framework XF86Launch1) ───────────
-  Print            { screenshot; }
-  XF86Launch1      { screenshot; }
-  Ctrl+Print       { screenshot-screen; }
-  Ctrl+XF86Launch1 { screenshot-screen; }
-  Alt+Print        { screenshot-window; }
-  Alt+XF86Launch1  { screenshot-window; }
+  // ── Screenshots (Print kept as secondary if the key is reachable) ──
+  Mod+S       hotkey-overlay-title="Screenshot region"  { screenshot; }
+  Mod+Ctrl+S  hotkey-overlay-title="Screenshot screen"  { screenshot-screen; }
+  Mod+Alt+S   hotkey-overlay-title="Screenshot window"  { screenshot-window; }
+
+  Print       { screenshot; }
+  Ctrl+Print  { screenshot-screen; }
+  Alt+Print   { screenshot-window; }
+  Shift+Print { spawn-sh "satty-last-screenshot"; }
 }

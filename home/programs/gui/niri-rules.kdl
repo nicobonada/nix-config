@@ -51,6 +51,12 @@ window-rule {
   default-window-height { fixed 920; }
 }
 
+// Satty screenshot annotator
+window-rule {
+  match app-id="^com\\.gabm\\.satty$"
+  open-floating true
+}
+
 // Blurred overview wallpaper (needs [niri/backdrop] in Noctalia)
 layer-rule {
   match namespace="^noctalia-backdrop"

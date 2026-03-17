@@ -1,10 +1,11 @@
-{ inputs, pkgs, lib, config, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     inputs.noctalia.homeModules.default
 
     ./niri.nix
     ./kitty.nix
+    ./satty-last-screenshot.nix
   ];
 
   programs.noctalia = {
