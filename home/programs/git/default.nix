@@ -9,6 +9,8 @@
 
     package = pkgs.gitFull;
 
+    signing.format = null;
+
     settings = {
       user.name = "Nicolás Bonada";
       user.email = "nico.bonada@gmail.com";
