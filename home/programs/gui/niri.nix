@@ -126,13 +126,120 @@
         XF86AudioMute { spawn-sh "noctalia msg volume-mute"; }
         XF86MonBrightnessUp { spawn-sh "noctalia msg brightness-up"; }
         XF86MonBrightnessDown { spawn-sh "noctalia msg brightness-down"; }
+
+        // TODO: organize this
+        Mod+1 { focus-workspace 1; }
+        Mod+2 { focus-workspace 2; }
+        Mod+3 { focus-workspace 3; }
+        Mod+4 { focus-workspace 4; }
+        Mod+5 { focus-workspace 5; }
+        Mod+6 { focus-workspace 6; }
+        Mod+7 { focus-workspace 7; }
+        Mod+8 { focus-workspace 8; }
+        Mod+9 { focus-workspace 9; }
+        Mod+Ctrl+Down { move-column-to-workspace-down; }
+        Mod+Ctrl+I { move-column-to-workspace-up; }
+        Mod+Ctrl+U { move-column-to-workspace-down; }
+        Mod+Ctrl+Up { move-column-to-workspace-up; }
+        Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+        Mod+Ctrl+WheelScrollUp cooldown-ms=150 { move-column-to-workspace-up; }
+        Mod+I { focus-workspace-up; }
+        Mod+Page_Down { focus-workspace-down; }
+        Mod+Page_Up { focus-workspace-up; }
+        Mod+Shift+1 { move-column-to-workspace 1; }
+        Mod+Shift+2 { move-column-to-workspace 2; }
+        Mod+Shift+3 { move-column-to-workspace 3; }
+        Mod+Shift+4 { move-column-to-workspace 4; }
+        Mod+Shift+5 { move-column-to-workspace 5; }
+        Mod+Shift+6 { move-column-to-workspace 6; }
+        Mod+Shift+7 { move-column-to-workspace 7; }
+        Mod+Shift+8 { move-column-to-workspace 8; }
+        Mod+Shift+9 { move-column-to-workspace 9; }
+        Mod+Shift+I { move-workspace-up; }
+        Mod+Shift+Page_Down { move-workspace-down; }
+        Mod+Shift+Page_Up { move-workspace-up; }
+        Mod+Shift+U { move-workspace-down; }
+        Mod+U { focus-workspace-down; }
+        Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+        Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+        Alt+Print { screenshot-window; }
+        Alt+XF86Launch1 { screenshot-window; }
+        Mod+BracketLeft { consume-or-expel-window-left; }
+        Mod+BracketRight { consume-or-expel-window-right; }
+        Mod+C { center-column; }
+        Mod+Ctrl+C { center-visible-columns; }
+        Mod+Ctrl+End { move-column-to-last; }
+        Mod+Ctrl+F { expand-column-to-available-width; }
+        Mod+Ctrl+H { focus-monitor-left; }
+        Mod+Ctrl+Home { move-column-to-first; }
+        Mod+Ctrl+J { focus-monitor-down; }
+        Mod+Ctrl+K { focus-monitor-up; }
+        Mod+Ctrl+L { focus-monitor-right; }
+        Mod+Ctrl+Left { focus-monitor-left; }
+        Mod+Ctrl+R { reset-window-height; }
+        Mod+Ctrl+Right { focus-monitor-right; }
+        Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+        Mod+Ctrl+Shift+WheelScrollUp { move-column-left; }
+        Mod+Ctrl+WheelScrollLeft { move-column-left; }
+        Mod+Ctrl+WheelScrollRight { move-column-right; }
+        Mod+Down { focus-window-down; }
+        Mod+End { focus-column-last; }
+        Mod+Equal { set-column-width "+10%"; }
+        Mod+F { maximize-column; }
+        Mod+H { focus-column-left; }
+        Mod+Home { focus-column-first; }
+        Mod+J { focus-window-down; }
+        Mod+K { focus-window-up; }
+        Mod+L { focus-column-right; }
+        Mod+Left { focus-column-left; }
+        Mod+Minus { set-column-width "-10%"; }
+        Mod+Period { expel-window-from-column; }
+        Mod+Q repeat=false { close-window; }
+        Mod+R { switch-preset-column-width; }
+        Mod+Right { focus-column-right; }
+        Mod+Shift+Ctrl+Down { move-column-to-monitor-down; }
+        Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
+        Mod+Shift+Ctrl+J { move-column-to-monitor-down; }
+        Mod+Shift+Ctrl+K { move-column-to-monitor-up; }
+        Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
+        Mod+Shift+Ctrl+Left { move-column-to-monitor-left; }
+        Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+        Mod+Shift+Ctrl+Up { move-column-to-monitor-up; }
+        Mod+Shift+Down { move-window-down; }
+        Mod+Shift+Equal { set-window-height "+10%"; }
+        Mod+Shift+F { fullscreen-window; }
+        Mod+Shift+H { move-column-left; }
+        Mod+Shift+J { move-window-down; }
+        Mod+Shift+K { move-window-up; }
+        Mod+Shift+L { move-column-right; }
+        Mod+Shift+Left { move-column-left; }
+        Mod+Shift+Minus { set-window-height "-10%"; }
+        Mod+Shift+R { switch-preset-window-height; }
+        Mod+Shift+Right { move-column-right; }
+        Mod+Shift+Up { move-window-up; }
+        Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+        Mod+Shift+WheelScrollDown { focus-column-right; }
+        Mod+Shift+WheelScrollUp { focus-column-left; }
+        Mod+Up { focus-window-up; }
+        Mod+WheelScrollLeft { focus-column-left; }
+        Mod+WheelScrollRight { focus-column-right; }
+        Super+V { toggle-window-floating; }
+        Mod+Shift+P { power-off-monitors; }
+        Ctrl+Print { screenshot-screen; }
+        Ctrl+XF86Launch1 { screenshot-screen; }
+        Print { screenshot; }
+        XF86Launch1 { screenshot; }
+        Alt+Ctrl+Delete hotkey-overlay-title="Process Manager" { spawn "kitten" "quick-access-terminal" "--instance-group" "proc" "dgop"; }
+        Mod+Shift+E { spawn "sh" "-c" "uwsm" "stop"; }
+        Super+A hotkey-overlay-title="Switch audio device" { spawn "cycle-audio-profile"; }
+        Super+O hotkey-overlay-title="Launch Zen Browser" { spawn "zen"; }
+        Super+Return hotkey-overlay-title="Open Terminal" { spawn "kitty"; }
+        Super+W hotkey-overlay-title="Volume Control" { spawn "kitten" "quick-access-terminal" "--instance-group" "vol" "wiremix"; }
+        Mod+D repeat=false { toggle-overview; }
+        Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
+        Mod+Shift+Slash { show-hotkey-overlay; }
+        Mod+Tab repeat=false { toggle-overview; }
       }
-      // include "dms/colors.kdl"
-      // include "dms/cursor.kdl"
-      // include "dms/layout.kdl"
-      // include "dms/outputs.kdl"
-      // include "dms/windowrules.kdl"
-      // include "dms/wpblur.kdl"
 
       // window rules need to be placed after the dms/layout.kdl include
 
@@ -163,12 +270,6 @@
         default-column-width { proportion 0.333333; }
       }
 
-      // this should hopefully only match dms windows
-      window-rule {
-        match app-id="^org.quickshell$"
-        default-column-width { fixed 925; }
-      }
-
       // don't open steam notifications in the center of the screen
       window-rule {
         match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
@@ -178,14 +279,6 @@
       window-rule {
         match app-id="discord"
         default-column-width { proportion 0.375000; }
-      }
-
-      // block out sensitive components from screencasts
-      layer-rule {
-        match namespace="^dms:clipboard$"
-        match namespace="^dms:notification"
-
-        block-out-from "screencast"
       }
 
       // Noctalia settings
