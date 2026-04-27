@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, config, ... }:
 {
   imports = [
     ./jujutsu.nix
@@ -21,6 +21,9 @@
       pull.rebase = "false";
     };
   };
+
+  programs.delta.enable = true;
+  programs.delta.enableGitIntegration = lib.mkIf config.programs.git.enable true;
 
   home.packages = with pkgs; [
     lazygit

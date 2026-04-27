@@ -1,43 +1,14 @@
-# This is your home-manager configuration file
-# Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
-
 { inputs, lib, config, pkgs, ... }:
 {
-  # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
-
-    # You can also split up your configuration and import pieces of it here:
     ./fonts.nix
     ./stylix.nix
-
     ./programs
     ./services
   ];
 
-  nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+  nixpkgs.config.allowUnfree = true;
 
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
-    config = {
-      # Disable if you don't want unfree packages
-      allowUnfree = true;
-    };
-  };
-
-  # Home Manager needs a bit of information about you and the
-  # paths it should manage.
   home.username = "nico";
   home.homeDirectory = "/home/nico";
 
@@ -47,87 +18,22 @@
     NH_FLAKE = "$HOME/nix-config";
   };
 
-  home.packages = with pkgs; [
-    android-file-transfer
-    anydesk
-    aria2
-    bandwhich
-    beets
-    bibata-cursors
-    cavalier
-    calibre
-    cowsay
-    dconf-editor
-    dig
-    dgop
-    dua
-    duf
-    erdtree
-    fd
-    gallery-dl
-    htop
-    inxi
-    ipcalc
-    kdiff3
-    # keepassxc
-    kid3
-    kdePackages.kolourpaint
-    lazyjournal
-    libqalculate
-    lsof
-    lxqt.pcmanfm-qt
-    mediainfo
-    nicotine-plus
-    nix-tree
-    nixpkgs-track
-    nmap
-    kdePackages.okular
-    papirus-icon-theme
-    patool
-    perlPackages.FileMimeInfo
-    playerctl
-    procs
-    qbittorrent
-    qview
-    r128gain
-    ripgrep
-    rustdesk-flutter
-    sgt-puzzles
-    shellcheck
-    signal-desktop
-    snitch
-    systemctl-tui
-    sysz
-    ticktick
-    tree
-    trilium-desktop
-    wavemon
-    whosthere
-    whois
-    wifitui
-    zoom-us
-
-    inputs.zen-browser.packages."${stdenv.hostPlatform.system}".default
-  ];
-
-  # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # this systemd unit is needed to get fumon from the uwsm package working
-  # properly
+  # Needed for fumon from the uwsm package to work properly
   systemd.user.services.fumon = {
     Unit = {
       Description = "Failed unit monitor";
       Documentation = "man:fumon(1) man:busctl(1)";
       Requisite = "graphical-session.target";
-      After = "graphical-session.target" ;
+      After = "graphical-session.target";
     };
 
     Service = {
-      Type= "exec";
+      Type = "exec";
       ExecCondition = "/bin/sh -c 'command -v notify-send > /dev/null'";
       ExecStart = lib.getExe' pkgs.uwsm "fumon";
       Restart = "on-failure";

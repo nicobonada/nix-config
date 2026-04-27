@@ -24,4 +24,31 @@
       thumbfast
     ];
   };
+
+  programs.obs-studio = {
+    enable = true;
+
+    plugins = with pkgs.obs-studio-plugins; [
+      wlrobs
+      obs-backgroundremoval
+      obs-pipewire-audio-capture
+      obs-vaapi #optional AMD hardware acceleration
+      obs-gstreamer
+      obs-vkcapture
+    ];
+  };
+
+  programs.yt-dlp.enable = true;
+
+  home.packages = with pkgs; [
+    beets
+    cavalier
+    gallery-dl
+    kid3
+    mediainfo
+    nicotine-plus
+    playerctl
+    qbittorrent
+    r128gain
+  ];
 }
