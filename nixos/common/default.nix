@@ -7,7 +7,6 @@
     ./avahi.nix
     ./bluetooth.nix
     ./container.nix
-    # ./dank.nix
     ./fish.nix
     ./gaming.nix
     ./greeter.nix
