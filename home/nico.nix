@@ -71,6 +71,7 @@
     kdiff3
     # keepassxc
     kid3
+    kdePackages.kolourpaint
     lazyjournal
     libqalculate
     lsof
