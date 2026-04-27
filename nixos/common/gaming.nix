@@ -23,7 +23,6 @@ in {
     environment.systemPackages = with pkgs; [
       dualsensectl
       protonup-rs
-      gamescope-wsi # HDR won't work without this
     ];
   };
 }
