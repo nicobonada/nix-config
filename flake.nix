@@ -10,6 +10,9 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # dnix
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";

@@ -15,6 +15,7 @@
     ./yubi.nix
     ./royal-kludge.nix
 
+    inputs.determinate.nixosModules.default
     inputs.auto-cpufreq.nixosModules.default
     inputs.niri-nix.nixosModules.default
   ];
