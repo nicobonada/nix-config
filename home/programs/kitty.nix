@@ -15,6 +15,9 @@
       scrollback_pager_history_size = 20;  # size is in MB
 
       window_margin_width = 1;
+
+      background_opacity = 0.65;
+      background_blur = 1;
     };
 
     themeFile = "kanagawabones";
