@@ -19,8 +19,6 @@
     supportedFilesystems = [ "zfs" ];
     initrd.supportedFilesystems = ["zfs"]; # boot from zfs
     zfs.forceImportRoot = false;    # recommended setting starting with 26.11
-
-    kernelPackages = pkgs.linuxPackages_zen;
   };
 
   networking.hostId = "23c95f57";
