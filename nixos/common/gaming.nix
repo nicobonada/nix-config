@@ -23,6 +23,8 @@ in {
     environment.systemPackages = with pkgs; [
       dualsensectl
       protonup-rs
+
+      pulseaudio  # steam seems to rely on pactl being available
     ];
   };
 }
