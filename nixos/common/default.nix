@@ -17,7 +17,6 @@
 
     inputs.determinate.nixosModules.default
     inputs.auto-cpufreq.nixosModules.default
-    inputs.niri-nix.nixosModules.default
   ];
 
   nix = {
@@ -87,7 +86,6 @@
     smartd.enable = true;
 
     journald.extraConfig = "SystemMaxUse=500M";
-
     fstrim.enable = true;
 
     upower.enable = true;
@@ -118,7 +116,16 @@
     auto-cpufreq.enable = true;
 
     niri.enable = true;
-    niri.withUWSM = true;
+
+    uwsm = {
+      enable = true;
+      waylandCompositors.niri = {
+        prettyName = "Niri";
+        comment = "Niri (UWSM)";
+        # Prefer the current-system path so it always matches the installed binary
+        binPath = "/run/current-system/sw/bin/niri-session";
+      };
+    };
   };
 
   hardware.i2c.enable = true; # used for external monitor brightness control
