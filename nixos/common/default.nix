@@ -16,6 +16,7 @@
     ./royal-kludge.nix
 
     inputs.auto-cpufreq.nixosModules.default
+    inputs.niri-nix.nixosModules.default
   ];
 
   nix = {
