@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./toggle-audio-profile.nix ];
+  imports = [ 
+    ./toggle-audio-profile.nix
+    ./cycle-audio-profile.nix
+  ];
 
   security.rtkit.enable = true;
 
