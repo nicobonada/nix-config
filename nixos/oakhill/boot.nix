@@ -4,6 +4,7 @@
     loader = {
       # Use the systemd-boot EFI boot loader.
       systemd-boot.enable = true;
+      systemd-boot.memtest86.enable = true;
       efi.canTouchEfiVariables = true;
     };
     kernelModules = [ "nct6775" ];         # from lm_sensors
