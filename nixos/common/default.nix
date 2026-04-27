@@ -114,8 +114,8 @@
 
     auto-cpufreq.enable = true;
 
-    programs.niri.enable = true;
-    programs.niri.withUWSM = true;
+    niri.enable = true;
+    niri.withUWSM = true;
   };
 
   hardware.i2c.enable = true; # used for external monitor brightness control

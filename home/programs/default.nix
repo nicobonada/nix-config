@@ -9,7 +9,7 @@
     ./nvim.nix
     ./obs.nix
 
-    ./dank
+    ./gui
     ./fish
     ./git
   ];
