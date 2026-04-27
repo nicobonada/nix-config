@@ -7,9 +7,10 @@
     ./avahi.nix
     ./bluetooth.nix
     ./container.nix
-    ./dank.nix
+    # ./dank.nix
     ./fish.nix
     ./gaming.nix
+    ./greeter.nix
     ./keyring.nix
     ./sound.nix
     ./yubi.nix
@@ -112,6 +113,9 @@
     wireshark.package = pkgs.wireshark;
 
     auto-cpufreq.enable = true;
+
+    programs.niri.enable = true;
+    programs.niri.withUWSM = true;
   };
 
   hardware.i2c.enable = true; # used for external monitor brightness control
