@@ -102,7 +102,6 @@
       // startup desktop apps
       spawn-at-startup "kitty"
       spawn-at-startup "zen"
-      spawn-at-startup "discord"
       spawn-at-startup "trilium"
 
       gestures { hot-corners { off; }; }
@@ -229,7 +228,6 @@
         Ctrl+XF86Launch1 { screenshot-screen; }
         Print { screenshot; }
         XF86Launch1 { screenshot; }
-        Alt+Ctrl+Delete hotkey-overlay-title="Process Manager" { spawn "kitten" "quick-access-terminal" "--instance-group" "proc" "dgop"; }
         Mod+Shift+E { spawn "sh" "-c" "uwsm" "stop"; }
         Super+A hotkey-overlay-title="Switch audio device" { spawn "cycle-audio-profile"; }
         Super+O hotkey-overlay-title="Launch Zen Browser" { spawn "zen"; }
@@ -274,11 +272,6 @@
       window-rule {
         match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
         default-floating-position x=10 y=10 relative-to="bottom-right"
-      }
-
-      window-rule {
-        match app-id="discord"
-        default-column-width { proportion 0.375000; }
       }
 
       // Noctalia settings
