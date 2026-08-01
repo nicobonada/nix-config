@@ -20,36 +20,32 @@
   ];
 
   nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
+    # Make nix3 commands consistent with this flake's inputs
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
-      # Enable flakes and new 'nix' command
       experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
       auto-optimise-store = true;
 
       trusted-users = [ "root" "@wheel" ];
+
+      extra-substituters = [
+        "https://cache.numtide.com"
+        "https://noctalia.cachix.org"
+      ];
+      extra-trusted-public-keys = [
+        "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+      ];
     };
   };
 
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
   i18n = {
     defaultLocale = "en_CA.UTF-8";
     extraLocaleSettings = { LC_COLLATE = "C.UTF-8"; };
   };
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.extraUsers.nico = {
     isNormalUser = true;
     extraGroups = [
@@ -63,7 +59,7 @@
   environment.variables.EDITOR = "nvim";
 
   environment.systemPackages = with pkgs; [
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    neovim
     wget
     git
     file
@@ -77,26 +73,16 @@
 
   services = {
     printing.enable = true;
-
-    # Enable the OpenSSH daemon.
     openssh.enable = true;
-
     gvfs.enable = true;
-
     locate.enable = true;
-
     smartd.enable = true;
-
     journald.extraConfig = "SystemMaxUse=500M";
     fstrim.enable = true;
-
     upower.enable = true;
     udisks2.enable = true;
-
     fwupd.enable = true;
-
     chrony.enable = true;
-
     tailscale.enable = true;
     tailscale.useRoutingFeatures = "client"; # needed for mullvad exit node
     resolved.enable = true; # needed to fix resume issues with tailscale dns settings

@@ -1,4 +1,4 @@
-{ inputs, lib, config, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./fonts.nix
@@ -22,9 +22,6 @@
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
-
-
-  xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
 
   xdg.configFile."uwsm/env".text = /* bash */ ''
     export APP2UNIT_TYPE=service

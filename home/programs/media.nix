@@ -1,44 +1,46 @@
 { pkgs, ... }:
 {
-  programs.mpv = {
-    enable = true;
-    config = {
-      profile = "gpu-hq";
-      video-sync = "display-resample";
-      interpolation = "";
-      no-hidpi-window-scale = "";
+  programs = {
+    mpv = {
+      enable = true;
+      config = {
+        profile = "gpu-hq";
+        video-sync = "display-resample";
+        interpolation = "";
+        no-hidpi-window-scale = "";
 
-      audio-display = false;
-      term-osd-bar = true;
-      term-osd-bar-chars = "[=>-]";
+        audio-display = false;
+        term-osd-bar = true;
+        term-osd-bar-chars = "[=>-]";
+      };
+
+      bindings = {
+        "Alt+="  = "add video-zoom 0.1";    # zoom in
+        "ctrl+=" = "add audio-delay 0.100"; # change audio/video sync by delaying the audio
+      };
+
+      scripts = with pkgs.mpvScripts; [
+        #uosc
+        modernz
+        thumbfast
+      ];
     };
 
-    bindings = {
-      "Alt+="  = "add video-zoom 0.1";    # zoom in
-      "ctrl+=" = "add audio-delay 0.100"; # change audio/video sync by delaying the audio
+    obs-studio = {
+      enable = true;
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-vaapi #optional AMD hardware acceleration
+        obs-gstreamer
+        obs-vkcapture
+      ];
     };
 
-    scripts = with pkgs.mpvScripts; [
-      #uosc
-      modernz
-      thumbfast
-    ];
+    yt-dlp.enable = true;
   };
-
-  programs.obs-studio = {
-    enable = true;
-
-    plugins = with pkgs.obs-studio-plugins; [
-      wlrobs
-      obs-backgroundremoval
-      obs-pipewire-audio-capture
-      obs-vaapi #optional AMD hardware acceleration
-      obs-gstreamer
-      obs-vkcapture
-    ];
-  };
-
-  programs.yt-dlp.enable = true;
 
   home.packages = with pkgs; [
     beets
@@ -51,4 +53,7 @@
     qbittorrent
     r128gain
   ];
+
+  xdg.configFile."beets/config.yaml".source = ../configs/beets_config.yaml;
+
 }
