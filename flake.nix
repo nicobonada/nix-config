@@ -56,6 +56,9 @@
     };
 
     llm-agents.url = "github:numtide/llm-agents.nix";
+
+    # Portable Grok rules/config
+    grok-config.url = "github:nicobonada/grok-config";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
