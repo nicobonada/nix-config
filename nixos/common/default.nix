@@ -71,6 +71,8 @@
     usbutils
     sshfs
     smartmontools
+
+    libnotify # for fumon
   ];
 
   services = {
@@ -127,6 +129,9 @@
       };
     };
   };
+
+  # Enable packaged fumon.service from uwsm (failed-unit notifications)
+  systemd.user.targets.graphical-session.wants = [ "fumon.service" ];
 
   hardware.i2c.enable = true; # used for external monitor brightness control
 

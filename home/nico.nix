@@ -23,27 +23,6 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  # Needed for fumon from the uwsm package to work properly
-  systemd.user.services.fumon = {
-    Unit = {
-      Description = "Failed unit monitor";
-      Documentation = "man:fumon(1) man:busctl(1)";
-      Requisite = "graphical-session.target";
-      After = "graphical-session.target";
-    };
-
-    Service = {
-      Type = "exec";
-      ExecCondition = "/bin/sh -c 'command -v notify-send > /dev/null'";
-      ExecStart = lib.getExe' pkgs.uwsm "fumon";
-      Restart = "on-failure";
-      Slice = "background-graphical.slice";
-    };
-
-    Install = {
-      WantedBy = [ "graphical-session.target" ];
-    };
-  };
 
   xdg.configFile."beets/config.yaml".source = ./configs/beets_config.yaml;
 
