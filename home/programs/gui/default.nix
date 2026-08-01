@@ -39,7 +39,6 @@
     qview
     rustdesk-flutter
     sgt-puzzles
-    signal-desktop
     ticktick
     trilium-desktop
     zoom-us
