@@ -13,7 +13,7 @@
 
     settings = {
       user.name = "Nicolás Bonada";
-      user.email = "nico.bonada@gmail.com";
+      user.email = "nico@bonada.ca";
       alias.st = "status";
       diff.tool = "kdiff3";
       merge.tool = "kdiff3";
