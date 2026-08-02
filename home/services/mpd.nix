@@ -56,7 +56,6 @@
         "network.target"
         "network-online.target"
         "graphical-session.target"
-        "swaync.service"
       ];
     };
 
