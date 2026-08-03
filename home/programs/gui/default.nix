@@ -48,6 +48,5 @@
     zoom-us
 
     inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
-    inputs.llm-agents.packages.${stdenv.hostPlatform.system}.grok
   ];
 }
