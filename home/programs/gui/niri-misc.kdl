@@ -1,0 +1,30 @@
+// Misc shell settings — spliced into config via niri.nix.
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+prefer-no-csd
+
+cursor {
+  xcursor-theme "Bibata-Modern-Ice"
+  xcursor-size 24
+}
+
+environment {
+  "QT_QPA_PLATFORM" "wayland"
+  "QT_QPA_PLATFORMTHEME" "qt6ct"
+}
+
+gestures { hot-corners { off; }; }
+
+debug {
+  // Allows notification actions and window activation from Noctalia.
+  honor-xdg-activation-with-invalid-serial
+}
+
+// Global blur tuning (per-surface rules live in niri-rules.kdl)
+blur {
+  passes 2        // more passes = stronger blur (default: 3)
+  offset 3.0      // sample distance per pass (default: 3.0)
+  noise 0.03      // grain overlay (default: 0.02)
+  saturation 1.0  // color saturation boost (default: 1.5)
+}

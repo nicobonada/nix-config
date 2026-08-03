@@ -1,0 +1,20 @@
+// Input devices — included from niri.nix.
+
+input {
+  keyboard {
+    xkb {
+      options "compose:caps"
+    }
+
+    repeat-delay 250
+    repeat-rate 40
+  }
+
+  touchpad {
+    tap
+    tap-button-map "left-middle-right"
+  }
+
+  focus-follows-mouse
+  warp-mouse-to-focus
+}

@@ -1,0 +1,75 @@
+// Window and layer rules for niri — included from niri.nix.
+
+// Default: tiled, not floating
+window-rule {
+  open-floating false
+}
+
+// Games / gamescope on the ultrawide with VRR
+window-rule {
+  match app-id=r#"steam_app_\d+"#
+  match app-id="^gamescope$"
+
+  open-on-output "LG Electronics LG ULTRAWIDE 501NTDV76274"
+  variable-refresh-rate true
+  geometry-corner-radius 0
+}
+
+// Hatsune Miku Logic Paint S+ tries to run at 1920x800 (?)
+window-rule {
+  match title="MikuLogiS+"
+
+  open-fullscreen false
+}
+
+// Terminal
+window-rule {
+  match app-id="^kitty$"
+  default-column-width { proportion 0.333333; }
+}
+
+// Don't open Steam notifications in the center of the screen
+window-rule {
+  match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+  default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+// Noctalia: rounded corners + clip
+window-rule {
+  // Rounded corners for a modern look.
+  geometry-corner-radius 8
+
+  // Clips window contents to the rounded corner boundaries.
+  clip-to-geometry true
+}
+
+// Floating Noctalia settings window
+window-rule {
+  match app-id="dev.noctalia.Noctalia.Settings"
+  open-floating true
+  default-column-width { fixed 1080; }
+  default-window-height { fixed 920; }
+}
+
+// Blurred overview wallpaper (needs [niri/backdrop] in Noctalia)
+layer-rule {
+  match namespace="^noctalia-backdrop"
+  place-within-backdrop true
+}
+
+// Apps: blur without xray
+window-rule {
+  background-effect {
+    blur true
+    xray false
+  }
+}
+
+// Noctalia surfaces: no xray (blur regions come from Noctalia when available)
+layer-rule {
+  match namespace="^noctalia-(bar-[^\"]+|notification|dock|panel|attached-panel|osd)$"
+  background-effect {
+    xray false
+    // blur false
+  }
+}

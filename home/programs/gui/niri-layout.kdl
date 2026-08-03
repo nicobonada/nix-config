@@ -1,0 +1,24 @@
+// Layout defaults — spliced into config via niri.nix.
+
+layout {
+  gaps 8
+
+  struts {
+    left 0
+    right 0
+    top 0
+    bottom 0
+  }
+
+  focus-ring { width 2; }
+
+  preset-column-widths {
+    proportion 0.333333
+    proportion 0.375000
+    proportion 0.500000
+    proportion 0.625000
+    proportion 0.666667
+  }
+
+  center-focused-column "never"
+}

@@ -1,0 +1,32 @@
+// Monitor layout — included from niri.nix.
+
+output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
+  mode "1920x1080@60.000"
+  scale 1
+  position x=731 y=0
+  variable-refresh-rate on-demand=true
+
+  layout {
+    gaps 0
+    focus-ring { off; }
+    border { off; }
+    default-column-width { fixed 1920; }
+  }
+}
+
+output "LG Electronics LG ULTRAWIDE 501NTDV76274" {
+  mode "3440x1440@159.962"
+  scale 1
+  position x=0 y=1080
+  focus-at-startup
+  variable-refresh-rate on-demand=true
+
+  layout {
+    struts {
+      left 8
+      right 8
+      top 10
+      bottom 10
+    }
+  }
+}
