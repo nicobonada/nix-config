@@ -368,11 +368,11 @@
     },
     "grok-config": {
       "locked": {
-        "lastModified": 1785798695,
-        "narHash": "sha256-8rF2giDNvKdoMMGsCZVCFc/eAnccV1H7TV7V4kgSPcg=",
+        "lastModified": 1785847729,
+        "narHash": "sha256-uSYCf4SuVm072lJ6pwSvtqLaurocOctSNoSN/uUBY5A=",
         "owner": "nicobonada",
         "repo": "grok-config",
-        "rev": "86ac13c9da38a942814ab4a114bbc79824a7d4f2",
+        "rev": "c4ea94f2a3e37516888c32b4b4e7c998c837502a",
         "type": "github"
       },
       "original": {
