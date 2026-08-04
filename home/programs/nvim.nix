@@ -53,13 +53,15 @@
 
         # fish-lsp + fish_indent + treesitter; lsp/format follow vim.lsp / enableFormat
         fish.enable = true;
+
+        # yaml-language-server + prettier + treesitter
+        yaml.enable = true;
       };
 
+      # grammars without a languages.* module
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        # fish grammar comes from languages.fish
         kdl
         udev
-        yaml
       ];
 
       ui.noice.enable = true;
@@ -147,10 +149,10 @@
         local cmd = vim.cmd
 
         cmd [[autocmd TextYankPost * silent! lua vim.highlight.on_yank {timeout=300}]]
-        cmd [[autocmd BufEnter * silent! lcd %:p:h:gs/ /\\ /]]
         -- see :he last-position-jump
         cmd [[autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
-        cmd [[autocmd BufEnter *.nix setlocal tabstop=2 shiftwidth=2 softtabstop=2 commentstring=#\ %s]]
+        -- nix indent (commentstring comes from filetype/treesitter)
+        cmd [[autocmd BufEnter *.nix setlocal tabstop=2 shiftwidth=2 softtabstop=2]]
         '';
     };
   };
