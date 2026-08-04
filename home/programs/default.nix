@@ -5,6 +5,7 @@
     ./grok.nix
     ./media.nix
     ./networking.nix
+    ./nix-pkgs-browse.nix
     ./nvim.nix
     ./ssh.nix
 
