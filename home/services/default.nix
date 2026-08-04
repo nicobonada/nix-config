@@ -3,6 +3,7 @@
   imports = [
     ./mpd.nix
     ./music-backup.nix
+    ./path-mirror.nix
   ];
 
   services = {
