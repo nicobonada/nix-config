@@ -2,8 +2,14 @@
 {
   imports = [
     ./abbrs-aliases.nix
-    ./functions.nix
   ];
+
+  # Plain fish under functions/*.fish — easier to read/edit than
+  # programs.fish.functions. Installs to ~/.config/fish/functions/.
+  xdg.configFile."fish/functions" = {
+    source = ./functions;
+    recursive = true;
+  };
 
   programs.fish = {
     enable = true;
