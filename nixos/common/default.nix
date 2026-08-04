@@ -85,7 +85,9 @@
     fwupd.enable = true;
     chrony.enable = true;
     tailscale.enable = true;
-    tailscale.useRoutingFeatures = "client"; # needed for mullvad exit node
+    # "client" keeps exit-node use available (e.g. Mullvad) when you opt in;
+    # do not set a default --exit-node here — leave Mullvad off unless enabled by hand.
+    tailscale.useRoutingFeatures = "client";
     resolved.enable = true; # needed to fix resume issues with tailscale dns settings
   };
 
