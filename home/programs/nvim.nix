@@ -50,10 +50,13 @@
 
         nix.enable    = true;
         nix.lsp.servers = [ "nixd" ];
+
+        # fish-lsp + fish_indent + treesitter; lsp/format follow vim.lsp / enableFormat
+        fish.enable = true;
       };
 
       treesitter.grammars = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-        fish
+        # fish grammar comes from languages.fish
         kdl
         udev
         yaml
