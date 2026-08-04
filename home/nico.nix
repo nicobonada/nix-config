@@ -1,6 +1,7 @@
-{ ... }:
+{ inputs, ... }:
 {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     ./fonts.nix
     ./stylix.nix
     ./programs

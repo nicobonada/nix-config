@@ -1,7 +1,8 @@
-{ lib, ...}:
+{ lib, ... }:
 {
   imports = [
     ./mpd.nix
+    ./music-backup.nix
   ];
 
   services = {

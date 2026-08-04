@@ -17,7 +17,11 @@ Layout: shared system modules in `nixos/common/`, per-host configs under `nixos/
 
 ## Secrets
 
-**No secrets in this repo** (no password hashes, private keys, Tailscale auth keys, or API tokens). SSH keys and enrollment stay on the machines. Git user identity and hostnames in config are intentional.
+Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic92/sops-nix) + age (`secrets/`, `.sops.yaml`).
+
+- Edit: `sops secrets/<file>.yaml` (needs private age key).
+- Private age key is **not** in the repo: `~/.config/sops/age/keys.txt` on each machine that should decrypt (back this key up separately).
+- SSH host keys, Tailscale enrollment, and similar machine bootstrap stay off-repo.
 
 ## Usage
 
