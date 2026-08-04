@@ -14,6 +14,7 @@
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix
+    ./ssh.nix
 
     inputs.determinate.nixosModules.default
     inputs.auto-cpufreq.nixosModules.default
@@ -73,7 +74,7 @@
 
   services = {
     printing.enable = true;
-    openssh.enable = true;
+    # openssh + tailscale --ssh: see ./ssh.nix
     gvfs.enable = true;
     locate.enable = true;
     smartd.enable = true;
