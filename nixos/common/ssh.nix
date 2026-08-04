@@ -13,10 +13,9 @@ in
   services.openssh = {
     enable = true;
     settings = {
-      # Leave passwords on until LAN + key paths are verified on all hosts,
-      # then flip these to false (and KbdInteractiveAuthentication false).
-      PasswordAuthentication = true;
-      KbdInteractiveAuthentication = true;
+      # Keys + Tailscale SSH only. Console/physical login still uses local auth.
+      PasswordAuthentication = false;
+      KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
     };
   };
