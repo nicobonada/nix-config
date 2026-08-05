@@ -59,4 +59,12 @@ in
     # session --cwd (repo root or ~/chat) then execs the real binary.
     package = grokWithSessionCwd;
   };
+
+  # llm-agents.nix ships no shell completions; generate from the real binary
+  # (libexec launcher, not the bwrap bin wrapper) when fish is enabled.
+  xdg.configFile."fish/completions/grok.fish" = lib.mkIf config.programs.fish.enable {
+    source = pkgs.runCommand "grok.fish" { } ''
+      ${realGrok}/libexec/grok/grok-launcher completions fish > $out
+    '';
+  };
 }

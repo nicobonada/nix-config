@@ -7,7 +7,6 @@
     ./avahi.nix
     ./bluetooth.nix
     ./container.nix
-    ./fish.nix
     ./gaming.nix
     ./greeter.nix
     ./keyring.nix
@@ -94,6 +93,8 @@
   programs = {
     nh.enable = true;
     # nh.flake = /home/nico/nix-config;
+
+    fish.enable = true;
 
     appimage.enable = true;
     appimage.binfmt = true;
