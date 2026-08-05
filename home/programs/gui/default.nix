@@ -18,11 +18,7 @@
   home.packages = with pkgs; [
     # Wayland / session tooling
     qt6Packages.qt6ct
-    # Temporary: scdoc 1.11.5 + broken manpage italics. Upstream fixed;
-    # drop when nixpkgs has the fix.
-    (app2unit.overrideAttrs {
-      patches = [ ../../../patches/app2unit-scdoc-nesting.patch ];
-    })
+    app2unit
     satty
     slurp
     wayscriber
