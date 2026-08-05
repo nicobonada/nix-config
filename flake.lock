@@ -368,17 +368,17 @@
     },
     "grok-config": {
       "locked": {
-        "lastModified": 1785847729,
-        "narHash": "sha256-uSYCf4SuVm072lJ6pwSvtqLaurocOctSNoSN/uUBY5A=",
-        "owner": "nicobonada",
-        "repo": "grok-config",
-        "rev": "c4ea94f2a3e37516888c32b4b4e7c998c837502a",
-        "type": "github"
+        "lastModified": 1785947189,
+        "narHash": "sha256-bcf0PjoBd7MdI7/l/d3B/75R7M2I2yJ/G22weUdShuE=",
+        "ref": "refs/heads/main",
+        "rev": "6f0c7209a0ca271fd74dfecd85aaac4889b4f9ed",
+        "revCount": 37,
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/grok-config.git"
       },
       "original": {
-        "owner": "nicobonada",
-        "repo": "grok-config",
-        "type": "github"
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/grok-config.git"
       }
     },
     "home-manager": {
