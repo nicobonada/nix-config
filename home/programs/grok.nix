@@ -62,9 +62,18 @@ in
 
   # llm-agents.nix ships no shell completions; generate from the real binary
   # (libexec launcher, not the bwrap bin wrapper) when fish is enabled.
+  #
+  # Upstream clap fish omits -f on -a (subcommand) lines, so fish also offers
+  # cwd files next to `login`/`sessions`/… after `grok `. Post-process: add -f
+  # to value-list completions; leave -F path flags alone. Reported via /feedback.
   xdg.configFile."fish/completions/grok.fish" = lib.mkIf config.programs.fish.enable {
-    source = pkgs.runCommand "grok.fish" { } ''
-      ${realGrok}/libexec/grok/grok-launcher completions fish > $out
+    source = pkgs.runCommand "grok.fish" { nativeBuildInputs = [ pkgs.gnused ]; } ''
+      ${realGrok}/libexec/grok/grok-launcher completions fish \
+        | sed -E '
+            / -F/b
+            / -f /b
+            s/ -a / -f -a /
+          ' > $out
     '';
   };
 }
