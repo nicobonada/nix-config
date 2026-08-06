@@ -377,12 +377,12 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "narHash": "sha256-IwGq97M+0YWQBEz083LKhtJZg/lmlEjIFVUbjyNwxCk=",
-        "path": "/home/nico/grok-config",
+        "narHash": "sha256-X0LIHCfRmeRkp+RIv/U/Ahn3K2vPLSMwvjpgSBE5DyU=",
+        "path": "/home/nico/src/grok-config",
         "type": "path"
       },
       "original": {
-        "path": "/home/nico/grok-config",
+        "path": "/home/nico/src/grok-config",
         "type": "path"
       }
     },

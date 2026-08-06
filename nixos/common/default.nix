@@ -92,7 +92,7 @@
 
   programs = {
     nh.enable = true;
-    # nh.flake = /home/nico/nix-config;
+    # nh.flake = /home/nico/src/nix-config;
 
     fish.enable = true;
 

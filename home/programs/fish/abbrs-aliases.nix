@@ -24,7 +24,7 @@
       psg     = "procs";
       rescan  = "nmcli dev wifi rescan";
       zzz     = "systemctl suspend";
-      HH      = "nvim ~/nix-config/home/nico.nix";
+      HH      = "nvim ~/src/nix-config/home/nico.nix";
     };
   };
 }

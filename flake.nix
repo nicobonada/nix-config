@@ -56,7 +56,7 @@
     };
 
     # Project-scoped Grok (not home-manager). Same path on seyruun + oakhill.
-    grok-config.url = "path:/home/nico/grok-config";
+    grok-config.url = "path:/home/nico/src/grok-config";
   };
 
   outputs = { nixpkgs, home-manager, grok-config, ... }@inputs: {
@@ -80,7 +80,7 @@
       };
     };
 
-    # Agent shell only — not on interactive PATH. See ~/grok-config README.
+    # Agent shell only — not on interactive PATH. See ~/src/grok-config README.
     devShells.x86_64-linux.default = grok-config.devShells.x86_64-linux.default;
   };
 }

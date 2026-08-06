@@ -25,22 +25,22 @@ Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic9
 
 ## Usage
 
-Repo expected at `~/nix-config` (`NH_FLAKE` is set in home config). Prefer [nh](https://github.com/nix-community/nh):
+Repo expected at `~/src/nix-config` (`NH_FLAKE` is set in home config). Prefer [nh](https://github.com/nix-community/nh):
 
 ```fish
-nh os switch ~/nix-config              # system (this hostname)
-nh os switch --update ~/nix-config     # update inputs, then switch
-nh home switch ~/nix-config            # home-manager
+nh os switch ~/src/nix-config              # system (this hostname)
+nh os switch --update ~/src/nix-config     # update inputs, then switch
+nh home switch ~/src/nix-config            # home-manager
 ```
 
 Fish function `nupd` does system `--update` then home when the network is up.
 
 ## Grok
 
-Not on the global PATH. Project shell only (input `path:/home/nico/grok-config`):
+Not on the global PATH. Project shell only (input `path:/home/nico/src/grok-config`):
 
 ```fish
-cd ~/nix-config   # direnv loads the flake when enabled
+cd ~/src/nix-config   # direnv loads the flake when enabled
 grok
 # or without direnv:
 nix develop
