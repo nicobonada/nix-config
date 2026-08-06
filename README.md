@@ -35,6 +35,18 @@ nh home switch ~/nix-config            # home-manager
 
 Fish function `nupd` does system `--update` then home when the network is up.
 
+## Grok
+
+Not on the global PATH. Project shell only (input `path:/home/nico/grok-config`):
+
+```fish
+cd ~/nix-config
+nix develop
+grok
+```
+
+General / scratch sessions: `cd ~/chat && nix develop` (same flake input).
+
 ## License
 
 [MIT](./LICENSE) — use and adapt freely; no warranty.

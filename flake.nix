@@ -54,9 +54,12 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # Project-scoped Grok (not home-manager). Same path on seyruun + oakhill.
+    grok-config.url = "path:/home/nico/grok-config";
   };
 
-  outputs = { nixpkgs, home-manager, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, grok-config, ... }@inputs: {
     nixosConfigurations = {
       oakhill = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
@@ -76,5 +79,8 @@
         modules = [ ./home/nico.nix ];
       };
     };
+
+    # Agent shell only — not on interactive PATH. See ~/grok-config README.
+    devShells.x86_64-linux.default = grok-config.devShells.x86_64-linux.default;
   };
 }
