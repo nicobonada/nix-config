@@ -12,7 +12,7 @@
 
 binds {
   // ── Noctalia ──────────────────────────────────────────────
-  Mod+Space { spawn-sh "noctalia msg panel-toggle launcher"; }
+  Mod+D     { spawn-sh "noctalia msg panel-toggle launcher"; }
   Mod+N     { spawn-sh "noctalia msg panel-toggle control-center"; }
   Mod+Comma { spawn-sh "noctalia msg settings-toggle"; }
   Mod+X     { spawn-sh "noctalia msg panel-toggle session"; }
@@ -121,7 +121,6 @@ binds {
 
   // ── Window / session ──────────────────────────────────────
   Mod+Q repeat=false { close-window; }
-  Mod+D   repeat=false { toggle-overview; }
   Mod+Tab repeat=false { toggle-overview; }
 
   Mod+Escape      { toggle-keyboard-shortcuts-inhibit; }
