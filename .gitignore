@@ -1,1 +1,4 @@
 result
+
+# direnv / nix-direnv local cache + GC roots
+.direnv/

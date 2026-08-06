@@ -40,12 +40,15 @@ Fish function `nupd` does system `--update` then home when the network is up.
 Not on the global PATH. Project shell only (input `path:/home/nico/grok-config`):
 
 ```fish
-cd ~/nix-config
-nix develop
+cd ~/nix-config   # direnv loads the flake when enabled
 grok
+# or without direnv:
+nix develop
 ```
 
-General / scratch sessions: `cd ~/chat && nix develop` (same flake input).
+Home-manager enables **direnv + nix-direnv** (`home/programs/direnv.nix`). After a home switch, once per clone: `direnv allow`. That GC-roots the shell so store cleans do not always re-fetch Grok.
+
+General / scratch: `cd ~/chat` (same pattern).
 
 ## License
 
