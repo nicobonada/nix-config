@@ -55,8 +55,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Project-scoped Grok (not home-manager). Same path on seyruun + oakhill.
-    grok-config.url = "path:/home/nico/src/grok-config";
+    # Project-scoped Grok (not home-manager). Remote pin — same on every host.
+    grok-config.url = "git+ssh://git@github.com/nicobonada/grok-config.git";
   };
 
   outputs = { nixpkgs, home-manager, grok-config, ... }@inputs: {

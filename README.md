@@ -37,7 +37,7 @@ Fish function `nupd` does system `--update` then home when the network is up.
 
 ## Grok
 
-Not on the global PATH. Project shell only (input `path:/home/nico/src/grok-config`):
+Not on the global PATH. Project shell only (flake input `git+ssh://git@github.com/nicobonada/grok-config.git`):
 
 ```fish
 cd ~/src/nix-config   # direnv loads the flake when enabled

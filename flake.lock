@@ -377,13 +377,17 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "narHash": "sha256-X0LIHCfRmeRkp+RIv/U/Ahn3K2vPLSMwvjpgSBE5DyU=",
-        "path": "/home/nico/src/grok-config",
-        "type": "path"
+        "lastModified": 1786019222,
+        "narHash": "sha256-JDHdDQnfngmrNUsQeesT2p0sZH1ICzvP5QnQLyKaBn0=",
+        "ref": "refs/heads/main",
+        "rev": "0ea2319e3e77e158fd4d4e3a5b05eacc033f43aa",
+        "revCount": 45,
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/grok-config.git"
       },
       "original": {
-        "path": "/home/nico/src/grok-config",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/grok-config.git"
       }
     },
     "home-manager": {
