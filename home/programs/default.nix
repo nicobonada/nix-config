@@ -2,7 +2,7 @@
   imports = [
     ./cli.nix
     ./gui
-    ./grok.nix
+    # Grok is project-scoped (nix develop), not home-manager — see ~/grok-config
     ./media.nix
     ./networking.nix
     ./nix-pkgs-browse.nix
@@ -13,3 +13,4 @@
     ./git
   ];
 }
+

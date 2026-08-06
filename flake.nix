@@ -50,11 +50,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    llm-agents.url = "github:numtide/llm-agents.nix";
-
-    # Portable Grok rules/config (private repo — github: API 404s without a token)
-    grok-config.url = "git+ssh://git@github.com/nicobonada/grok-config.git";
-
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
