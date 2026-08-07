@@ -36,7 +36,7 @@ nh home switch ~/src/nix-config            # home-manager
 
 Fish function `nupd` does system `--update` then home when the network is up.
 
-Agents treat a green preflight as the gate before landing finished units on `main` (switch still needs an explicit OK). Details live in portable Grok rules (`nix-config` / `automation`), not here.
+Agents: green preflight → land on `main`; **switch this host before push** (switch is the live proof). Details in portable Grok rules (`nix-config` / `automation`).
 
 ## Grok
 
