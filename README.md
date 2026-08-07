@@ -34,7 +34,8 @@ nh home switch ~/src/nix-config            # home-manager
 ./scripts/preflight                        # eval both hosts + build OS/home (no activate)
 ```
 
-Fish function `nupd` does system `--update` then home when the network is up.
+- `check-inputs` — home package (`scripts/check-inputs`): poll flake inputs via `nix flake metadata` (default: both repos; `nix` / `lab` / paths; `-v` lists stale inputs). Does not rewrite locks.
+- Fish `nupd` — system `--update` then home when the network is up.
 
 Agents: green preflight → land on `main`; **switch this host before push** (switch is the live proof). Details in portable Grok rules (`nix-config` / `automation`).
 

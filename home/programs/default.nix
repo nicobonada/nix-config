@@ -1,5 +1,6 @@
 {
   imports = [
+    ./check-inputs.nix
     ./cli.nix
     ./direnv.nix
     ./gui
