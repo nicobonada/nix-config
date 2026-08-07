@@ -104,7 +104,8 @@
         wrap          = false;
         whichwrap     = "b,s,<,>,[,]";
         autowrite     = true;
-        cmdheight     = 2;
+        # noice owns the message UI; height 2 just wastes a status row
+        cmdheight     = 1;
         fillchars     = "vert:\ ,diff:─";
         list          = true;
         listchars     = "tab:│\ ,trail:·,extends:…,nbsp:‗";
@@ -146,13 +147,37 @@
         '';
 
       luaConfigRC.autocommands = /* lua */ ''
-        local cmd = vim.cmd
+        local aug = vim.api.nvim_create_augroup("UserNvim", { clear = true })
 
-        cmd [[autocmd TextYankPost * silent! lua vim.highlight.on_yank {timeout=300}]]
-        -- see :he last-position-jump
-        cmd [[autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif]]
+        vim.api.nvim_create_autocmd("TextYankPost", {
+          group = aug,
+          callback = function()
+            vim.highlight.on_yank({ timeout = 300 })
+          end,
+        })
+
+        -- :he last-position-jump
+        vim.api.nvim_create_autocmd("BufReadPost", {
+          group = aug,
+          callback = function()
+            local mark = vim.api.nvim_buf_get_mark(0, '"')
+            local line_count = vim.api.nvim_buf_line_count(0)
+            if mark[1] > 0 and mark[1] <= line_count then
+              pcall(vim.api.nvim_win_set_cursor, 0, mark)
+            end
+          end,
+        })
+
         -- nix indent (commentstring comes from filetype/treesitter)
-        cmd [[autocmd BufEnter *.nix setlocal tabstop=2 shiftwidth=2 softtabstop=2]]
+        vim.api.nvim_create_autocmd("FileType", {
+          group = aug,
+          pattern = "nix",
+          callback = function()
+            vim.opt_local.tabstop = 2
+            vim.opt_local.shiftwidth = 2
+            vim.opt_local.softtabstop = 2
+          end,
+        })
         '';
     };
   };
