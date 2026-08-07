@@ -14,6 +14,8 @@
         pager = "${lib.getExe pkgs.delta}";
         diff-editor = ":builtin";
         diff-formatter = ":git";  # delta needs this
+        # Keep in sync with programs.git merge.tool (jj has built-in recipes for common tools).
+        merge-editor = config.programs.git.settings.merge.tool;
       };
 
       template-aliases = {
