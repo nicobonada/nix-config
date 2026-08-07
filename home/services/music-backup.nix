@@ -32,7 +32,7 @@ let
       #   - optional but expected: ~/.config/beets/library.db (sqlite-snapshotted
       #     into XDG data before restic; missing DB is a warning only)
       #   - network to Backblaze
-      # Separate from pve rclone → nico-homelab-proxmox-backup (VM dumps).
+      # Separate from hypervisor VM dumps (different B2 bucket / job).
       set -euo pipefail
 
       env_file=${lib.escapeShellArg envFile}
