@@ -166,8 +166,10 @@ def label_for(path: Path) -> str:
 
 
 def main() -> int:
+    # writeShellApplication wraps the binary; keep help as "check-inputs", not the store hash.
     ap = argparse.ArgumentParser(
-        description="Check whether flake inputs have updates (no lock changes)."
+        prog="check-inputs",
+        description="Check whether flake inputs have updates (no lock changes).",
     )
     ap.add_argument(
         "flakes",

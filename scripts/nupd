@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""Update flake locks after a check-inputs peek, then activate when local.
+
+Replaces the old fish `nupd`. Same flake args as check-inputs (default: both
+nix-config and homelab).
+
+  1. check-inputs -v  (always shown)
+  2. for each stale flake:
+       - nix-config: nh os switch --update, then home if online; commit lock
+       - homelab / other: nix flake update + commit lock (no remote switch)
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import shutil
+import subprocess
+import sys
+from pathlib import Path
+
+DEFAULTS = {
+    "nix": Path.home() / "src" / "nix-config",
+    "nix-config": Path.home() / "src" / "nix-config",
+    "lab": Path.home() / "src" / "homelab",
+    "homelab": Path.home() / "src" / "homelab",
+}
+
+NIX_CONFIG = DEFAULTS["nix-config"].resolve()
+HOMELAB = DEFAULTS["homelab"].resolve()
+
+
+def resolve_flakes(args: list[str]) -> list[Path]:
+    if not args:
+        return [DEFAULTS["nix"], DEFAULTS["lab"]]
+    out: list[Path] = []
+    for a in args:
+        if a in DEFAULTS:
+            out.append(DEFAULTS[a])
+        else:
+            out.append(Path(a).expanduser())
+    return out
+
+
+def label_for(path: Path) -> str:
+    try:
+        resolved = path.resolve()
+    except OSError:
+        return str(path)
+    if resolved == NIX_CONFIG:
+        return "nix-config"
+    if resolved == HOMELAB:
+        return "homelab"
+    return str(path)
+
+
+def run(cmd: list[str], *, cwd: Path | None = None) -> None:
+    print("+", " ".join(cmd), flush=True)
+    subprocess.run(cmd, cwd=cwd, check=True)
+
+
+def network_full() -> bool:
+    nmcli = shutil.which("nmcli")
+    if not nmcli:
+        return True
+    r = subprocess.run(
+        [nmcli, "networking", "connectivity", "check"],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    return r.stdout.strip() == "full"
+
+
+def commit_lock(flake: Path) -> None:
+    """Record flake.lock only, if jj is available and the lock actually changed."""
+    if not (flake / ".jj").is_dir() and not (flake / ".git").is_dir():
+        print(f"  (no vcs in {flake}; skip lock commit)")
+        return
+
+    if shutil.which("jj") and (flake / ".jj").is_dir():
+        r = subprocess.run(
+            ["jj", "diff", "--name-only"],
+            cwd=flake,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        names = {line.strip() for line in r.stdout.splitlines() if line.strip()}
+        if "flake.lock" not in names:
+            print("  (flake.lock unchanged; nothing to commit)")
+            return
+        run(["jj", "commit", "-m", "flake: update lock", "flake.lock"], cwd=flake)
+        print("  committed flake.lock on wip line")
+        return
+
+    # plain git fallback
+    r = subprocess.run(
+        ["git", "status", "--porcelain", "flake.lock"],
+        cwd=flake,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if not r.stdout.strip():
+        print("  (flake.lock unchanged; nothing to commit)")
+        return
+    run(["git", "add", "flake.lock"], cwd=flake)
+    run(["git", "commit", "-m", "flake: update lock"], cwd=flake)
+    print("  committed flake.lock")
+
+
+def update_nix_config(flake: Path) -> None:
+    run(["nh", "os", "switch", "--update", str(flake)])
+    if network_full():
+        run(["nh", "home", "switch", str(flake)])
+    else:
+        print("skip home switch: network not full (nmcli)")
+    commit_lock(flake)
+
+
+def update_flake_only(flake: Path, *, note: str | None = None) -> None:
+    run(["nix", "flake", "update", "--flake", str(flake)])
+    commit_lock(flake)
+    if note:
+        print(note)
+
+
+def update_one(flake: Path) -> None:
+    label = label_for(flake)
+    print(f"── update {label} ──", flush=True)
+    if not flake.is_dir() or not (flake / "flake.nix").is_file():
+        raise SystemExit(f"not a flake root: {flake}")
+
+    try:
+        resolved = flake.resolve()
+    except OSError:
+        resolved = flake
+
+    if resolved == NIX_CONFIG:
+        update_nix_config(flake)
+    elif resolved == HOMELAB:
+        update_flake_only(
+            flake,
+            note=(
+                "homelab: lock updated + committed if dirty.\n"
+                "  remote OS switch not run — when ready, from a workstation:\n"
+                "  nh os switch . -H homelab --target-host <user@host>"
+            ),
+        )
+    else:
+        update_flake_only(
+            flake,
+            note=f"{label}: lock updated; activate this host yourself if needed.",
+        )
+
+
+def stale_labels(check_stdout: str) -> list[str]:
+    """Parse NO_COLOR check-inputs lines: '✗ label' / '✓ label'."""
+    found: list[str] = []
+    for line in check_stdout.splitlines():
+        if line.startswith("✗ "):
+            # '✗ nix-config' or '✗ nix-config  (error…)'
+            rest = line[2:].strip()
+            label = rest.split()[0] if rest else ""
+            if label:
+                found.append(label)
+    return found
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(
+        prog="nupd",
+        description=(
+            "Peek flake input updates (check-inputs -v), then update + activate "
+            "stale flakes and commit flake.lock."
+        ),
+    )
+    ap.add_argument(
+        "flakes",
+        nargs="*",
+        help="flake roots or aliases: nix, lab (default: both)",
+    )
+    ns = ap.parse_args()
+
+    check = shutil.which("check-inputs")
+    if not check:
+        print("check-inputs not on PATH (home package missing?)", file=sys.stderr)
+        return 2
+
+    flake_args = list(ns.flakes)
+    # Always verbose peek first.
+    env = {**os.environ, "NO_COLOR": "1"}
+    cmd = [check, "-v", *flake_args]
+    print("+", " ".join(cmd), flush=True)
+    r = subprocess.run(cmd, capture_output=True, text=True, env=env, check=False)
+    # Show the report (no color for stable parse; fine in a script log).
+    if r.stdout:
+        print(r.stdout, end="" if r.stdout.endswith("\n") else "\n")
+    if r.stderr:
+        print(r.stderr, end="" if r.stderr.endswith("\n") else "\n", file=sys.stderr)
+
+    if r.returncode == 0:
+        print("all selected flakes up to date; nothing to do")
+        return 0
+    if r.returncode == 2:
+        print("check-inputs failed; aborting update", file=sys.stderr)
+        return 2
+    if r.returncode != 1:
+        print(f"check-inputs exited {r.returncode}; aborting", file=sys.stderr)
+        return r.returncode
+
+    labels = stale_labels(r.stdout)
+    if not labels:
+        print("stale exit but no ✗ lines parsed; aborting", file=sys.stderr)
+        return 2
+
+    # Map labels back to paths (aliases or defaults).
+    paths = resolve_flakes(flake_args)
+    by_label = {label_for(p): p for p in paths}
+
+    for label in labels:
+        path = by_label.get(label)
+        if path is None:
+            # label might be a full path string
+            path = Path(label).expanduser()
+        try:
+            update_one(path)
+        except subprocess.CalledProcessError as e:
+            print(f"update failed for {label}: {e}", file=sys.stderr)
+            return e.returncode or 1
+
+    print("done")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
