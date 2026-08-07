@@ -31,9 +31,12 @@ Repo expected at `~/src/nix-config` (`NH_FLAKE` is set in home config). Prefer [
 nh os switch ~/src/nix-config              # system (this hostname)
 nh os switch --update ~/src/nix-config     # update inputs, then switch
 nh home switch ~/src/nix-config            # home-manager
+./scripts/preflight                        # eval both hosts + build OS/home (no activate)
 ```
 
 Fish function `nupd` does system `--update` then home when the network is up.
+
+Agents treat a green preflight as the gate before landing finished units on `main` (switch still needs an explicit OK). Details live in portable Grok rules (`nix-config` / `automation`), not here.
 
 ## Grok
 

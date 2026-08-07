@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Preflight for nix-config: eval both hosts + home, build this host OS + home.
+# No activation. Exit 0 only if every step succeeds.
+# Agent policy: green preflight gates auto-land (see grok-config rules/nix-config.md).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+cd "$ROOT"
+
+hostname_short="$(hostname -s 2>/dev/null || hostname)"
+diff_mode="${PREFLIGHT_DIFF:-always}" # always|auto|never for nh -d
+
+log() { printf 'preflight: %s\n' "$*"; }
+fail() { printf 'preflight: FAIL: %s\n' "$*" >&2; exit 1; }
+
+log "repo=$ROOT host=$hostname_short"
+
+log "eval nixosConfigurations.oakhill"
+nix eval --raw '.#nixosConfigurations.oakhill.config.system.build.toplevel.drvPath' >/dev/null
+
+log "eval nixosConfigurations.seyruun"
+nix eval --raw '.#nixosConfigurations.seyruun.config.system.build.toplevel.drvPath' >/dev/null
+
+log "eval homeConfigurations.nico"
+nix eval --raw '.#homeConfigurations.nico.activationPackage.drvPath' >/dev/null
+
+log "nh os build (this host)"
+nh os build -d "$diff_mode" "$ROOT"
+
+log "nh home build"
+nh home build -d "$diff_mode" "$ROOT"
+
+log "OK (eval both hosts + home; built OS+home for this machine; no switch)"
