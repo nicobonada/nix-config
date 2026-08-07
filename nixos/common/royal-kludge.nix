@@ -7,6 +7,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    # VIA/hidraw access. Keymap dumps + via-r87 CLI: keyboards/r87pro/
     hardware.keyboard.qmk.enable = true;
 
     services.udev.extraRules = /* udev */ ''
