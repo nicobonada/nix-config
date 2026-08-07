@@ -46,7 +46,16 @@
 
         bash.enable   = true;
         lua.enable    = true;
-        python.enable = true;
+        python = {
+          enable = true;
+          # Astral stack: ty (types) + ruff (lint LSP + format/fix via conform).
+          lsp.servers = [ "ty" "ruff" ];
+          # ruff-fix (safe autofixes) then ruff format — replaces black.
+          format.type = [ "ruff-fix" "ruff" ];
+          # mypy via nvim-lint is redundant next to ty
+          extraDiagnostics.enable = false;
+        };
+
 
         nix.enable    = true;
         nix.lsp.servers = [ "nixd" ];
