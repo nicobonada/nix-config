@@ -1,6 +1,6 @@
 {
   imports = [
-    ./check-inputs.nix
+    ./flake-up.nix
     ./cli.nix
     ./direnv.nix
     ./gui

@@ -34,8 +34,8 @@ nh home switch ~/src/nix-config            # home-manager
 ./scripts/preflight                        # eval both hosts + build OS/home (no activate)
 ```
 
-- `check-inputs` — poll flake inputs via `nix flake metadata` (default: both; `nix` / `lab` / paths; `-v` lists stale). No lock changes.
-- `nupd` — `check-inputs -v`, then for each stale flake: update + activate (nix-config: `nh os/home switch --update`; homelab: lock only, remote switch separate) and `jj commit` `flake.lock` when it moved.
+- `flake-up` / `flake-up check` — report only (✓/✗ + stale input detail; default both, or `nix` / `lab` / paths).
+- `flake-up update` — same report, then confirm and update (nix-config: `nh os/home switch --update`; homelab: lock only — remote switch separate) and `jj commit` `flake.lock`. `-y` / `--yes` skips the prompt.
 
 Agents: green preflight → land on `main`; **switch this host before push** (switch is the live proof). Details in portable Grok rules (`nix-config` / `automation`).
 
