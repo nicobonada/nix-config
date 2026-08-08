@@ -19,6 +19,8 @@
     # Password: sops secrets/trilium.yaml → trilium.document_password (not CHANGE_ME).
     trilium-server = {
       enable = true;
+      # 37841: desktop Electron already uses 37840 for MCP.
+      port = 37841;
       sync.serverHost = "https://nico-notes.pikapod.net";
       bootstrap.enable = true;
     };

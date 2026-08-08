@@ -84,8 +84,13 @@ in
 
     port = mkOption {
       type = types.port;
-      default = 37840;
-      description = "HTTP listen port (MCP at http://HOST:PORT/mcp).";
+      # Desktop Electron also binds 37840 for its in-process server/MCP.
+      # Keep this unit on a different port so both can run (star clients).
+      default = 37841;
+      description = ''
+        HTTP listen port (MCP at http://HOST:PORT/mcp).
+        Default 37841 avoids clashing with trilium-desktop (37840).
+      '';
     };
 
     instanceName = mkOption {
@@ -302,7 +307,8 @@ in
 
             Service = {
               Type = "oneshot";
-              RemainAfterSuccess = true;
+              # Keep unit "active" after success so restart only re-runs join when needed.
+              RemainAfterExit = true;
               ExecStart = lib.getExe bootstrap;
             };
 
