@@ -297,12 +297,19 @@ in
           systemd.user.services.trilium-server-bootstrap = {
             Unit = {
               Description = "Unattended Trilium hub join (setup sync-from-server)";
+              # sops-nix must decrypt trilium/document_password before we join
+              # the hub (first activation otherwise races and skips with "missing
+              # password file").
               After = [
                 "trilium-server.service"
+                "sops-nix.service"
                 "network-online.target"
               ];
               Requires = [ "trilium-server.service" ];
-              Wants = [ "network-online.target" ];
+              Wants = [
+                "network-online.target"
+                "sops-nix.service"
+              ];
             };
 
             Service = {
