@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ ... }:
 {
   imports = [
     ./abbrs-aliases.nix
@@ -19,9 +19,11 @@
       set -gx EDITOR nvim
     '';
 
+    # Prompt: fish_prompt + fish_right_prompt (path / IN_NIX_SHELL).
+    # direnv keeps flake shells in fish; bare `nix develop` may use bash.
     interactiveShellInit = /* fish */ ''
       set -gx LESS "-iRSX"
-      ${lib.getExe pkgs.any-nix-shell} fish --info-right | source
     '';
   };
 }
+
