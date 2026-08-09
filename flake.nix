@@ -57,6 +57,9 @@
 
     # Project-scoped Grok (not home-manager). Remote pin — same on every host.
     grok-config.url = "git+ssh://git@github.com/nicobonada/grok-config.git";
+
+    # fzf flake lock updater (sibling under ~/src; same layout on every host)
+    flake-up.url = "path:/home/nico/src/flake-up";
   };
 
   outputs = { nixpkgs, home-manager, grok-config, ... }@inputs: {
