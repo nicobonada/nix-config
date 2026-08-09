@@ -7,11 +7,10 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGiS0WGMF1xtibs+k+4WjkpPCv0stUUGY7E75Nuh2Fib nico@oakhill"
   ];
 
-  # Profile paths so sudoers tracks the active generation (not a frozen store hash).
-  nopasswdBins = [
-    "/run/current-system/sw/bin/nh"
-    "/run/current-system/sw/bin/nixos-rebuild"
-  ];
+  # Profile path so sudoers tracks the active generation (not a frozen store hash).
+  # Agents use nixos-rebuild (not nh): nh elevates via `sudo env … switch-to-configuration`,
+  # so NOPASSWD on the nh binary never matched activation anyway.
+  nopasswdRebuild = "/run/current-system/sw/bin/nixos-rebuild";
 in
 {
   users.users.nico.openssh.authorizedKeys.keys = nicoKeys;
@@ -28,14 +27,16 @@ in
     };
   };
 
-  # Scoped elevation for local rebuilds (agents / scripts). Not full passwordless sudo.
+  # Scoped elevation for local OS rebuilds (agents / scripts). Not full passwordless sudo.
   security.sudo.extraRules = [
     {
       users = [ "nico" ];
-      commands = map (command: {
-        inherit command;
-        options = [ "NOPASSWD" ];
-      }) nopasswdBins;
+      commands = [
+        {
+          command = nopasswdRebuild;
+          options = [ "NOPASSWD" ];
+        }
+      ];
     }
   ];
 

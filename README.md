@@ -25,13 +25,21 @@ Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic9
 
 ## Usage
 
-Repo expected at `~/src/nix-config` (`NH_FLAKE` is set in home config). Prefer [nh](https://github.com/nix-community/nh):
+Repo expected at `~/src/nix-config` (`NH_FLAKE` is set in home config for convenience).
+
+**Interactive (optional):** [nh](https://github.com/nix-community/nh) for diffs / nicer build output.
 
 ```fish
-nh os switch ~/src/nix-config              # system (this hostname)
-nh os switch --update ~/src/nix-config     # update inputs, then switch
-nh home switch ~/src/nix-config            # home-manager
-./scripts/preflight                        # eval both hosts + build OS/home (no activate)
+nh os switch ~/src/nix-config
+nh home switch ~/src/nix-config
+```
+
+**Agents / scripts** use `nixos-rebuild` and `home-manager` (passwordless OS switch is scoped to `nixos-rebuild` only):
+
+```fish
+sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
+home-manager switch --flake ~/src/nix-config#nico
+./scripts/preflight   # eval both hosts + build OS/home (no activate)
 ```
 
 - `flake-up` — two-pane UI to check/update flake inputs under `~/src` (private: `nicobonada/flake-up`).
