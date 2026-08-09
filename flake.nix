@@ -55,14 +55,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Project-scoped Grok (not home-manager). Remote pin — same on every host.
+    # Wrapped Grok binary + thin HM module (not config.toml). Same pin every host.
     grok-config.url = "git+ssh://git@github.com/nicobonada/grok-config.git";
 
     # Two-pane flake lock updater (private; path checkout optional for hackery)
     flake-up.url = "git+ssh://git@github.com/nicobonada/flake-up.git";
   };
 
-  outputs = { nixpkgs, home-manager, grok-config, ... }@inputs: {
+  outputs = { nixpkgs, home-manager, ... }@inputs: {
     nixosConfigurations = {
       oakhill = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; }; # Pass flake inputs to our config
@@ -82,8 +82,5 @@
         modules = [ ./home/nico.nix ];
       };
     };
-
-    # Agent shell only — not on interactive PATH. See ~/src/grok-config README.
-    devShells.x86_64-linux.default = grok-config.devShells.x86_64-linux.default;
   };
 }

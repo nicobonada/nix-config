@@ -395,11 +395,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1786107456,
-        "narHash": "sha256-h2Thq9rx+VONPyGokUBbQn2pKvH3hst/5Wnh93a1I7o=",
+        "lastModified": 1786248616,
+        "narHash": "sha256-Nq8Rlr9gLF9RdGfVkNic2wJ30Mav2iRUNR5VOTFZ1ag=",
         "ref": "refs/heads/main",
-        "rev": "7a5637b3084e879c7291548211b9ea22b66865d8",
-        "revCount": 56,
+        "rev": "e6f1e3462d2eba6f3e18a46b0646d5d2e4b14833",
+        "revCount": 70,
         "type": "git",
         "url": "ssh://git@github.com/nicobonada/grok-config.git"
       },
@@ -437,11 +437,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1785978111,
-        "narHash": "sha256-SRn4t1trc8GFTo9y4yU8aF6Lg+H5ykHC67QDnBaRwYE=",
+        "lastModified": 1786150519,
+        "narHash": "sha256-cgLgBIsrczZla4Nzw7HZxwBUeOVaZYb3faNacNx+7Hk=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "efa77d0fc9553758c11ddd22274cb39018aabd48",
+        "rev": "d1cd7fbfa68f66a1a549cbb32fbe79916fb5f67d",
         "type": "github"
       },
       "original": {

@@ -4,7 +4,7 @@
     ./cli.nix
     ./direnv.nix
     ./gui
-    # Grok is project-scoped: `nix develop` / direnv (flake input grok-config), not HM
+    ./grok.nix
     ./media.nix
     ./networking.nix
     ./nix-pkgs-browse.nix

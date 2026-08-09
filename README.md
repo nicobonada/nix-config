@@ -38,21 +38,6 @@ nh home switch ~/src/nix-config            # home-manager
 
 Agents: keep work on `wip` (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config` / `automation`).
 
-## Grok
-
-Not on the global PATH. Project shell only (flake input `git+ssh://git@github.com/nicobonada/grok-config.git`):
-
-```fish
-cd ~/src/nix-config   # direnv loads the flake when enabled
-grok
-# or without direnv:
-nix develop
-```
-
-Home-manager enables **direnv + nix-direnv** (`home/programs/direnv.nix`). After a home switch, once per clone: `direnv allow`. That GC-roots the shell so store cleans do not always re-fetch Grok.
-
-General / scratch: `cd ~/src/chat` (same pattern).
-
 ## License
 
 [MIT](./LICENSE) — use and adapt freely; no warranty.
