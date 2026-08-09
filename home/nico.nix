@@ -8,6 +8,9 @@
     ./services
   ];
 
+  # Unfree for *installed* HM packages: flake.nix imports nixpkgs with allowUnfree
+  # (legacyPackages ignores this module option). Ad-hoc nix-shell / nix shell stay
+  # free-by-default so unfree needs an explicit NIXPKGS_ALLOW_UNFREE=1 (warning is intentional).
   nixpkgs.config.allowUnfree = true;
 
   home.username = "nico";

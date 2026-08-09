@@ -11,16 +11,7 @@
   gaming.enable = true;
   royal-kludge.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
-  networking = {
-    hostName = "oakhill";
-    networkmanager.enable = true;
-  };
-
-  time.timeZone = "America/Toronto";
-
-  services.logind.settings.Login.HandlePowerKey = "suspend";
+  networking.hostName = "oakhill";
 
   hardware = {
     graphics.enable32Bit = true;

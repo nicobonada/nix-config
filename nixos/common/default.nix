@@ -41,6 +41,12 @@
     };
   };
 
+  # Shared by oakhill + seyruun (host-specific bits stay in configuration.nix).
+  nixpkgs.config.allowUnfree = true;
+  time.timeZone = "America/Toronto";
+  networking.networkmanager.enable = true;
+  services.logind.settings.Login.HandlePowerKey = "suspend";
+
   i18n = {
     defaultLocale = "en_CA.UTF-8";
     extraLocaleSettings = { LC_COLLATE = "C.UTF-8"; };

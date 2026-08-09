@@ -7,17 +7,9 @@
 
   amd-cpu.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
-  networking = {
-    hostName = "seyruun";
-    networkmanager.enable = true;
-  };
-
-  time.timeZone = "America/Toronto";
+  networking.hostName = "seyruun";
 
   services.logind.settings.Login.HandleLidSwitch = "ignore";
-  services.logind.settings.Login.HandlePowerKey = "suspend";
   systemd.sleep.settings.Sleep = { HibernateDelaySec = "1h"; };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
