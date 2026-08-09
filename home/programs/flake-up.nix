@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 
 {
-  # Package from ~/src/flake-up (path flake input). Rebuild home after Go changes.
+  # Package from flake input flake-up (private git). Bulk update skips determinate.
   home.packages = [
     inputs.flake-up.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];

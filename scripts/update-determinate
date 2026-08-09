@@ -1,0 +1,157 @@
+#!/usr/bin/env bash
+# Bump the determinate flake input to the latest *non-prerelease* GitHub release.
+#
+# Why not `nix flake update determinate` alone?
+#   FlakeHub publishes prereleases (e.g. 3.22.0) under the same SemVer line as
+#   stables. Ranges like `*` / `3` / `3.*` resolve to those. This script only
+#   advances when GitHub marks a release prerelease=false, then pins exactly
+#   `=X.Y.Z` so minors/patches land without hand-picking the number.
+#
+# Usage (from nix-config root, or any cwd — script finds the flake root):
+#   ./scripts/update-determinate           # rewrite pin + flake lock
+#   ./scripts/update-determinate --check   # print pinned vs latest; exit 1 if behind
+#
+# Does not commit, switch, or push. Needs: gh, jq, nix, python3.
+
+set -euo pipefail
+
+usage() {
+  cat <<'EOF'
+Usage: update-determinate [--check]
+
+  --check   Compare flake pin to latest GitHub non-prerelease; exit 1 if behind
+  -h        Help
+
+Default: set determinate.url to =LATEST and run `nix flake update determinate`.
+EOF
+}
+
+mode=update
+case "${1:-}" in
+  "" ) ;;
+  --check ) mode=check ;;
+  -h | --help ) usage; exit 0 ;;
+  * ) echo "unknown arg: $1" >&2; usage >&2; exit 2 ;;
+esac
+
+# Resolve nix-config root (script lives in scripts/).
+script_dir=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+root=$(cd "$script_dir/.." && pwd)
+flake_nix=$root/flake.nix
+flake_lock=$root/flake.lock
+
+if [[ ! -f $flake_nix || ! -f $flake_lock ]]; then
+  echo "update-determinate: expected flake.nix + flake.lock under $root" >&2
+  exit 1
+fi
+
+for cmd in gh jq nix python3; do
+  if ! command -v "$cmd" >/dev/null 2>&1; then
+    echo "update-determinate: missing required command: $cmd" >&2
+    exit 1
+  fi
+done
+
+# Latest non-prerelease, non-draft tag on DeterminateSystems/determinate (primary).
+# nix-installer is the non-NixOS installer — not the pin source for this flake.
+latest=$(
+  gh api repos/DeterminateSystems/determinate/releases \
+    --jq '[.[] | select(.prerelease == false and .draft == false) | .tag_name][0]'
+)
+if [[ -z $latest || $latest == null ]]; then
+  echo "update-determinate: could not resolve latest non-prerelease from GitHub" >&2
+  exit 1
+fi
+latest=${latest#v}
+
+# Locked version from flake.lock URL (.../determinate/3.21.9/...).
+pinned=$(
+  jq -r '
+    .nodes.determinate.locked.url // empty
+    | capture("DeterminateSystems/determinate/(?<v>[0-9]+\\.[0-9]+\\.[0-9]+)")
+    | .v
+  ' "$flake_lock" 2>/dev/null || true
+)
+if [[ -z $pinned ]]; then
+  # Fall back to original URL constraint if lock shape differs.
+  pinned=$(
+    jq -r '
+      .nodes.determinate.original.url // empty
+      | capture("DeterminateSystems/determinate/=?(?<v>[0-9]+\\.[0-9]+\\.[0-9]+)")
+      | .v
+    ' "$flake_lock" 2>/dev/null || true
+  )
+fi
+
+echo "pinned=${pinned:-unknown}  latest_stable=$latest"
+
+if [[ $mode == check ]]; then
+  if [[ $pinned == "$latest" ]]; then
+    echo "up to date (non-prerelease $latest)"
+    exit 0
+  fi
+  # Locked tip may be a FlakeHub prerelease ahead of GitHub "latest stable".
+  echo "not on latest non-prerelease: run ./scripts/update-determinate"
+  exit 1
+fi
+
+if [[ $pinned == "$latest" ]]; then
+  # Still rewrite URL to exact pin form if someone left a range.
+  if grep -q "DeterminateSystems/determinate/=${latest}" "$flake_nix"; then
+    echo "already on $latest; lock URL pin matches"
+    # Ensure lock matches URL even if flake.nix was already correct.
+    nix flake update determinate --flake "$root"
+    exit 0
+  fi
+fi
+
+# Confirm FlakeHub has published this version (GH can lead FlakeHub briefly).
+fh_code=$(
+  curl -sS -o /dev/null -w '%{http_code}' \
+    "https://api.flakehub.com/f/DeterminateSystems/determinate/=${latest}" \
+    || true
+)
+# 307 redirect to pinned tarball is success; 404 means not on FlakeHub yet.
+if [[ $fh_code != 200 && $fh_code != 301 && $fh_code != 302 && $fh_code != 307 ]]; then
+  echo "update-determinate: FlakeHub has no =${latest} yet (HTTP $fh_code); try later" >&2
+  exit 1
+fi
+
+new_url="https://flakehub.com/f/DeterminateSystems/determinate/=${latest}"
+
+# Rewrite only the determinate.url assignment (keep surrounding comments).
+python3 - "$flake_nix" "$new_url" <<'PY'
+import re, sys
+path, new_url = sys.argv[1], sys.argv[2]
+text = open(path, encoding="utf-8").read()
+pat = re.compile(
+    r'(determinate\.url\s*=\s*")https://flakehub\.com/f/DeterminateSystems/determinate/[^"]*(")',
+    re.MULTILINE,
+)
+new, n = pat.subn(rf"\1{new_url}\2", text, count=1)
+if n != 1:
+    sys.stderr.write(
+        "update-determinate: could not find determinate.url FlakeHub assignment in flake.nix\n"
+    )
+    sys.exit(1)
+open(path, "w", encoding="utf-8").write(new)
+print(f"flake.nix: determinate.url -> {new_url}")
+PY
+
+nix flake update determinate --flake "$root"
+
+# Verify lock landed on the intended version.
+locked=$(
+  jq -r '
+    .nodes.determinate.locked.url // empty
+    | capture("DeterminateSystems/determinate/(?<v>[0-9]+\\.[0-9]+\\.[0-9]+)")
+    | .v
+  ' "$flake_lock"
+)
+if [[ $locked != "$latest" ]]; then
+  echo "update-determinate: lock has $locked, expected $latest" >&2
+  exit 1
+fi
+
+echo "ok: determinate locked at $locked"
+echo "next: preflight, then switch OS when ready (determinate is system-scoped)"
