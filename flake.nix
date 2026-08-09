@@ -56,7 +56,8 @@
     };
 
     # Wrapped Grok binary + thin HM module (not config.toml). Same pin every host.
-    grok-config.url = "git+ssh://git@github.com/nicobonada/grok-config.git";
+    # Private definition repo: nicobonada/grok (was grok-config).
+    grok.url = "git+ssh://git@github.com/nicobonada/grok.git";
 
     # Two-pane flake lock updater (private; path checkout optional for hackery)
     flake-up.url = "git+ssh://git@github.com/nicobonada/flake-up.git";

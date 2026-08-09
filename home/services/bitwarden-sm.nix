@@ -12,6 +12,6 @@
     config.sops.secrets."bitwarden_sm/access_token".path;
 
   # Interactive shell: Secrets Manager CLI (not the Password Manager desktop app).
-  # Agent gets the same package via grok-config agent-apps.
+  # Agent gets the same package via Grok definition agent-apps.
   home.packages = [ pkgs.bws ];
 }

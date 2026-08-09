@@ -6,9 +6,9 @@
 }:
 let
   home = config.home.homeDirectory;
-  # Portable agent-definition checkout (today: grok-config). Timer fails
-  # loudly if missing rather than inventing a second copy of the script.
-  agentRepo = "${home}/src/grok-config";
+  # Portable Grok definition checkout. Timer fails loudly if missing rather
+  # than inventing a second copy of the script.
+  agentRepo = "${home}/src/grok";
   workLedger = "${agentRepo}/scripts/work-ledger";
 
   # Thin wrappers so the unit has a real PATH (not agent-apps / not interactive

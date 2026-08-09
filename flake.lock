@@ -91,22 +91,22 @@
     "bun2nix": {
       "inputs": {
         "flake-parts": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "flake-parts"
         ],
         "nixpkgs": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "nixpkgs"
         ],
         "systems": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "systems"
         ],
         "treefmt-nix": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "treefmt-nix"
         ]
@@ -270,7 +270,7 @@
     "flake-parts_2": {
       "inputs": {
         "nixpkgs-lib": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "nixpkgs"
         ]
@@ -385,23 +385,23 @@
         "type": "gitlab"
       }
     },
-    "grok-config": {
+    "grok": {
       "inputs": {
         "llm-agents": "llm-agents",
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1786291166,
-        "narHash": "sha256-MBOZUBUfzB9qPRb9hpFEqGS/IBH00oR1ovAmWSzIyig=",
+        "lastModified": 1786305682,
+        "narHash": "sha256-FH/ZxMD//ujUJc7eB7xNW6s6TmQXOJavw8OKkvdpelg=",
         "ref": "refs/heads/main",
-        "rev": "0eb21f3dc44aa93a8884b8ee0ad58159ff38322a",
-        "revCount": 80,
+        "rev": "b9f78ce25fd2942f85680f6d689a93502d0f9f74",
+        "revCount": 85,
         "type": "git",
-        "url": "ssh://git@github.com/nicobonada/grok-config.git"
+        "url": "ssh://git@github.com/nicobonada/grok.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/nicobonada/grok-config.git"
+        "url": "ssh://git@github.com/nicobonada/grok.git"
       }
     },
     "home-manager": {
@@ -729,7 +729,7 @@
         "auto-cpufreq": "auto-cpufreq",
         "determinate": "determinate",
         "flake-up": "flake-up",
-        "grok-config": "grok-config",
+        "grok": "grok",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_6",
@@ -893,7 +893,7 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "grok-config",
+          "grok",
           "llm-agents",
           "nixpkgs"
         ]
