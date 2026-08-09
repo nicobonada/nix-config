@@ -315,13 +315,17 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "narHash": "sha256-VB8f6clpxWU7qQOhrNHE/xa88B+ZRUeIpEHJCtXmxYk=",
-        "path": "/home/nico/src/flake-up",
-        "type": "path"
+        "lastModified": 1786242156,
+        "narHash": "sha256-1bq0yUqRw6q5A4ojOyNjhpnL5BkTlsHLHOhnnvLcS3o=",
+        "ref": "refs/heads/main",
+        "rev": "42bc00fc54de293d4e84edb6b1dea8e98b39e6ba",
+        "revCount": 5,
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/flake-up.git"
       },
       "original": {
-        "path": "/home/nico/src/flake-up",
-        "type": "path"
+        "type": "git",
+        "url": "ssh://git@github.com/nicobonada/flake-up.git"
       }
     },
     "fromYaml": {

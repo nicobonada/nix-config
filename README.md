@@ -34,7 +34,7 @@ nh home switch ~/src/nix-config            # home-manager
 ./scripts/preflight                        # eval both hosts + build OS/home (no activate)
 ```
 
-- `flake-up` — fzf UI to check/update flake inputs under `~/src` (separate project: `~/src/flake-up`).
+- `flake-up` — two-pane UI to check/update flake inputs under `~/src` (private: `nicobonada/flake-up`).
 
 Agents: keep work on `wip` (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config` / `automation`).
 
