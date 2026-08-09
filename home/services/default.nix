@@ -6,6 +6,7 @@
     ./music-backup.nix
     ./path-mirror.nix
     ./trilium-server.nix
+    ./work-ledger.nix
   ];
 
   services = {
