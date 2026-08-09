@@ -1,6 +1,7 @@
 { lib, ... }:
 {
   imports = [
+    ./bitwarden-sm.nix
     ./mpd.nix
     ./music-backup.nix
     ./path-mirror.nix

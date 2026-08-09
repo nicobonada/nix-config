@@ -77,7 +77,12 @@
 
     homeConfigurations = {
       nico = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        # Instantiate pkgs with allowUnfree so home.nix’s unfree packages (e.g. bws)
+        # work — legacyPackages ignores module nixpkgs.config.
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+          config.allowUnfree = true;
+        };
         extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
         modules = [ ./home/nico.nix ];
       };
