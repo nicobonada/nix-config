@@ -2,6 +2,7 @@
 {
   imports = [
     ./bitwarden-sm.nix
+    ./onepassword-sa.nix
     ./mpd.nix
     ./music-backup.nix
     ./path-mirror.nix

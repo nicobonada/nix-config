@@ -10,6 +10,7 @@
     ./gaming.nix
     ./greeter.nix
     ./keyring.nix
+    ./onepassword.nix
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix
