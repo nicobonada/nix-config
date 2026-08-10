@@ -1,9 +1,8 @@
 // Window and layer rules for niri — included from niri.nix.
-
-// Default: tiled, not floating
-window-rule {
-  open-floating false
-}
+//
+// Do not set a global open-floating false: that overrides niri's auto-float for
+// parented dialogs and fixed-size windows (e.g. 1Password authorize), which
+// then open tiled and shove the strip. Stock default already tiles normal apps.
 
 // Games / gamescope on the ultrawide with VRR
 window-rule {
@@ -54,13 +53,6 @@ window-rule {
 // Satty screenshot annotator
 window-rule {
   match app-id="^com\\.gabm\\.satty$"
-  open-floating true
-}
-
-// 1Password authorize / unlock dialogs only
-// Dialog title is exactly "1Password"; main UI is like "nico - All Items - 1Password"
-window-rule {
-  match app-id="^1password$" title="^1Password$"
   open-floating true
 }
 
