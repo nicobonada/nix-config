@@ -9,6 +9,7 @@
     # CSS generics / browsers (GTK/Qt use stylix.fonts.* directly).
     defaultFonts = {
       sansSerif = [ "Inter" ];
+      serif = [ "Source Serif 4" ];
       monospace = [ "Comic Code Ligatures" ];
       emoji = [ "Noto Color Emoji" ];
     };
@@ -17,6 +18,8 @@
   home.packages = with pkgs; [
     font-awesome_5
     comic-neue
+    # Explicit install so pickers (LibreOffice, etc.) list it; also stylix.fonts.serif.
+    source-serif
     nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-color-emoji
@@ -33,6 +36,11 @@
       sansSerif = {
         package = pkgs.inter;
         name = "Inter";
+      };
+      # Document / CSS serif generic — pairs with Inter.
+      serif = {
+        package = pkgs.source-serif;
+        name = "Source Serif 4";
       };
       # Private desktop font; installed outside nixpkgs.
       monospace.name = "Comic Code Ligatures";
