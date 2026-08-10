@@ -42,7 +42,12 @@
       };
 
       "*" = {
+        # 1Password SSH agent (desktop app → Settings → Developer → SSH agent)
+        IdentityAgent = "~/.1password/agent.sock";
         IdentityFile = "~/.ssh/id_ed25519";
+        # With IdentitiesOnly=yes, only this IdentityFile is offered even if the
+        # agent has more keys. Point IdentityFile at a 1Password-managed key’s
+        # public path (or set IdentitiesOnly=no) if you need agent-only keys.
         IdentitiesOnly = "yes";
         UserKnownHostsFile = "~/.ssh/known_hosts";
         HashKnownHosts = "no";
