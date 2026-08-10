@@ -57,6 +57,13 @@ window-rule {
   open-floating true
 }
 
+// 1Password authorize / unlock dialogs only
+// Dialog title is exactly "1Password"; main UI is like "nico - All Items - 1Password"
+window-rule {
+  match app-id="^1password$" title="^1Password$"
+  open-floating true
+}
+
 // Blurred overview wallpaper (needs [niri/backdrop] in Noctalia)
 layer-rule {
   match namespace="^noctalia-backdrop"
