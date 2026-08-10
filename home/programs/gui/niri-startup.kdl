@@ -1,8 +1,5 @@
 // Session startup — included from niri.nix.
 
-// Shell / bar
-spawn-at-startup "noctalia"
-
 // Background and tray (host-gated)
 spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- solaar -w hide"
 spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
