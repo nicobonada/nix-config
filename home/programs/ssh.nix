@@ -42,13 +42,12 @@
       };
 
       "*" = {
-        # 1Password SSH agent (desktop app → Settings → Developer → SSH agent)
+        # 1Password SSH agent only — no private/public key files under ~/.ssh/.
+        # Desktop: Settings → Developer → SSH agent. Keys live in 1Password vault.
         IdentityAgent = "~/.1password/agent.sock";
-        IdentityFile = "~/.ssh/id_ed25519";
-        # With IdentitiesOnly=yes, only this IdentityFile is offered even if the
-        # agent has more keys. Point IdentityFile at a 1Password-managed key’s
-        # public path (or set IdentitiesOnly=no) if you need agent-only keys.
-        IdentitiesOnly = "yes";
+        # Offer agent identities (IdentitiesOnly=yes would require a local
+        # IdentityFile, which we intentionally do not keep on disk).
+        IdentitiesOnly = "no";
         UserKnownHostsFile = "~/.ssh/known_hosts";
         HashKnownHosts = "no";
         # Convenient on a home LAN; pin hosts and switch to "yes" if you want.

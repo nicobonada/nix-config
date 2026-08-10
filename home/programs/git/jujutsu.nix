@@ -1,12 +1,45 @@
 { config, pkgs, lib, ... }:
+let
+  git = config.programs.git;
+  gitSigning = git.signing;
+  # HM: format is "ssh" | "openpgp" | …; jj backends are gpg | gpgsm | ssh | none.
+  jjSigningBackend =
+    if gitSigning.format == "ssh" then
+      "ssh"
+    else if gitSigning.format == "openpgp" then
+      "gpg"
+    else
+      "none";
+  # Derive jj signing from programs.git.signing (key + signer once).
+  jjSigning =
+    if gitSigning.key == null || gitSigning.format == null then
+      null
+    else
+      {
+        backend = jjSigningBackend;
+        behavior = "own";
+        key = gitSigning.key;
+      }
+      // lib.optionalAttrs (gitSigning.format == "ssh" && gitSigning.signer != null) {
+        backends.ssh.program = gitSigning.signer;
+      }
+      // lib.optionalAttrs (gitSigning.format == "openpgp" && gitSigning.signer != null) {
+        backends.gpg.program = gitSigning.signer;
+      };
+in
 {
   programs.jujutsu = {
     enable = true;
     settings = {
       user = {
-        name = config.programs.git.settings.user.name;
-        email = config.programs.git.settings.user.email;
+        name = git.settings.user.name;
+        email = git.settings.user.email;
       };
+
+      # Single source of truth: programs.git.signing (see git/default.nix).
+      # behavior=own: sign commits we author. git.sign-on-push follows signByDefault.
+      signing = lib.mkIf (jjSigning != null) jjSigning;
+      git.sign-on-push = gitSigning.signByDefault == true;
 
       ui = {
         default-command = "status";
@@ -15,7 +48,8 @@
         diff-editor = ":builtin";
         diff-formatter = ":git";  # delta needs this
         # Keep in sync with programs.git merge.tool (jj has built-in recipes for common tools).
-        merge-editor = config.programs.git.settings.merge.tool;
+        merge-editor = git.settings.merge.tool;
+        show-cryptographic-signatures = gitSigning.signByDefault == true;
       };
 
       template-aliases = {
