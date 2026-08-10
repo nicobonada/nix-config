@@ -1,6 +1,6 @@
 {
   imports = [
-    ./flake-up.nix
+    ./flake-status.nix
     ./cli.nix
     ./direnv.nix
     ./gui

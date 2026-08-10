@@ -42,8 +42,8 @@ home-manager switch --flake ~/src/nix-config#nico
 ./scripts/preflight   # eval both hosts + build OS/home (no activate)
 ```
 
-- `flake-up` — two-pane UI to check/update flake inputs under `~/src` (private: `nicobonada/flake-up`). Skips `determinate` on purpose.
-- `scripts/update-determinate` — bump Determinate Nix to the latest GitHub **non-prerelease** (auto minor/patch pin); not via flake-up.
+- `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
+- `scripts/update-determinate` — bump Determinate Nix to the latest GitHub **non-prerelease** (auto minor/patch pin).
 
 Agents: keep work on `wip` (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config` / `automation`).
 

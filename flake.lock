@@ -310,22 +310,22 @@
         "type": "github"
       }
     },
-    "flake-up": {
+    "flake-status": {
       "inputs": {
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1786316641,
-        "narHash": "sha256-46FHZUxUDv0YISvfmQ04S+Jc6KJWGKfKJS7UPbualxE=",
-        "ref": "refs/heads/main",
-        "rev": "4e2ea23ea6858dbac322a014c4a15b7d1477d46f",
-        "revCount": 6,
-        "type": "git",
-        "url": "ssh://git@github.com/nicobonada/flake-up.git"
+        "lastModified": 1786395753,
+        "narHash": "sha256-z5H4Wt2v2ULWds9xi491yrOVnR/3ANaC0cYT1OTfaXA=",
+        "owner": "nicobonada",
+        "repo": "flake-status",
+        "rev": "4d8f548c7b56f52564b42efc0cca940fbc6d2a70",
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/nicobonada/flake-up.git"
+        "owner": "nicobonada",
+        "repo": "flake-status",
+        "type": "github"
       }
     },
     "fromYaml": {
@@ -732,7 +732,7 @@
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
         "determinate": "determinate",
-        "flake-up": "flake-up",
+        "flake-status": "flake-status",
         "grok": "grok",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",

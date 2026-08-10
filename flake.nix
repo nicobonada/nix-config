@@ -8,7 +8,6 @@
     # Determinate Nix (stay on DetSys; not Lix/CppNix). Exact non-prerelease pin.
     # FlakeHub `*` / `3` can resolve to GitHub prereleases — do not float blindly.
     # New 3.x minors/patches: run scripts/update-determinate (rewrites pin + lock).
-    # flake-up bulk-updates skip this input on purpose.
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/=3.21.9";
 
     # Home manager
@@ -62,8 +61,8 @@
     # Private definition repo: nicobonada/grok (was grok-config).
     grok.url = "git+ssh://git@github.com/nicobonada/grok.git";
 
-    # Two-pane flake lock updater (private; path checkout optional for hackery)
-    flake-up.url = "git+ssh://git@github.com/nicobonada/flake-up.git";
+    # Status dashboard for flakes under ~/src (public; read-only TUI)
+    flake-status.url = "github:nicobonada/flake-status";
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs: {
