@@ -2,8 +2,7 @@
 {
   imports = [
     inputs.sops-nix.homeManagerModules.sops
-    ./fonts.nix
-    ./stylix.nix
+    ./style.nix
     ./programs
     ./services
   ];
