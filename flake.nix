@@ -81,8 +81,8 @@
 
     homeConfigurations = {
       nico = home-manager.lib.homeManagerConfiguration {
-        # Instantiate pkgs with allowUnfree so home.nix’s unfree packages (e.g. bws)
-        # work — legacyPackages ignores module nixpkgs.config.
+        # Instantiate pkgs with allowUnfree so home.nix’s unfree packages work —
+        # legacyPackages ignores module nixpkgs.config.
         pkgs = import nixpkgs {
           system = "x86_64-linux";
           config.allowUnfree = true;
