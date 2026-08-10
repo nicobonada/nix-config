@@ -31,10 +31,11 @@ let
       $out/share/1password/1password-mcp
   '';
 
-  # Grok MCP host still uses LSP-style Content-Length framing; current MCP
-  # stdio (and 1Password) use newline-delimited JSON-RPC. That mismatch is a
-  # Grok bug — not 1Password. Keep a seat-local bridge until Grok speaks NDJSON.
-  # Canonical setgid binary remains /run/wrappers/bin/1password-mcp (PR name).
+  # Thin bridge around the setgid MCP binary:
+  #   - Always spawn /run/wrappers/bin/1password-mcp (peer GID checks).
+  #   - Auto-detect host framing (NDJSON vs legacy Content-Length). Current
+  #     Grok Build uses rmcp AsyncRwTransport → NDJSON; older notes that Grok
+  #     spoke Content-Length were wrong and caused 30–60s startup timeouts.
   onePasswordMcpForGrok = pkgs.writeShellApplication {
     name = "1password-mcp-grok";
     runtimeInputs = [ pkgs.python3 ];
