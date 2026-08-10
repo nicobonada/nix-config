@@ -4,11 +4,19 @@
   # Kitty font/theme stay in programs/gui/kitty.nix — not managed here.
   imports = [ inputs.stylix.homeModules.stylix ];
 
-  fonts.fontconfig.enable = true;
+  fonts.fontconfig = {
+    enable = true;
+    # CSS generics / browsers (GTK/Qt use stylix.fonts.* directly).
+    defaultFonts = {
+      sansSerif = [ "Inter" ];
+      monospace = [ "Comic Code Ligatures" ];
+      emoji = [ "Noto Color Emoji" ];
+    };
+  };
 
   home.packages = with pkgs; [
     font-awesome_5
-    inter
+    comic-neue
     nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-color-emoji
@@ -21,17 +29,18 @@
     polarity = "dark";
 
     fonts = {
+      # UI chrome (GTK/Qt, fontconfig sans-serif / system-ui).
       sansSerif = {
-        package = pkgs.comic-neue;
-        name = "Comic Neue";
+        package = pkgs.inter;
+        name = "Inter";
       };
       # Private desktop font; installed outside nixpkgs.
       monospace.name = "Comic Code Ligatures";
 
       sizes = {
         # GTK + Qt UI text (one knob). Terminal size is kitty's own setting.
-        applications = 14;
-        desktop = 14;
+        applications = 12;
+        desktop = 12;
       };
     };
 
