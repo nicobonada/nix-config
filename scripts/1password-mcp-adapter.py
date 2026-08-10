@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
-"""Bridge Grok (Content-Length MCP) ↔ official 1password-mcp (NDJSON lines).
+"""Bridge Grok (Content-Length) ↔ MCP stdio NDJSON (1password-mcp).
 
-The app-shipped 1password-mcp speaks newline-delimited JSON-RPC. Grok's MCP
-host uses Content-Length framing. Without this bridge the child exits on
-initialize and Grok reports "connection failed".
+Current MCP stdio transport is newline-delimited JSON-RPC. 1Password follows
+that. Grok's host still uses LSP-style Content-Length frames — a Grok bug.
+This adapter is a local workaround until Grok speaks NDJSON; it is not needed
+for Codex/Cursor/other compliant clients.
+
+Expects ONEPASSWORD_MCP_RAW to point at the setgid binary
+(/run/wrappers/bin/1password-mcp after nixos/1password-gui MCP wrapper).
 """
 from __future__ import annotations
 
@@ -41,11 +45,19 @@ def read_frame(stream) -> bytes | None:
 def write_frame(stream, body: bytes) -> None:
     stream.write(f"Content-Length: {len(body)}\r\n\r\n".encode() + body)
     stream.flush()
+    # Extra flush for nested TextIO / pipe hosts (Grok).
+    try:
+        sys.stdout.flush()
+    except Exception:
+        pass
 
 
 def main() -> int:
-    # Prefer explicit binary; fall back to PATH (must not recurse into this wrapper).
-    binary = os.environ.get("ONEPASSWORD_MCP_RAW", "1password-mcp-raw")
+    # Prefer setgid wrapper path; never spawn a PATH name that might re-enter
+    # this adapter (e.g. a mis-named system package).
+    binary = os.environ.get(
+        "ONEPASSWORD_MCP_RAW", "/run/wrappers/bin/1password-mcp"
+    )
     child = subprocess.Popen(
         [binary],
         stdin=subprocess.PIPE,
