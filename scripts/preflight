@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Preflight for nix-config: eval both hosts + home, build this host OS + home.
 # No activation. Exit 0 only if every step succeeds.
-# Agent policy: green preflight gates switch/publish claims (see grok-config rules/nix-config.md).
+# Agent policy: green preflight gates switch/publish claims (see Grok rules/nix-config.md).
 # Agents use nixos-rebuild + home-manager (not nh).
 set -euo pipefail
 
