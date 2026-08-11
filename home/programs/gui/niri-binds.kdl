@@ -135,6 +135,10 @@ binds {
   Mod+W      hotkey-overlay-title="Volume Control"      {
     spawn-sh "kitten quick-access-terminal --instance-group vol wiremix";
   }
+  // Optional gaming session: quit desktop Steam, restart under gamescope -e
+  Mod+Shift+S hotkey-overlay-title="Steam under gamescope" {
+    spawn "steam-gamescope";
+  }
 
   // ── Screenshots (Print kept as secondary if the key is reachable) ──
   Mod+S       hotkey-overlay-title="Screenshot region"  { screenshot; }
