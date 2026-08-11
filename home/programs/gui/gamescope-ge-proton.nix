@@ -3,11 +3,14 @@
 # Steam compatibility tool: gamescope wrapping the newest GE-Proton from
 # protonup-rs (sibling dirs under compatibilitytools.d/).
 #
-# In Steam: Settings → Compatibility → set default (or per-game) to
-# "Gamescope + GE-Proton". Fully quit + reopen Steam after first install.
+# Order must be:  gamescope (host) → SteamLinuxRuntime → GE-Proton → game
+# If gamescope runs *inside* pressure-vessel (Steam’s default when the tool
+# require_tool_appid pulls SLR first), Vulkan/DRI break and games die immediately.
 #
-# Only Windows titles via Steam Play (same scope as GE-Proton). Native Linux
-# builds need per-game launch options if you want gamescope.
+# In Steam: Settings → Compatibility → "Gamescope + GE-Proton".
+# Fully quit + reopen Steam after install or toolmanifest changes.
+#
+# Windows / Steam Play only. Native Linux titles need launch options for gamescope.
 let
   width = "3440";
   height = "1440";
@@ -36,13 +39,13 @@ in
     }
   '';
 
-  # Match GE-Proton so Steam still pulls the same SLR / session layer.
+  # No require_tool_appid: Steam must NOT wrap us in SLR first.
+  # We invoke SteamLinuxRuntime_4 ourselves *inside* gamescope for game launches.
   home.file."${toolDir}/toolmanifest.vdf".text = ''
     "manifest"
     {
       "version" "2"
       "commandline" "/proton %verb%"
-      "require_tool_appid" "4183110"
       "use_sessions" "1"
       "compatmanager_layer_name" "proton"
     }
@@ -69,18 +72,28 @@ in
         exit 1
       fi
 
+      steam_root="''${STEAM_COMPAT_CLIENT_INSTALL_PATH:-}"
+      if [ -z "$steam_root" ]; then
+        steam_root="''${HOME}/.local/share/Steam"
+      fi
+      slr_entry="''${steam_root}/steamapps/common/SteamLinuxRuntime_4/_v2-entry-point"
+      if [ ! -x "$slr_entry" ]; then
+        echo "gamescope-GE: missing SteamLinuxRuntime_4 entry point: $slr_entry" >&2
+        echo "Install/update \"Steam Linux Runtime 4.0\" from Steam, then retry." >&2
+        exit 1
+      fi
+
       width=${width}
       height=${height}
       refresh=${refresh}
 
-      # Steam invokes this tool for *every* Proton verb, including install-script
-      # helpers (iscriptevaluator.exe via `run`). Nesting those in gamescope
-      # hangs the "LAUNCHING…" UI forever. Only wrap the real game launch.
+      # Steam invokes this tool for every Proton verb. Install-script helpers use
+      # `run` (e.g. iscriptevaluator.exe) — never nest those in gamescope.
       verb="''${1:-}"
       case "$verb" in
         waitforexitandrun)
           shift
-          # Optional: GAMESCOPE_EXTRA_ARGS='--hdr-enabled' …
+          # Host gamescope → SLR → GE-Proton → game
           # shellcheck disable=SC2086
           exec gamescope \
             -f \
@@ -90,10 +103,13 @@ in
             --force-grab-cursor \
             ''${GAMESCOPE_EXTRA_ARGS:-} \
             -- \
+            "$slr_entry" --verb=waitforexitandrun -- \
             "$ge_proton/proton" waitforexitandrun "$@"
           ;;
         *)
-          exec "$ge_proton/proton" "$@"
+          # Keep SLR for non-game verbs (same as stock GE-Proton dependency).
+          exec "$slr_entry" --verb="$verb" -- \
+            "$ge_proton/proton" "$@"
           ;;
       esac
     '';
