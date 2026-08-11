@@ -2,7 +2,7 @@
 let
   # Absolute path so nvim can spawn Grok even if PATH is thin (GUI launch).
   # Uses SuperGrok OAuth via ~/.grok/auth.json — not the metered XAI_API_KEY.
-  grokBin = lib.getExe inputs.grok.packages.${pkgs.system}.grok;
+  grokBin = lib.getExe inputs.grok.packages.${pkgs.stdenv.hostPlatform.system}.grok;
 in
 {
   imports = [ inputs.nvf.homeManagerModules.default ];
