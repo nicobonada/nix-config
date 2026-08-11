@@ -1,4 +1,9 @@
-{ inputs, pkgs, config, ... }:
+{ inputs, pkgs, config, lib, ... }:
+let
+  # Absolute path so nvim can spawn Grok even if PATH is thin (GUI launch).
+  # Uses SuperGrok OAuth via ~/.grok/auth.json — not the metered XAI_API_KEY.
+  grokBin = lib.getExe inputs.grok.packages.${pkgs.system}.grok;
+in
 {
   imports = [ inputs.nvf.homeManagerModules.default ];
 
@@ -32,6 +37,88 @@
       git.gitsigns.enable = true;
 
       telescope.enable = true;
+
+      # Select → rewrite / chat in-buffer via Grok Build ACP (SuperGrok quota).
+      # Not a second full TUI session; still hand-edit one-liners.
+      assistant.codecompanion-nvim = {
+        enable = true;
+        setupOpts = {
+          # Telescope is already enabled; use it for the action palette.
+          display.action_palette.provider = "telescope";
+
+          # Custom ACP adapter only — hide HTTP presets so API-key xAI is not the default.
+          adapters = lib.mkLuaInline ''
+            {
+              acp = {
+                opts = {
+                  show_presets = false,
+                },
+                -- Grok Build over ACP; auth is the same OAuth session as `grok` TUI.
+                grok = function()
+                  local helpers = require("codecompanion.adapters.acp.helpers")
+                  return {
+                    name = "grok",
+                    formatted_name = "Grok Build",
+                    type = "acp",
+                    roles = {
+                      llm = "assistant",
+                      user = "user",
+                    },
+                    commands = {
+                      -- Permission prompts stay on (no --always-approve) for nvim-spawned agent.
+                      default = {
+                        ${lib.strings.escapeNixString grokBin},
+                        "agent",
+                        "stdio",
+                      },
+                      -- Optional: :CodeCompanionChat adapter=grok command=yolo for tool auto-approve.
+                      yolo = {
+                        ${lib.strings.escapeNixString grokBin},
+                        "agent",
+                        "--always-approve",
+                        "stdio",
+                      },
+                    },
+                    defaults = {
+                      mcpServers = {},
+                      -- Agent turns can run long; default 20s is too short.
+                      timeout = 300000,
+                    },
+                    parameters = {
+                      protocolVersion = 1,
+                      clientCapabilities = {
+                        fs = { readTextFile = true, writeTextFile = true },
+                      },
+                      clientInfo = {
+                        name = "CodeCompanion.nvim",
+                        version = "1.0.0",
+                      },
+                    },
+                    handlers = {
+                      setup = function(self)
+                        return true
+                      end,
+                      -- Grok authenticates via ~/.grok/auth.json inside the agent process.
+                      auth = function(self)
+                        return true
+                      end,
+                      form_messages = function(self, messages, capabilities)
+                        return helpers.form_messages(self, messages, capabilities)
+                      end,
+                      on_exit = function(self, code) end,
+                    },
+                  }
+                end,
+              },
+            }
+          '';
+
+          interactions = {
+            chat.adapter = "grok";
+            inline.adapter = "grok";
+          };
+        };
+      };
 
       utility = {
         sleuth.enable = true;
@@ -153,6 +240,25 @@
         kmap('i', '<c-w>', '<c-g>u<c-w>')
 
         kmap('n', '<nl>', 'i<cr><esc>')
+
+        -- CodeCompanion (Grok ACP): select-edit / chat without a full TUI session
+        kmap({ 'n', 'v' }, '<leader>cc', '<cmd>CodeCompanionChat Toggle<cr>', {
+          silent = true,
+          desc = 'CodeCompanion chat',
+        })
+        kmap({ 'n', 'v' }, '<leader>ca', '<cmd>CodeCompanionActions<cr>', {
+          silent = true,
+          desc = 'CodeCompanion actions',
+        })
+        -- Visual: prompt to rewrite the selection inline
+        kmap('v', '<leader>ci', '<cmd>CodeCompanion<cr>', {
+          silent = true,
+          desc = 'CodeCompanion inline',
+        })
+        kmap('n', '<leader>ci', '<cmd>CodeCompanion<cr>', {
+          silent = true,
+          desc = 'CodeCompanion inline',
+        })
         '';
 
       luaConfigRC.autocommands = /* lua */ ''
