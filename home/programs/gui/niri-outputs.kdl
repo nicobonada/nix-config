@@ -15,7 +15,9 @@ output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
 }
 
 // denser panel than the ASUS (~110 vs ~91 PPI); 1.25 ≈ matches physical UI size
-// games: Steam Play → "Gamescope + GE-Proton" compat tool; mpv handles scale fine
+// VRR on-demand: off for normal desktop; on only while a window-rule enables it
+// (gamescope — see niri-rules). gamescope --adaptive-sync uses that panel VRR.
+// Steam Play: "Gamescope + GE-Proton" compat tool; mpv handles scale fine.
 output "LG Electronics LG ULTRAWIDE 501NTDV76274" {
   mode "3440x1440@159.962"
   scale 1.25

@@ -4,12 +4,17 @@
 // parented dialogs and fixed-size windows (e.g. 1Password authorize), which
 // then open tiled and shove the strip. Stock default already tiles normal apps.
 
-// Games / gamescope on the ultrawide with VRR.
-// Output scale 1.25. Windows Steam Play: use compat tool "Gamescope + GE-Proton"
-// (home/programs/gui/gamescope-ge-proton.nix; wraps newest GE-Proton* + gamescope).
-// Native Linux titles: still need per-game launch options if you want gamescope.
+// Gamescope nest on the ultrawide.
+//
+// VRR: outputs use variable-refresh-rate on-demand=true. That only *arms* VRR
+// when a window with variable-refresh-rate true is shown — it does not force
+// VRR always-on for the desktop. Match gamescope only: the game presents to
+// gamescope; gamescope (--adaptive-sync) presents to niri. Bare steam_app_*
+// windows (e.g. Quake on plain GE-Proton) skip niri VRR on purpose.
+//
+// Steam Play: compat tool "Gamescope + GE-Proton" (gamescope-ge-proton.nix).
+// Native Linux titles: per-game launch options if you want gamescope.
 window-rule {
-  match app-id=r#"steam_app_\d+"#
   match app-id="^gamescope$"
 
   open-on-output "LG Electronics LG ULTRAWIDE 501NTDV76274"
