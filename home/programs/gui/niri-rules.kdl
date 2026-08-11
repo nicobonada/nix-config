@@ -5,10 +5,9 @@
 // then open tiled and shove the strip. Stock default already tiles normal apps.
 
 // Games / gamescope on the ultrawide with VRR.
-// Output scale 1.25; no per-window unscale. Library-wide path: steam-gamescope
-// (restarts Steam under gamescope -e). Per-title: gamescope … -- %command%.
-// Bare Steam/Proton via satellite is fine for casual; use gamescope when res/
-// blur/input matter.
+// Output scale 1.25. Windows Steam Play: use compat tool "Gamescope + GE-Proton"
+// (home/programs/gui/gamescope-ge-proton.nix; wraps newest GE-Proton* + gamescope).
+// Native Linux titles: still need per-game launch options if you want gamescope.
 window-rule {
   match app-id=r#"steam_app_\d+"#
   match app-id="^gamescope$"

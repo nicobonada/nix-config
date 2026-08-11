@@ -23,7 +23,7 @@ in
     ./niri.nix
     ./kitty.nix
     ./satty-last-screenshot.nix
-    ./steam-gamescope.nix
+    ./gamescope-ge-proton.nix
   ];
 
   programs.noctalia = {
