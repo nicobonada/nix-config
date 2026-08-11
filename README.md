@@ -39,8 +39,9 @@ nh home switch ~/src/nix-config
 ```fish
 sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
 home-manager switch --flake ~/src/nix-config#nico
-./scripts/preflight   # eval both hosts + build OS/home (no activate)
+./scripts/preflight   # eval both hosts + build OS/home (no activate); nvd vs running when paths differ
 ```
+
 
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
 - `scripts/update-determinate` — bump Determinate Nix to the latest GitHub **non-prerelease** (auto minor/patch pin).
