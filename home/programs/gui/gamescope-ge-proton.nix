@@ -94,12 +94,16 @@ in
         waitforexitandrun)
           shift
           # Host gamescope → SLR → GE-Proton → game
+          # --adaptive-sync: niri enables VRR for gamescope windows (on-demand);
+          # without it, mouse-look often shows horizontal tear bands that do not
+          # appear in screenshots. Override via GAMESCOPE_EXTRA_ARGS if needed.
           # shellcheck disable=SC2086
           exec gamescope \
             -f \
             -W "$width" -H "$height" \
             -w "$width" -h "$height" \
             -r "$refresh" \
+            --adaptive-sync \
             --force-grab-cursor \
             ''${GAMESCOPE_EXTRA_ARGS:-} \
             -- \
