@@ -7,7 +7,6 @@ spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
 
 // Desktop apps
 spawn-at-startup "kitty"
-// Default browser trial: Brave. Revert: spawn-at-startup "zen"
 spawn-at-startup "brave"
 spawn-at-startup "trilium"
 // 1Password: tray + CLI/browser unlock (system package via programs._1password-gui)

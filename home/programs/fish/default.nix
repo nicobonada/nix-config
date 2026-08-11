@@ -15,7 +15,6 @@
     enable = true;
 
     shellInit = /* fish */ ''
-      # Default browser trial: Brave. Revert: set BROWSER zen
       set -gx BROWSER brave
       set -gx EDITOR nvim
     '';

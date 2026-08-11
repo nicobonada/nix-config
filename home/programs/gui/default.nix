@@ -32,8 +32,7 @@ in
 
   programs.discord.enable = true;
 
-  # Default browser trial: Brave for xdg-open / handlers. Revert: remove this
-  # block (or point back at Zen's .desktop if one is registered).
+  # Default browser: Brave for xdg-open / handlers.
   # force: pre-existing ~/.config/mimeapps.list from manual/desktop use.
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
@@ -76,9 +75,7 @@ in
     trilium-desktop
     zoom-us
 
-    # Default browser: Brave + local CDP (see braveWithCdp). Zen kept for
-    # easy revert — flip niri/fish/xdg back to zen if needed.
+    # Default browser: Brave + local CDP (see braveWithCdp).
     braveWithCdp
-    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
   ];
 }

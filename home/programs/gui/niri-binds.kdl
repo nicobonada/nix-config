@@ -130,7 +130,6 @@ binds {
 
   // ── Apps (spawn for simple argv; spawn-sh when a shell is useful) ──
   Mod+Return hotkey-overlay-title="Open Terminal"       { spawn "kitty"; }
-  // Default browser trial: Brave. Revert: spawn "zen" + title "Launch Zen Browser"
   Mod+O      hotkey-overlay-title="Launch Brave"  { spawn "brave"; }
   Mod+A      hotkey-overlay-title="Annotate last screenshot" { spawn-sh "satty-last-screenshot"; }
   Mod+W      hotkey-overlay-title="Volume Control"      {
