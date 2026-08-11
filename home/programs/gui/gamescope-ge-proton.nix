@@ -73,17 +73,29 @@ in
       height=${height}
       refresh=${refresh}
 
-      # Optional: GAMESCOPE_EXTRA_ARGS='--hdr-enabled' …
-      # shellcheck disable=SC2086
-      exec gamescope \
-        -f \
-        -W "$width" -H "$height" \
-        -w "$width" -h "$height" \
-        -r "$refresh" \
-        --force-grab-cursor \
-        ''${GAMESCOPE_EXTRA_ARGS:-} \
-        -- \
-        "$ge_proton/proton" "$@"
+      # Steam invokes this tool for *every* Proton verb, including install-script
+      # helpers (iscriptevaluator.exe via `run`). Nesting those in gamescope
+      # hangs the "LAUNCHING…" UI forever. Only wrap the real game launch.
+      verb="''${1:-}"
+      case "$verb" in
+        waitforexitandrun)
+          shift
+          # Optional: GAMESCOPE_EXTRA_ARGS='--hdr-enabled' …
+          # shellcheck disable=SC2086
+          exec gamescope \
+            -f \
+            -W "$width" -H "$height" \
+            -w "$width" -h "$height" \
+            -r "$refresh" \
+            --force-grab-cursor \
+            ''${GAMESCOPE_EXTRA_ARGS:-} \
+            -- \
+            "$ge_proton/proton" waitforexitandrun "$@"
+          ;;
+        *)
+          exec "$ge_proton/proton" "$@"
+          ;;
+      esac
     '';
   };
 }
