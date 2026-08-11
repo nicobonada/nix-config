@@ -4,7 +4,12 @@
 // parented dialogs and fixed-size windows (e.g. 1Password authorize), which
 // then open tiled and shove the strip. Stock default already tiles normal apps.
 
-// Games / gamescope on the ultrawide with VRR
+// Games / gamescope on the ultrawide with VRR.
+// Output is scale 1.25; niri cannot unscale a single window. Prefer gamescope
+// at panel res, e.g. gamescope -f -w 3440 -h 1440 -W 3440 -H 1440 -- %command%
+// (or logical 2752×1152 if the nest should match the scaled desktop size).
+// Bare Steam/Proton under xwayland-satellite is usually OK for casual titles
+// but can blur/mis-size at fractional scale — use gamescope when it matters.
 window-rule {
   match app-id=r#"steam_app_\d+"#
   match app-id="^gamescope$"
