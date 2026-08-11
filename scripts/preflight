@@ -10,54 +10,17 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 hostname_short="$(hostname -s 2>/dev/null || hostname)"
+NVD_IF_CHANGED="${NVD_IF_CHANGED:-$HOME/src/grok/scripts/nvd-if-changed}"
 
 log() { printf 'preflight: %s\n' "$*"; }
 fail() { printf 'preflight: FAIL: %s\n' "$*" >&2; exit 1; }
 
-# nvd: any two store paths (not only generations). Prefer PATH, else nixpkgs.
-run_nvd() {
-  if command -v nvd >/dev/null 2>&1; then
-    nvd --color never "$@"
-  else
-    nix shell nixpkgs#nvd -c nvd --color never "$@"
-  fi
-}
-
-# Diff built root vs running profile. Quiet one-liner if identical (no package churn).
-# nvd works on closures of arbitrary store paths — profiles are just convenient roots.
 nvd_if_changed() {
-  local label="$1" old="$2" new="$3"
-  if [[ ! -e "$old" ]]; then
-    log "nvd $label: skip (no baseline at $old)"
-    return 0
+  if [[ -x "$NVD_IF_CHANGED" ]]; then
+    NVD_IF_CHANGED_PREFIX=preflight "$NVD_IF_CHANGED" "$@"
+  else
+    log "nvd: skip (missing $NVD_IF_CHANGED)"
   fi
-  if [[ ! -e "$new" ]]; then
-    log "nvd $label: skip (no built path at $new)"
-    return 0
-  fi
-  old="$(readlink -f "$old")"
-  new="$(readlink -f "$new")"
-  if [[ "$old" == "$new" ]]; then
-    log "nvd $label: identical to running ($new)"
-    return 0
-  fi
-
-  local out
-  out="$(run_nvd diff "$old" "$new" 2>&1)" || {
-    log "nvd $label: failed (non-fatal)"
-    printf '%s\n' "$out" >&2
-    return 0
-  }
-
-  # "No version or selection state changes" + zero closure delta → nothing useful to print.
-  if printf '%s\n' "$out" | rg -q 'No version or selection state changes' \
-    && printf '%s\n' "$out" | rg -q 'delta \+0, disk usage \+0B'; then
-    log "nvd $label: no package changes ($old → $new)"
-    return 0
-  fi
-
-  log "nvd $label: $old → $new"
-  printf '%s\n' "$out"
 }
 
 log "repo=$ROOT host=$hostname_short"
