@@ -11,8 +11,8 @@ let
   agentRepo = "${home}/src/grok";
   workLedger = "${agentRepo}/scripts/work-ledger";
 
-  # Thin wrappers so the unit has a real PATH (not agent-apps / not interactive
-  # Grok). Script is Python stdlib + jj for VCS probes.
+  # Thin wrappers: store python3 + live checkout script (same shape as
+  # grok flake packages.work-ledger). No ambient python3 required.
   mkLedgerApp =
     name: args:
     pkgs.writeShellApplication {
@@ -26,7 +26,7 @@ let
       text = ''
         set -euo pipefail
         script=${lib.escapeShellArg workLedger}
-        if [[ ! -x $script && ! -f $script ]]; then
+        if [[ ! -f $script ]]; then
           echo "${name}: missing $script (clone agent-definition repo?)" >&2
           exit 1
         fi
@@ -53,6 +53,10 @@ in
       text = ''
         set -euo pipefail
         script=${lib.escapeShellArg workLedger}
+        if [[ ! -f $script ]]; then
+          echo "work-ledger: missing $script (clone agent-definition repo?)" >&2
+          exit 1
+        fi
         exec ${pkgs.python3}/bin/python3 "$script" "$@"
       '';
     })
