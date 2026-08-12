@@ -289,7 +289,8 @@ in
 
           home.packages = [ bootstrap ];
 
-          # Separate sops file so music-backup’s defaultSopsFile stays untouched.
+          # Seat age key for HM sops (trilium password; was co-located with music-backup sops).
+          sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
           sops.secrets."trilium/document_password" = {
             sopsFile = ../../secrets/trilium.yaml;
           };

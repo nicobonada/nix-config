@@ -1,4 +1,8 @@
 directory: ~/music
+# Live DB + state live in the Syncthing beets-state folder (hub restic picks them up).
+# Mutating beets work: nix develop .#beets (pauses music + beets-state until exit).
+library: ~/.local/share/beets-state/library.db
+statefile: ~/.local/share/beets-state/state.pickle
 import:
     move: yes
     log: ~/.config/beets/log
