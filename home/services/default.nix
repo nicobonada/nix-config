@@ -3,7 +3,6 @@
   imports = [
     ./beets-syncthing-scripts.nix
     ./mpd.nix
-    ./music-backup.nix
     ./path-mirror.nix
     ./syncthing.nix
     ./trilium-server.nix

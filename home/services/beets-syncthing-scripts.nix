@@ -8,6 +8,9 @@ let
   ];
   foldersShell = lib.concatMapStringsSep " " lib.escapeShellArg folders;
 
+  beetsLiveLegacy = "${config.home.homeDirectory}/.config/beets";
+  beetsStateDir = "${config.xdg.dataHome}/beets-state";
+
   beets-syncthing-pause = pkgs.writeShellApplication {
     name = "beets-syncthing-pause";
     runtimeInputs = [
@@ -73,10 +76,39 @@ let
       done
     '';
   };
+
+  beets-state-migrate = pkgs.writeShellApplication {
+    name = "beets-state-migrate";
+    runtimeInputs = with pkgs; [ coreutils ];
+    text = ''
+      # Move legacy ~/.config/beets/{library.db,state.pickle} into the
+      # Syncthing beets-state folder once. Safe to re-run.
+      set -euo pipefail
+      dest=${lib.escapeShellArg beetsStateDir}
+      legacy=${lib.escapeShellArg beetsLiveLegacy}
+      mkdir -p "$dest"
+      for f in library.db state.pickle; do
+        if [[ -f $legacy/$f && ! -e $dest/$f ]]; then
+          mv -n "$legacy/$f" "$dest/$f"
+          echo "beets-state-migrate: moved $f → $dest/"
+        elif [[ -e $dest/$f ]]; then
+          echo "beets-state-migrate: keep existing $dest/$f"
+        else
+          echo "beets-state-migrate: no $legacy/$f (ok)"
+        fi
+      done
+    '';
+  };
 in
 {
   home.packages = [
     beets-syncthing-pause
     beets-syncthing-resume
+    beets-state-migrate
   ];
+
+  # One-shot on activation so first Syncthing scan has a real DB (idempotent).
+  home.activation.beetsStateMigrate = config.lib.dag.entryAfter [ "beetsStateDir" ] ''
+    ${lib.getExe beets-state-migrate}
+  '';
 }

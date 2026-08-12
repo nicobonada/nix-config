@@ -48,8 +48,6 @@
     shellcheck
     systemctl-tui
     sysz
-    # Official Doist CLI (`td`) — human terminal use; agents keep Todoist MCP
-    todoist-cli
     tree
   ];
 }

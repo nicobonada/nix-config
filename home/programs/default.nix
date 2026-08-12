@@ -9,6 +9,7 @@
     ./networking.nix
     ./nix-pkgs-browse.nix
     ./nvim.nix
+    ./service-clients.nix
     ./ssh.nix
 
     ./fish
