@@ -28,7 +28,8 @@ let
       #   - sops-nix activated secrets (age key at ~/.config/sops/age/keys.txt)
       #   - B2 app key material in secrets/music-backup.yaml (not CHANGE_ME)
       #   - restic repo password + RESTIC_REPOSITORY in that same sops file
-      #   - ~/music directory present (writer host; typically seyruun)
+      #   - ~/music directory present (any seat with a full library; Syncthing
+      #     keeps seats in sync — restic still runs where this timer is active)
       #   - optional but expected: ~/.config/beets/library.db (sqlite-snapshotted
       #     into XDG data before restic; missing DB is a warning only)
       #   - network to Backblaze

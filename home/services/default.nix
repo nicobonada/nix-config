@@ -4,13 +4,13 @@
     ./mpd.nix
     ./music-backup.nix
     ./path-mirror.nix
+    ./syncthing.nix
     ./trilium-server.nix
     ./work-ledger.nix
   ];
 
   services = {
     kdeconnect.enable = true;
-    syncthing.enable = true;
     trayscale.enable = true;
 
     easyeffects.enable = true;
