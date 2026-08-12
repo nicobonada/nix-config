@@ -1,0 +1,15 @@
+--- a/src/main.py
++++ b/src/main.py
+@@ -68,7 +68,11 @@
+             # Set up accelerators according to GNOME conventions
+             self.set_accels_for_action("app.quit", ["<Ctrl>q"])
+ 
+-            if not self.start_hidden:
++            if self.start_hidden:
++                # Without hold(), GTK quits when no window is shown. Flatpak
++                # portal keep-alive does not apply on niri; hold so daemon stays.
++                self.hold()
++            else:
+                 self.window.show()
+                 self.window.on_activation()
+ 

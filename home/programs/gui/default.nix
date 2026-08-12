@@ -24,6 +24,7 @@ in
     ./kitty.nix
     ./satty-last-screenshot.nix
     ./gamescope-ge-proton.nix
+    ./smile.nix
   ];
 
   programs.noctalia = {
@@ -47,13 +48,6 @@ in
     };
   };
 
-  # System-wide emoji picker (Brave has no Zen-style built-in).
-  # Smile: copy to clipboard only — paste with Ctrl+V (wtype/type is flaky in Chromium).
-  dconf.settings."it/mijorus/smile" = {
-    auto-paste = false;
-    auto-paste-xdotool = false;
-  };
-
   home.packages = with pkgs; [
     # Wayland / session tooling
     qt6Packages.qt6ct
@@ -63,7 +57,6 @@ in
     wayscriber
     wl-screenrec
     wl-clipboard-rs # Smile (wl-copy) + neovim clipboard
-    smile
 
     # Desktop apps & themes
     android-file-transfer
