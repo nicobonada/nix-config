@@ -131,6 +131,7 @@ binds {
   // ── Apps (spawn for simple argv; spawn-sh when a shell is useful) ──
   Mod+Return hotkey-overlay-title="Open Terminal"       { spawn "kitty"; }
   Mod+O      hotkey-overlay-title="Launch Brave"  { spawn "brave"; }
+  Mod+E      hotkey-overlay-title="Emoji picker"        { spawn "rofimoji"; }
   Mod+A      hotkey-overlay-title="Annotate last screenshot" { spawn-sh "satty-last-screenshot"; }
   Mod+W      hotkey-overlay-title="Volume Control"      {
     spawn-sh "kitten quick-access-terminal --instance-group vol wiremix";

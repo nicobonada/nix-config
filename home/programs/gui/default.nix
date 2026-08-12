@@ -47,6 +47,16 @@ in
     };
   };
 
+  # System-wide emoji picker (Brave has no Zen-style built-in).
+  # fuzzel selector + wtype insert into focused window; wl-copy for copy action.
+  xdg.configFile."rofimoji.rc".text = ''
+    action = type
+    selector = fuzzel
+    clipboarder = wl-copy
+    typer = wtype
+    skin-tone = neutral
+  '';
+
   home.packages = with pkgs; [
     # Wayland / session tooling
     qt6Packages.qt6ct
@@ -55,7 +65,10 @@ in
     slurp
     wayscriber
     wl-screenrec
-    wl-clipboard-rs # needed for emoji picker and neovim
+    wl-clipboard-rs # rofimoji copy + neovim clipboard
+    rofimoji
+    fuzzel
+    wtype
 
     # Desktop apps & themes
     android-file-transfer
