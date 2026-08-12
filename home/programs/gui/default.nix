@@ -1,20 +1,6 @@
 { inputs, pkgs, ... }:
 let
-  # Brave with loopback CDP so Grok/Playwright MCP can attach to the *same*
-  # session (read open tabs). Port is 127.0.0.1 only — full browser control
-  # for anything that can hit that port on this machine.
-  # Must fully quit Brave for flags to apply (second launch reuses the process).
-  braveWithCdp = pkgs.symlinkJoin {
-    name = "brave-with-cdp";
-    paths = [ pkgs.brave ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/brave \
-        --add-flags "--remote-debugging-port=9222" \
-        --add-flags "--remote-debugging-address=127.0.0.1" \
-        --add-flags "--disable-blink-features=AutomationControlled"
-    '';
-  };
+  custom = import ../../../pkgs { inherit pkgs; };
 in
 {
   imports = [
@@ -22,7 +8,6 @@ in
 
     ./niri.nix
     ./kitty.nix
-    ./satty-last-screenshot.nix
     ./gamescope-ge-proton.nix
     ./smile.nix
   ];
@@ -77,7 +62,8 @@ in
     trilium-desktop
     zoom-us
 
-    # Default browser: Brave + local CDP (see braveWithCdp).
-    braveWithCdp
+    # Default browser: Brave + local CDP (see pkgs/brave-with-cdp).
+    custom.brave-with-cdp
+    custom.satty-last-screenshot
   ];
 }

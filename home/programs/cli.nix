@@ -1,4 +1,7 @@
-{ inputs, lib, pkgs, config, ... }:
+{ inputs, lib, pkgs, ... }:
+let
+  custom = import ../../pkgs { inherit pkgs; };
+in
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index
@@ -49,5 +52,7 @@
     systemctl-tui
     sysz
     tree
+
+    custom.nix-pkgs-browse
   ];
 }

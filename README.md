@@ -13,7 +13,7 @@ Working personal config, not a template — steal ideas freely. Details live in 
 
 Flake outputs: `nixosConfigurations.{oakhill,seyruun}`, `homeConfigurations.nico`.
 
-Layout: shared system modules in `nixos/common/`, per-host configs under `nixos/<host>/`, user config under `home/`. See `flake.nix` for inputs and outputs.
+Layout: shared system modules in `nixos/common/`, per-host configs under `nixos/<host>/`, user config under `home/`, custom packages under `pkgs/`. See `flake.nix` for inputs and outputs.
 
 ## Secrets
 

@@ -5,61 +5,17 @@
   ...
 }:
 let
-  home = config.home.homeDirectory;
+  custom = import ../../pkgs { inherit pkgs; };
   # Portable Grok definition checkout. Timer fails loudly if missing rather
   # than inventing a second copy of the script.
-  agentRepo = "${home}/src/grok";
-  workLedger = "${agentRepo}/scripts/work-ledger";
-
-  # Thin wrappers: store python3 + live checkout script (same shape as
-  # grok flake packages.work-ledger). No ambient python3 required.
-  mkLedgerApp =
-    name: args:
-    pkgs.writeShellApplication {
-      inherit name;
-      runtimeInputs = with pkgs; [
-        python3
-        jujutsu
-        git
-        coreutils
-      ];
-      text = ''
-        set -euo pipefail
-        script=${lib.escapeShellArg workLedger}
-        if [[ ! -f $script ]]; then
-          echo "${name}: missing $script (clone agent-definition repo?)" >&2
-          exit 1
-        fi
-        exec ${pkgs.python3}/bin/python3 "$script" ${args}
-      '';
-    };
-
-  work-ledger-scan = mkLedgerApp "work-ledger-scan" "scan";
-  work-ledger-weekly = mkLedgerApp "work-ledger-weekly" "weekly";
+  workLedger = "${config.home.homeDirectory}/src/grok/scripts/work-ledger";
 in
 {
   # Optional interactive helpers (same as timer commands).
   home.packages = [
-    work-ledger-scan
-    work-ledger-weekly
-    (pkgs.writeShellApplication {
-      name = "work-ledger";
-      runtimeInputs = with pkgs; [
-        python3
-        jujutsu
-        git
-        coreutils
-      ];
-      text = ''
-        set -euo pipefail
-        script=${lib.escapeShellArg workLedger}
-        if [[ ! -f $script ]]; then
-          echo "work-ledger: missing $script (clone agent-definition repo?)" >&2
-          exit 1
-        fi
-        exec ${pkgs.python3}/bin/python3 "$script" "$@"
-      '';
-    })
+    custom.work-ledger
+    custom.work-ledger-scan
+    custom.work-ledger-weekly
   ];
 
   systemd.user.services.work-ledger-scan = {
@@ -69,7 +25,7 @@ in
     };
     Service = {
       Type = "oneshot";
-      ExecStart = lib.getExe work-ledger-scan;
+      ExecStart = lib.getExe custom.work-ledger-scan;
       Nice = 10;
       IOSchedulingClass = "best-effort";
       IOSchedulingPriority = 7;
@@ -98,7 +54,7 @@ in
     };
     Service = {
       Type = "oneshot";
-      ExecStart = lib.getExe work-ledger-weekly;
+      ExecStart = lib.getExe custom.work-ledger-weekly;
       Nice = 10;
       IOSchedulingClass = "best-effort";
       IOSchedulingPriority = 7;
