@@ -11,6 +11,10 @@
     recursive = true;
   };
 
+  # Wrap `nix develop` / `nix shell` / `nix-shell` so they exec fish
+  # instead of bash. direnv already keeps flake shells in this session.
+  programs.nix-your-shell.enable = true;
+
   programs.fish = {
     enable = true;
 
@@ -20,7 +24,6 @@
     '';
 
     # Prompt: fish_prompt + fish_right_prompt (path / IN_NIX_SHELL).
-    # direnv keeps flake shells in fish; bare `nix develop` may use bash.
     interactiveShellInit = /* fish */ ''
       set -gx LESS "-iRSX"
     '';
