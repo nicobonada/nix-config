@@ -48,14 +48,11 @@ in
   };
 
   # System-wide emoji picker (Brave has no Zen-style built-in).
-  # fuzzel selector + wtype insert into focused window; wl-copy for copy action.
-  xdg.configFile."rofimoji.rc".text = ''
-    action = type
-    selector = fuzzel
-    clipboarder = wl-copy
-    typer = wtype
-    skin-tone = neutral
-  '';
+  # Smile: copy to clipboard only — paste with Ctrl+V (wtype/type is flaky in Chromium).
+  dconf.settings."it/mijorus/smile" = {
+    auto-paste = false;
+    auto-paste-xdotool = false;
+  };
 
   home.packages = with pkgs; [
     # Wayland / session tooling
@@ -65,10 +62,8 @@ in
     slurp
     wayscriber
     wl-screenrec
-    wl-clipboard-rs # rofimoji copy + neovim clipboard
-    rofimoji
-    fuzzel
-    wtype
+    wl-clipboard-rs # Smile (wl-copy) + neovim clipboard
+    smile
 
     # Desktop apps & themes
     android-file-transfer
