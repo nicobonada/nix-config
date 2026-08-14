@@ -15,11 +15,14 @@
 
   hardware = {
     graphics.enable32Bit = true;
-    logitech.wireless = {
-      enable = true;
-      enableGraphical = true;
-    };
+    # udev + ltunify. Solaar GUI is programs.solaar (user service, any compositor).
+    logitech.wireless.enable = true;
     opentabletdriver.enable = true;
+  };
+
+  programs.solaar = {
+    enable = true;
+    userService.enable = true; # graphical-session; window hidden, tray only
   };
 
   environment.systemPackages = with pkgs; [

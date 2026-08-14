@@ -1,7 +1,7 @@
 // Session startup — included from niri.nix.
 
 // Background and tray (host-gated)
-spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- solaar -w hide"
+// solaar: NixOS programs.solaar.userService on oakhill (graphical-session)
 spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
 // wayland-pipewire-idle-inhibit: store path from niri.nix (not on PATH)
 
