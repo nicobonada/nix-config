@@ -39,6 +39,7 @@ in
     fd
     htop
     inxi
+    jq
     lazyjournal
     libqalculate
     lsof

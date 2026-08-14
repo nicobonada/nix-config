@@ -11,8 +11,6 @@
 
   services = {
     kdeconnect.enable = true;
-    trayscale.enable = true;
-
     easyeffects.enable = true;
 
     # Always-on Trilium for Grok MCP; separate dataDir from Electron desktop.
