@@ -40,6 +40,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Own nixpkgs pin so packages hit noctalia.cachix.org.
+    # The HM module defaults to self.packages (their pin), not pkgs from us.
     noctalia.url = "github:noctalia-dev/noctalia";
 
     noctalia-greeter = {
@@ -54,10 +56,16 @@
 
     # Wrapped Grok binary + thin HM module (not config.toml). Same pin every host.
     # Private definition repo: nicobonada/grok (was grok-config).
-    grok.url = "git+ssh://git@github.com/nicobonada/grok.git";
+    grok = {
+      url = "git+ssh://git@github.com/nicobonada/grok.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Status dashboard for flakes under ~/src (public; read-only TUI)
-    flake-status.url = "github:nicobonada/flake-status";
+    flake-status = {
+      url = "github:nicobonada/flake-status";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:
