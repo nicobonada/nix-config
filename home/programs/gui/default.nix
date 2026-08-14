@@ -9,7 +9,6 @@ in
     ./niri.nix
     ./kitty.nix
     ./gamescope-ge-proton.nix
-    ./smile.nix
   ];
 
   programs.noctalia = {
@@ -41,7 +40,7 @@ in
     slurp
     wayscriber
     wl-screenrec
-    wl-clipboard-rs # Smile (wl-copy) + neovim clipboard
+    wl-clipboard-rs # neovim clipboard (providers.wl-copy)
 
     # Desktop apps & themes
     android-file-transfer

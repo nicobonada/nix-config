@@ -11,5 +11,3 @@ spawn-at-startup "brave"
 spawn-at-startup "trilium"
 // 1Password: tray + CLI/browser unlock (system package via programs._1password-gui)
 spawn-at-startup "1password"
-// Smile warm daemon (patched --start-hidden + hold); Mod+E activates via D-Bus
-spawn-at-startup "smile" "--start-hidden"

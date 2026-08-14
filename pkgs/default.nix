@@ -10,9 +10,6 @@ rec {
   brave-with-cdp = call ./brave-with-cdp { };
   path-mirror = call ./path-mirror { };
 
-  smile = call ./smile { };
-  smile-toggle = call ./smile/smile-toggle.nix { inherit smile; };
-
   beets-syncthing-pause = call ./beets-syncthing/pause.nix { };
   beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
   beets-state-migrate = call ./beets-syncthing/state-migrate.nix { };

@@ -64,12 +64,6 @@ window-rule {
   open-floating true
 }
 
-// Smile emoji picker (Mod+E) — float, don't eat a scroll column
-window-rule {
-  match app-id="^it\\.mijorus\\.smile$"
-  open-floating true
-}
-
 // Blurred overview wallpaper (needs [niri/backdrop] in Noctalia)
 layer-rule {
   match namespace="^noctalia-backdrop"
