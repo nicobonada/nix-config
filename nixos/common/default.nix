@@ -74,8 +74,6 @@
     usbutils
     sshfs
     smartmontools
-
-    libnotify # for fumon
   ];
 
   services = {
@@ -127,8 +125,17 @@
     };
   };
 
-  # Enable packaged fumon.service from uwsm (failed-unit notifications)
+  # Packaged fumon.service uses ExecStart=fumon (no slash). systemd on
+  # NixOS only searches its own store bin for relative names → 203/EXEC.
   systemd.user.targets.graphical-session.wants = [ "fumon.service" ];
+  systemd.user.services.fumon = {
+    overrideStrategy = "asDropin";
+    path = [ pkgs.libnotify ]; # ExecCondition: command -v notify-send
+    serviceConfig.ExecStart = [
+      ""
+      (lib.getExe' config.programs.uwsm.package "fumon")
+    ];
+  };
 
   hardware.i2c.enable = true; # used for external monitor brightness control
 
