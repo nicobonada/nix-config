@@ -8,6 +8,7 @@ rec {
   nix-pkgs-browse = call ./nix-pkgs-browse { };
   satty-last-screenshot = call ./satty-last-screenshot { };
   brave-with-cdp = call ./brave-with-cdp { };
+  brave-docked = call ./brave-docked { };
   path-mirror = call ./path-mirror { };
 
   beets-syncthing-pause = call ./beets-syncthing/pause.nix { };

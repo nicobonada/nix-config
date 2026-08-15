@@ -63,6 +63,8 @@ in
 
     # Default browser: Brave + local CDP (see pkgs/brave-with-cdp).
     custom.brave-with-cdp
+    # Recreation instance (ASUS on oakhill): distinct app-id, no CDP.
+    custom.brave-docked
     custom.satty-last-screenshot
   ];
 }

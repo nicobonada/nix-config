@@ -22,6 +22,20 @@ window-rule {
   geometry-corner-radius 0
 }
 
+// Recreation Brave: always the ASUS. Harmless if that output is unplugged
+// (niri opens on the focused monitor instead).
+window-rule {
+  match app-id="^brave-docked$"
+  open-on-output "ASUSTek COMPUTER INC VG258 MBLMQS146465"
+}
+
+// Work Brave session restore: keep it on the ultrawide at niri startup.
+// After 60s, Mod+O follows the focused output as usual.
+window-rule {
+  match app-id="^brave-browser$" at-startup=true
+  open-on-output "LG Electronics LG ULTRAWIDE 501NTDV76274"
+}
+
 // Hatsune Miku Logic Paint S+ tries to run at 1920x800 (?)
 window-rule {
   match title="MikuLogiS+"
