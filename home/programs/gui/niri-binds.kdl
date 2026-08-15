@@ -131,10 +131,13 @@ binds {
   Mod+Shift+E { spawn-sh "uwsm stop"; }
 
   // ── Apps (spawn for simple argv; spawn-sh when a shell is useful) ──
-  Mod+Return hotkey-overlay-title="Open Terminal"       { spawn "kitty"; }
-  Mod+O      hotkey-overlay-title="Launch Brave"  { spawn "brave"; }
-  Mod+A      hotkey-overlay-title="Annotate last screenshot" { spawn-sh "satty-last-screenshot"; }
-  Mod+W      hotkey-overlay-title="Volume Control"      {
+  Mod+Return hotkey-overlay-title="Open Terminal"            { spawn "kitty"; }
+  Mod+O      hotkey-overlay-title="Launch Brave"             { spawn "brave"; }
+  Mod+Shift+O hotkey-overlay-title="Launch Brave (docked)"   { spawn "brave-docked"; }
+  Mod+A      hotkey-overlay-title="Annotate last screenshot" {
+    spawn-sh "satty-last-screenshot";
+  }
+  Mod+W      hotkey-overlay-title="Volume Control"           {
     spawn-sh "kitten quick-access-terminal --instance-group vol wiremix";
   }
 
