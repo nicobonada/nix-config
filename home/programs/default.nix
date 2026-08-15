@@ -10,6 +10,7 @@
     ./nvim.nix
     ./service-clients.nix
     ./ssh.nix
+    ./yubi.nix
 
     ./fish
     ./git

@@ -1,9 +1,8 @@
 { pkgs, ... }:
 {
-  # sufficient = security key *or* password. Enroll (same origin/appid on both seats):
-  #   mkdir -p ~/.config/Yubico
-  #   pamu2fcfg -o pam://nico -i pam://nico > ~/.config/Yubico/u2f_keys
-  # Extra keys: pamu2fcfg -n -o pam://nico -i pam://nico >> ~/.config/Yubico/u2f_keys
+  # sufficient = security key *or* password. Mappings: home/configs/u2f_keys (HM).
+  # Extra key: pamu2fcfg -n -o pam://nico -i pam://nico >> home/configs/u2f_keys
+  # (-n is required: without it >> glues the username onto the previous options.)
   security.pam.u2f = {
     enable = true;
     control = "sufficient";
