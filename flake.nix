@@ -66,6 +66,18 @@
       url = "github:nicobonada/flake-status";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # oakhill disk layout (nixos/oakhill/disks.nix). Description + mounts only —
+    # do not run the disko destroy/format CLI against the live pool.
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    disko-zfs = {
+      url = "github:numtide/disko-zfs";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.disko.follows = "disko";
+    };
   };
 
   outputs = { nixpkgs, home-manager, ... }@inputs:

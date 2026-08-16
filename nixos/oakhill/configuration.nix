@@ -3,6 +3,9 @@
     ./boot.nix
     ../common
     ./hardware-configuration.nix
+    inputs.disko.nixosModules.disko
+    inputs.disko-zfs.nixosModules.default
+    ./disks.nix
   ];
 
   amd-cpu.enable = true;
