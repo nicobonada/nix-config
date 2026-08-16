@@ -39,7 +39,7 @@ nh home switch ~/src/nix-config
 ```fish
 sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
 home-manager switch --flake ~/src/nix-config#nico
-./scripts/preflight   # eval both hosts + build OS/home (no activate); nvd vs running when paths differ
+./scripts/preflight   # eval both hosts + build OS/home (no activate)
 ```
 
 

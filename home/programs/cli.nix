@@ -44,6 +44,7 @@ in
     libqalculate
     lsof
     nix-tree
+    nvd
     nixpkgs-track
     patool
     perlPackages.FileMimeInfo

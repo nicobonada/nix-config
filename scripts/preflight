@@ -1,27 +1,18 @@
 #!/usr/bin/env bash
 # Preflight for nix-config: eval both hosts + home, build this host OS + home.
 # No activation. Exit 0 only if every step succeeds.
-# After each build, nvd-diff against the running generation when the path changed.
 # Agent policy: green preflight gates switch/publish claims (see Grok rules/nix-config.md).
 # Agents use nixos-rebuild + home-manager (not nh).
+# Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
 hostname_short="$(hostname -s 2>/dev/null || hostname)"
-NVD_IF_CHANGED="${NVD_IF_CHANGED:-$HOME/src/grok/scripts/nvd-if-changed}"
 
 log() { printf 'preflight: %s\n' "$*"; }
 fail() { printf 'preflight: FAIL: %s\n' "$*" >&2; exit 1; }
-
-nvd_if_changed() {
-  if [[ -x "$NVD_IF_CHANGED" ]]; then
-    NVD_IF_CHANGED_PREFIX=preflight "$NVD_IF_CHANGED" "$@"
-  else
-    log "nvd: skip (missing $NVD_IF_CHANGED)"
-  fi
-}
 
 log "repo=$ROOT host=$hostname_short"
 
@@ -36,14 +27,8 @@ nix eval --raw '.#homeConfigurations.nico.activationPackage.drvPath' >/dev/null
 
 log "nixos-rebuild build (this host)"
 nixos-rebuild build --flake "$ROOT#$hostname_short"
-os_built="$(readlink -f result)"
-nvd_if_changed "os" /run/current-system "$os_built"
 
 log "home-manager build"
 home-manager build --flake "$ROOT#nico"
-hm_built="$(readlink -f result)"
-# HM generation symlink (not the user profile's profile-N env)
-hm_current="${HOME}/.local/state/home-manager/gcroots/current-home"
-nvd_if_changed "home" "$hm_current" "$hm_built"
 
 log "OK (eval both hosts + home; built OS+home for this machine; no switch)"
