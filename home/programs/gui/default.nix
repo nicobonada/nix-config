@@ -8,7 +8,6 @@ in
 
     ./niri.nix
     ./kitty.nix
-    ./gamescope-ge-proton.nix
   ];
 
   programs.noctalia = {
