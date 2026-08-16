@@ -9,11 +9,16 @@
     # blocks must come before Host *. Use dag entryBefore for that.
     settings = {
       # --- MagicDNS / Tailscale (day-to-day) ---
+      # ForwardAgent only on seats we sit at. Do not enable on Host * / pve /
+      # homelab — a compromised remote can use the forwarded agent until disconnect.
+      # https://www.1password.dev/ssh/agent/forwarding#security
       seyruun = lib.hm.dag.entryBefore [ "*" ] {
         User = "nico";
+        ForwardAgent = true;
       };
       oakhill = lib.hm.dag.entryBefore [ "*" ] {
         User = "nico";
+        ForwardAgent = true;
       };
       homelab = lib.hm.dag.entryBefore [ "*" ] {
         User = "nico";
@@ -27,10 +32,12 @@
       seyruun-lan = lib.hm.dag.entryBefore [ "*" ] {
         HostName = "10.0.10.225";
         User = "nico";
+        ForwardAgent = true;
       };
       oakhill-lan = lib.hm.dag.entryBefore [ "*" ] {
         HostName = "10.0.10.43";
         User = "nico";
+        ForwardAgent = true;
       };
       pve-lan = lib.hm.dag.entryBefore [ "*" ] {
         HostName = "10.0.10.200";
@@ -41,10 +48,18 @@
         User = "nico";
       };
 
-      "*" = {
-        # 1Password SSH agent only — no private/public key files under ~/.ssh/.
-        # Desktop: Settings → Developer → SSH agent. Keys live in 1Password vault.
+      # Local graphical session: talk to this seat's 1Password agent.
+      # Inside an SSH TTY, leave IdentityAgent unset so ssh uses forwarded
+      # SSH_AUTH_SOCK. IdentityAgent always wins over the env var, so putting
+      # it on Host * broke `ssh -A` (remote 1Password dialog on the other niri).
+      # Recipe: https://www.1password.dev/ssh/agent/forwarding#remote-workstation
+      # /bin/sh so Match exec is correct when $SHELL is fish.
+      local-1password-agent = lib.hm.dag.entryBefore [ "*" ] {
+        header = ''Match host * exec "/bin/sh -c 'test -z \"$SSH_TTY\"'"'';
         IdentityAgent = "~/.1password/agent.sock";
+      };
+
+      "*" = {
         # Offer agent identities (IdentitiesOnly=yes would require a local
         # IdentityFile, which we intentionally do not keep on disk).
         IdentitiesOnly = "no";
