@@ -1,4 +1,10 @@
-{ inputs, pkgs, config, lib, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 let
   # Absolute path so nvim can spawn Grok even if PATH is thin (GUI launch).
   # Uses SuperGrok OAuth via ~/.grok/auth.json — not the metered XAI_API_KEY.
@@ -11,7 +17,7 @@ in
     enable = true;
 
     settings.vim = {
-      viAlias  = false;
+      viAlias = false;
       vimAlias = true;
 
       clipboard = {
@@ -128,24 +134,33 @@ in
 
       languages = {
         enableExtraDiagnostics = true;
-        enableFormat           = true;
-        enableTreesitter       = true;
+        enableFormat = true;
+        enableTreesitter = true;
 
-        bash.enable   = true;
-        lua.enable    = true;
+        bash.enable = true;
+        lua.enable = true;
         python = {
           enable = true;
           # Astral stack: ty (types) + ruff (lint LSP + format/fix via conform).
-          lsp.servers = [ "ty" "ruff" ];
+          lsp.servers = [
+            "ty"
+            "ruff"
+          ];
           # ruff-fix (safe autofixes) then ruff format — replaces black.
-          format.type = [ "ruff-fix" "ruff" ];
+          format.type = [
+            "ruff-fix"
+            "ruff"
+          ];
           # mypy via nvim-lint is redundant next to ty
           extraDiagnostics.enable = false;
         };
 
-
-        nix.enable    = true;
-        nix.lsp.servers = [ "nixd" ];
+        nix = {
+          enable = true;
+          lsp.servers = [ "nixd" ];
+          # Official RFC 166 formatter. nvf default is still alejandra.
+          format.type = [ "nixfmt" ];
+        };
 
         # fish-lsp + fish_indent + treesitter; lsp/format follow vim.lsp / enableFormat
         fish.enable = true;
@@ -163,16 +178,22 @@ in
       ui.noice.enable = true;
 
       mini = {
-        align.enable          = true;
-        align.setupOpts       = { mappings = { start_with_preview = "<cr>"; }; };
-        bufremove.enable      = true;
-        icons.enable          = true;
-        indentscope.enable    = true;
-        indentscope.setupOpts = { symbol = "▏"; };
-        snippets.enable       = true;
-        starter.enable        = true;
-        statusline.enable     = true;
-        tabline.enable        = true;
+        align.enable = true;
+        align.setupOpts = {
+          mappings = {
+            start_with_preview = "<cr>";
+          };
+        };
+        bufremove.enable = true;
+        icons.enable = true;
+        indentscope.enable = true;
+        indentscope.setupOpts = {
+          symbol = "▏";
+        };
+        snippets.enable = true;
+        starter.enable = true;
+        statusline.enable = true;
+        tabline.enable = true;
       };
 
       luaConfigRC.bufremove = /* lua */ ''
@@ -181,7 +202,7 @@ in
             MiniBufremove.delete()
           end, {}
         )
-        '';
+      '';
 
       globals.mapleader = ",";
 
@@ -191,23 +212,23 @@ in
       searchCase = "smart";
 
       options = {
-        tabstop       = 4;
-        shiftwidth    = 4;
-        softtabstop   = 4;
-        expandtab     = true;
+        tabstop = 4;
+        shiftwidth = 4;
+        softtabstop = 4;
+        expandtab = true;
 
-        textwidth     = 78;
-        wrap          = false;
-        whichwrap     = "b,s,<,>,[,]";
-        autowrite     = true;
+        textwidth = 78;
+        wrap = false;
+        whichwrap = "b,s,<,>,[,]";
+        autowrite = true;
         # noice owns the message UI; height 2 just wastes a status row
-        cmdheight     = 1;
-        fillchars     = "vert:\ ,diff:─";
-        list          = true;
-        listchars     = "tab:│\ ,trail:·,extends:…,nbsp:‗";
-        scrolloff     = 3;
+        cmdheight = 1;
+        fillchars = "vert:\ ,diff:─";
+        list = true;
+        listchars = "tab:│\ ,trail:·,extends:…,nbsp:‗";
+        scrolloff = 3;
         sidescrolloff = 2;
-        virtualedit   = "block,onemore";
+        virtualedit = "block,onemore";
       };
 
       extraPlugins = {
@@ -217,9 +238,9 @@ in
       };
 
       luaConfigRC.colorscheme = /* lua */ ''
-          local cmd = vim.cmd
-          cmd.colorscheme("kanagawa-wave")
-        '';
+        local cmd = vim.cmd
+        cmd.colorscheme("kanagawa-wave")
+      '';
 
       luaConfigRC.keymaps = /* lua */ ''
         local kmap = vim.keymap.set
@@ -259,7 +280,7 @@ in
           silent = true,
           desc = 'CodeCompanion inline',
         })
-        '';
+      '';
 
       luaConfigRC.autocommands = /* lua */ ''
         local aug = vim.api.nvim_create_augroup("UserNvim", { clear = true })
@@ -293,7 +314,7 @@ in
             vim.opt_local.softtabstop = 2
           end,
         })
-        '';
+      '';
     };
   };
 }
