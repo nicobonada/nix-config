@@ -61,6 +61,7 @@ in
     trilium-desktop
     zoom-us
     custom.yaak
+    custom.yaak-cli
 
     # Default browser: Brave + local CDP (see pkgs/brave-with-cdp).
     custom.brave-with-cdp

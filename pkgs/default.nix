@@ -13,6 +13,8 @@ rec {
 
   # Until nixpkgs yaak ≥ 2026.5.0 (PR 548416).
   yaak = call ./yaak { };
+  # Official npm CLI (not built from the GUI derivation).
+  yaak-cli = call ./yaak/cli.nix { };
 
   beets-syncthing-pause = call ./beets-syncthing/pause.nix { };
   beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
