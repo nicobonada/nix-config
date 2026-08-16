@@ -60,6 +60,7 @@ in
     ticktick
     trilium-desktop
     zoom-us
+    custom.yaak
 
     # Default browser: Brave + local CDP (see pkgs/brave-with-cdp).
     custom.brave-with-cdp

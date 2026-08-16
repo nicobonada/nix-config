@@ -11,6 +11,9 @@ rec {
   brave-docked = call ./brave-docked { };
   path-mirror = call ./path-mirror { };
 
+  # Until nixpkgs yaak ≥ 2026.5.0 (PR 548416).
+  yaak = call ./yaak { };
+
   beets-syncthing-pause = call ./beets-syncthing/pause.nix { };
   beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
   beets-state-migrate = call ./beets-syncthing/state-migrate.nix { };
