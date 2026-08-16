@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   git = config.programs.git;
   gitSigning = git.signing;
@@ -46,7 +51,7 @@ in
         graph.style = "curved";
         pager = "${lib.getExe pkgs.delta}";
         diff-editor = ":builtin";
-        diff-formatter = ":git";  # delta needs this
+        diff-formatter = ":git"; # delta needs this
         # Keep in sync with programs.git merge.tool (jj has built-in recipes for common tools).
         merge-editor = git.settings.merge.tool;
         show-cryptographic-signatures = gitSigning.signByDefault == true;
@@ -129,7 +134,14 @@ in
       };
 
       aliases = {
-        tug = ["bookmark" "move" "--from" "closest_bookmark(@)" "--to" "closest_pushable(@)"];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "closest_bookmark(@)"
+          "--to"
+          "closest_pushable(@)"
+        ];
       };
     };
   };

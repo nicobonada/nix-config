@@ -33,7 +33,7 @@
   '';
 
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
-  home.file.".bash_profile".source   = ./configs/bash_profile;
+  home.file.".bash_profile".source = ./configs/bash_profile;
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   home.stateVersion = "21.05";

@@ -1,7 +1,13 @@
-{ inputs, config, lib,  ... }:
+{
+  inputs,
+  config,
+  lib,
+  ...
+}:
 let
   cfg = config.amd-cpu;
-in {
+in
+{
   imports = [ inputs.ucodenix.nixosModules.default ];
 
   options.amd-cpu = {

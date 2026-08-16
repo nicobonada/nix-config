@@ -15,7 +15,7 @@
       };
 
       bindings = {
-        "Alt+="  = "add video-zoom 0.1";    # zoom in
+        "Alt+=" = "add video-zoom 0.1"; # zoom in
         "ctrl+=" = "add audio-delay 0.100"; # change audio/video sync by delaying the audio
       };
 
@@ -33,7 +33,7 @@
         wlrobs
         obs-backgroundremoval
         obs-pipewire-audio-capture
-        obs-vaapi #optional AMD hardware acceleration
+        obs-vaapi # optional AMD hardware acceleration
         obs-gstreamer
         obs-vkcapture
       ];

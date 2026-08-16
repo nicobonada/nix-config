@@ -1,10 +1,15 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   services = {
     mpd = {
       enable = true;
       network.listenAddress = "any";
-      enableSessionVariables = false;   # MPD_HOST doesn't support "any"
+      enableSessionVariables = false; # MPD_HOST doesn't support "any"
 
       extraConfig = ''
         zeroconf_enabled "yes"
@@ -50,7 +55,7 @@
     Unit = {
       Description = "MPD Notification";
       Requires = "dbus.socket";
-      PartOf= "graphical-session.target";
+      PartOf = "graphical-session.target";
       After = [
         "mpd.service"
         "network.target"
@@ -62,7 +67,7 @@
     Service = {
       Type = "notify";
       Restart = "on-failure";
-      ExecStart="${lib.getExe pkgs.mpd-notification}";
+      ExecStart = "${lib.getExe pkgs.mpd-notification}";
     };
 
     Install = {

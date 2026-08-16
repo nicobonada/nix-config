@@ -1,7 +1,8 @@
-{ config, lib,  ... }:
+{ config, lib, ... }:
 let
   cfg = config.amd-gpu;
-in {
+in
+{
   options.amd-gpu = {
     enable = lib.mkEnableOption "support for AMD GPUs (overclocking and undervolting)";
   };

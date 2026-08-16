@@ -12,7 +12,7 @@
       # Close the window when the child process (usually the shell) exits
       close_on_child_death = "yes";
 
-      scrollback_pager_history_size = 20;  # size is in MB
+      scrollback_pager_history_size = 20; # size is in MB
 
       window_margin_width = 1;
 

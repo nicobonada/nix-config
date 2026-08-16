@@ -1,7 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.gaming;
-in {
+in
+{
   options.gaming = {
     enable = lib.mkEnableOption "gaming";
   };
@@ -18,14 +24,13 @@ in {
       capSysNice = false;
     };
 
-    services.flatpak.enable = true;   # for Hytale
+    services.flatpak.enable = true; # for Hytale
 
     environment.systemPackages = with pkgs; [
       dualsensectl
       protonup-rs
 
-      pulseaudio  # steam seems to rely on pactl being available
+      pulseaudio # steam seems to rely on pactl being available
     ];
   };
 }
-

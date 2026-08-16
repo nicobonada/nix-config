@@ -12,8 +12,8 @@
       efi.canTouchEfiVariables = true;
     };
     kernelParams = [
-      "zswap.enabled=1"           # enables zswap
-      "zswap.shrinker_enabled=1"  # whether to shrink the pool proactively on high memory pressure
+      "zswap.enabled=1" # enables zswap
+      "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
     ];
     initrd.kernelModules = [ "amdgpu" ];
     kernelPackages = pkgs.linuxPackages_latest;

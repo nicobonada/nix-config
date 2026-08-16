@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   boot = {
     loader = {
@@ -7,18 +12,18 @@
       systemd-boot.memtest86.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelModules = [ "nct6775" ];         # from lm_sensors
+    kernelModules = [ "nct6775" ]; # from lm_sensors
     kernelParams = [
-      "nohibernate"      # zfs doesn't support hibernate
+      "nohibernate" # zfs doesn't support hibernate
 
-      "zswap.enabled=1"           # enables zswap
-      "zswap.shrinker_enabled=1"  # whether to shrink the pool proactively on high memory pressure
+      "zswap.enabled=1" # enables zswap
+      "zswap.shrinker_enabled=1" # whether to shrink the pool proactively on high memory pressure
     ];
     initrd.kernelModules = [ "amdgpu" ];
 
     supportedFilesystems = [ "zfs" ];
-    initrd.supportedFilesystems = ["zfs"]; # boot from zfs
-    zfs.forceImportRoot = false;    # recommended setting starting with 26.11
+    initrd.supportedFilesystems = [ "zfs" ]; # boot from zfs
+    zfs.forceImportRoot = false; # recommended setting starting with 26.11
   };
 
   networking.hostId = "23c95f57";
@@ -30,7 +35,7 @@
     };
 
     # zfs already has its own scheduler. without this my(@Artturin) computer froze for a second when i nix build something.
-    udev.extraRules = /* udev */''
+    udev.extraRules = /* udev */ ''
       ACTION=="add|change", KERNEL=="sd[a-z]*[0-9]*|mmcblk[0-9]*p[0-9]*|nvme[0-9]*n[0-9]*p[0-9]*", ENV{ID_FS_TYPE}=="zfs_member", ATTR{../queue/scheduler}="none"
     '';
   };

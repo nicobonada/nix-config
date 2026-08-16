@@ -21,33 +21,32 @@ let
   # Sync host storage:
   #   - Runtime reads: config.ini / env Sync.* **if set**, else document.db options.
   #   - Unattended join: POST /api/setup/sync-from-server (same as first-run UI).
-  configIni =
-    (pkgs.formats.ini { }).generate "trilium-server-config.ini" (
-      {
-        General = {
-          instanceName = cfg.instanceName;
-          noDesktopIcon = true;
-          noBackup = cfg.noBackup;
-          noAuthentication = cfg.noAuthentication;
-        };
-        Network = {
-          host = cfg.host;
-          port = cfg.port;
-          https = false;
-        };
+  configIni = (pkgs.formats.ini { }).generate "trilium-server-config.ini" (
+    {
+      General = {
+        instanceName = cfg.instanceName;
+        noDesktopIcon = true;
+        noBackup = cfg.noBackup;
+        noAuthentication = cfg.noAuthentication;
+      };
+      Network = {
+        host = cfg.host;
+        port = cfg.port;
+        https = false;
+      };
+    }
+    // lib.optionalAttrs (cfg.sync.serverHost != null) {
+      Sync = {
+        syncServerHost = cfg.sync.serverHost;
       }
-      // lib.optionalAttrs (cfg.sync.serverHost != null) {
-        Sync = {
-          syncServerHost = cfg.sync.serverHost;
-        }
-        // lib.optionalAttrs (cfg.sync.serverTimeout != null) {
-          syncServerTimeout = cfg.sync.serverTimeout;
-        }
-        // lib.optionalAttrs (cfg.sync.proxy != null) {
-          syncServerProxy = cfg.sync.proxy;
-        };
+      // lib.optionalAttrs (cfg.sync.serverTimeout != null) {
+        syncServerTimeout = cfg.sync.serverTimeout;
       }
-    );
+      // lib.optionalAttrs (cfg.sync.proxy != null) {
+        syncServerProxy = cfg.sync.proxy;
+      };
+    }
+  );
 
   baseUrl = "http://${cfg.host}:${toString cfg.port}";
 in

@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, lib, ... }:
+{
+  inputs,
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 {
   imports = [
     ./adb.nix
@@ -30,7 +36,10 @@
       experimental-features = "nix-command flakes";
       auto-optimise-store = true;
 
-      trusted-users = [ "root" "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
 
       extra-substituters = [
         "https://cache.numtide.com"
@@ -51,7 +60,9 @@
 
   i18n = {
     defaultLocale = "en_CA.UTF-8";
-    extraLocaleSettings = { LC_COLLATE = "C.UTF-8"; };
+    extraLocaleSettings = {
+      LC_COLLATE = "C.UTF-8";
+    };
   };
 
   users.extraUsers.nico = {
@@ -60,7 +71,7 @@
       "wheel"
       "networkmanager"
       "video"
-      "i2c"      # for external monitor brightness control
+      "i2c" # for external monitor brightness control
     ];
   };
 
@@ -122,7 +133,12 @@
 
   # Allow kde connect via home-manager
   networking.firewall = rec {
-    allowedTCPPortRanges = [ { from = 1714; to = 1764; } ];
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
     allowedUDPPortRanges = allowedTCPPortRanges;
   };
 }

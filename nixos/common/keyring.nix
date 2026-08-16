@@ -4,7 +4,7 @@
   programs.seahorse.enable = true;
 
   environment.systemPackages = with pkgs; [
-    libsecret   # for secret-tool
+    libsecret # for secret-tool
     lssecret
   ];
 }

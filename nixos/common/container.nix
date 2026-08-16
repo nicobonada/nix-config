@@ -1,17 +1,23 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.container;
-in {
+in
+{
   options.container = {
     enable = lib.mkEnableOption "support for containers";
   };
 
   config = lib.mkIf cfg.enable {
-      virtualisation.podman = {
-        enable = true;
-        dockerCompat = true;
-      };
+    virtualisation.podman = {
+      enable = true;
+      dockerCompat = true;
+    };
 
-      environment.systemPackages = [ pkgs.distrobox ];
+    environment.systemPackages = [ pkgs.distrobox ];
   };
 }
