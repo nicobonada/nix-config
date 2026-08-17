@@ -5,6 +5,9 @@
   config,
   ...
 }:
+let
+  custom = import ../../../pkgs { inherit pkgs; };
+in
 {
   wayland.windowManager.niri = {
     enable = true;
@@ -21,6 +24,8 @@
       /* kdl */ ''
         // Packages used only by the compositor — absolute paths, not home.packages
         spawn-at-startup "${lib.getExe pkgs.wayland-pipewire-idle-inhibit}"
+        // oakhill only: no ultrawide on seyruun. Session niri is on PATH.
+        spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && ${lib.getExe custom.niri-game-output}"
         xwayland-satellite { path "${lib.getExe pkgs.xwayland-satellite}"; }
       ''
     ];

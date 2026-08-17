@@ -10,6 +10,9 @@
 // window with variable-refresh-rate true is shown — desktop stays fixed.
 // steam_app_* is the normal Proton path. Keep gamescope too: the system
 // gamescope package is still there for per-title launch options.
+//
+// open-on-output often misses Proton: app-id is unset at first configure.
+// pkgs/niri-game-output.nix watches the event stream and moves the window later.
 window-rule {
   match app-id=r#"steam_app_\d+"#
   match app-id="^gamescope$"
