@@ -6,7 +6,6 @@
     ./path-mirror.nix
     ./syncthing.nix
     ./trilium-server.nix
-    ./work-ledger.nix
   ];
 
   services = {

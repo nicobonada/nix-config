@@ -21,10 +21,6 @@ rec {
   beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
   beets-state-migrate = call ./beets-syncthing/state-migrate.nix { };
 
-  work-ledger = call ./work-ledger { };
-  work-ledger-scan = call ./work-ledger/scan.nix { };
-  work-ledger-weekly = call ./work-ledger/weekly.nix { };
-
   # Factory: module supplies baseUrl / hub / passwordFile / …
   trilium-server-bootstrap = call ./trilium-server-bootstrap { };
 
