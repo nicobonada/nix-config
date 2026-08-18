@@ -5,10 +5,8 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Determinate Nix (stay on DetSys; not Lix/CppNix). Exact non-prerelease pin.
-    # FlakeHub `*` / `3` can resolve to GitHub prereleases — do not float blindly.
-    # New 3.x minors/patches: run scripts/update-determinate (rewrites pin + lock).
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/=3.21.9";
+    # Determinate Nix (stay on DetSys; not Lix/CppNix).
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
 
     # Home manager
     home-manager = {

@@ -44,9 +44,8 @@ home-manager switch --flake ~/src/nix-config#nico
 
 
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
-- `scripts/update-determinate` — bump Determinate Nix to the latest GitHub **non-prerelease** (auto minor/patch pin).
 
-Agents: keep work on `wip` (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config` / `automation`).
+Agents: named topic bookmark (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config`).
 
 ## License
 
