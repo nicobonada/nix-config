@@ -461,11 +461,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1787060046,
-        "narHash": "sha256-CqlEOI2BZW65l55pbKXz5Eu0cJK2CRywG9t1UFwJq2U=",
+        "lastModified": 1787065701,
+        "narHash": "sha256-2VgZ2rctsJ74hJE6EmwrY8NrlATl4Af8X9DkHrbI9iI=",
         "ref": "refs/heads/main",
-        "rev": "09134f5a33dccd9482cdd773c85d7c1d398b4ee8",
-        "revCount": 219,
+        "rev": "e8c159bf0d8bed517a7337440fbde021b75ba897",
+        "revCount": 228,
         "type": "git",
         "url": "ssh://git@github.com/nicobonada/grok.git"
       },
