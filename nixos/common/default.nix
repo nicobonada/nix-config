@@ -104,7 +104,13 @@
     # "client" keeps exit-node use available (e.g. Mullvad) when you opt in;
     # do not set a default --exit-node here — leave Mullvad off unless enabled by hand.
     tailscale.useRoutingFeatures = "client";
-    resolved.enable = true; # needed to fix resume issues with tailscale dns settings
+    # resolved + Tailscale: needed so MagicDNS survives resume. Do not cache
+    # NXDOMAIN — a public resolver can answer first while the lab DNS is still
+    # coming up after suspend, and that negative would otherwise stick.
+    resolved = {
+      enable = true;
+      settings.Resolve.Cache = "no-negative";
+    };
   };
 
   programs = {
