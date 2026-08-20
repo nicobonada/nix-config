@@ -52,12 +52,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Wrapped Grok binary + thin HM module (not config.toml). Same pin every host.
-    # Private definition repo: nicobonada/grok (was grok-config).
-    grok = {
-      url = "git+ssh://git@github.com/nicobonada/grok.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # Grok Build (numtide). Wrapper + agent-apps live in pkgs/grok.
+    # Do not follow nixpkgs: their grok binary uses their toolchain.
+    llm-agents.url = "github:numtide/llm-agents.nix";
 
     # Status dashboard for flakes under ~/src (public; read-only TUI)
     flake-status = {
@@ -105,7 +102,12 @@
           # Instantiate pkgs with allowUnfree so home.nix’s unfree packages work —
           # legacyPackages ignores module nixpkgs.config.
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          extraSpecialArgs = {
+            inherit inputs;
+            grokPkg = pkgs.callPackage ./pkgs/grok {
+              grok-unwrapped = inputs.llm-agents.packages.${system}.grok;
+            };
+          };
           modules = [ ./home/nico.nix ];
         };
       };

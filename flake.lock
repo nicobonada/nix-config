@@ -91,22 +91,18 @@
     "bun2nix": {
       "inputs": {
         "flake-parts": [
-          "grok",
           "llm-agents",
           "flake-parts"
         ],
         "nixpkgs": [
-          "grok",
           "llm-agents",
           "nixpkgs"
         ],
         "systems": [
-          "grok",
           "llm-agents",
           "systems"
         ],
         "treefmt-nix": [
-          "grok",
           "llm-agents",
           "treefmt-nix"
         ]
@@ -332,7 +328,6 @@
     "flake-parts_3": {
       "inputs": {
         "nixpkgs-lib": [
-          "grok",
           "llm-agents",
           "nixpkgs"
         ]
@@ -453,27 +448,6 @@
         "type": "gitlab"
       }
     },
-    "grok": {
-      "inputs": {
-        "llm-agents": "llm-agents",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787065701,
-        "narHash": "sha256-2VgZ2rctsJ74hJE6EmwrY8NrlATl4Af8X9DkHrbI9iI=",
-        "ref": "refs/heads/main",
-        "rev": "e8c159bf0d8bed517a7337440fbde021b75ba897",
-        "revCount": 228,
-        "type": "git",
-        "url": "ssh://git@github.com/nicobonada/grok.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/nicobonada/grok.git"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -503,11 +477,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1787027504,
-        "narHash": "sha256-8IqYrCfNgO+T4Sc2gM4AHSuqhSgwcrAq0uOTMq9ixKg=",
+        "lastModified": 1787252197,
+        "narHash": "sha256-6K9jl0sl257ppTU+RG1eVIwEtkx7KEPutae+CMNtAW4=",
         "owner": "numtide",
         "repo": "llm-agents.nix",
-        "rev": "50e05f7a7cc039d39d53bc77c132d9457f990375",
+        "rev": "ab1f750326fab54710dcdbbf25cc1b37e2fc7347",
         "type": "github"
       },
       "original": {
@@ -649,11 +623,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1786963906,
-        "narHash": "sha256-3tkeMWSvHPo3tYljfXbPC/TgknikU1GvdVr/DkdfvE0=",
+        "lastModified": 1787172299,
+        "narHash": "sha256-PShzS87awOlE5XWkxUGBd/58/F+AtE2ZMgFffKj4r8s=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "f4b6996c4e8b9ee06ce147ec344c885f51071b14",
+        "rev": "07e1d92cdc0ed416cfa11ff3ca40d17e61cfba7a",
         "type": "github"
       },
       "original": {
@@ -784,8 +758,8 @@
         "disko": "disko",
         "disko-zfs": "disko-zfs",
         "flake-status": "flake-status",
-        "grok": "grok",
         "home-manager": "home-manager",
+        "llm-agents": "llm-agents",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs_4",
         "noctalia": "noctalia",
@@ -947,7 +921,6 @@
     "treefmt-nix": {
       "inputs": {
         "nixpkgs": [
-          "grok",
           "llm-agents",
           "nixpkgs"
         ]
