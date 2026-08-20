@@ -42,6 +42,12 @@ home-manager switch --flake ~/src/nix-config#nico
 ./scripts/preflight   # eval both hosts + build OS/home (no activate)
 ```
 
+## CI
+
+GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
+`main` (eval both NixOS hosts + `homeConfigurations.nico`). That is not a
+switch. Local `./scripts/preflight` still builds this host before activate.
+
 
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
 
