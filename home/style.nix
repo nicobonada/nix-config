@@ -20,6 +20,8 @@
     comic-neue
     # Explicit install so pickers (LibreOffice, etc.) list it; also stylix.fonts.serif.
     source-serif
+    # Explicit install so Typst / pickers list it; also stylix.fonts.sansSerif.
+    inter
     nerd-fonts.symbols-only
     noto-fonts
     noto-fonts-color-emoji

@@ -59,6 +59,7 @@ in
     systemctl-tui
     sysz
     tree
+    typst
 
     custom.nix-pkgs-browse
   ];
