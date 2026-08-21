@@ -46,7 +46,8 @@ home-manager switch --flake ~/src/nix-config#nico
 
 GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
 `main` (eval both NixOS hosts + `homeConfigurations.nico`). That is not a
-switch. Local `./scripts/preflight` still builds this host before activate.
+switch. The runner installs Determinate Nix but does not log in to FlakeHub
+Cache. Local `./scripts/preflight` still builds this host before activate.
 
 Dependabot opens a weekly grouped PR for `flake.lock` inputs. Merge still
 waits on the preflight check; that is not a host switch.
