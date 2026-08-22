@@ -8,8 +8,7 @@ rec {
   nix-pkgs-browse = call ./nix-pkgs-browse { };
   satty-last-screenshot = call ./satty-last-screenshot { };
   niri-game-output = call ./niri-game-output.nix { };
-  brave-with-cdp = call ./brave-with-cdp { };
-  brave-docked = call ./brave-docked { };
+  inherit (call ./brave.nix { }) brave-with-cdp brave-docked;
   path-mirror = call ./path-mirror { };
 
   # Until nixpkgs yaak ≥ 2026.5.0 (PR 548416).
