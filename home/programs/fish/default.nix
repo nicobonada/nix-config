@@ -19,7 +19,7 @@
     enable = true;
 
     shellInit = /* fish */ ''
-      set -gx BROWSER brave
+      set -gx BROWSER brave-work
       set -gx EDITOR nvim
     '';
 

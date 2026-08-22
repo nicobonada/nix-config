@@ -1,6 +1,26 @@
 { inputs, pkgs, ... }:
 let
   custom = import ../../../pkgs { inherit pkgs; };
+  braveDesktop =
+    { name, class }:
+    {
+      inherit name;
+      genericName = "Web Browser";
+      exec = "${class} %U";
+      icon = "brave-browser";
+      terminal = false;
+      categories = [
+        "Network"
+        "WebBrowser"
+      ];
+      mimeType = [
+        "text/html"
+        "x-scheme-handler/http"
+        "x-scheme-handler/https"
+      ];
+      startupNotify = true;
+      settings.StartupWMClass = class;
+    };
 in
 {
   imports = [
@@ -17,17 +37,32 @@ in
 
   programs.discord.enable = true;
 
-  # Default browser: Brave for xdg-open / handlers.
+  # Default browser: work Brave for xdg-open / handlers.
   # force: pre-existing ~/.config/mimeapps.list from manual/desktop use.
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = "brave-browser.desktop";
-      "x-scheme-handler/http" = "brave-browser.desktop";
-      "x-scheme-handler/https" = "brave-browser.desktop";
-      "x-scheme-handler/about" = "brave-browser.desktop";
-      "x-scheme-handler/unknown" = "brave-browser.desktop";
+      "text/html" = "brave-work.desktop";
+      "x-scheme-handler/http" = "brave-work.desktop";
+      "x-scheme-handler/https" = "brave-work.desktop";
+      "x-scheme-handler/about" = "brave-work.desktop";
+      "x-scheme-handler/unknown" = "brave-work.desktop";
+    };
+  };
+
+  xdg.desktopEntries = {
+    brave-work = braveDesktop {
+      name = "Brave (work)";
+      class = "brave-work";
+    };
+    brave-personal = braveDesktop {
+      name = "Brave (personal)";
+      class = "brave-personal";
+    };
+    brave-scratch = braveDesktop {
+      name = "Brave (scratch)";
+      class = "brave-scratch";
     };
   };
 
@@ -62,10 +97,10 @@ in
     custom.yaak
     custom.yaak-cli
 
-    # Default browser: Brave + local CDP (see pkgs/brave-with-cdp).
-    custom.brave-with-cdp
-    # Recreation instance (ASUS on oakhill): distinct app-id, no CDP.
-    custom.brave-docked
+    # Brave profiles (see pkgs/brave.nix). Work is the default browser.
+    custom.brave-work
+    custom.brave-personal
+    custom.brave-scratch
     custom.satty-last-screenshot
   ];
 }

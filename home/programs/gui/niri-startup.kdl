@@ -7,10 +7,10 @@ spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
 
 // Desktop apps
 spawn-at-startup "kitty"
-spawn-at-startup "brave"
-// Recreation Brave (app-id brave-docked) — ASUS on oakhill only.
+spawn-at-startup "brave-work"
+// Personal Brave (app-id brave-personal) — ASUS on oakhill only.
 // Missing output: niri falls back to the focused monitor; do not spawn on seyruun.
-spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && brave-docked"
+spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && brave-personal"
 spawn-at-startup "trilium"
 // 1Password: tray + CLI/browser unlock (system package via programs._1password-gui)
 spawn-at-startup "1password"

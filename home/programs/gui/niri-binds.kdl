@@ -132,8 +132,9 @@ binds {
 
   // ── Apps (spawn for simple argv; spawn-sh when a shell is useful) ──
   Mod+Return hotkey-overlay-title="Open Terminal"            { spawn "kitty"; }
-  Mod+O      hotkey-overlay-title="Launch Brave"             { spawn "brave"; }
-  Mod+Shift+O hotkey-overlay-title="Launch Brave (docked)"   { spawn "brave-docked"; }
+  Mod+O      hotkey-overlay-title="Launch Brave (work)"      { spawn "brave-work"; }
+  Mod+Shift+O hotkey-overlay-title="Launch Brave (personal)" { spawn "brave-personal"; }
+  Mod+Alt+O   hotkey-overlay-title="Launch Brave (scratch)"  { spawn "brave-scratch"; }
   Mod+A      hotkey-overlay-title="Annotate last screenshot" {
     spawn-sh "satty-last-screenshot";
   }
