@@ -5,7 +5,7 @@ updates:
   - package-ecosystem: nix
     directory: /
     schedule:
-      interval: weekly
+      interval: daily
     groups:
       flake-inputs:
         patterns:
