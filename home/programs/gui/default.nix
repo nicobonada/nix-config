@@ -24,15 +24,17 @@ let
 in
 {
   imports = [
-    inputs.noctalia.homeModules.default
-
     ./niri.nix
     ./kitty.nix
   ];
 
+  # home-manager ships programs.noctalia (since 03f4cd46); do not also import
+  # inputs.noctalia.homeModules.default or enable is declared twice.
   programs.noctalia = {
     enable = true;
     systemd.enable = true;
+    # Flake pin so the binary hits noctalia.cachix.org (HM defaults to pkgs.noctalia).
+    package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
   };
 
   programs.discord.enable = true;
