@@ -16,6 +16,7 @@
     ./gaming.nix
     ./greeter.nix
     ./keyring.nix
+    ./lab-ca.nix
     ./onepassword.nix
     ./sound.nix
     ./yubi.nix
