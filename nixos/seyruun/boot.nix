@@ -8,6 +8,8 @@
         devices = [ "nodev" ];
         # font = "${pkgs.dejavu_fonts}/share/fonts/truetype/DejaVuSansMono.ttf";
         fontSize = 32;
+        # 512M ESP; linux_latest kernels do not share. Unlimited gens filled /boot.
+        configurationLimit = 8;
       };
       efi.canTouchEfiVariables = true;
     };
