@@ -13,6 +13,7 @@
   ];
 
   amd-cpu.enable = true;
+  gaming.enable = true;
 
   networking.hostName = "seyruun";
 
