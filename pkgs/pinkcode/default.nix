@@ -76,10 +76,25 @@ let
 
     # Hook cwd is src-tauri; frontend lives at the repo root (npmConfigHook).
     # Skip updater artifacts — Nix is the distribution path.
+    # Opaque, no CSD: acrylic + Overlay titlebar is macOS/Windows-shaped and
+    # looks wrong on niri (WebKitGTK + Wayland). niri draws the window border.
     postPatch = ''
-      substituteInPlace src-tauri/tauri.conf.json \
-        --replace-fail '"beforeBuildCommand": "npm run build"' '"beforeBuildCommand": ""' \
-        --replace-fail '"createUpdaterArtifacts": true' '"createUpdaterArtifacts": false'
+      node -e ${lib.escapeShellArg ''
+        const fs = require("fs");
+        const path = "src-tauri/tauri.conf.json";
+        const cfg = JSON.parse(fs.readFileSync(path, "utf8"));
+        cfg.build.beforeBuildCommand = "";
+        cfg.bundle.createUpdaterArtifacts = false;
+        for (const win of cfg.app.windows ?? []) {
+          win.transparent = false;
+          delete win.windowEffects;
+          win.decorations = false;
+          win.titleBarStyle = "Visible";
+          win.hiddenTitle = false;
+          win.backgroundColor = [250, 244, 237, 255];
+        }
+        fs.writeFileSync(path, JSON.stringify(cfg, null, 2) + "\n");
+      ''}
     '';
 
     preBuild = ''
@@ -87,9 +102,12 @@ let
     '';
 
     # Workspace git UI shells out to `git`. GROK_BIN is set by the outer wrap.
+    # DMABUF renderer is a common WebKitGTK/Wayland blank-or-flicker path.
     preFixup = ''
       gappsWrapperArgs+=(
         --prefix PATH : ${lib.makeBinPath [ git ]}
+        --set-default WEBKIT_DISABLE_DMABUF_RENDERER 1
+        --set-default GTK_CSD 0
       )
     '';
 
