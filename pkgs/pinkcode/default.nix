@@ -1,0 +1,134 @@
+# Unofficial Grok Build desktop GUI (ACP client). Not xAI.
+# Disable the GitHub updater: we pin the tag here.
+{
+  lib,
+  rustPlatform,
+  cargo-tauri,
+  npmHooks,
+  fetchFromGitHub,
+  fetchNpmDeps,
+  pkg-config,
+  nodejs,
+  webkitgtk_4_1,
+  glib,
+  glib-networking,
+  gtk3,
+  openssl,
+  pango,
+  cairo,
+  pixman,
+  librsvg,
+  gdk-pixbuf,
+  adwaita-icon-theme,
+  stdenv,
+  wrapGAppsHook3,
+  makeBinaryWrapper,
+  git,
+  grok ? null,
+}:
+
+let
+  unwrapped = rustPlatform.buildRustPackage (finalAttrs: {
+    pname = "pinkcode";
+    version = "1.2.1";
+
+    src = fetchFromGitHub {
+      owner = "3xian";
+      repo = "PinkCode";
+      tag = "v${finalAttrs.version}";
+      hash = "sha256-cBNZDHE3DHjKbcqL7yrwFmIPvJoG2xPBWUOO5cbKIQU=";
+    };
+
+    npmDeps = fetchNpmDeps {
+      inherit (finalAttrs) src;
+      hash = "sha256-lbP4E6PqQhlAl2SHOHU9O5eSt49WQfw7ajTX4N9QG1E=";
+      fetcherVersion = 2;
+    };
+
+    cargoHash = "sha256-5xWwk2rE3fEOwGnQ9wS2KOWZl3GLiLhqXT5FatV4pEA=";
+
+    cargoRoot = "src-tauri";
+    buildAndTestSubdir = "src-tauri";
+
+    nativeBuildInputs = [
+      cargo-tauri.hook
+      npmHooks.npmConfigHook
+      pkg-config
+      nodejs
+      wrapGAppsHook3
+    ];
+
+    buildInputs = [
+      glib
+      glib-networking
+      gtk3
+      openssl
+      pango
+      cairo
+      pixman
+      librsvg
+      gdk-pixbuf
+      adwaita-icon-theme
+    ]
+    ++ lib.optionals stdenv.hostPlatform.isLinux [
+      webkitgtk_4_1
+    ];
+
+    # Hook cwd is src-tauri; frontend lives at the repo root (npmConfigHook).
+    # Skip updater artifacts — Nix is the distribution path.
+    postPatch = ''
+      substituteInPlace src-tauri/tauri.conf.json \
+        --replace-fail '"beforeBuildCommand": "npm run build"' '"beforeBuildCommand": ""' \
+        --replace-fail '"createUpdaterArtifacts": true' '"createUpdaterArtifacts": false'
+    '';
+
+    preBuild = ''
+      npm run build
+    '';
+
+    # Workspace git UI shells out to `git`. GROK_BIN is set by the outer wrap.
+    preFixup = ''
+      gappsWrapperArgs+=(
+        --prefix PATH : ${lib.makeBinPath [ git ]}
+      )
+    '';
+
+    doCheck = false;
+
+    postInstall = ''
+      ln -s "$out/bin/PinkCode" "$out/bin/pinkcode"
+    '';
+
+    meta = {
+      description = "Desktop GUI for Grok Build: multi-session task board over ACP";
+      homepage = "https://github.com/3xian/PinkCode";
+      changelog = "https://github.com/3xian/PinkCode/releases/tag/v${finalAttrs.version}";
+      license = lib.licenses.asl20;
+      mainProgram = "pinkcode";
+      platforms = [
+        "x86_64-linux"
+        "aarch64-linux"
+      ];
+    };
+  });
+in
+if grok == null then
+  unwrapped
+else
+  stdenv.mkDerivation {
+    pname = "pinkcode";
+    inherit (unwrapped) version meta;
+    dontUnpack = true;
+    nativeBuildInputs = [ makeBinaryWrapper ];
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out/bin
+      makeBinaryWrapper ${lib.getExe unwrapped} $out/bin/PinkCode \
+        --set GROK_BIN ${lib.getExe grok} \
+        --prefix PATH : ${lib.makeBinPath [ grok ]}
+      ln -s PinkCode $out/bin/pinkcode
+      ln -s ${unwrapped}/share $out/share
+      runHook postInstall
+    '';
+    passthru.unwrapped = unwrapped;
+  }
