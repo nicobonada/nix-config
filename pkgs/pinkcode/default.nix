@@ -47,11 +47,6 @@ let
 
     cargoHash = "sha256-5xWwk2rE3fEOwGnQ9wS2KOWZl3GLiLhqXT5FatV4pEA=";
 
-    # Do not reload the open pane from disk. getSessionDetail's recentUpdates
-    # is the first history page; applying it on every updates.jsonl write
-    # paints as a session restart. Roster cards still refresh.
-    patches = [ ./skip-live-disk-rehydrate.patch ];
-
     cargoRoot = "src-tauri";
     buildAndTestSubdir = "src-tauri";
 
