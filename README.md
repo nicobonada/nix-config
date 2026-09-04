@@ -45,17 +45,15 @@ home-manager switch --flake ~/src/nix-config#nico
 ## CI
 
 GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
-`main` (eval both NixOS hosts + `homeConfigurations.nico`). That is not a
-switch. The runner installs Determinate Nix but does not log in to FlakeHub
-Cache. Local `./scripts/preflight` still builds this host before activate.
+`main` (eval both NixOS hosts + `homeConfigurations.nico`). That is the
+merge gate, not a switch. The runner installs Determinate Nix but does not
+log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
+before activate, not before merge.
 
 Dependabot opens a weekly grouped PR for `flake.lock` inputs. Merge still
 waits on the preflight check; that is not a host switch.
 
-
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
-
-Agents: named topic bookmark (preflight + switch from that tip); **land `main` + push only when uploading** (switch is the live proof before publish). Details in portable Grok rules (`nix-config`).
 
 ## License
 

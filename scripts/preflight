@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Preflight for nix-config: eval both hosts + home, optionally build this host OS + home.
 # No activation. Exit 0 only if every step succeeds.
-#   ./scripts/preflight          # local: eval + build this host (gate switch/publish)
+#   ./scripts/preflight          # local: eval + build this host (before switch)
 #   ./scripts/preflight --eval   # CI: eval only (runner hostname is not a NixOS host)
 # Agents use nixos-rebuild + home-manager (not nh).
 # Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
