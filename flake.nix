@@ -63,6 +63,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Unofficial Grok Build ACP GUI.
+    pinkcode = {
+      url = "github:nicobonada/PinkCode/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # oakhill disk layout (nixos/oakhill/disks.nix). Description + mounts only —
     # do not run the disko destroy/format CLI against the live pool.
     disko = {

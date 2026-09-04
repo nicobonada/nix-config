@@ -2,7 +2,6 @@
   inputs,
   pkgs,
   config,
-  grokPkg,
   ...
 }:
 let
@@ -137,7 +136,7 @@ in
     zoom-us
     custom.yaak
     custom.yaak-cli
-    (custom.pinkcode.override { grok = grokPkg; })
+    inputs.pinkcode.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Brave profiles (see pkgs/brave.nix). Work is the default browser.
     custom.brave-work

@@ -13,6 +13,9 @@ let
 in
 {
   home.packages = [ grokPkg ];
+  # PinkCode (and other ACP clients) look this up; .desktop launches may
+  # not inherit a full user PATH.
+  home.sessionVariables.GROK_BIN = lib.getExe grokPkg;
 
   # Prefer the on-disk checkout (git-writable rules/skills), not a store path.
   home.activation.ensureGrokHome = lib.hm.dag.entryAfter [ "writeBoundary" ] ''

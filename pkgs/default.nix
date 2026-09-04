@@ -16,9 +16,6 @@ rec {
   # Official npm CLI (not built from the GUI derivation).
   yaak-cli = call ./yaak/cli.nix { };
 
-  # Unofficial Grok Build ACP GUI. Override `grok` from home so GROK_BIN is the wrapper.
-  pinkcode = call ./pinkcode { };
-
   beets-syncthing-pause = call ./beets-syncthing/pause.nix { };
   beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
   beets-state-migrate = call ./beets-syncthing/state-migrate.nix { };

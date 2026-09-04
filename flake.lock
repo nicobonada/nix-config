@@ -751,6 +751,27 @@
         "type": "github"
       }
     },
+    "pinkcode": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1788523292,
+        "narHash": "sha256-IDvUzXAC0KVXYDwElcj8ZoE1i7dfdapsxf1pNHiC1mk=",
+        "owner": "nicobonada",
+        "repo": "PinkCode",
+        "rev": "e961edae4cf8c111a0c27a0e0ef7bbff236d0aac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicobonada",
+        "ref": "flake",
+        "repo": "PinkCode",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
@@ -765,6 +786,7 @@
         "noctalia": "noctalia",
         "noctalia-greeter": "noctalia-greeter",
         "nvf": "nvf",
+        "pinkcode": "pinkcode",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "ucodenix": "ucodenix"
