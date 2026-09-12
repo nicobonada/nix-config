@@ -30,6 +30,7 @@ in
 {
   imports = [
     ./niri.nix
+    ./umbriel.nix
     ./kitty.nix
   ];
 

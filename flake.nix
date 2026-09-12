@@ -48,6 +48,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Own nixpkgs pin (wlroots 0.20 + nested xdg-desktop-portal-umbriel).
+    umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -22,6 +22,7 @@
     ./yubi.nix
     ./royal-kludge.nix
     ./ssh.nix
+    ./umbriel.nix
     ./uwsm.nix
 
     inputs.determinate.nixosModules.default
