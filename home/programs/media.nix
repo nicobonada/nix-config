@@ -51,7 +51,7 @@
     nicotine-plus
     playerctl
     qbittorrent
-    r128gain
+    rsgain
   ];
 
   xdg.configFile."beets/config.yaml".source = ../configs/beets_config.yaml;

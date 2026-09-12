@@ -34,7 +34,10 @@
     nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
-      experimental-features = "nix-command flakes";
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
 
       trusted-users = [
@@ -95,7 +98,7 @@
     gvfs.enable = true;
     locate.enable = true;
     smartd.enable = true;
-    journald.extraConfig = "SystemMaxUse=500M";
+    journald.settings.Journal.SystemMaxUse = "500M";
     fstrim.enable = true;
     upower.enable = true;
     udisks2.enable = true;
