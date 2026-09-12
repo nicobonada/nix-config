@@ -116,25 +116,22 @@ def emit(commands: list[tuple[str, str]], events: list[str], actions: list[tuple
         "complete -c umbriel -n '__fish_seen_subcommand_from validate' -s c -r -F -d 'config file'",
     ]
     for name, desc in commands:
-        extra = " -d '{}'".format(fish_escape(desc)) if desc else ""
-        lines.append(
-            f"complete -c umbriel -n '__fish_use_subcommand' -a {name}{extra}"
-        )
+        extra = f" -d '{fish_escape(desc)}'" if desc else ""
+        lines.append(f"complete -c umbriel -n '__fish_use_subcommand' -a {name}{extra}")
         if name in JSON_SUBCOMMANDS:
             lines.append(
-                "complete -c umbriel -n '__fish_seen_subcommand_from {}' "
-                "-s j -l json -d 'format output as JSON'".format(name)
+                f"complete -c umbriel -n '__fish_seen_subcommand_from {name}' "
+                "-s j -l json -d 'format output as JSON'"
             )
     for name, desc in actions:
-        extra = " -d '{}'".format(fish_escape(desc)) if desc else ""
+        extra = f" -d '{fish_escape(desc)}'" if desc else ""
         lines.append(
             "complete -c umbriel -n '__fish_seen_subcommand_from msg' "
-            "-a '{}'{} ".format(fish_escape(name), extra).rstrip()
+            f"-a '{fish_escape(name)}'{extra}"
         )
     for event in events:
         lines.append(
-            "complete -c umbriel -n '__fish_seen_subcommand_from subscribe' "
-            f"-a {event}"
+            f"complete -c umbriel -n '__fish_seen_subcommand_from subscribe' -a {event}"
         )
     lines.append("")
     return "\n".join(lines)
