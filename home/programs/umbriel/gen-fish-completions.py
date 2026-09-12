@@ -11,24 +11,9 @@ import re
 import subprocess
 import sys
 
-JSON_SUBCOMMANDS = frozenset(
-    {
-        "msg",
-        "windows",
-        "workspaces",
-        "submap",
-        "layers",
-        "color",
-        "tearing",
-        "keyboard-layouts",
-        "output-create",
-        "output-destroy",
-        "outputs",
-    }
-)
-
 ACTION_LINE = re.compile(r"^  (\S+)\s{2,}(\S.*)$")
 EVENTS_LINE = re.compile(r"events:\s*(.+)$")
+OPTION_LINE = re.compile(r"^\s+(-\S)(?:\s+(<[^>]+>))?\s{2,}(\S.*)$")
 
 
 def run_help(binary: str, *args: str) -> str:
@@ -56,15 +41,36 @@ def complete_token(name: str) -> str:
     return name
 
 
-def parse_subcommands(help_text: str) -> tuple[list[tuple[str, str]], list[str]]:
+def parse_top(
+    help_text: str,
+) -> tuple[list[tuple[str, str]], list[str], list[tuple[str, str, bool]], list[str]]:
+    """Return (commands, subscribe events, global options, commands that take -c).
+
+    Each option is (flag, description, takes_file).
+    """
     commands: list[tuple[str, str]] = []
     events: list[str] = []
+    options: list[tuple[str, str, bool]] = []
+    config_cmds: list[str] = []
+    in_options = False
     for raw in help_text.splitlines():
+        if raw.startswith("Options:"):
+            in_options = True
+            continue
+        if in_options:
+            opt = OPTION_LINE.match(raw)
+            if opt:
+                flag, value, desc = opt.group(1), opt.group(2) or "", opt.group(3)
+                options.append((flag, desc, "config" in value.lower()))
+            elif raw.strip() == "":
+                in_options = False
+            continue
+
         event_match = EVENTS_LINE.search(raw)
         if event_match:
             events = [e.strip() for e in event_match.group(1).split(",") if e.strip()]
             continue
-        # Title line is `umbriel 0.1.0: …`; usage rows are `Usage:` or indented.
+        # Title line is `umbriel 0.1.0: ...`; usage rows are `Usage:` or indented.
         if not (raw.startswith("Usage:") or (raw.startswith(" ") and "umbriel " in raw)):
             continue
         line = re.sub(r"^Usage:\s+", "", raw).strip()
@@ -84,7 +90,9 @@ def parse_subcommands(help_text: str) -> tuple[list[tuple[str, str]], list[str]]
         elif parts and not parts[0].startswith("<") and not parts[0].startswith("["):
             desc = parts[0]
         commands.append((token, desc))
-    return commands, events
+        if re.search(r"\[?-c\b", tail):
+            config_cmds.append(token)
+    return commands, events, options, config_cmds
 
 
 def parse_actions(help_text: str) -> list[tuple[str, str]]:
@@ -105,24 +113,37 @@ def parse_actions(help_text: str) -> list[tuple[str, str]]:
     return actions
 
 
-def emit(commands: list[tuple[str, str]], events: list[str], actions: list[tuple[str, str]]) -> str:
+def emit(
+    commands: list[tuple[str, str]],
+    events: list[str],
+    options: list[tuple[str, str, bool]],
+    config_cmds: list[str],
+    actions: list[tuple[str, str]],
+) -> str:
     lines = [
         "# Generated from umbriel --help / umbriel msg --help. Do not edit.",
         "complete -c umbriel -f",
-        "complete -c umbriel -n '__fish_use_subcommand' -s s -r -d 'spawn command once the compositor starts'",
-        "complete -c umbriel -n '__fish_use_subcommand' -s c -r -F -d 'config file'",
         "complete -c umbriel -n '__fish_use_subcommand' -s h -l help -d 'show this help'",
         "complete -c umbriel -n '__fish_use_subcommand' -s v -s V -l version -d 'print version'",
-        "complete -c umbriel -n '__fish_seen_subcommand_from validate' -s c -r -F -d 'config file'",
+        # --json is accepted by IPC subcommands but never listed in help.
+        "complete -c umbriel -n 'not __fish_use_subcommand' -s j -l json -d 'format output as JSON'",
     ]
+    for flag, desc, takes_file in options:
+        extra = " -r -F" if takes_file else " -r"
+        d = f" -d '{fish_escape(desc)}'" if desc else ""
+        short = flag[1:] if flag.startswith("-") and not flag.startswith("--") else ""
+        if short:
+            lines.append(
+                f"complete -c umbriel -n '__fish_use_subcommand' -s {short}{extra}{d}"
+            )
+    for name in config_cmds:
+        lines.append(
+            f"complete -c umbriel -n '__fish_seen_subcommand_from {name}' "
+            "-s c -r -F -d 'config file'"
+        )
     for name, desc in commands:
         extra = f" -d '{fish_escape(desc)}'" if desc else ""
         lines.append(f"complete -c umbriel -n '__fish_use_subcommand' -a {name}{extra}")
-        if name in JSON_SUBCOMMANDS:
-            lines.append(
-                f"complete -c umbriel -n '__fish_seen_subcommand_from {name}' "
-                "-s j -l json -d 'format output as JSON'"
-            )
     for name, desc in actions:
         extra = f" -d '{fish_escape(desc)}'" if desc else ""
         lines.append(
@@ -142,12 +163,12 @@ def main() -> int:
         print("usage: gen-fish-completions.py /path/to/umbriel", file=sys.stderr)
         return 2
     binary = sys.argv[1]
-    commands, events = parse_subcommands(run_help(binary, "--help"))
+    commands, events, options, config_cmds = parse_top(run_help(binary, "--help"))
     actions = parse_actions(run_help(binary, "msg", "--help"))
     if not commands or not actions:
         print("error: failed to parse umbriel help", file=sys.stderr)
         return 1
-    sys.stdout.write(emit(commands, events, actions))
+    sys.stdout.write(emit(commands, events, options, config_cmds, actions))
     return 0
 
 
