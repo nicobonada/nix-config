@@ -1,7 +1,7 @@
 { inputs, pkgs, ... }:
 {
   # Fonts, Stylix palette, and toolkit theming (GTK/Qt).
-  # Kitty font/theme stay in programs/gui/kitty.nix — not managed here.
+  # Kitty font/theme stay in programs/kitty.nix - not managed here.
   imports = [ inputs.stylix.homeModules.stylix ];
 
   fonts.fontconfig = {

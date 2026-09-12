@@ -1,4 +1,4 @@
-// Input devices — included from niri.nix.
+// Input devices - included from default.nix.
 
 input {
   keyboard {

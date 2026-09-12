@@ -1,4 +1,4 @@
-// Session startup — included from niri.nix.
+// Session startup - included from default.nix.
 
 // Background and tray (host-gated)
 // solaar: NixOS programs.solaar.userService on oakhill (graphical-session)

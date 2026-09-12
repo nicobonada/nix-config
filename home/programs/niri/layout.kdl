@@ -1,4 +1,4 @@
-// Layout defaults — spliced into config via niri.nix.
+// Layout defaults - spliced into config via default.nix.
 
 layout {
   gaps 8

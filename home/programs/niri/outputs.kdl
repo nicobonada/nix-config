@@ -1,4 +1,4 @@
-// Monitor layout — included from niri.nix.
+// Monitor layout - included from default.nix.
 
 output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
   mode "1920x1080@60.000"
@@ -16,7 +16,7 @@ output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
 
 // denser panel than the ASUS (~110 vs ~91 PPI); 1.25 ≈ matches physical UI size
 // VRR on-demand: desktop stays at a fixed refresh; a window-rule arms it
-// (Steam games — see niri-rules). Always-on hunts Hz on idle/cursor.
+// (Steam games - see rules.kdl). Always-on hunts Hz on idle/cursor.
 output "LG Electronics LG ULTRAWIDE 501NTDV76274" {
   mode "3440x1440@159.962"
   scale 1.25

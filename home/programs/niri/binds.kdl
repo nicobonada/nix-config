@@ -1,4 +1,4 @@
-// Key binds for niri — included from niri.nix.
+// Key binds for niri - included from default.nix.
 //
 // Navigation scheme (arrows only)
 //   focus  move-within   focus-monitor   move-to-monitor

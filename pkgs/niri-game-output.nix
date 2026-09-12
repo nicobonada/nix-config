@@ -6,7 +6,7 @@
 #
 # niri open-on-output cannot: it runs at first configure, before Proton
 # sets steam_app_*. VRR / corner radius stay on the window-rule
-# (home/programs/gui/niri-rules.kdl). This only fixes placement.
+# (home/programs/niri/rules.kdl). This only fixes placement.
 #
 #   niri msg --json event-stream
 #           │

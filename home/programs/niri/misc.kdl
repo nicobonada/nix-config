@@ -1,4 +1,4 @@
-// Misc shell settings — spliced into config via niri.nix.
+// Misc shell settings - spliced into config via default.nix.
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -21,7 +21,7 @@ debug {
   honor-xdg-activation-with-invalid-serial
 }
 
-// Global blur tuning (per-surface rules live in niri-rules.kdl)
+// Global blur tuning (per-surface rules live in rules.kdl)
 blur {
   passes 2        // more passes = stronger blur (default: 3)
   offset 3.0      // sample distance per pass (default: 3.0)

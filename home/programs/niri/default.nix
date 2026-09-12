@@ -1,8 +1,6 @@
 {
-  inputs,
   pkgs,
   lib,
-  config,
   ...
 }:
 let
@@ -14,13 +12,13 @@ in
 
     # Repo-local KDL fragments pasted at build time. Only store paths stay in Nix.
     extraConfig = lib.concatStringsSep "\n" [
-      (builtins.readFile ./niri-input.kdl)
-      (builtins.readFile ./niri-outputs.kdl)
-      (builtins.readFile ./niri-layout.kdl)
-      (builtins.readFile ./niri-startup.kdl)
-      (builtins.readFile ./niri-binds.kdl)
-      (builtins.readFile ./niri-rules.kdl)
-      (builtins.readFile ./niri-misc.kdl)
+      (builtins.readFile ./input.kdl)
+      (builtins.readFile ./outputs.kdl)
+      (builtins.readFile ./layout.kdl)
+      (builtins.readFile ./startup.kdl)
+      (builtins.readFile ./binds.kdl)
+      (builtins.readFile ./rules.kdl)
+      (builtins.readFile ./misc.kdl)
       /* kdl */ ''
         // Packages used only by the compositor — absolute paths, not home.packages
         spawn-at-startup "${lib.getExe pkgs.wayland-pipewire-idle-inhibit}"

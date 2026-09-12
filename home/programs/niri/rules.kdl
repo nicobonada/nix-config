@@ -1,4 +1,4 @@
-// Window and layer rules for niri — included from niri.nix.
+// Window and layer rules for niri - included from default.nix.
 //
 // Do not set a global open-floating false: that overrides niri's auto-float for
 // parented dialogs and fixed-size windows (e.g. 1Password authorize), which
