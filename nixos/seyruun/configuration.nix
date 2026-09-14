@@ -14,6 +14,7 @@
 
   amd-cpu.enable = true;
   gaming.enable = true;
+  royal-kludge.enable = true;
 
   networking.hostName = "seyruun";
 
