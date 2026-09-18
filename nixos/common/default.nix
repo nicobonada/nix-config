@@ -58,7 +58,7 @@
 
   # Shared by oakhill + seyruun (host-specific bits stay in configuration.nix).
   nixpkgs.config.allowUnfree = true;
-  time.timeZone = "America/Toronto";
+  time.timeZone = "America/Argentina/Mendoza";
   networking.networkmanager.enable = true;
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
