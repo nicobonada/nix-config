@@ -23,14 +23,15 @@ let
           > $out/share/fish/vendor_completions.d/umbriel.fish
       '';
 
-  # Absent [keybinds] keeps Umbriel's built-in chords. That is not the packaged
-  # example's extra binds (launcher, scratchpads, media). Niri KDL stays.
+  # Keybinds overlay Umbriel's built-ins. Unset chords stay. Niri KDL stays
+  # the backup, including Mod+O for Brave.
   settings = lib.foldl' lib.recursiveUpdate { } [
     (import ./settings/general.nix { inherit pkgs lib; })
     (import ./settings/input.nix)
     (import ./settings/layout.nix)
     (import ./settings/outputs.nix)
     (import ./settings/rules.nix)
+    (import ./settings/keybinds.nix)
   ];
 in
 {
