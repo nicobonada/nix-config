@@ -7,6 +7,20 @@
 # Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
 set -euo pipefail
 
+# Grok's idle inhibitor ends with the agent turn, and the laptop then
+# sleeps under a build that is still running. Hold idle and sleep until
+# this process exits. CI has no logind session; a refused lock must not
+# fail the run.
+if [[ -z ${PREFLIGHT_INHIBITED:-} ]] && command -v systemd-inhibit >/dev/null; then
+  export PREFLIGHT_INHIBITED=1
+  if systemd-inhibit --what=idle:sleep --who=preflight \
+    --why="nix-config preflight" --mode=block true; then
+    exec systemd-inhibit --what=idle:sleep --who=preflight \
+      --why="nix-config preflight" --mode=block \
+      "$0" "$@"
+  fi
+fi
+
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
