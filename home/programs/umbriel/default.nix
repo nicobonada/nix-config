@@ -22,13 +22,24 @@ let
         python3 ${./gen-fish-completions.py} ${lib.getExe umbriel} \
           > $out/share/fish/vendor_completions.d/umbriel.fish
       '';
+
+  # Absent [keybinds] keeps Umbriel's built-in chords. That is not the packaged
+  # example's extra binds (launcher, scratchpads, media). Niri KDL stays.
+  settings = lib.foldl' lib.recursiveUpdate { } [
+    (import ./settings/general.nix { inherit pkgs lib; })
+    (import ./settings/input.nix)
+    (import ./settings/layout.nix)
+    (import ./settings/outputs.nix)
+    (import ./settings/rules.nix)
+  ];
 in
 {
   imports = [ inputs.umbriel.homeModules.default ];
 
-  # Stock packaged config: leave settings unset so HM does not write
-  # ~/.config/umbriel/config.toml.
-  programs.umbriel.enable = true;
+  programs.umbriel = {
+    enable = true;
+    inherit settings;
+  };
 
   home.packages = [ fishCompletions ];
 }
