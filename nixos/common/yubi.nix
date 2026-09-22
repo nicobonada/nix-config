@@ -21,7 +21,7 @@
 
   # noctalia-greeter refuses empty submit unless this is on; Enter-with-no-password
   # is how FIDO reaches pam_u2f. Password login still works as usual.
-  programs.noctalia-greeter.settings.auth.allow_empty_password = true;
+  services.displayManager.noctalia-greeter.settings.auth.allow_empty_password = true;
 
   services = {
     udev.packages = [ pkgs.yubikey-personalization ];
