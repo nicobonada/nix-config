@@ -50,7 +50,8 @@ merge gate, not a switch. The runner installs Determinate Nix but does not
 log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
 before activate, not before merge.
 
-Dependabot opens a weekly grouped PR for `flake.lock` inputs. Merge still
+`update-flake-lock` opens a pull request every other day (12:00 UTC on odd
+calendar dates) that runs `nix flake update` for every input. Merge still
 waits on the preflight check; that is not a host switch.
 
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
