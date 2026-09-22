@@ -10,14 +10,13 @@
     # Umbriel switch; spawn: tokens still focus their target.
     autostart = [
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
-      # Steam and personal Brave target the oakhill monitors.
+      # Personal Brave targets the oakhill monitors.
       # niri-game-output speaks niri IPC, so it stays on that session.
-      "[ $(hostname) = oakhill ] && app2unit -- steam -silent"
+      # 1Password, Trilium, and Steam are user services (home/services/session-tray.nix)
+      # so their tray icons register after Noctalia.
       "kitty"
       "brave-work"
       "[ $(hostname) = oakhill ] && brave-personal"
-      "trilium"
-      "1password"
     ];
   };
 

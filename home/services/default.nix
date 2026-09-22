@@ -4,6 +4,7 @@
     ./beets-syncthing-scripts.nix
     ./mpd.nix
     ./path-mirror.nix
+    ./session-tray.nix
     ./syncthing.nix
     ./trilium-server.nix
   ];

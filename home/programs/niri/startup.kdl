@@ -1,8 +1,8 @@
 // Session startup - included from default.nix.
 
-// Background and tray (host-gated)
+// Background (host-gated)
 // solaar: NixOS programs.solaar.userService on oakhill (graphical-session)
-spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && app2unit -- steam -silent"
+// 1Password, Trilium, and Steam: home/services/session-tray.nix
 // wayland-pipewire-idle-inhibit: store path from niri.nix (not on PATH)
 
 // Desktop apps
@@ -11,6 +11,3 @@ spawn-at-startup "brave-work"
 // Personal Brave (app-id brave-personal) — ASUS on oakhill only.
 // Missing output: niri falls back to the focused monitor; do not spawn on seyruun.
 spawn-sh-at-startup "[ $(hostname) = 'oakhill' ] && brave-personal"
-spawn-at-startup "trilium"
-// 1Password: tray + CLI/browser unlock (system package via programs._1password-gui)
-spawn-at-startup "1password"
