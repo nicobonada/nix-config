@@ -1,6 +1,6 @@
-# These apps register a tray icon once, at startup. Noctalia is ordered
-# before graphical-session.target, so waiting for that target (and for
-# noctalia.service) means the watcher already exists.
+# These apps register a tray icon once, at startup. graphical-session.target
+# stays inactive until noctalia-watcher.service sees
+# org.kde.StatusNotifierWatcher on the session bus.
 { pkgs, ... }:
 {
   systemd.user.services = {

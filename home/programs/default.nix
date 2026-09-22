@@ -7,6 +7,23 @@
 }:
 let
   custom = import ../../pkgs { inherit pkgs; };
+  # Type=simple marks noctalia started when the process forks, about a second
+  # before it owns org.kde.StatusNotifierWatcher. Qt and Electron tray clients
+  # register once and do not retry, so the session target waits for the name.
+  waitForTrayWatcher = pkgs.writeShellScript "wait-for-status-notifier-watcher" ''
+    set -eu
+    name=org.kde.StatusNotifierWatcher
+    i=0
+    while [ "$i" -lt 150 ]; do
+      if ${pkgs.systemd}/bin/busctl --user status "$name" >/dev/null 2>&1; then
+        exit 0
+      fi
+      ${pkgs.coreutils}/bin/sleep 0.1
+      i=$((i + 1))
+    done
+    echo "$name was not owned within 15s" >&2
+    exit 1
+  '';
   braveDesktop =
     { name, class }:
     {
@@ -88,9 +105,9 @@ in
   };
 
   # Calendar password_file is the sops-nix decrypt path.
-  # The home-manager unit waits until graphical-session.target is already
-  # active, which is the same moment EasyEffects registers its tray icon.
-  # Order Noctalia before that target so the watcher exists first.
+  # home-manager's unit is Type=simple and After=graphical-session.target.
+  # Forking the process is not the same as owning the tray watcher, so start
+  # Noctalia first and hold the session target on noctalia-watcher.service.
   systemd.user.services.noctalia = {
     Unit = {
       After = lib.mkForce [
@@ -100,6 +117,22 @@ in
       Before = [ "graphical-session.target" ];
       Wants = [ "sops-nix.service" ];
     };
+  };
+
+  systemd.user.services.noctalia-watcher = {
+    Unit = {
+      Description = "Wait until Noctalia owns the tray watcher";
+      After = [ "noctalia.service" ];
+      Before = [ "graphical-session.target" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      TimeoutStartSec = 20;
+      ExecStart = "${waitForTrayWatcher}";
+    };
+    Install.WantedBy = [ "graphical-session.target" ];
   };
 
   programs.discord.enable = true;
