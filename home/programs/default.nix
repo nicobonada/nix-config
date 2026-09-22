@@ -2,6 +2,7 @@
   inputs,
   pkgs,
   config,
+  lib,
   ...
 }:
 let
@@ -86,10 +87,17 @@ in
     };
   };
 
-  # Calendar password_file is the sops-nix decrypt path; start after it exists.
+  # Calendar password_file is the sops-nix decrypt path.
+  # The home-manager unit waits until graphical-session.target is already
+  # active, which is the same moment EasyEffects registers its tray icon.
+  # Order Noctalia before that target so the watcher exists first.
   systemd.user.services.noctalia = {
     Unit = {
-      After = [ "sops-nix.service" ];
+      After = lib.mkForce [
+        "graphical-session-pre.target"
+        "sops-nix.service"
+      ];
+      Before = [ "graphical-session.target" ];
       Wants = [ "sops-nix.service" ];
     };
   };
