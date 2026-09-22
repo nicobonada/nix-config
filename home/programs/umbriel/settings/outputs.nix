@@ -4,7 +4,7 @@ in
 {
   # Missing displays are ignored. Not expressible per monitor here:
   # niri's ASUS gaps 0 / border off, and focus-at-startup.
-  # Ultrawide struts are global in layout.nix.
+  # Struts and gap are global in layout.nix, sized for 1920x1200.
   # Output VRR stays off (no on-demand mode). Game rules arm VRR while focused.
   output.${monitors.asus} = {
     mode = "1920x1080@60.000";
