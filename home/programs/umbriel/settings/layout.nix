@@ -1,6 +1,15 @@
 {
   # niri preset-column-widths. Gap 8 and center_focused "never" already match
   # Umbriel's defaults, so they are left unset.
+  # Niri only inset the ultrawide. These struts are global, and the side inset
+  # is what leaves a sliver of the next column at the screen edge.
+  layout.struts = {
+    left = 8;
+    right = 8;
+    top = 10;
+    bottom = 10;
+  };
+
   layout.width_presets = [
     0.333333
     0.375
