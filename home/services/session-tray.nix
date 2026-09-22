@@ -20,22 +20,6 @@
       Install.WantedBy = [ "graphical-session.target" ];
     };
 
-    trilium-desktop = {
-      Unit = {
-        Description = "Trilium Notes";
-        After = [
-          "graphical-session.target"
-          "noctalia.service"
-        ];
-        PartOf = [ "graphical-session.target" ];
-      };
-      Service = {
-        ExecStart = "${pkgs.trilium-desktop}/bin/trilium";
-        Restart = "on-failure";
-      };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
-
     # oakhill only. ConditionHost skips the start on other seats.
     steam-client = {
       Unit = {

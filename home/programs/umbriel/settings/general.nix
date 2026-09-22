@@ -12,7 +12,7 @@
       (lib.getExe pkgs.wayland-pipewire-idle-inhibit)
       # Personal Brave targets the oakhill monitors.
       # niri-game-output speaks niri IPC, so it stays on that session.
-      # 1Password, Trilium, and Steam are user services (home/services/session-tray.nix)
+      # 1Password and Steam are user services (home/services/session-tray.nix)
       # so their tray icons register after Noctalia.
       "kitty"
       "brave-work"

@@ -2,7 +2,7 @@
 
 // Background (host-gated)
 // solaar: NixOS programs.solaar.userService on oakhill (graphical-session)
-// 1Password, Trilium, and Steam: home/services/session-tray.nix
+// 1Password and Steam: home/services/session-tray.nix
 // wayland-pipewire-idle-inhibit: store path from niri.nix (not on PATH)
 
 // Desktop apps
