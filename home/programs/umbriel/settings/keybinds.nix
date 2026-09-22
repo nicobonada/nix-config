@@ -1,6 +1,7 @@
-# Overlay on Umbriel's built-in chords. Unmentioned chords stay, including
-# Mod+O overview, Mod+Escape quit, hjkl, Mod+F fullscreen, and Shift+digit
-# window moves.
+# Shipped chords are written here. Leaving them out did not keep arrow focus.
+#
+# Not copied, because this file sets them to something else:
+# Mod+Comma (settings), Mod+WheelUp/Down (workspace), Mod+Q (close, no repeat).
 #
 # This pin has no action for expel-only, center-all-visible-columns,
 # reset-window-height, or shortcut inhibit.
@@ -14,9 +15,62 @@ let
     inherit action;
     cooldown_ms = 150;
   };
+  workspaceBinds = builtins.listToAttrs (
+    builtins.concatMap (n: [
+      {
+        name = "Mod+${toString n}";
+        value = "workspace-switch:${toString n}";
+      }
+      {
+        name = "Mod+Shift+${toString n}";
+        value = "window-move-to-workspace:${toString n}";
+      }
+      {
+        name = "Mod+KP_${toString n}";
+        value = "workspace-switch:${toString n}";
+      }
+      {
+        name = "Mod+Shift+KP_${toString n}";
+        value = "window-move-to-workspace:${toString n}";
+      }
+    ]) (builtins.genList (i: i + 1) 9)
+  );
 in
 {
-  keybinds = {
+  keybinds = workspaceBinds // {
+    # Shipped focus. Shift+Left/Right move the column; Shift+Up/Down move the window.
+    "Mod+Left" = "window-focus-left";
+    "Mod+Right" = "window-focus-right";
+    "Mod+Up" = "window-focus-up";
+    "Mod+Down" = "window-focus-down";
+    "Mod+H" = "window-focus-left";
+    "Mod+J" = "window-focus-down";
+    "Mod+K" = "window-focus-up";
+    "Mod+L" = "window-focus-right";
+    "Mod+Shift+Left" = "column-move-left";
+    "Mod+Shift+Right" = "column-move-right";
+    "Mod+Shift+Up" = "window-move-up";
+    "Mod+Shift+Down" = "window-move-down";
+    "Mod+Shift+H" = "column-move-left";
+    "Mod+Shift+J" = "window-move-down";
+    "Mod+Shift+K" = "window-move-up";
+    "Mod+Shift+L" = "column-move-right";
+
+    "Mod+Escape" = "session-quit";
+    "Mod+F1" = "window-focus-next";
+    "Mod+Period" = "window-consume-right";
+    "Mod+R" = "window-cycle-width";
+    "Mod+Shift+R" = "window-cycle-width-back";
+    "Mod+F" = "window-toggle-fullscreen";
+    "Mod+Ctrl+F" = "window-toggle-maximize";
+    "Mod+M" = "window-toggle-maximize-to-edges";
+    "Mod+T" = "window-toggle-floating";
+    "Mod+P" = "window-toggle-pinned";
+    "Mod+O" = {
+      action = "overview-toggle";
+      repeat = false;
+    };
+
     # Bare Mod. Mod+D is unused.
     "Mod" = "spawn:noctalia msg panel-toggle launcher";
     "Mod+N" = "spawn:noctalia msg panel-toggle control-center";
