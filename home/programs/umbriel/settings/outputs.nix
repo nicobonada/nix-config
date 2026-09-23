@@ -25,4 +25,9 @@ in
       1080
     ];
   };
+
+  # seyruun built-in panel. Mode and position stay automatic.
+  output.${monitors.laptop} = {
+    scale = 1.25;
+  };
 }
