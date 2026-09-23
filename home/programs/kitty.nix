@@ -22,7 +22,7 @@
 
     themeFile = "kanagawabones";
     font.name = "Comic Code Ligatures";
-    font.size = 11;
+    font.size = 12;
 
     # this is to stop other random fonts from taking over the symbols
     extraConfig = ''
