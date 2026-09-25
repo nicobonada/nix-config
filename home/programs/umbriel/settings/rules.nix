@@ -46,7 +46,7 @@ in
 
     {
       match.app_id = "^kitty$";
-      default_width = 0.333333;
+      default_scrolling_extent = 0.333333;
     }
 
     {
@@ -63,10 +63,10 @@ in
     {
       match.app_id = "^dev\\.noctalia\\.Noctalia\\.Settings$";
       default_floating = true;
-      default_size = [
-        1080
-        920
-      ];
+      default_floating_size_px = {
+        width = 1080;
+        height = 920;
+      };
     }
 
     {

@@ -25,10 +25,8 @@
       '';
     };
 
-    mpd-mpris = {
-      enable = true;
-      mpd.useLocal = true;
-    };
+    # useLocal was removed. Unset host/port/network, so this follows local MPD.
+    mpd-mpris.enable = true;
   };
 
   programs.ncmpcpp = {

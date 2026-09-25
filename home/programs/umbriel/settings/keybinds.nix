@@ -59,8 +59,8 @@ in
     "Mod+Escape" = "session-quit";
     "Mod+F1" = "window-focus-next";
     "Mod+Period" = "window-consume-right";
-    "Mod+R" = "window-cycle-width";
-    "Mod+Shift+R" = "window-cycle-width-back";
+    "Mod+R" = "window-cycle-primary-extent";
+    "Mod+Shift+R" = "window-cycle-primary-extent-back";
     "Mod+F" = "window-toggle-fullscreen";
     "Mod+Ctrl+F" = "window-toggle-maximize";
     "Mod+M" = "window-toggle-maximize-to-edges";
@@ -120,10 +120,10 @@ in
 
     "Mod+C" = "column-center";
 
-    "Mod+Minus" = "window-modify-width:-0.1";
-    "Mod+Equal" = "window-modify-width:0.1";
-    "Mod+Shift+Minus" = "window-modify-height:-0.1";
-    "Mod+Shift+Equal" = "window-modify-height:0.1";
+    "Mod+Minus" = "window-modify-primary-extent:-0.1";
+    "Mod+Equal" = "window-modify-primary-extent:0.1";
+    "Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1";
+    "Mod+Shift+Equal" = "window-modify-secondary-extent:0.1";
 
     "Mod+V" = "window-toggle-floating";
     "Mod+Shift+V" = "window-focus-switch-floating";

@@ -6,8 +6,10 @@
       repeat_rate = 40;
     };
 
-    # niri tap-button-map left-middle-right has no Umbriel key. Tap-to-click
-    # stays on via Umbriel's default.
+    # LMR: one finger left, two middle, three right. Same as niri
+    # tap-button-map "left-middle-right". Tap-to-click stays on by default.
+    touchpad.tap_button_map = "left_middle_right";
+
     focus.follows_mouse = true;
 
     cursor = {

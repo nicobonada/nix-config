@@ -12,7 +12,7 @@
     bottom = 4;
   };
 
-  layout.width_presets = [
+  layout.extent_presets = [
     0.333333
     0.375
     0.5
