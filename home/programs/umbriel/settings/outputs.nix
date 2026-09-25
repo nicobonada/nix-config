@@ -26,8 +26,15 @@ in
     ];
   };
 
-  # seyruun built-in panel. Mode and position stay automatic.
+  # seyruun panel, 1920x1200 at scale 1.25 (1536 logical px wide).
+  # The VG258 (1920 logical) is mounted above it. ASUS x stays 731 so the
+  # oakhill ultrawide layout does not move. Center this panel under it:
+  # 731 + (1920 - 1536) / 2, top edge on the ASUS bottom.
   output.${monitors.laptop} = {
     scale = 1.25;
+    position = [
+      923
+      1080
+    ];
   };
 }

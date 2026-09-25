@@ -14,6 +14,13 @@ output "ASUSTek COMPUTER INC VG258 MBLMQS146465" {
   }
 }
 
+// seyruun panel under the VG258. 1920x1200 at 1.25 is 1536 logical px wide.
+// ASUS stays at x=731 (oakhill ultrawide). Center: 731 + (1920 - 1536) / 2.
+output "AU Optronics 0xE3AC Unknown" {
+  scale 1.25
+  position x=923 y=1080
+}
+
 // denser panel than the ASUS (~110 vs ~91 PPI); 1.25 ≈ matches physical UI size
 // VRR on-demand: desktop stays at a fixed refresh; a window-rule arms it
 // (Steam games - see rules.kdl). Always-on hunts Hz on idle/cursor.
