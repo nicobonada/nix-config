@@ -1,7 +1,7 @@
 // Session startup - included from default.nix.
 
 // Background (host-gated)
-// solaar: NixOS programs.solaar.userService on oakhill (graphical-session)
+// solaar: nixos/common/solaar.nix (graphical-session; both seats)
 // 1Password and Steam: home/services/session-tray.nix
 // wayland-pipewire-idle-inhibit: store path from niri.nix (not on PATH)
 

@@ -14,6 +14,7 @@
       # niri-game-output speaks niri IPC, so it stays on that session.
       # 1Password and Steam are user services (home/services/session-tray.nix)
       # so their tray icons register after Noctalia.
+      # solaar: nixos/common/solaar.nix (graphical-session; both seats)
       "kitty"
       "brave-work"
       "[ $(hostname) = oakhill ] && brave-personal"

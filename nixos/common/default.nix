@@ -21,6 +21,7 @@
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix
+    ./solaar.nix
     ./ssh.nix
     ./umbriel.nix
     ./uwsm.nix
