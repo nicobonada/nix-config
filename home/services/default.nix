@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./beets-syncthing-scripts.nix
@@ -24,4 +24,8 @@
       bootstrap.enable = true;
     };
   };
+
+  # Phone Connect lists devices with `gdbus`. kdeconnect ships the daemon
+  # and CLI only; without glib on PATH the widget stays on "No devices".
+  home.packages = [ pkgs.glib ];
 }
