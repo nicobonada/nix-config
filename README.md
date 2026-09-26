@@ -39,7 +39,7 @@ nh home switch ~/src/nix-config
 ```fish
 sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
 home-manager switch --flake ~/src/nix-config#nico
-./scripts/preflight   # eval both hosts + build OS/home (no activate)
+./scripts/preflight   # before an OS switch: eval both hosts + build this host
 ```
 
 ## CI
@@ -48,7 +48,7 @@ GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
 `main` (eval both NixOS hosts + `homeConfigurations.nico`). That is the
 merge gate, not a switch. The runner installs Determinate Nix but does not
 log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
-before activate, not before merge.
+before an OS activate, not before merge. A home-only switch skips it.
 
 `update-flake-lock` opens a pull request every other day (12:00 UTC on odd
 calendar dates) that runs `nix flake update` for every input. Merge still
