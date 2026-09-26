@@ -1,5 +1,5 @@
-# Logitech receivers on both seats. graphical-session.target covers niri
-# (UWSM) and start-umbriel, so one user service is enough.
+# Logitech receivers on both seats. graphical-session.target covers
+# start-umbriel, so one user service is enough.
 {
   # udev + ltunify. The GUI is the user service below.
   hardware.logitech.wireless.enable = true;

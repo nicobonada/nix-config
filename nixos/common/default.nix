@@ -135,8 +135,6 @@
     wireshark.package = pkgs.wireshark;
 
     auto-cpufreq.enable = true;
-
-    niri.enable = true;
   };
 
   hardware.i2c.enable = true; # used for external monitor brightness control

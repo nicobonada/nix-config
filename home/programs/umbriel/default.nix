@@ -24,8 +24,7 @@ let
           > $out/share/fish/vendor_completions.d/umbriel.fish
       '';
 
-  # Keybinds overlay Umbriel's built-ins. Unset chords stay. Niri KDL stays
-  # the backup, including Mod+O for Brave.
+  # Keybinds overlay Umbriel's built-ins. Unset chords stay.
   # Output sections live in a host file. Umbriel rejects the same monitor in
   # two files, and this home config is built once for both seats, so the
   # choice is which store file outputs.toml points at.

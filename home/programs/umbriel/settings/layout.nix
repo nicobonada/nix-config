@@ -1,5 +1,4 @@
 {
-  # niri's gap is 8 and center_focused "never" matches Umbriel's default.
   # 4 is sized for the 1920x1200 panel; the ultrawide shares it.
   layout.gap = 4;
 
@@ -21,12 +20,10 @@
   ];
 
   appearance = {
-    # Unmatched niri window rule set geometry-corner-radius 8 on every window.
-    # Umbriel has no per-window radius, so games cannot force 0.
+    # No per-window radius, so games cannot force 0.
     corner_radius = 8;
     blur = {
-      # niri: passes 2, offset 3, noise 0.03, saturation 1.
-      # radius is Umbriel's sample distance.
+      # radius is the sample distance.
       passes = 2;
       radius = 3;
       noise = 0.03;

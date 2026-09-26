@@ -140,11 +140,11 @@ in
 
     "Mod+Shift+Slash" = "cheatsheet-toggle";
     "Mod+Shift+P" = "dpms-off";
-    # Niri's uwsm stop. Mod+Escape stays the built-in quit.
+    # Mod+Escape stays the built-in quit.
     "Mod+Shift+E" = "session-quit";
 
     "Mod+Return" = "spawn:kitty";
-    # Brave was Mod+O on niri. O stays overview here.
+    # O is overview.
     "Mod+B" = "spawn:brave-work";
     "Mod+Shift+B" = "spawn:brave-personal";
     "Mod+Alt+B" = "spawn:brave-scratch";

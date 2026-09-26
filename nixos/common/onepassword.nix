@@ -15,7 +15,7 @@ let
   onePasswordMcpForGrok = custom.onepassword-mcp-for-grok;
 in
 {
-  # Human desktop + CLI (niri/Noctalia): setgid op, BrowserSupport, polkit owners.
+  # Human desktop + CLI (Umbriel/Noctalia): setgid op, BrowserSupport, polkit owners.
   # Session polkit agent: Noctalia shell.polkit_agent (not polkit-gnome).
   programs._1password.enable = true;
   programs._1password-gui = {

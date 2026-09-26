@@ -5,15 +5,9 @@
   ...
 }:
 {
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors.niri = {
-      prettyName = "Niri";
-      comment = "Niri (UWSM)";
-      # Prefer the current-system path so it always matches the installed binary
-      binPath = "/run/current-system/sw/bin/niri-session";
-    };
-  };
+  # Fumon comes from the UWSM package. Umbriel starts on its own, not as a
+  # UWSM compositor.
+  programs.uwsm.enable = true;
 
   # Packaged fumon.service uses ExecStart=fumon (no slash). systemd on
   # NixOS only searches its own store bin for relative names → 203/EXEC.

@@ -9,8 +9,7 @@ let
   vrrAttr = if vrr then { vrr = "fullscreen"; } else { };
 in
 {
-  # Missing displays are ignored. Not expressible per monitor here:
-  # niri's ASUS gaps 0 / border off, and focus-at-startup.
+  # Missing displays are ignored.
   # Struts and gap are global in layout.nix, sized for 1920x1200.
   output.${monitors.asus} = {
     mode = "1920x1080@120.000";

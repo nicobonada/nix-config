@@ -50,7 +50,6 @@ in
     ./flake-status.nix
     ./cli.nix
     ./direnv.nix
-    ./niri
     ./umbriel
     ./kitty.nix
     ./grok.nix
@@ -96,7 +95,7 @@ in
           password_file = config.sops.secrets."noctalia/caldav_password".path;
         };
       };
-      # niri screenshot-path. Noctalia appends .png itself.
+      # Noctalia appends .png itself.
       shell.screenshot = {
         directory = "~/Pictures/Screenshots";
         filename_pattern = "Screenshot from %Y-%m-%d %H-%M-%S";

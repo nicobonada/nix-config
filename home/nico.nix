@@ -26,12 +26,6 @@
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 
-  xdg.configFile."uwsm/env".text = /* bash */ ''
-    export APP2UNIT_TYPE=service
-    export NIXOS_OZONE_WL=1
-    export ELECTRON_OZONE_PLATFORM_HINT=auto
-  '';
-
   home.file.".crawl/init.txt".source = ./configs/crawlinit;
   home.file.".bash_profile".source = ./configs/bash_profile;
 

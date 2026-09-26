@@ -51,7 +51,7 @@
       # Local graphical session: talk to this seat's 1Password agent.
       # Inside an SSH TTY, leave IdentityAgent unset so ssh uses forwarded
       # SSH_AUTH_SOCK. IdentityAgent always wins over the env var, so putting
-      # it on Host * broke `ssh -A` (remote 1Password dialog on the other niri).
+      # it on Host * broke `ssh -A` (remote 1Password dialog on the other seat).
       # Recipe: https://www.1password.dev/ssh/agent/forwarding#remote-workstation
       # /bin/sh so Match exec is correct when $SHELL is fish.
       local-1password-agent = lib.hm.dag.entryBefore [ "*" ] {
