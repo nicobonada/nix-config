@@ -135,9 +135,6 @@ binds {
   Mod+O      hotkey-overlay-title="Launch Brave (work)"      { spawn "brave-work"; }
   Mod+Shift+O hotkey-overlay-title="Launch Brave (personal)" { spawn "brave-personal"; }
   Mod+Alt+O   hotkey-overlay-title="Launch Brave (scratch)"  { spawn "brave-scratch"; }
-  Mod+A      hotkey-overlay-title="Annotate last screenshot" {
-    spawn-sh "satty-last-screenshot";
-  }
   Mod+W      hotkey-overlay-title="Volume Control"           {
     spawn-sh "kitten quick-access-terminal --instance-group vol wiremix";
   }
@@ -150,5 +147,4 @@ binds {
   Print       { screenshot; }
   Ctrl+Print  { screenshot-screen; }
   Alt+Print   { screenshot-window; }
-  Shift+Print { spawn-sh "satty-last-screenshot"; }
 }

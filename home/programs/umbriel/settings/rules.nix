@@ -63,10 +63,5 @@ in
         height = 920;
       };
     }
-
-    {
-      match.app_id = "^com\\.gabm\\.satty$";
-      default_floating = true;
-    }
   ];
 }

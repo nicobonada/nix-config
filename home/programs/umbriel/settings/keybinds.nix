@@ -148,7 +148,6 @@ in
     "Mod+B" = "spawn:brave-work";
     "Mod+Shift+B" = "spawn:brave-personal";
     "Mod+Alt+B" = "spawn:brave-scratch";
-    "Mod+A" = "spawn:satty-last-screenshot";
     "Mod+W" = "spawn:kitten quick-access-terminal --instance-group vol wiremix";
 
     # No focused-window capture yet (noctalia-dev/noctalia#3380).
@@ -156,6 +155,5 @@ in
     "Mod+Ctrl+S" = "spawn:noctalia msg screenshot-fullscreen";
     "Print" = "spawn:noctalia msg screenshot-region";
     "Ctrl+Print" = "spawn:noctalia msg screenshot-fullscreen";
-    "Shift+Print" = "spawn:satty-last-screenshot";
   };
 }

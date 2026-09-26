@@ -6,7 +6,6 @@ let
 in
 rec {
   nix-pkgs-browse = call ./nix-pkgs-browse { };
-  satty-last-screenshot = call ./satty-last-screenshot { };
   niri-game-output = call ./niri-game-output.nix { };
   inherit (call ./brave.nix { }) brave-work brave-personal brave-scratch;
   path-mirror = call ./path-mirror { };

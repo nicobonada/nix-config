@@ -202,6 +202,5 @@ in
     custom.brave-work
     custom.brave-personal
     custom.brave-scratch
-    custom.satty-last-screenshot
   ];
 }
