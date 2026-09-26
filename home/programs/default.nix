@@ -197,6 +197,7 @@ in
     custom.yaak
     custom.yaak-cli
     inputs.pinkcode.packages.${pkgs.stdenv.hostPlatform.system}.default
+    inputs.raiju-level.packages.${pkgs.stdenv.hostPlatform.system}.default
 
     # Brave profiles (see pkgs/brave.nix). Work is the default browser.
     custom.brave-work

@@ -782,6 +782,26 @@
         "type": "github"
       }
     },
+    "raiju-level": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1790450163,
+        "narHash": "sha256-Dtvxr6a7h7fo4ojZjkcJ967yh5DFVPblnRBZBPlxS+g=",
+        "owner": "nicobonada",
+        "repo": "raiju-level",
+        "rev": "4df136cf1381d5da9baa557d472d4c9c06ee0b52",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicobonada",
+        "repo": "raiju-level",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "auto-cpufreq": "auto-cpufreq",
@@ -797,6 +817,7 @@
         "noctalia-greeter": "noctalia-greeter",
         "nvf": "nvf",
         "pinkcode": "pinkcode",
+        "raiju-level": "raiju-level",
         "sops-nix": "sops-nix",
         "stylix": "stylix",
         "ucodenix": "ucodenix",

@@ -66,6 +66,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # SDL battery reading for the Raiju V3 Pro (public).
+    raiju-level = {
+      url = "github:nicobonada/raiju-level";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Unofficial Grok Build ACP GUI.
     pinkcode = {
       url = "github:nicobonada/PinkCode/flake";
