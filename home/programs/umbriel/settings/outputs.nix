@@ -1,11 +1,17 @@
+# vrr: oakhill's external monitors are DisplayPort. seyruun's only external
+# port is HDMI, and FreeSync there blanks the VG258 for a couple of seconds.
+# Fullscreen keeps the desktop at a fixed refresh. The laptop panel stays off.
+{
+  vrr ? false,
+}:
 let
   monitors = import ../monitors.nix;
+  vrrAttr = if vrr then { vrr = "fullscreen"; } else { };
 in
 {
   # Missing displays are ignored. Not expressible per monitor here:
   # niri's ASUS gaps 0 / border off, and focus-at-startup.
   # Struts and gap are global in layout.nix, sized for 1920x1200.
-  # Output VRR stays off (no on-demand mode). Game rules arm VRR while focused.
   output.${monitors.asus} = {
     mode = "1920x1080@120.000";
     scale = 1.0;
@@ -13,7 +19,8 @@ in
       731
       0
     ];
-  };
+  }
+  // vrrAttr;
 
   output.${monitors.lg} = {
     mode = "3440x1440@159.962";
@@ -22,7 +29,8 @@ in
       0
       1080
     ];
-  };
+  }
+  // vrrAttr;
 
   # seyruun panel, 1920x1200 at scale 1.25 (1536 logical px wide).
   # The VG258 (1920 logical) is mounted above it. ASUS x stays 731 so the

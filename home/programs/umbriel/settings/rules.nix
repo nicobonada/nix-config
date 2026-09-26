@@ -18,13 +18,6 @@ in
       # and Umbriel does not replay opening settings when the id arrives.
       # niri-game-output still does that move on the niri session.
       default_output = monitors.lg;
-      vrr = "always";
-    }
-
-    {
-      # Dynamic, so it still applies once a game publishes the hint.
-      match.content_type = "game";
-      vrr = "always";
     }
 
     {
