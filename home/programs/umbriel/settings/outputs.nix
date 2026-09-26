@@ -7,7 +7,7 @@ in
   # Struts and gap are global in layout.nix, sized for 1920x1200.
   # Output VRR stays off (no on-demand mode). Game rules arm VRR while focused.
   output.${monitors.asus} = {
-    mode = "1920x1080@60.000";
+    mode = "1920x1080@120.000";
     scale = 1.0;
     position = [
       731
