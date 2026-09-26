@@ -16,6 +16,11 @@
 
       window_margin_width = 1;
 
+      # Umbriel sizes a new column from this when no extent fraction is set.
+      # Remembering the last size would replay whatever width the compositor used.
+      remember_window_size = "no";
+      initial_window_width = "80c";
+
       background_opacity = 0.65;
       background_blur = 1;
     };

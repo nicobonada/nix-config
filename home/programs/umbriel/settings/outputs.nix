@@ -13,8 +13,6 @@ in
       731
       0
     ];
-    # niri fixed the column at 1920 on this 1920-wide panel.
-    layout.scrolling.default_extent_fraction = 1.0;
   };
 
   output.${monitors.lg} = {

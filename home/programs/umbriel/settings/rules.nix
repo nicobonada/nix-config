@@ -45,11 +45,6 @@ in
     }
 
     {
-      match.app_id = "^kitty$";
-      default_scrolling_extent = 0.333333;
-    }
-
-    {
       match.app_id = "^steam$";
       match.title = "^notificationtoasts_[0-9]+_desktop$";
       default_floating = true;
