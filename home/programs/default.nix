@@ -25,11 +25,16 @@ let
     exit 1
   '';
   braveDesktop =
-    { name, class }:
     {
-      inherit name;
+      name,
+      class,
+      newWindow ? false,
+      noDisplay ? false,
+    }:
+    {
+      inherit name noDisplay;
       genericName = "Web Browser";
-      exec = "${class} %U";
+      exec = "${class}${lib.optionalString newWindow " --new-window"} %U";
       icon = "brave-browser";
       terminal = false;
       categories = [
@@ -138,15 +143,17 @@ in
 
   # Default browser: work Brave for xdg-open / handlers.
   # force: pre-existing ~/.config/mimeapps.list from manual/desktop use.
+  # brave-work-open is the handler. --new-window maps a toplevel on the
+  # focused workspace. A plain launch would tab into a window elsewhere.
   xdg.configFile."mimeapps.list".force = true;
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "text/html" = "brave-work.desktop";
-      "x-scheme-handler/http" = "brave-work.desktop";
-      "x-scheme-handler/https" = "brave-work.desktop";
-      "x-scheme-handler/about" = "brave-work.desktop";
-      "x-scheme-handler/unknown" = "brave-work.desktop";
+      "text/html" = "brave-work-open.desktop";
+      "x-scheme-handler/http" = "brave-work-open.desktop";
+      "x-scheme-handler/https" = "brave-work-open.desktop";
+      "x-scheme-handler/about" = "brave-work-open.desktop";
+      "x-scheme-handler/unknown" = "brave-work-open.desktop";
     };
   };
 
@@ -154,6 +161,12 @@ in
     brave-work = braveDesktop {
       name = "Brave (work)";
       class = "brave-work";
+    };
+    brave-work-open = braveDesktop {
+      name = "Brave (work)";
+      class = "brave-work";
+      newWindow = true;
+      noDisplay = true;
     };
     brave-personal = braveDesktop {
       name = "Brave (personal)";
