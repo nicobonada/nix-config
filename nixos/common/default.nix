@@ -31,11 +31,12 @@
   ];
 
   nix = {
-    # Make nix3 commands consistent with this flake's inputs
+    # Make nix3 commands consistent with this flake's inputs.
     registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
 
     settings = {
+      # Same inputs, for <name> lookups. nix.nixPath was renamed to this.
+      nix-path = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
       experimental-features = [
         "nix-command"
         "flakes"
