@@ -62,7 +62,7 @@ in
     "Mod+R" = "window-cycle-primary-extent";
     "Mod+Shift+R" = "window-cycle-primary-extent-back";
     "Mod+F" = "window-toggle-fullscreen";
-    "Mod+Ctrl+F" = "window-toggle-maximize";
+    "Mod+Shift+F" = "window-toggle-maximize";
     "Mod+M" = "window-toggle-maximize-to-edges";
     "Mod+T" = "window-toggle-floating";
     "Mod+P" = "window-toggle-pinned";
@@ -74,6 +74,11 @@ in
     # Bare Mod. Mod+D is unused.
     "Mod" = "spawn:noctalia msg panel-toggle launcher";
     "Mod+N" = "spawn:noctalia msg panel-toggle control-center";
+    # Notes has no scratchpad-only IPC. This toggles the panel; scratchpad is the pinned row.
+    "Mod+Grave" = {
+      action = "spawn:noctalia msg panel-toggle noctalia/notes:panel";
+      repeat = false;
+    };
     "Mod+Comma" = "spawn:noctalia msg settings-toggle";
     "Mod+X" = "spawn:noctalia msg panel-toggle session";
     "Mod+Semicolon" = "spawn:noctalia msg panel-toggle launcher //";
