@@ -6,6 +6,8 @@ let
 in
 rec {
   nix-pkgs-browse = call ./nix-pkgs-browse { };
+  # Cached nixpkgs solaar, plus the libnotify typelib its wrapper omits.
+  solaar = call ./solaar.nix { };
   inherit (call ./brave.nix { }) brave-work brave-personal brave-scratch;
   path-mirror = call ./path-mirror { };
 
