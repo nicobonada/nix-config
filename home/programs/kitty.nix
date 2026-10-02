@@ -18,8 +18,10 @@
 
       # Umbriel sizes a new column from this when no extent fraction is set.
       # Remembering the last size would replay whatever width the compositor used.
+      # 85 cells: neovim textwidth 78 plus the gutter on a file of up to 9999
+      # lines (numberwidth grows to 5, signcolumn "yes" is 2).
       remember_window_size = "no";
-      initial_window_width = "80c";
+      initial_window_width = "85c";
 
       background_opacity = 0.65;
       background_blur = 1;
