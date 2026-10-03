@@ -3,8 +3,10 @@
   general = {
     # No bind overlay at login.
     show_cheatsheet = false;
-    # xwayland-satellite is on the wrapped umbriel PATH.
+    # X11 clients see physical pixels on the 1.25 outputs (laptop, LG).
+    # Steam's own interface scale covers the client window.
     xwayland = true;
+    xwayland_native_resolution = true;
     # Mod stays unset: Super on a real session, Alt when nested.
     # spawn: tokens still focus their target.
     autostart = [
