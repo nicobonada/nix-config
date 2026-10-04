@@ -21,6 +21,7 @@ pkgs: with pkgs; [
   fd
   ripgrep
   file
+  binutils # strings, for reading binaries
 
   # classic image pipeline (rules/capture-recurring.md) — identify / magick
   imagemagick
