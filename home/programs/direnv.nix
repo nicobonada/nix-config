@@ -1,7 +1,7 @@
 { ... }:
 {
   # Auto-load project flakes on cd; nix-direnv GC-roots the shell so
-  # `nh clean` / store GC does not force a full re-fetch of Grok every time.
+  # store GC does not force a full re-fetch of Grok every time.
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

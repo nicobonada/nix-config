@@ -5,7 +5,6 @@
 #   ./scripts/preflight --eval   # CI: eval only (runner hostname is not a NixOS host)
 # Agents run the full script only when nixos/, pkgs/, flake.nix, or flake.lock
 # changed. home-manager switch builds home on its own.
-# Agents use nixos-rebuild + home-manager (not nh).
 # Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
 set -euo pipefail
 

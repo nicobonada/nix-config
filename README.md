@@ -25,16 +25,9 @@ Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic9
 
 ## Usage
 
-Repo expected at `~/src/nix-config` (`NH_FLAKE` is set in home config for convenience).
+Repo expected at `~/src/nix-config`.
 
-**Interactive (optional):** [nh](https://github.com/nix-community/nh) for diffs / nicer build output.
-
-```fish
-nh os switch ~/src/nix-config
-nh home switch ~/src/nix-config
-```
-
-**Agents / scripts** use `nixos-rebuild` and `home-manager` (passwordless OS switch is scoped to `nixos-rebuild` only):
+Switch with `nixos-rebuild` and `home-manager`. Passwordless OS switch is scoped to `nixos-rebuild` only.
 
 ```fish
 sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)

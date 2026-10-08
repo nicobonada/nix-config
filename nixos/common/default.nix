@@ -120,9 +120,6 @@
   };
 
   programs = {
-    nh.enable = true;
-    # nh.flake = /home/nico/src/nix-config;
-
     fish.enable = true;
 
     appimage.enable = true;

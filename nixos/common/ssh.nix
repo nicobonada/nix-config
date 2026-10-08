@@ -8,8 +8,7 @@ let
   ];
 
   # Profile path so sudoers tracks the active generation (not a frozen store hash).
-  # Agents use nixos-rebuild (not nh): nh elevates via `sudo env … switch-to-configuration`,
-  # so NOPASSWD on the nh binary never matched activation anyway.
+  # Passwordless sudo is only for nixos-rebuild (agents / scripts).
   nopasswdRebuild = "/run/current-system/sw/bin/nixos-rebuild";
 in
 {
