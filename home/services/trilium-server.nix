@@ -227,7 +227,7 @@ in
 
           home.packages = [ bootstrap ];
 
-          # Seat age key for HM sops (trilium password; was co-located with music-backup sops).
+          # Seat age key for HM sops (trilium document password).
           sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
           sops.secrets."trilium/document_password" = {
             sopsFile = ../../secrets/trilium.yaml;
