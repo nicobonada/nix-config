@@ -27,7 +27,6 @@
     ./uwsm.nix
 
     inputs.determinate.nixosModules.default
-    inputs.auto-cpufreq.nixosModules.default
   ];
 
   nix = {
@@ -134,8 +133,6 @@
 
     wireshark.enable = true;
     wireshark.package = pkgs.wireshark;
-
-    auto-cpufreq.enable = true;
   };
 
   hardware.i2c.enable = true; # used for external monitor brightness control

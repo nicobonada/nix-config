@@ -8,6 +8,7 @@
 {
   imports = [
     ./boot.nix
+    ./tlp.nix
     ../common
     ./hardware-configuration.nix
   ];
