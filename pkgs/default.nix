@@ -11,6 +11,9 @@ rec {
   inherit (call ./brave.nix { }) brave-work brave-personal brave-scratch;
   path-mirror = call ./path-mirror { };
 
+  # Steam compat tool: gamemoderun in front of the last protonup-rs Proton.
+  proton-gamemode = call ./proton-gamemode.nix { };
+
   # Until nixpkgs yaak ≥ 2026.5.0 (PR 548416).
   yaak = call ./yaak { };
   # Official npm CLI (not built from the GUI derivation).

@@ -6,6 +6,7 @@
 }:
 let
   cfg = config.gaming;
+  custom = import ../../pkgs { inherit pkgs; };
 in
 {
   options.gaming = {
@@ -15,6 +16,7 @@ in
   config = lib.mkIf cfg.enable {
     hardware.steam-hardware.enable = true;
     programs.steam.enable = true;
+    programs.steam.extraCompatPackages = [ custom.proton-gamemode ];
 
     programs.gamemode.enable = true;
     users.extraUsers.nico.extraGroups = [ "gamemode" ];
