@@ -71,15 +71,18 @@ more += (?!.(Here|Aim):).*wielding.*of distortion
 more += Found .* abyssal rune of Zot
 more += A sentinel's mark forms upon you
 
-# Portal Timers
+# Repeating "You hear the ..." ticks while a timed portal is open.
+# The one-time appearance line is already a default force_more.
 more += You hear.*crackle.*magical portal
 more += You hear.*crackling.*archway
-more += You hear.*creaking.*(oriflamme|portcullis)
+more += You hear.*creaking.*portcullis
 more += You hear.*hiss.*sand
 more += You hear.*rumble.*avalanche
 more += You hear.*rusting.*drain
 more += You hear.*beating.*drum
-more += You hear.*whisling
+more += You hear.*whistling.*wind
+more += You hear.*tolling.*bell
+more += You hear.*funeral chant
 
 ##### Other files ###################################################
 # You can include other files from your options file using the 'include'
