@@ -29,6 +29,17 @@ in
       default_output = monitors.lg;
     }
 
+    # No global default_extent_fraction, so a new column takes the client's
+    # first width. Brave commits its minimum (~512). Open at 70% instead.
+    {
+      match.app_id = [
+        "^brave-work$"
+        "^brave-personal$"
+        "^brave-scratch$"
+      ];
+      default_scrolling_extent = 0.7;
+    }
+
     {
       match.title = "^MikuLogiS\\+$";
       default_fullscreen = false;

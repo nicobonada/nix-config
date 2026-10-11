@@ -12,11 +12,9 @@
   };
 
   layout.extent_presets = [
-    0.333333
-    0.375
+    0.3
     0.5
-    0.625
-    0.666667
+    0.7
   ];
 
   appearance = {
