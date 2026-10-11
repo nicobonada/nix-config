@@ -58,7 +58,10 @@ more += Training target .* reached!
 more += You have finished your manual
 more += Your transformation is almost over
 more += Vehument offers you knowledge more += You now have enough gold to
-more += Space .* around you
+# Distortion hits. Do not widen this to "Space .* around you": that
+# also matches Maxwell's portable piledriver ("Space contracts...").
+more += Space warps around you
+more += Space warps horribly around you
 more += .orbs? of fire. comes? into view
 more += .pandemonium comes? into view
 more += .lich. comes? into view
