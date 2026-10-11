@@ -43,9 +43,9 @@ merge gate, not a switch. The runner installs Determinate Nix but does not
 log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
 before an OS activate, not before merge. A home-only switch skips it.
 
-`update-flake-lock` opens a pull request every other day (12:00 UTC on odd
-calendar dates) that runs `nix flake update` for every input. Merge still
-waits on the preflight check; that is not a host switch.
+`update-flake-lock` opens a pull request every day (12:00 UTC) that runs
+`nix flake update` for every input. Merge still waits on the preflight
+check; that is not a host switch.
 
 - `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
 - `raiju-level` — SDL battery reading for a gamepad (public: `nicobonada/raiju-level`). On `home.packages`.
