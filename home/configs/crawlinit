@@ -45,8 +45,6 @@
 # so you can save time typing it.
 #
 
-item_slot ^= stones?:+Z
-
 explore_stop += greedy_pickup,stairs,shops,altars,portals,branches,runed_doors
 
 default_show_all_skills = true
