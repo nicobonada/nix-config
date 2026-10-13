@@ -44,7 +44,7 @@
 
   home.packages = with pkgs; [
     beets
-    cavalier
+    cavasik
     gallery-dl
     kid3
     mediainfo
