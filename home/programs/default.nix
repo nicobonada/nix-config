@@ -194,6 +194,8 @@ in
     bibata-cursors
     calibre
     dconf-editor
+    # YouTube on the Soundcore. Not the default browser.
+    firefox
     kdiff3
     # keepassxc
     kdePackages.kolourpaint
