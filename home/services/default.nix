@@ -12,7 +12,8 @@
 
   services = {
     kdeconnect.enable = true;
-    easyeffects.enable = true;
+    # Output EQ is the PipeWire chains in pipewire.nix.
+    easyeffects.enable = false;
   };
 
   # Phone Connect lists devices with `gdbus`. kdeconnect ships the daemon
