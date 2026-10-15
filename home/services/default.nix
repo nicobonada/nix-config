@@ -3,6 +3,7 @@
   imports = [
     ./beets-syncthing-scripts.nix
     ./mpd.nix
+    ./pass-secret-service.nix
     ./path-mirror.nix
     ./pipewire.nix
     ./session-tray.nix
