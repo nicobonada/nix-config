@@ -46,6 +46,13 @@
     # Own nixpkgs pin (wlroots 0.20 + nested xdg-desktop-portal-umbriel).
     umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
 
+    # Author's home-manager module. nixpkgs has the package;
+    # the module is why this input exists.
+    wayland-pipewire-idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -2,6 +2,7 @@
 {
   imports = [
     ./beets-syncthing-scripts.nix
+    ./idle-inhibit.nix
     ./mpd.nix
     ./pass-secret-service.nix
     ./path-mirror.nix
