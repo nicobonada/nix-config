@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Preflight for nix-config: eval both hosts + home, optionally build this host OS + home.
+# Preflight for nix-config: eval both hosts + both homes, optionally build this host OS + home.
 # No activation. Exit 0 only if every step succeeds.
 #   ./scripts/preflight          # local: eval + build this host (before an OS switch)
 #   ./scripts/preflight --eval   # CI: eval only (runner hostname is not a NixOS host)
@@ -53,11 +53,14 @@ nix eval --raw '.#nixosConfigurations.oakhill.config.system.build.toplevel.drvPa
 log "eval nixosConfigurations.seyruun"
 nix eval --raw '.#nixosConfigurations.seyruun.config.system.build.toplevel.drvPath' >/dev/null
 
-log "eval homeConfigurations.nico"
-nix eval --raw '.#homeConfigurations.nico.activationPackage.drvPath' >/dev/null
+for seat in oakhill seyruun; do
+  log "eval homeConfigurations.nico@${seat}"
+  # Quote the attribute: @ is not a bare Nix identifier.
+  nix eval --raw ".#homeConfigurations.\"nico@${seat}\".activationPackage.drvPath" >/dev/null
+done
 
 if $eval_only; then
-  log "OK (eval both hosts + home; no build, no switch)"
+  log "OK (eval both hosts + both homes; no build, no switch)"
   exit 0
 fi
 
@@ -65,6 +68,6 @@ log "nixos-rebuild build (this host)"
 nixos-rebuild build --flake "$ROOT#$hostname_short"
 
 log "home-manager build"
-home-manager build --flake "$ROOT#nico"
+home-manager build --flake "$ROOT#nico@${hostname_short}"
 
-log "OK (eval both hosts + home; built OS+home for this machine; no switch)"
+log "OK (eval both hosts + both homes; built OS+home for this machine; no switch)"

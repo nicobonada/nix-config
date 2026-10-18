@@ -11,7 +11,7 @@ Working personal config, not a template — steal ideas freely. Details live in 
 | **oakhill** | Desktop |
 | **seyruun** | Laptop |
 
-Flake outputs: `nixosConfigurations.{oakhill,seyruun}`, `homeConfigurations.nico`.
+Flake outputs: `nixosConfigurations.{oakhill,seyruun}`, `homeConfigurations."nico@<host>"` (`oakhill`, `seyruun`).
 
 Layout: shared system modules in `nixos/common/`, per-host configs under `nixos/<host>/`, user config under `home/`, custom packages under `pkgs/`. See `flake.nix` for inputs and outputs. oakhill disks/ZFS: `nixos/oakhill/disks.nix`.
 
@@ -31,15 +31,16 @@ Switch with `nixos-rebuild` and `home-manager`. Passwordless OS switch is scoped
 
 ```fish
 sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
-home-manager switch --flake ~/src/nix-config#nico
+home-manager switch --flake ~/src/nix-config#nico@$(hostname -s)
 ./scripts/preflight   # before an OS switch: eval both hosts + build this host
 ```
 
 ## CI
 
 GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
-`main` (eval both NixOS hosts + `homeConfigurations.nico`). That is the
-merge gate, not a switch. The runner installs Determinate Nix but does not
+`main` (eval both NixOS hosts and both home configurations,
+`nico@oakhill` and `nico@seyruun`). That is the merge gate, not a
+switch. The runner installs Determinate Nix but does not
 log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
 before an OS activate, not before merge. A home-only switch skips it.
 

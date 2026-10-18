@@ -109,20 +109,29 @@
         };
       };
 
-      homeConfigurations = {
-        nico = home-manager.lib.homeManagerConfiguration {
-          # Instantiate pkgs with allowUnfree so home.nix’s unfree packages work —
-          # legacyPackages ignores module nixpkgs.config.
-          inherit pkgs;
-          extraSpecialArgs = {
-            inherit inputs;
-            grokPkg = pkgs.callPackage ./pkgs/grok {
-              grok-unwrapped = inputs.llm-agents.packages.${system}.grok;
+      # One home closure per seat. Host-specific settings read `host`
+      # at build time (monitors, Brave autostart, Steam tray).
+      homeConfigurations =
+        let
+          mkHome =
+            host:
+            home-manager.lib.homeManagerConfiguration {
+              # Instantiate pkgs with allowUnfree so home.nix’s unfree packages work —
+              # legacyPackages ignores module nixpkgs.config.
+              inherit pkgs;
+              extraSpecialArgs = {
+                inherit inputs host;
+                grokPkg = pkgs.callPackage ./pkgs/grok {
+                  grok-unwrapped = inputs.llm-agents.packages.${system}.grok;
+                };
+              };
+              modules = [ ./home/nico.nix ];
             };
-          };
-          modules = [ ./home/nico.nix ];
+        in
+        {
+          "nico@oakhill" = mkHome "oakhill";
+          "nico@seyruun" = mkHome "seyruun";
         };
-      };
 
       # Mutating beets work: pauses Syncthing music + beets-state until the shell exits.
       #   nix develop .#beets

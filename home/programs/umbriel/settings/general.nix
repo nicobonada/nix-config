@@ -1,4 +1,4 @@
-{ ... }:
+{ host, lib, ... }:
 {
   general = {
     # No bind overlay at login.
@@ -11,13 +11,15 @@
     # spawn: tokens still focus their target.
     autostart = [
       # Idle inhibit is a user service (home/services/idle-inhibit.nix).
-      # Personal Brave targets the oakhill monitors.
       # 1Password and Steam are user services (home/services/session-tray.nix)
       # so their tray icons register after Noctalia.
       # solaar: nixos/common/solaar.nix (graphical-session; both seats)
       "kitty"
       "brave-work"
-      "[ $(hostname) = oakhill ] && brave-personal"
+    ]
+    ++ lib.optionals (host == "oakhill") [
+      # Personal Brave targets the oakhill monitors.
+      "brave-personal"
     ];
   };
 

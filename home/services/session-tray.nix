@@ -7,7 +7,12 @@
 # on every switch. Refuse manual start and stop: the session target still
 # pulls them in at login, PartOf still stops them at logout, and a switch
 # leaves a running instance alone.
-{ pkgs, ... }:
+{
+  host,
+  lib,
+  pkgs,
+  ...
+}:
 let
   sessionOnly = {
     RefuseManualStart = true;
@@ -15,41 +20,43 @@ let
   };
 in
 {
-  systemd.user.services = {
-    onepassword = {
-      Unit = {
-        Description = "1Password";
-        After = [
-          "graphical-session.target"
-          "noctalia.service"
-        ];
-        PartOf = [ "graphical-session.target" ];
-      }
-      // sessionOnly;
-      Service = {
-        ExecStart = "${pkgs._1password-gui}/bin/1password";
-        Restart = "on-failure";
+  systemd.user.services = lib.mkMerge [
+    {
+      onepassword = {
+        Unit = {
+          Description = "1Password";
+          After = [
+            "graphical-session.target"
+            "noctalia.service"
+          ];
+          PartOf = [ "graphical-session.target" ];
+        }
+        // sessionOnly;
+        Service = {
+          ExecStart = "${pkgs._1password-gui}/bin/1password";
+          Restart = "on-failure";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
-
-    # oakhill only. ConditionHost skips the start on other seats.
-    steam-client = {
-      Unit = {
-        Description = "Steam";
-        After = [
-          "graphical-session.target"
-          "noctalia.service"
-        ];
-        PartOf = [ "graphical-session.target" ];
-        ConditionHost = "oakhill";
-      }
-      // sessionOnly;
-      Service = {
-        ExecStart = "${pkgs.steam}/bin/steam -silent";
-        Restart = "on-failure";
+    }
+    # oakhill only. The seyruun home config does not define this unit.
+    (lib.mkIf (host == "oakhill") {
+      steam-client = {
+        Unit = {
+          Description = "Steam";
+          After = [
+            "graphical-session.target"
+            "noctalia.service"
+          ];
+          PartOf = [ "graphical-session.target" ];
+        }
+        // sessionOnly;
+        Service = {
+          ExecStart = "${pkgs.steam}/bin/steam -silent";
+          Restart = "on-failure";
+        };
+        Install.WantedBy = [ "graphical-session.target" ];
       };
-      Install.WantedBy = [ "graphical-session.target" ];
-    };
-  };
+    })
+  ];
 }
