@@ -27,27 +27,6 @@
         User = "nico";
       };
 
-      # --- LAN fallbacks when Tailscale is off ---
-      # IPs from current LAN; prefer DHCP reservations if they drift.
-      seyruun-lan = lib.hm.dag.entryBefore [ "*" ] {
-        HostName = "10.0.10.225";
-        User = "nico";
-        ForwardAgent = true;
-      };
-      oakhill-lan = lib.hm.dag.entryBefore [ "*" ] {
-        HostName = "10.0.10.43";
-        User = "nico";
-        ForwardAgent = true;
-      };
-      pve-lan = lib.hm.dag.entryBefore [ "*" ] {
-        HostName = "10.0.10.200";
-        User = "nico";
-      };
-      homelab-lan = lib.hm.dag.entryBefore [ "*" ] {
-        HostName = "10.0.10.201";
-        User = "nico";
-      };
-
       # Local graphical session: talk to this seat's 1Password agent.
       # Inside an SSH TTY, leave IdentityAgent unset so ssh uses forwarded
       # SSH_AUTH_SOCK. IdentityAgent always wins over the env var, so putting

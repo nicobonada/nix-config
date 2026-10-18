@@ -17,7 +17,6 @@
 
   amd-cpu.enable = true;
   amd-gpu.enable = true;
-  # container.enable = true;
   gaming.enable = true;
   royal-kludge.enable = true;
 

@@ -2,3 +2,6 @@ result
 
 # direnv / nix-direnv local cache + GC roots
 .direnv/
+
+# Electron startup trace if a desktop app is launched with this cwd.
+startup-metrics.log

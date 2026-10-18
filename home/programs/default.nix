@@ -197,7 +197,6 @@ in
     # YouTube on the Soundcore. Not the default browser.
     firefox
     kdiff3
-    # keepassxc
     kdePackages.kolourpaint
     kdePackages.okular
     lxqt.pcmanfm-qt

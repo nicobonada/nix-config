@@ -54,11 +54,6 @@
       };
     };
 
-    # icons = {
-    #   enable = true;
-    #   dark = "Papirus-Dark";
-    # };
-
     targets = {
       fish.enable = true;
       vivid.enable = true;

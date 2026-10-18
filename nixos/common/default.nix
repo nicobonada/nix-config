@@ -12,7 +12,6 @@
     ./amd-gpu.nix
     ./avahi.nix
     ./bluetooth.nix
-    ./container.nix
     ./gaming.nix
     ./greeter.nix
     ./lab-ca.nix
