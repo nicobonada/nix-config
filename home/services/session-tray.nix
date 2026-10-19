@@ -1,6 +1,7 @@
-# These apps register a tray icon once, at startup. graphical-session.target
-# stays inactive until noctalia-watcher.service sees
-# org.kde.StatusNotifierWatcher on the session bus.
+# These apps register a tray icon once, at startup. They follow
+# graphical-session.target, which waits for noctalia.service.
+# noctalia.service waits for status-notifier-watcher.service. That unit
+# is Type=dbus, so the bus name is owned before these apps start.
 #
 # sd-switch starts any inactive unit wanted by an active target, so a home
 # switch relaunches an app whose main process has exited. Trilium did that
