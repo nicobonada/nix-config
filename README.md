@@ -48,7 +48,6 @@ before an OS activate, not before merge. A home-only switch skips it.
 `nix flake update` for every input. Merge still waits on the preflight
 check; that is not a host switch.
 
-- `flake-status` — two-pane status dashboard for flakes under `~/src` (public: `nicobonada/flake-status`). Read-only.
 - `raiju-level` — SDL battery reading for a gamepad (public: `nicobonada/raiju-level`). On `home.packages`.
 
 ## License

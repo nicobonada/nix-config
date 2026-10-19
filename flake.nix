@@ -62,12 +62,6 @@
     # Do not follow nixpkgs: their grok binary uses their toolchain.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
-    # Status dashboard for flakes under ~/src (public; read-only TUI)
-    flake-status = {
-      url = "github:nicobonada/flake-status";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # SDL battery reading for the Raiju V3 Pro (public).
     raiju-level = {
       url = "github:nicobonada/raiju-level";

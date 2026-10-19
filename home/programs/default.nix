@@ -52,7 +52,6 @@ let
 in
 {
   imports = [
-    ./flake-status.nix
     ./cli.nix
     ./direnv.nix
     ./umbriel

@@ -386,26 +386,6 @@
         "type": "github"
       }
     },
-    "flake-status": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1787270951,
-        "narHash": "sha256-zP6Kql59PWMpdqjEM+A/IOHHj6DXw/CIbXGCGSaEIxk=",
-        "owner": "nicobonada",
-        "repo": "flake-status",
-        "rev": "5b2154f1b6541bbd612b5855b9abc156a7975999",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nicobonada",
-        "repo": "flake-status",
-        "type": "github"
-      }
-    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -805,7 +785,6 @@
         "determinate": "determinate",
         "disko": "disko",
         "disko-zfs": "disko-zfs",
-        "flake-status": "flake-status",
         "home-manager": "home-manager",
         "llm-agents": "llm-agents",
         "nix-index-database": "nix-index-database",
