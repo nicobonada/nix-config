@@ -1,11 +1,11 @@
 {
   imports = [ ../modules/trilium-server.nix ];
 
-  # Always-on Trilium for Grok MCP; separate dataDir from Electron desktop.
-  # Always-on MCP/web; separate dataDir from Electron.
-  # Password: sops secrets/trilium.yaml → trilium.document_password (not CHANGE_ME).
+  # Off while trilium-server 0.106.0's bundled node segfaults in ld.so.
+  # The restart loop blocks home activation. Turn this back on once
+  # that binary starts. Password stays in secrets/trilium.yaml.
   services.trilium-server = {
-    enable = true;
+    enable = false;
     # 37841: desktop Electron already uses 37840 for MCP.
     port = 37841;
     sync.serverHost = "https://nico-notes.pikapod.net";
