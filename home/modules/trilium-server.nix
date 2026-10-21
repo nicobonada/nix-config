@@ -256,6 +256,10 @@ in
               # Keep unit "active" after success so restart only re-runs join when needed.
               RemainAfterExit = true;
               ExecStart = lib.getExe bootstrap;
+              # oneshot TimeoutStartSec defaults to infinity. sd-switch waits
+              # on this start job, so a stuck hub join blocks home activation.
+              # Budget: API wait, then the script's 600s sync POST, plus slack.
+              TimeoutStartSec = toString (cfg.bootstrap.waitSeconds + 630);
             };
 
             Install = {
