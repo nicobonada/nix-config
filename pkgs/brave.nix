@@ -29,7 +29,14 @@ let
     in
     runCommand name { meta.mainProgram = name; } ''
       mkdir -p $out/bin
-      ln -s ${lib.getExe pkg} $out/bin/${name}
+      # Nixpkgs already passes --enable-features. Chromium keeps only the
+      # last copy, so splice zero-copy into that list. A second flag would
+      # drop VA-API decode and the Wayland decoration feature.
+      substitute ${lib.getExe pkg} $out/bin/${name} \
+        --replace-fail \
+        '--enable-features=AcceleratedVideoDecodeLinuxGL,' \
+        '--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoDecodeLinuxZeroCopyGL,'
+      chmod +x $out/bin/${name}
     '';
 
   cdp = port: [
