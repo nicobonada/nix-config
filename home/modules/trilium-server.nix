@@ -145,8 +145,9 @@ in
         uninitialized (POST /api/setup/sync-from-server). No browser.
 
         Needs `sync.serverHost` and document password via sops
-        `trilium/document_password` (see secrets/trilium.yaml). Idempotent once
-        the instance reports isInitialized.
+        `trilium/document_password` (see secrets/trilium.yaml). On success the
+        script writes `dataDir/.bootstrap-stamp`. The unit's
+        ConditionPathExists skips further starts while that file exists.
       '';
 
       passwordFile = mkOption {
@@ -210,8 +211,10 @@ in
             else
               config.sops.secrets."trilium/document_password".path;
 
+          stampFile = "${cfg.dataDir}/.bootstrap-stamp";
+
           bootstrap = custom.trilium-server-bootstrap {
-            inherit baseUrl passwordFile;
+            inherit baseUrl passwordFile stampFile;
             hub = cfg.sync.serverHost;
             proxy = if cfg.sync.proxy != null then cfg.sync.proxy else "";
             waitSeconds = cfg.bootstrap.waitSeconds;
@@ -249,6 +252,9 @@ in
                 "network-online.target"
                 "sops-nix.service"
               ];
+              # Stamp lives in the data dir, so wiping that dir runs join again.
+              # '!' means start only while the stamp is absent.
+              ConditionPathExists = [ "!${stampFile}" ];
             };
 
             Service = {
