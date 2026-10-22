@@ -25,5 +25,10 @@ in
     '';
 
     environment.systemPackages = [ pkgs.via ];
+
+    # s2idle leaves the R87 enumerated but not sending keys.
+    powerManagement.resumeCommands = ''
+      ${pkgs.usbutils}/bin/usbreset 342d:e48e || true
+    '';
   };
 }
