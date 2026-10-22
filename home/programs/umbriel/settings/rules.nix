@@ -45,6 +45,14 @@ in
       default_fullscreen = false;
     }
 
+    # Skyrim's Xwayland window stays tiled. Opening fullscreen settles on
+    # the first title; Proton's app id often arrives after that and is
+    # not replayed, so match the title the window already has.
+    {
+      match.title = "^Skyrim Special Edition$";
+      default_fullscreen = true;
+    }
+
     {
       match.app_id = "^steam$";
       match.title = "^notificationtoasts_[0-9]+_desktop$";
