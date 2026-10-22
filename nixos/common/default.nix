@@ -16,6 +16,7 @@
     ./greeter.nix
     ./lab-ca.nix
     ./onepassword.nix
+    ./printing.nix
     ./sound.nix
     ./yubi.nix
     ./royal-kludge.nix
@@ -93,7 +94,6 @@
   ];
 
   services = {
-    printing.enable = true;
     # openssh + tailscale --ssh: see ./ssh.nix
     gvfs.enable = true;
     locate.enable = true;
