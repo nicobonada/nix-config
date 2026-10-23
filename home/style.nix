@@ -1,4 +1,18 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  config,
+  ...
+}:
+let
+  inherit (config.stylix.fonts) monospace sansSerif;
+  uiSize = toString config.stylix.fonts.sizes.applications;
+  # qt6ct wants the size in the same quoted string as the family.
+  qtFonts = {
+    fixed = ''"${monospace.name},${uiSize}"'';
+    general = ''"${sansSerif.name},${uiSize}"'';
+  };
+in
 {
   # Fonts, Stylix palette, and toolkit theming (GTK/Qt).
   # Kitty font/theme stay in programs/kitty.nix - not managed here.
@@ -61,10 +75,28 @@
       jjui.enable = true;
       bat.enable = true;
 
-      # Opt-in: applies fonts *and* dark Kanagawa theming (adw-gtk3 CSS + Qt/Kvantum).
-      # No fonts-only path in Stylix — size alone is not available.
+      # Opt-in: fonts and dark Kanagawa (adw-gtk3 CSS). No fonts-only
+      # path in Stylix. Qt is separate below: Stylix's Kvantum theme
+      # paints menus and toolbars with unreadable contrast.
       gtk.enable = true;
-      qt.enable = true;
+      qt.enable = false;
+    };
+  };
+
+  # Fusion is Qt's built-in style (qt6ct's own fallback). Set it so a
+  # stale qt6ct.conf cannot bring Kvantum back. Fonts still follow the
+  # Stylix application size. Do not set qt.style.name: that exports
+  # QT_STYLE_OVERRIDE, which is what pinned this session to Kvantum.
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+    qt5ctSettings = {
+      Appearance.style = "Fusion";
+      Fonts = qtFonts;
+    };
+    qt6ctSettings = {
+      Appearance.style = "Fusion";
+      Fonts = qtFonts;
     };
   };
 }
