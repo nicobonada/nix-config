@@ -32,4 +32,5 @@ jobs:
             {{ env.GIT_COMMIT_MESSAGE }}
             ```
 
-            This does not switch a host. Merge only after `preflight` is green.
+            When `preflight` is green, `land-lock` fast-forwards `main`
+            to this commit. That is not a host switch.
