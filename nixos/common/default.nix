@@ -72,6 +72,8 @@
 
   users.extraUsers.nico = {
     isNormalUser = true;
+    # Leave the user manager up after graphical logout.
+    linger = true;
     extraGroups = [
       "wheel"
       "networkmanager"
