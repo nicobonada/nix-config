@@ -45,7 +45,7 @@ log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
 before an OS activate, not before merge. A home-only switch skips it.
 
 `update-flake-lock` opens a pull request every day (12:00 UTC) that runs
-`nix flake update` for every input. When `preflight` is green, `land-lock`
+`nix flake update` for every input. When `preflight` is green, CI
 fast-forwards `main` to that commit. That is not a host switch.
 
 - `raiju-level` — SDL battery reading for a gamepad (public: `nicobonada/raiju-level`). On `home.packages`.
