@@ -25,4 +25,11 @@
       ];
     };
   };
+
+  systemd.user.services.shpool.Unit = {
+    # A changed unit is stop-started. Grok TUIs live in this cgroup;
+    # stopping it SIGKILLs the agent and the home switch itself.
+    # The new binary applies at the next login.
+    X-SwitchMethod = "keep-old";
+  };
 }
