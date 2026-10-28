@@ -37,9 +37,9 @@ in
 
   home.packages = with pkgs; [
     cowsay
-    dgop
     dua
     duf
+    dux-gop
     erdtree
     fd
     htop
