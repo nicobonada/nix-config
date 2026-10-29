@@ -74,6 +74,7 @@ in
       yazi.enable = true;
       jjui.enable = true;
       bat.enable = true;
+      zathura.enable = true;
 
       # Opt-in: fonts and dark Kanagawa (adw-gtk3 CSS). No fonts-only
       # path in Stylix. Qt is separate below: Stylix's Kvantum theme

@@ -18,6 +18,7 @@
     ./service-clients.nix
     ./ssh.nix
     ./yubi.nix
+    ./zathura.nix
 
     ./fish
     ./git
@@ -48,7 +49,6 @@
     firefox
     kdiff3
     kdePackages.kolourpaint
-    kdePackages.okular
     lxqt.pcmanfm-qt
     papirus-icon-theme
     qview
