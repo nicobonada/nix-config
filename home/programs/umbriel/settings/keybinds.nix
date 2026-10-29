@@ -19,19 +19,19 @@ let
     builtins.concatMap (n: [
       {
         name = "Mod+${toString n}";
-        value = "workspace-switch:${toString n}";
+        value = "workspace-switch ${toString n}";
       }
       {
         name = "Mod+Shift+${toString n}";
-        value = "window-move-to-workspace:${toString n}";
+        value = "window-move-to-workspace ${toString n}";
       }
       {
         name = "Mod+KP_${toString n}";
-        value = "workspace-switch:${toString n}";
+        value = "workspace-switch ${toString n}";
       }
       {
         name = "Mod+Shift+KP_${toString n}";
-        value = "window-move-to-workspace:${toString n}";
+        value = "window-move-to-workspace ${toString n}";
       }
     ]) (builtins.genList (i: i + 1) 9)
   );
@@ -72,22 +72,22 @@ in
     };
 
     # Bare Mod. Mod+D is unused.
-    "Mod" = "spawn:noctalia msg panel-toggle launcher";
-    "Mod+N" = "spawn:noctalia msg panel-toggle control-center";
+    "Mod" = "spawn noctalia msg panel-toggle launcher";
+    "Mod+N" = "spawn noctalia msg panel-toggle control-center";
     # Notes has no scratchpad-only IPC. This toggles the panel; scratchpad is the pinned row.
     "Mod+Grave" = {
-      action = "spawn:noctalia msg panel-toggle noctalia/notes:panel";
+      action = "spawn noctalia msg panel-toggle noctalia/notes:panel";
       repeat = false;
     };
-    "Mod+Comma" = "spawn:noctalia msg settings-toggle";
-    "Mod+X" = "spawn:noctalia msg panel-toggle session";
-    "Mod+Semicolon" = "spawn:noctalia msg panel-toggle launcher //";
+    "Mod+Comma" = "spawn noctalia msg settings-toggle";
+    "Mod+X" = "spawn noctalia msg panel-toggle session";
+    "Mod+Semicolon" = "spawn noctalia msg panel-toggle launcher //";
 
-    "XF86AudioRaiseVolume" = locked "spawn:noctalia msg volume-up";
-    "XF86AudioLowerVolume" = locked "spawn:noctalia msg volume-down";
-    "XF86AudioMute" = locked "spawn:noctalia msg volume-mute";
-    "XF86MonBrightnessUp" = locked "spawn:noctalia msg brightness-up";
-    "XF86MonBrightnessDown" = locked "spawn:noctalia msg brightness-down";
+    "XF86AudioRaiseVolume" = locked "spawn noctalia msg volume-up";
+    "XF86AudioLowerVolume" = locked "spawn noctalia msg volume-down";
+    "XF86AudioMute" = locked "spawn noctalia msg volume-mute";
+    "XF86MonBrightnessUp" = locked "spawn noctalia msg brightness-up";
+    "XF86MonBrightnessDown" = locked "spawn noctalia msg brightness-down";
 
     # Vertical strip: up is previous, down is next.
     "Mod+Page_Up" = "workspace-previous";
@@ -125,10 +125,10 @@ in
 
     "Mod+C" = "column-center";
 
-    "Mod+Minus" = "window-modify-primary-extent:-0.1";
-    "Mod+Equal" = "window-modify-primary-extent:0.1";
-    "Mod+Shift+Minus" = "window-modify-secondary-extent:-0.1";
-    "Mod+Shift+Equal" = "window-modify-secondary-extent:0.1";
+    "Mod+Minus" = "window-modify-primary-extent -0.1";
+    "Mod+Equal" = "window-modify-primary-extent 0.1";
+    "Mod+Shift+Minus" = "window-modify-secondary-extent -0.1";
+    "Mod+Shift+Equal" = "window-modify-secondary-extent 0.1";
 
     "Mod+V" = "window-toggle-floating";
     "Mod+Shift+V" = "window-focus-switch-floating";
@@ -139,7 +139,7 @@ in
     };
     # Alt+Tab style overlay. Tab and Shift+Tab cycle while it is open.
     "Mod+Tab" = {
-      action = "spawn:noctalia msg window-switcher";
+      action = "spawn noctalia msg window-switcher";
       repeat = false;
     };
 
@@ -148,17 +148,17 @@ in
     # Mod+Escape stays the built-in quit.
     "Mod+Shift+E" = "session-quit";
 
-    "Mod+Return" = "spawn:kitty";
+    "Mod+Return" = "spawn kitty";
     # O is overview.
-    "Mod+B" = "spawn:brave-work";
-    "Mod+Shift+B" = "spawn:brave-personal";
-    "Mod+Alt+B" = "spawn:brave-scratch";
-    "Mod+W" = "spawn:kitten quick-access-terminal --instance-group vol wiremix";
+    "Mod+B" = "spawn brave-work";
+    "Mod+Shift+B" = "spawn brave-personal";
+    "Mod+Alt+B" = "spawn brave-scratch";
+    "Mod+W" = "spawn kitten quick-access-terminal --instance-group vol wiremix";
 
     # No focused-window capture yet (noctalia-dev/noctalia#3380).
-    "Mod+S" = "spawn:noctalia msg screenshot-region";
-    "Mod+Ctrl+S" = "spawn:noctalia msg screenshot-fullscreen";
-    "Print" = "spawn:noctalia msg screenshot-region";
-    "Ctrl+Print" = "spawn:noctalia msg screenshot-fullscreen";
+    "Mod+S" = "spawn noctalia msg screenshot-region";
+    "Mod+Ctrl+S" = "spawn noctalia msg screenshot-fullscreen";
+    "Print" = "spawn noctalia msg screenshot-region";
+    "Ctrl+Print" = "spawn noctalia msg screenshot-fullscreen";
   };
 }

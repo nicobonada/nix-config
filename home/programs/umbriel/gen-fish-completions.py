@@ -18,7 +18,6 @@ import subprocess
 import sys
 from dataclasses import dataclass
 
-ACTION_LINE = re.compile(r"^  (\S+)\s{2,}(\S.*)$")
 EVENTS_LINE = re.compile(r"events:\s*(.+)$")
 OPTIONAL_OPT = re.compile(r"^\[(-{1,2}[A-Za-z0-9-]+)(?:\s+(<[^>]+>))?\]$")
 POSITIONAL = re.compile(r"^<([^>]+)>$")
@@ -72,17 +71,6 @@ def run_help(binary: str, *args: str) -> str:
 
 def fish_escape(text: str) -> str:
     return text.replace("\\", "\\\\").replace("'", "\\'")
-
-
-def complete_token(name: str) -> str:
-    """Strip help param syntax so fish completes the typed prefix."""
-    optional = re.search(r":\[", name)
-    if optional:
-        return name[: optional.start()]
-    required = re.search(r":[^[]", name)
-    if required:
-        return name[: required.start() + 1]
-    return name
 
 
 def tokenize(text: str) -> list[str]:
@@ -274,20 +262,28 @@ def parse_top(help_text: str) -> Help:
 
 
 def parse_actions(help_text: str) -> list[Command]:
+    """Parse `umbriel msg --help` rows: `  {name [args...]:<width>}  {summary}`.
+
+    Action arguments are separate words (`spawn <cmd...>`, not `spawn:<cmd>`).
+    The first token is the completion name. A leftover `name:arg` spec still
+    completes as `name`.
+    """
     actions: list[Command] = []
     seen: set[str] = set()
     for raw in help_text.splitlines():
-        match = ACTION_LINE.match(raw)
-        if not match:
+        if not (raw.startswith("  ") and not raw.startswith("   ")):
             continue
-        token = complete_token(match.group(1))
-        if token in seen or "<" in token:
+        spec, desc = split_spec_desc(raw[2:])
+        tokens = tokenize(spec)
+        if not tokens:
             continue
-        seen.add(token)
-        actions.append(Command(token, match.group(2).strip()))
-    if "spawn:" in seen and "spawn" not in seen:
-        spawn_desc = next(cmd.description for cmd in actions if cmd.name == "spawn:")
-        actions.insert(0, Command("spawn", spawn_desc))
+        name = tokens[0]
+        if ":" in name:
+            name = name.split(":", 1)[0]
+        if not name or name in seen or "<" in name:
+            continue
+        seen.add(name)
+        actions.append(Command(name, desc.strip()))
     return actions
 
 
@@ -449,6 +445,36 @@ Other:
     if validate.file_flag != "-c":
         raise SystemExit(f"error: config validate file flag parsed as {validate.file_flag!r}")
 
+    action_help = """
+Usage: umbriel msg <action> [args...]
+
+Send an action to the running compositor.
+Arguments follow the action as separate words; `spawn` runs the remaining words as one shell command.
+Available actions, grouped as the cheatsheet groups them:
+
+Apps
+  spawn <cmd...>                   Run a command with a launch activation token
+
+Focus
+  window-focus <window-id>         Focus a window, revealing it from a hidden scratchpad
+  window-focus-left                Focus the window to the left
+
+Workspaces
+  workspace-switch <workspace> [--output <output>]  Switch to a workspace
+"""
+    actions = parse_actions(action_help)
+    names = [cmd.name for cmd in actions]
+    if names != [
+        "spawn",
+        "window-focus",
+        "window-focus-left",
+        "workspace-switch",
+    ]:
+        raise SystemExit(f"error: action help parse produced {names}")
+    spawn = next(cmd for cmd in actions if cmd.name == "spawn")
+    if not spawn.description.startswith("Run a command"):
+        raise SystemExit(f"error: spawn description parsed as {spawn.description!r}")
+
 
 def main() -> int:
     self_check()
@@ -459,7 +485,7 @@ def main() -> int:
     parsed = parse_top(run_help(binary, "--help"))
     actions = parse_actions(run_help(binary, "msg", "--help"))
     check_parsed(parsed, "umbriel")
-    if not actions:
+    if not actions or not any(cmd.name == "spawn" for cmd in actions):
         print("error: failed to parse umbriel msg help", file=sys.stderr)
         return 1
     text = emit(parsed, actions)

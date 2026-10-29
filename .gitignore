@@ -5,3 +5,6 @@ result
 
 # Electron startup trace if a desktop app is launched with this cwd.
 startup-metrics.log
+
+# Bytecode from local runs of gen-fish-completions.py
+__pycache__/

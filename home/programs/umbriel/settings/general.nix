@@ -8,7 +8,7 @@
     xwayland = true;
     xwayland_native_resolution = true;
     # Mod stays unset: Super on a real session, Alt when nested.
-    # spawn: tokens still focus their target.
+    # Autostart still focuses its targets with a launch activation token.
     autostart = [
       # Idle inhibit is a user service (home/services/idle-inhibit.nix).
       # 1Password and Steam are user services (home/services/session-tray.nix)
