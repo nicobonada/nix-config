@@ -44,7 +44,8 @@ switch. The runner installs Determinate Nix but does not
 log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
 before an OS activate, not before merge. A home-only switch skips it.
 
-`update-flake-lock` opens a pull request every day (12:00 UTC) that runs
+`update-flake-lock` opens a pull request every day at midnight Argentina
+time (`America/Argentina/Buenos_Aires`) that runs
 `nix flake update` for every input. When `preflight` is green, CI
 fast-forwards `main` to that commit. That is not a host switch.
 
