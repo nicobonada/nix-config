@@ -49,7 +49,7 @@
     firefox
     kdiff3
     kdePackages.kolourpaint
-    lxqt.pcmanfm-qt
+    thunar
     papirus-icon-theme
     qview
     rustdesk-flutter
