@@ -126,22 +126,5 @@
           "nico@oakhill" = mkHome "oakhill";
           "nico@seyruun" = mkHome "seyruun";
         };
-
-      # Mutating beets work. Music + library are NFS mounts of the hub.
-      #   nix develop .#beets
-      #   beet import …
-      # One seat at a time (SQLite on NFS).
-      devShells.${system}.beets = pkgs.mkShell {
-        name = "beets";
-        packages = with pkgs; [
-          beets
-          sqlite
-        ];
-        shellHook = ''
-          echo "beets shell: library on hub NFS"
-          echo "  files:   ~/music"
-          echo "  library: ~/.local/share/beets-state/library.db"
-        '';
-      };
     };
 }
