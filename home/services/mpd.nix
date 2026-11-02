@@ -8,6 +8,7 @@
   services = {
     mpd = {
       enable = true;
+      musicDirectory = "${config.home.homeDirectory}/music";
       network.listenAddress = "any";
       enableSessionVariables = false; # MPD_HOST doesn't support "any"
 
@@ -48,6 +49,8 @@
   xdg.configFile."mpd-notification.conf".text = ''
     music-dir = ${config.services.mpd.musicDirectory}
   '';
+
+  systemd.user.services.mpd.Unit.RequiresMountsFor = config.services.mpd.musicDirectory;
 
   systemd.user.services.mpd-notification = {
     Unit = {

@@ -13,10 +13,6 @@ rec {
   # Steam compat tool: gamemoderun in front of the last protonup-rs Proton.
   proton-gamemode = call ./proton-gamemode.nix { };
 
-  beets-syncthing-pause = call ./beets-syncthing/pause.nix { };
-  beets-syncthing-resume = call ./beets-syncthing/resume.nix { };
-  beets-state-migrate = call ./beets-syncthing/state-migrate.nix { };
-
   # Factory: module supplies baseUrl / hub / passwordFile / …
   trilium-server-bootstrap = call ./trilium-server-bootstrap { };
 

@@ -1,7 +1,6 @@
 { pkgs, ... }:
 {
   imports = [
-    ./beets-syncthing-scripts.nix
     ./idle-inhibit.nix
     ./mpd.nix
     ./pass-secret-service.nix
@@ -10,7 +9,6 @@
     ./session-tray.nix
     ./shpool.nix
     ./status-notifier-watcher.nix
-    ./syncthing.nix
     ./trilium-server.nix
   ];
 

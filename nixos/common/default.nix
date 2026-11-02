@@ -15,6 +15,7 @@
     ./gaming.nix
     ./greeter.nix
     ./lab-ca.nix
+    ./music-nfs.nix
     ./onepassword.nix
     ./printing.nix
     ./sound.nix

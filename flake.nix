@@ -127,29 +127,19 @@
           "nico@seyruun" = mkHome "seyruun";
         };
 
-      # Mutating beets work: pauses Syncthing music + beets-state until the shell exits.
+      # Mutating beets work. Music + library are NFS mounts of the hub.
       #   nix develop .#beets
       #   beet import …
-      #   exit
-      # Requires home-manager beets-syncthing-pause/resume on PATH (or nix shell them).
+      # One seat at a time (SQLite on NFS).
       devShells.${system}.beets = pkgs.mkShell {
         name = "beets";
         packages = with pkgs; [
           beets
           sqlite
-          syncthing
         ];
         shellHook = ''
-          pause_bin="$(command -v beets-syncthing-pause || true)"
-          resume_bin="$(command -v beets-syncthing-resume || true)"
-          if [[ -z $pause_bin || -z $resume_bin ]]; then
-            echo "beets shell: beets-syncthing-pause/resume not on PATH" >&2
-            echo "  → home-manager switch first (or: nix shell path:~/src/nix-config …)" >&2
-          else
-            "$pause_bin" || echo "beets shell: pause failed (is syncthing running?)" >&2
-            trap '"$resume_bin" || true' EXIT
-          fi
-          echo "beets shell: Syncthing music + beets-state paused until exit"
+          echo "beets shell: library on hub NFS"
+          echo "  files:   ~/music"
           echo "  library: ~/.local/share/beets-state/library.db"
         '';
       };
