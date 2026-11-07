@@ -37,12 +37,13 @@ home-manager switch --flake ~/src/nix-config#nico@$(hostname -s)
 
 ## CI
 
-GitHub Actions runs `./scripts/preflight --eval` on pull requests and on
-`main` (eval both NixOS hosts and both home configurations,
+GitHub Actions runs `./scripts/preflight --eval` on pull requests
+(eval both NixOS hosts and both home configurations,
 `nico@oakhill` and `nico@seyruun`). That is the merge gate, not a
-switch. The runner installs Determinate Nix but does not
-log in to FlakeHub Cache. Local `./scripts/preflight` builds this host
-before an OS activate, not before merge. A home-only switch skips it.
+switch. Fast-forwarding the same SHA onto `main` does not re-run it.
+The runner installs Determinate Nix but does not log in to FlakeHub
+Cache. Local `./scripts/preflight` builds this host before an OS
+activate, not before merge. A home-only switch skips it.
 
 `update-flake-lock` opens a pull request every day at midnight Argentina
 time (`America/Argentina/Buenos_Aires`) that runs
