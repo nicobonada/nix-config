@@ -10,6 +10,24 @@ let
   # Absolute path so nvim can spawn Grok even if PATH is thin (GUI launch).
   # Uses SuperGrok OAuth via ~/.grok/auth.json — not the metered XAI_API_KEY.
   grokBin = lib.getExe grokPkg;
+
+  # mkspell rejects region names (E751), so hunspell es_AR is compiled as
+  # es.utf-8.spl. :SpEs sets spelllang=es against that wordlist.
+  spellEsAr =
+    pkgs.runCommand "nvim-spell-es-ar"
+      {
+        nativeBuildInputs = [ pkgs.neovim-unwrapped ];
+      }
+      ''
+        set -eu
+        export HOME=$(mktemp -d)
+        mkdir -p "$out/spell"
+        nvim --headless --clean -n -Es \
+          --cmd "set encoding=utf-8" \
+          --cmd "mkspell! $out/spell/es ${pkgs.hunspellDicts.es-ar}/share/hunspell/es_AR" \
+          +qa
+        test -s "$out/spell/es.utf-8.spl"
+      '';
 in
 {
   imports = [ inputs.nvf.homeManagerModules.default ];
@@ -20,6 +38,8 @@ in
     settings.vim = {
       viAlias = false;
       vimAlias = true;
+
+      additionalRuntimePaths = [ spellEsAr ];
 
       clipboard = {
         enable = true;
@@ -205,6 +225,22 @@ in
         )
       '';
 
+      luaConfigRC.spell = /* lua */ ''
+        vim.api.nvim_create_user_command('SpEn', function()
+          vim.opt_local.spell = true
+          vim.opt_local.spelllang = 'en_us'
+        end, { desc = 'Spellcheck US English' })
+
+        vim.api.nvim_create_user_command('SpEs', function()
+          vim.opt_local.spell = true
+          vim.opt_local.spelllang = 'es'
+        end, { desc = 'Spellcheck Argentine Spanish' })
+
+        vim.api.nvim_create_user_command('SpOff', function()
+          vim.opt_local.spell = false
+        end, { desc = 'Disable spellcheck' })
+      '';
+
       globals.mapleader = ",";
 
       undoFile.enable = true;
@@ -253,8 +289,6 @@ in
 
         kmap('n', '<leader>p', ':pu  +<cr>', { silent = true })
         kmap('n', '<leader>P', ':pu! +<cr>', { silent = true })
-
-        kmap('n', '<Leader>s', ':setlocal spell! spelllang=en_us<CR>', { silent = true })
 
         kmap('i', '<bs>', '<c-g>u<bs>')
         kmap('i', '<cr>', '<c-g>u<cr>')
