@@ -51,6 +51,7 @@ in
     nix-tree
     nvd
     nixpkgs-track
+    pandoc
     patool
     perlPackages.FileMimeInfo
     procs
