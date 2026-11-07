@@ -9,6 +9,10 @@
   services.printing = {
     enable = true;
     drivers = [ pkgs.brlaser ];
+    # Desktops print via the local brlaser + :9100 queue. cups-browsed
+    # would ingest the homelab IPP share and the printer's own broken
+    # IPP advertisement, then pause the ghost queue on backend errors.
+    browsed.enable = false;
   };
 
   hardware.printers = {
