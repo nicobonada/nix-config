@@ -5,7 +5,7 @@
 }:
 {
   imports = [
-    ./brave.nix
+    ./helium.nix
     ./cli.nix
     ./direnv.nix
     ./noctalia.nix

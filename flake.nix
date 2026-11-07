@@ -68,6 +68,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    helium = {
+      url = "github:oxcl/nix-flake-helium-browser";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # oakhill disk layout (nixos/oakhill/disks.nix). Description + mounts only —
     # do not run the disko destroy/format CLI against the live pool.
     disko = {
@@ -104,7 +109,7 @@
       };
 
       # One home closure per seat. Host-specific settings read `host`
-      # at build time (monitors, Brave autostart, Steam tray).
+      # at build time (monitors, Helium autostart, Steam tray).
       homeConfigurations =
         let
           mkHome =

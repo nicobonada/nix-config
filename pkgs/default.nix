@@ -6,7 +6,6 @@ let
 in
 rec {
   nix-pkgs-browse = call ./nix-pkgs-browse { };
-  inherit (call ./brave.nix { }) brave-work brave-personal brave-scratch;
   path-mirror = call ./path-mirror { };
   status-notifier-watcher = call ./status-notifier-watcher { };
 

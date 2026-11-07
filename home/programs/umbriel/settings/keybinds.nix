@@ -150,9 +150,9 @@ in
 
     "Mod+Return" = "spawn kitty";
     # O is overview.
-    "Mod+B" = "spawn brave-work";
-    "Mod+Shift+B" = "spawn brave-personal";
-    "Mod+Alt+B" = "spawn brave-scratch";
+    "Mod+B" = "spawn helium-work";
+    "Mod+Shift+B" = "spawn helium-personal";
+    "Mod+Alt+B" = "spawn helium-scratch";
     "Mod+W" = "spawn kitten quick-access-terminal --instance-group vol wiremix";
 
     # No focused-window capture yet (noctalia-dev/noctalia#3380).

@@ -15,11 +15,11 @@
       # so their tray icons register after Noctalia.
       # solaar: nixos/common/solaar.nix (graphical-session; both seats)
       "kitty"
-      "brave-work"
+      "helium-work"
     ]
     ++ lib.optionals (host == "oakhill") [
-      # Personal Brave targets the oakhill monitors.
-      "brave-personal"
+      # Personal Helium targets the oakhill monitors.
+      "helium-personal"
     ];
   };
 

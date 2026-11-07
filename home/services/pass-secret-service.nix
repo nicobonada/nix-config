@@ -1,4 +1,4 @@
-# Secret Service for apps (Brave, secret-tool). The store opens with a
+# Secret Service for apps (Helium, secret-tool). The store opens with a
 # passphrase-less GPG key, so a YubiKey login does not have to supply one.
 # gnome-keyring's PAM unlock needed that password and stayed locked.
 {

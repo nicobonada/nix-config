@@ -18,24 +18,24 @@ in
     }
 
     {
-      match.app_id = "^brave-personal$";
+      match.app_id = "^helium-personal$";
       match.at_startup = true;
       default_output = monitors.asus;
     }
 
     {
-      match.app_id = "^brave-work$";
+      match.app_id = "^helium-work$";
       match.at_startup = true;
       default_output = monitors.lg;
     }
 
     # No global default_extent_fraction, so a new column takes the client's
-    # first width. Brave commits its minimum (~512). Open at 70% instead.
+    # first width. Helium commits its minimum (~512). Open at 70% instead.
     {
       match.app_id = [
-        "^brave-work$"
-        "^brave-personal$"
-        "^brave-scratch$"
+        "^helium-work$"
+        "^helium-personal$"
+        "^helium-scratch$"
       ];
       default_scrolling_extent = 0.7;
     }
