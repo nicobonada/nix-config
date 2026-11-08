@@ -23,6 +23,18 @@ in
     polkitPolicyOwners = [ "nico" ];
   };
 
+  # Helium is not on 1Password's built-in Linux allowlist. BrowserSupport
+  # matches the process basename (opt/helium/helium), not the profile
+  # wrappers (helium-work / helium-personal / helium-scratch). Mode 0755
+  # is required. Restart 1Password after this file lands.
+  # https://support.1password.com/additional-browsers/
+  environment.etc."1password/custom_allowed_browsers" = {
+    text = ''
+      helium
+    '';
+    mode = "0755";
+  };
+
   # Match #537630 / official after-install.sh: dedicated group + setgid so the
   # desktop can verify MCP peers via SO_PEERCRED. Without this, logs show:
   #   Rejecting MCP connection: Linux peer effective GID check failed
