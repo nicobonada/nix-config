@@ -51,6 +51,9 @@
         "https://cache.numtide.com"
         "https://noctalia.cachix.org"
       ];
+
+      # Sandboxed builds (crawl `nix run`, etc.) can reuse C++ objects.
+      extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
       extra-trusted-public-keys = [
         "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
@@ -122,6 +125,8 @@
 
   programs = {
     fish.enable = true;
+    # /var/cache/ccache for nixbld; extra-sandbox-paths bind-mounts it.
+    ccache.enable = true;
 
     appimage.enable = true;
     appimage.binfmt = true;
