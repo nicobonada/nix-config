@@ -64,7 +64,13 @@
   # Shared by oakhill + seyruun (host-specific bits stay in configuration.nix).
   nixpkgs.config.allowUnfree = true;
   time.timeZone = "America/Argentina/Mendoza";
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    # resolved.enable forces dns = "systemd-resolved", which pushes DHCP
+    # nameservers onto wifi as a second DefaultRoute next to Tailscale's
+    # ~. catch-all. MagicDNS + Technitium should be the only recursive path.
+    dns = lib.mkForce "none";
+  };
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
   i18n = {
