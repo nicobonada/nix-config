@@ -51,5 +51,20 @@ in
 
       pulseaudio # steam seems to rely on pactl being available
     ];
+
+    # Drop when NixOS/nixpkgs#586109 is in nixos-unstable. zstd-sys and
+    # aws-lc-sys now probe system libs (tracking #570944 / #570938); Hydra
+    # has been red since 2026-11-07.
+    nixpkgs.overlays = [
+      (final: prev: {
+        protonup-rs = prev.protonup-rs.overrideAttrs (old: {
+          nativeBuildInputs = (old.nativeBuildInputs or [ ]) ++ [ final.pkg-config ];
+          buildInputs = (old.buildInputs or [ ]) ++ [
+            final.aws-lc
+            final.zstd
+          ];
+        });
+      })
+    ];
   };
 }
