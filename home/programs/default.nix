@@ -40,9 +40,6 @@
     android-file-transfer
     anydesk
     bibata-cursors
-    # pyopenjtalk's test fails on nixpkgs 2026-10-20, which blocks
-    # piper-tts and then this package. Put it back when that test passes.
-    # calibre
     crawlTiles
     dconf-editor
     # YouTube on the Soundcore. Not the default browser.
