@@ -93,6 +93,15 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [
+          (final: prev: {
+            # Drop when NixOS/nixpkgs#585583 is in this pin (merged
+            # 2026-11-10; libsodium after rust crates stopped vendoring).
+            rustdesk-flutter = prev.rustdesk-flutter.overrideAttrs (old: {
+              buildInputs = (old.buildInputs or [ ]) ++ [ final.libsodium ];
+            });
+          })
+        ];
       };
     in
     {
