@@ -24,8 +24,6 @@
     ./git
   ];
 
-  programs.discord.enable = true;
-
   home.packages = with pkgs; [
     # Wayland / session tooling
     qt6Packages.qt6ct
@@ -42,6 +40,10 @@
     bibata-cursors
     crawlTiles
     dconf-editor
+    # Package only. programs.discord.enable pins settings.json in the
+    # store; Discord replaces that symlink (window bounds) and the next
+    # home switch fails. nixpkgs injects SKIP_HOST_UPDATE on launch.
+    discord
     # YouTube on the Soundcore. Not the default browser.
     firefox
     kdiff3
