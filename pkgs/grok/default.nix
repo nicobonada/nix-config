@@ -3,6 +3,7 @@
 {
   pkgs,
   grok-unwrapped,
+  extraAgentApps ? [ ],
 }:
 let
   inherit (pkgs)
@@ -14,7 +15,7 @@ let
     hostname
     ;
   grokExe = lib.getExe grok-unwrapped;
-  agentApps = import ./agent-apps.nix pkgs;
+  agentApps = (import ./agent-apps.nix pkgs) ++ extraAgentApps;
   grokBin = writeShellApplication {
     name = "grok";
     # Exec upstream by absolute path so this wrapper is not shadowed.

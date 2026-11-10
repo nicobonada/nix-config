@@ -1,0 +1,52 @@
+# Local tuicr theme matching nvim kanagawa-wave (rebelot/kanagawa.nvim).
+# Palette names in comments are the plugin's; values are wave hex.
+panel_bg = "#1F1F28" # sumiInk3
+bg_highlight = "#223249" # waveBlue1 visual
+fg_primary = "#DCD7BA" # fujiWhite
+fg_secondary = "#C8C093" # oldWhite
+fg_dim = "#727169" # fujiGray
+selection_marker = "#7E9CD8" # crystalBlue
+
+diff_add = "#76946A" # autumnGreen
+diff_add_bg = "#2B3328" # winterGreen
+diff_del = "#C34043" # autumnRed
+diff_del_bg = "#43242B" # winterRed
+diff_context = "#DCD7BA" # fujiWhite
+diff_hunk_header = "#7E9CD8" # crystalBlue
+expanded_context_fg = "#727169" # fujiGray
+
+syntax_add_bg = "#2B3328" # winterGreen
+syntax_del_bg = "#43242B" # winterRed
+
+file_added = "#76946A" # autumnGreen
+file_modified = "#DCA561" # autumnYellow
+file_deleted = "#C34043" # autumnRed
+file_renamed = "#957FB8" # oniViolet
+
+reviewed = "#98BB6C" # springGreen
+pending = "#DCA561" # autumnYellow
+
+comment_note = "#7FB4CA" # springBlue
+comment_suggestion = "#7AA89F" # waveAqua2
+comment_issue = "#E46876" # waveRed
+comment_praise = "#98BB6C" # springGreen
+
+border_focused = "#7E9CD8" # crystalBlue
+border_unfocused = "#54546D" # sumiInk6
+status_bar_bg = "#16161D" # sumiInk0
+cursor_color = "#A3D4D5" # lightBlue (nvim wave cursor)
+cursor_line_bg = "#363646" # sumiInk5
+branch_name = "#957FB8" # oniViolet
+help_indicator = "#727169" # fujiGray
+
+message_info_fg = "#1F1F28" # sumiInk3
+message_info_bg = "#7E9CD8" # crystalBlue
+message_warning_fg = "#1F1F28"
+message_warning_bg = "#FF9E3B" # roninYellow
+message_error_fg = "#1F1F28"
+message_error_bg = "#E82424" # samuraiRed
+update_badge_fg = "#1F1F28"
+update_badge_bg = "#FF9E3B" # roninYellow
+
+mode_fg = "#1F1F28"
+mode_bg = "#7E9CD8" # crystalBlue

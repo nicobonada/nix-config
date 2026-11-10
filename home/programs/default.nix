@@ -24,6 +24,20 @@
     ./git
   ];
 
+  programs.tuicr = {
+    enable = true;
+    # llm-agents 0.28.0 already links pkg-config/oniguruma/libgit2.
+    # nixpkgs 0.28.0 on this pin fails without NixOS/nixpkgs@c805633.
+    package = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.tuicr;
+    settings = {
+      editor = "nvim";
+      theme = "kanagawa-wave";
+      # Opaque panels use nvim's kanagawa-wave background (sumiInk3).
+      transparent_background = false;
+    };
+    themes.kanagawa-wave = ./tuicr-kanagawa-wave.toml;
+  };
+
   home.packages = with pkgs; [
     # Wayland / session tooling
     qt6Packages.qt6ct
