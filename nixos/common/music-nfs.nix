@@ -2,7 +2,9 @@
 let
   # Short name is MagicDNS / Technitium. Do not put Tailscale IPs or
   # *.ts.net in this public flake.
-  server = "homelab";
+  # pve exports the T7 ext4 directly. Homelab still has the virtiofs
+  # tree for Samba / restic / Syncthing; do not mount that reexport.
+  server = "pve";
   nfsCommon = [
     "nfsvers=4.2"
     "_netdev"
@@ -22,13 +24,13 @@ in
   boot.supportedFilesystems.nfs = true;
 
   fileSystems."/home/nico/music" = {
-    device = "${server}:/mnt/pve-backup/music";
+    device = "${server}:/mnt/backup/music";
     fsType = "nfs";
     options = nfsCommon;
   };
 
   fileSystems."/home/nico/.local/share/beets-state" = {
-    device = "${server}:/mnt/pve-backup/beets-state";
+    device = "${server}:/mnt/backup/beets-state";
     fsType = "nfs";
     options = nfsCommon;
   };
