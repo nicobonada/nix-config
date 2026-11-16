@@ -10,6 +10,7 @@
     ./direnv.nix
     ./noctalia.nix
     ./umbriel
+    ./luciole.nix
     ./kitty.nix
     ./grok.nix
     ./media.nix
@@ -62,7 +63,6 @@
     firefox
     kdiff3
     kdePackages.kolourpaint
-    thunar
     papirus-icon-theme
     qview
     rustdesk-flutter

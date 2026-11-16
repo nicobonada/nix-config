@@ -46,6 +46,9 @@
     # Own nixpkgs pin (wlroots 0.20 + nested xdg-desktop-portal-umbriel).
     umbriel.url = "git+https://github.com/noctalia-dev/umbriel";
 
+    # Own nixpkgs pin (gdk-pixbuf 2.44.6 + glycin).
+    luciole.url = "github:noctalia-dev/luciole";
+
     # Author's home-manager module. nixpkgs has the package;
     # the module is why this input exists.
     wayland-pipewire-idle-inhibit = {

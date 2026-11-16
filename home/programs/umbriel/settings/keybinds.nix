@@ -149,6 +149,7 @@ in
     "Mod+Shift+E" = "session-quit";
 
     "Mod+Return" = "spawn kitty";
+    "Mod+E" = "spawn luciole";
     # O is overview.
     "Mod+B" = "spawn helium-work";
     "Mod+Shift+B" = "spawn helium-personal";
