@@ -10,7 +10,6 @@
     source = ./functions;
     recursive = true;
   };
-  xdg.configFile."fish/completions/shpool.fish".source = ./completions/shpool.fish;
 
   # Wrap `nix develop` / `nix shell` / `nix-shell` so they exec fish
   # instead of bash. direnv already keeps flake shells in this session.

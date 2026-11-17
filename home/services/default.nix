@@ -7,7 +7,6 @@
     ./path-mirror.nix
     ./pipewire.nix
     ./session-tray.nix
-    ./shpool.nix
     ./status-notifier-watcher.nix
     ./trilium-server.nix
   ];
