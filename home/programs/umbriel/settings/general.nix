@@ -1,5 +1,10 @@
 { host, lib, ... }:
 {
+  # Noctalia writes ~/.config/umbriel/noctalia.toml. config.toml is a
+  # store symlink, so the template cannot append this include itself.
+  # ~ because include paths are relative to the including file.
+  include.optional.files = [ "~/.config/umbriel/noctalia.toml" ];
+
   general = {
     # No bind overlay at login.
     show_cheatsheet = false;
