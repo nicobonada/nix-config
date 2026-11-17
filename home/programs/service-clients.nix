@@ -43,7 +43,7 @@ in
   home.packages = with pkgs; [
     backblaze-b2
     restic
-    # Official Doist CLI (`td`) — human terminal use; agents keep Todoist MCP
+    # Official Doist CLI (`td`). Kept until open tasks are imported into aven.
     todoist-cli
   ];
 

@@ -13,6 +13,7 @@
     ./luciole.nix
     ./kitty.nix
     ./grok.nix
+    ./aven.nix
     ./media.nix
     ./networking.nix
     ./nvim.nix

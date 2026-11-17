@@ -4,18 +4,22 @@
   lib,
   config,
   pkgs,
+  inputs,
   ...
 }:
 let
   checkoutGrok = "${config.home.homeDirectory}/src/grok";
   # Activation PATH is not the user/agent PATH; sync-portable-config is env python3.
   ensureGrokPath = lib.makeBinPath [ pkgs.python3 ];
+  aven = inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}.aven;
   # writeShellApplication PATH is runtimeInputs only. Copy the TUI
   # package onto the agent PATH so `tuicr review` works in tool shells.
   grok = grokPkg.override {
-    extraAgentApps = lib.optional (
-      config.programs.tuicr.enable && config.programs.tuicr.package != null
-    ) config.programs.tuicr.package;
+    extraAgentApps =
+      (lib.optional (
+        config.programs.tuicr.enable && config.programs.tuicr.package != null
+      ) config.programs.tuicr.package)
+      ++ [ aven ];
   };
 in
 {
