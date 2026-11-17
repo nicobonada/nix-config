@@ -10,7 +10,7 @@
     # Tap-to-click stays on by default.
     touchpad.tap_button_map = "left_middle_right";
 
-    focus.follows_mouse = true;
+    focus.follows_mouse = "sloppy";
 
     cursor = {
       theme = "Bibata-Modern-Ice";
