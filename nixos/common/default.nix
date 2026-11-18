@@ -47,9 +47,11 @@
         "@wheel"
       ];
 
+      # Lab Attic is public-pull. Push with `attic push lab <path>`.
       extra-substituters = [
         "https://cache.numtide.com"
         "https://noctalia.cachix.org"
+        "https://cache.lab.bonada.ca/lab"
       ];
 
       # Sandboxed builds (crawl `nix run`, etc.) can reuse C++ objects.
@@ -57,6 +59,7 @@
       extra-trusted-public-keys = [
         "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
         "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        "lab:gmMRlAWDdgUZ0ksKcNpW6WfitoaEoXhYKUArA7Bg/Vc="
       ];
     };
   };

@@ -36,6 +36,8 @@ in
   };
 
   home.packages = with pkgs; [
+    # Push to cache.lab.bonada.ca (pull is nix.settings.extra-substituters).
+    attic-client
     cowsay
     dua
     duf
