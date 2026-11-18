@@ -119,6 +119,22 @@
         "type": "github"
       }
     },
+    "community-umbriel-shaders": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794678337,
+        "narHash": "sha256-dv450e3mKuFfZlNWn8q5qbZdT/lmekosRMsCsyERNEg=",
+        "owner": "noctalia-dev",
+        "repo": "community-umbriel-shaders",
+        "rev": "5f19b0677dd3fefe1c3daaead5958e54251b1c0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "community-umbriel-shaders",
+        "type": "github"
+      }
+    },
     "cpu-microcodes": {
       "flake": false,
       "locked": {
@@ -833,6 +849,7 @@
     },
     "root": {
       "inputs": {
+        "community-umbriel-shaders": "community-umbriel-shaders",
         "determinate": "determinate",
         "disko": "disko",
         "disko-zfs": "disko-zfs",

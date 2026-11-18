@@ -49,6 +49,13 @@
     # Own nixpkgs pin (gdk-pixbuf 2.44.6 + glycin).
     luciole.url = "github:noctalia-dev/luciole";
 
+    # Community GLSL presets. Non-flake source; home includes individual
+    # effect.toml files from this tree.
+    community-umbriel-shaders = {
+      url = "github:noctalia-dev/community-umbriel-shaders";
+      flake = false;
+    };
+
     # Author's home-manager module. nixpkgs has the package;
     # the module is why this input exists.
     wayland-pipewire-idle-inhibit = {

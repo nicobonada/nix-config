@@ -37,6 +37,10 @@
           password_file = config.sops.secrets."noctalia/caldav_password".path;
         };
       };
+      # Spectrum and other audio-reactive Umbriel effects need this feed.
+      # This seat already enabled it in settings.toml; keep it in config so
+      # a fresh seat or a state reset still provides audio.
+      shell.umbriel_audio_provider_enabled = true;
       # Noctalia appends .png itself.
       shell.screenshot = {
         directory = "~/Pictures/Screenshots";

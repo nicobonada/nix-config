@@ -18,6 +18,7 @@
   ];
 
   appearance = {
+    border_width = 3;
     # No per-window radius, so games cannot force 0.
     corner_radius = 8;
     blur = {

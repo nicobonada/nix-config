@@ -29,6 +29,7 @@ let
   # oakhill only: seyruun's HDMI port blanks the VG258 if FreeSync is on.
   settings = lib.foldl' lib.recursiveUpdate { } [
     (import ./settings/general.nix { inherit host lib; })
+    (import ./settings/effects.nix { inherit inputs; })
     (import ./settings/input.nix)
     (import ./settings/layout.nix)
     (import ./settings/rules.nix)
