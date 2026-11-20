@@ -41,6 +41,9 @@
         "flakes"
       ];
       auto-optimise-store = true;
+      # Live GC roots keep their build-time closure (gcc, -dev outputs)
+      # so flake rebuilds do not re-substitute the toolchain after GC.
+      keep-outputs = true;
 
       trusted-users = [
         "root"
