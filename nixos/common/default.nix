@@ -139,6 +139,13 @@
     fish.enable = true;
     # /var/cache/ccache for nixbld; extra-sandbox-paths bind-mounts it.
     ccache.enable = true;
+    # System PATH so sudo nh matches /run/current-system/sw/bin/nh.
+    # NH_FLAKE is also in the daemon/agent environment (HM session vars
+    # are not). clean.enable stays off; prune by hand.
+    nh = {
+      enable = true;
+      flake = "/home/nico/src/nix-config";
+    };
 
     appimage.enable = true;
     appimage.binfmt = true;

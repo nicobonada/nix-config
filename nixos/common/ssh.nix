@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 let
   # Workstation client keys — install on every machine you SSH *to*.
   # Keep comments stable so `authorized_keys` diffs stay readable.
@@ -7,8 +7,10 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGiS0WGMF1xtibs+k+4WjkpPCv0stUUGY7E75Nuh2Fib nico@oakhill"
   ];
 
-  # Profile path so sudoers tracks the active generation (not a frozen store hash).
-  # Passwordless sudo is only for nixos-rebuild (agents / scripts).
+  # Profile paths so sudoers tracks the active generation.
+  # Agents run `sudo -n nh os switch -R` so nh is already root and does
+  # not sudo store-path activation. Keep nixos-rebuild for preflight.
+  nopasswdNh = "/run/current-system/sw/bin/nh";
   nopasswdRebuild = "/run/current-system/sw/bin/nixos-rebuild";
 in
 {
@@ -26,11 +28,16 @@ in
     };
   };
 
-  # Scoped elevation for local OS rebuilds (agents / scripts). Not full passwordless sudo.
+  # Scoped elevation for local OS rebuilds (agents / scripts). Not full
+  # passwordless sudo.
   security.sudo.extraRules = [
     {
       users = [ "nico" ];
       commands = [
+        {
+          command = nopasswdNh;
+          options = [ "NOPASSWD" ];
+        }
         {
           command = nopasswdRebuild;
           options = [ "NOPASSWD" ];
