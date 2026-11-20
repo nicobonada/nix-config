@@ -55,7 +55,8 @@ more := force_more_message
 more += Training target .* reached!
 more += You have finished your manual
 more += Your transformation is almost over
-more += Vehument offers you knowledge more += You now have enough gold to
+more += Vehumet offers you knowledge
+more += You now have enough gold to
 # Distortion hits. Do not widen this to "Space .* around you": that
 # also matches Maxwell's portable piledriver ("Space contracts...").
 more += Space warps around you
