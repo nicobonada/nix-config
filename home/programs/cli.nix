@@ -51,7 +51,6 @@ in
     libqalculate
     lsof
     nix-tree
-    nvd
     nixpkgs-track
     pandoc
     patool

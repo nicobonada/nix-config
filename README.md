@@ -27,11 +27,12 @@ Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic9
 
 Repo expected at `~/src/nix-config`.
 
-Switch with `nixos-rebuild` and `home-manager`. Passwordless OS switch is scoped to `nixos-rebuild` only.
+Switch with `nh`. Passwordless sudo is scoped to `nh` and `nixos-rebuild`
+(preflight still uses the latter to build).
 
 ```fish
-sudo -n nixos-rebuild switch --flake ~/src/nix-config#$(hostname -s)
-home-manager switch --flake ~/src/nix-config#nico@$(hostname -s)
+sudo -n nh os switch -R --elevation-strategy none
+nh home switch
 ./scripts/preflight   # before an OS switch: eval both hosts + build this host
 ```
 

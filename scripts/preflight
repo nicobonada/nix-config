@@ -4,8 +4,7 @@
 #   ./scripts/preflight          # local: eval + build this host (before an OS switch)
 #   ./scripts/preflight --eval   # CI: eval only (runner hostname is not a NixOS host)
 # Agents run the full script only when nixos/, pkgs/, flake.nix, or flake.lock
-# changed. home-manager switch builds home on its own.
-# Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
+# changed. nh home switch builds home on its own. Apply is nh, not this script.
 set -euo pipefail
 
 # Grok's idle inhibitor ends with the agent turn, and the laptop then
