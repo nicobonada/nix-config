@@ -2,10 +2,7 @@
 # the swap point (this package, or haskellPackages.status-notifier-item).
 # tray.target is not started in this session, so the module's WantedBy
 # alone would leave the daemon idle.
-{ pkgs, ... }:
-let
-  custom = import ../../pkgs { inherit pkgs; };
-in
+{ custom, ... }:
 {
   services.status-notifier-watcher = {
     enable = true;

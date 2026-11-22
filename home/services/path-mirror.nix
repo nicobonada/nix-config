@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-let
-  custom = import ../../pkgs { inherit pkgs; };
-in
+{ custom, ... }:
 {
   # Ad-hoc one-shot rsync. Music library is hub NFS
   # (nixos/common/music-nfs.nix).

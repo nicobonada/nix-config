@@ -13,7 +13,11 @@ Working personal config, not a template — steal ideas freely. Details live in 
 
 Flake outputs: `nixosConfigurations.{oakhill,seyruun}`, `homeConfigurations."nico@<host>"` (`oakhill`, `seyruun`).
 
-Layout: shared system modules in `nixos/common/`, per-host configs under `nixos/<host>/`, user config under `home/`, custom packages under `pkgs/`. See `flake.nix` for inputs and outputs. oakhill disks/ZFS: `nixos/oakhill/disks.nix`.
+Layout: shared system modules in `nixos/common/`, per-host configs under
+`nixos/<host>/`, user config under `home/`, custom packages under `pkgs/`.
+See `flake.nix` for inputs and outputs. oakhill disks/ZFS:
+`nixos/oakhill/disks.nix`. `raiju-level` (Raiju V3 Pro battery) is on
+`home.packages`.
 
 ## Secrets
 
@@ -27,7 +31,7 @@ Secrets live **in this repo**, encrypted with [sops-nix](https://github.com/Mic9
 
 Repo expected at `~/src/nix-config`.
 
-Switch with `nh`. Passwordless sudo is scoped to `nh` and `nixos-rebuild`.
+Switch with `nh`. Passwordless sudo is scoped to `nh`.
 
 ```fish
 sudo -n nh os switch -R --elevation-strategy none
@@ -49,8 +53,6 @@ activate, not before merge. A home-only switch skips it.
 time (`America/Argentina/Buenos_Aires`) that runs
 `nix flake update` for every input. When `preflight` is green, CI
 fast-forwards `main` to that commit. That is not a host switch.
-
-- `raiju-level` — SDL battery reading for a gamepad (public: `nicobonada/raiju-level`). On `home.packages`.
 
 ## License
 

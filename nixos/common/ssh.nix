@@ -7,11 +7,10 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGiS0WGMF1xtibs+k+4WjkpPCv0stUUGY7E75Nuh2Fib nico@oakhill"
   ];
 
-  # Profile paths so sudoers tracks the active generation.
+  # Profile path so sudoers tracks the active generation.
   # Agents run `sudo -n nh os switch -R` so nh is already root and does
   # not sudo store-path activation. Preflight builds with nh as the user.
   nopasswdNh = "/run/current-system/sw/bin/nh";
-  nopasswdRebuild = "/run/current-system/sw/bin/nixos-rebuild";
 in
 {
   users.users.nico.openssh.authorizedKeys.keys = nicoKeys;
@@ -36,10 +35,6 @@ in
       commands = [
         {
           command = nopasswdNh;
-          options = [ "NOPASSWD" ];
-        }
-        {
-          command = nopasswdRebuild;
           options = [ "NOPASSWD" ];
         }
       ];

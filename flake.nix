@@ -49,13 +49,6 @@
     # Own nixpkgs pin (gdk-pixbuf 2.44.6 + glycin).
     luciole.url = "github:noctalia-dev/luciole";
 
-    # Community GLSL presets. Non-flake source; home includes individual
-    # effect.toml files from this tree.
-    community-umbriel-shaders = {
-      url = "github:noctalia-dev/community-umbriel-shaders";
-      flake = false;
-    };
-
     # Author's home-manager module. nixpkgs has the package;
     # the module is why this input exists.
     wayland-pipewire-idle-inhibit = {
@@ -104,16 +97,21 @@
         inherit system;
         config.allowUnfree = true;
       };
+      custom = import ./pkgs { inherit pkgs; };
     in
     {
       nixosConfigurations = {
         oakhill = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          specialArgs = {
+            inherit inputs custom;
+          };
           modules = [ ./nixos/oakhill/configuration.nix ];
         };
 
         seyruun = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; }; # Pass flake inputs to our config
+          specialArgs = {
+            inherit inputs custom;
+          };
           modules = [ ./nixos/seyruun/configuration.nix ];
         };
       };
@@ -129,7 +127,7 @@
               # legacyPackages ignores module nixpkgs.config.
               inherit pkgs;
               extraSpecialArgs = {
-                inherit inputs host;
+                inherit inputs host custom;
                 grokPkg = pkgs.callPackage ./pkgs/grok {
                   grok-unwrapped = inputs.llm-agents.packages.${system}.grok;
                 };

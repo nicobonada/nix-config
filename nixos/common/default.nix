@@ -30,12 +30,12 @@
   ];
 
   nix = {
-    # Make nix3 commands consistent with this flake's inputs.
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    # Only nixpkgs: <nixpkgs> and `nix flake` lookups. Other flake
+    # inputs stay out of the registry.
+    registry.nixpkgs.flake = inputs.nixpkgs;
 
     settings = {
-      # Same inputs, for <name> lookups. nix.nixPath was renamed to this.
-      nix-path = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
+      nix-path = [ "nixpkgs=${config.nix.registry.nixpkgs.to.path}" ];
       experimental-features = [
         "nix-command"
         "flakes"

@@ -1,12 +1,10 @@
 {
+  custom,
   inputs,
   lib,
   pkgs,
   ...
 }:
-let
-  custom = import ../../pkgs { inherit pkgs; };
-in
 {
   imports = [
     inputs.nix-index-database.homeModules.nix-index

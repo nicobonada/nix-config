@@ -34,7 +34,7 @@ in
       $DRY_RUN_CMD env \
         PATH=${lib.escapeShellArg ensureGrokPath}''${PATH:+:$PATH} \
         GROK_CONFIG_ROOT="$root" \
-        "$root/scripts/ensure-grok-home" || true
+        "$root/scripts/ensure-grok-home"
     fi
   '';
 }

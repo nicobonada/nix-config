@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, config, ... }:
 {
   imports = [
     inputs.sops-nix.homeModules.sops
@@ -6,6 +6,8 @@
     ./programs
     ./services
   ];
+
+  sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
 
   # Unfree for *installed* HM packages: flake.nix imports nixpkgs with allowUnfree
   # (legacyPackages ignores this module option). Ad-hoc nix-shell / nix shell stay

@@ -6,9 +6,8 @@
   ...
 }:
 {
-  # Seat age key (same file as trilium). Needed here so the CalDAV secret
-  # decrypts even if trilium bootstrap is off.
-  sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+  # Age key is set in nico.nix so CalDAV still decrypts if trilium
+  # bootstrap is off.
   sops.secrets."noctalia/caldav_password" = {
     sopsFile = ../../secrets/noctalia.yaml;
   };

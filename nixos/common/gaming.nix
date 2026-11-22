@@ -1,12 +1,12 @@
 {
   config,
+  custom,
   pkgs,
   lib,
   ...
 }:
 let
   cfg = config.gaming;
-  custom = import ../../pkgs { inherit pkgs; };
 in
 {
   options.gaming = {

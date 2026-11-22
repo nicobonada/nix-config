@@ -1,5 +1,6 @@
 {
   config,
+  custom,
   lib,
   pkgs,
   ...
@@ -204,7 +205,6 @@ in
 
       (mkIf cfg.bootstrap.enable (
         let
-          custom = import ../../pkgs { inherit pkgs; };
           passwordFile =
             if cfg.bootstrap.passwordFile != "" then
               cfg.bootstrap.passwordFile
@@ -230,8 +230,6 @@ in
 
           home.packages = [ bootstrap ];
 
-          # Seat age key for HM sops (trilium document password).
-          sops.age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
           sops.secrets."trilium/document_password" = {
             sopsFile = ../../secrets/trilium.yaml;
           };

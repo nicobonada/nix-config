@@ -1,12 +1,12 @@
 {
   config,
+  custom,
   pkgs,
   lib,
   ...
 }:
 let
   cfg = config.programs._1password-gui;
-  custom = import ../../pkgs { inherit pkgs; };
 
   # Prefer the module's GUI package when it differs from nixpkgs default.
   onePasswordMcpPatched = custom.onepassword-mcp-patched.override {

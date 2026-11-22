@@ -1,5 +1,5 @@
 # Custom packages for this flake (not nixpkgs).
-# Modules: `let custom = import ../../pkgs { inherit pkgs; }; in …`
+# Passed as `custom` from flake.nix (NixOS specialArgs, HM extraSpecialArgs).
 { pkgs }:
 let
   call = pkgs.callPackage;
