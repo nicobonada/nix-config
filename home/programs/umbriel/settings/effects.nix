@@ -1,8 +1,7 @@
-{ inputs }:
 {
-  # Store path because config.toml is a store symlink.
+  # Directory include so shader.glsl is copied next to effect.toml.
   include.files = [
-    "${inputs.community-umbriel-shaders}/border/spectrum/effect.toml"
+    "${../shaders/spectrum}/effect.toml"
   ];
 
   effects.border = "spectrum";

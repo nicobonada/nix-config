@@ -1,0 +1,7 @@
+[effects.preset.spectrum]
+kind = "border"
+shader = "shader.glsl"
+palette = true
+animated = false
+# Paint over the native ring only. Extra padding was the translucent halo.
+padding = 0
