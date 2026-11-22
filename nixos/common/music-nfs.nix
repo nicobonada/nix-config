@@ -3,7 +3,7 @@ let
   # Short name is MagicDNS / Technitium. Do not put Tailscale IPs or
   # *.ts.net in this public flake.
   # pve exports the T7 ext4 directly. Homelab still has the virtiofs
-  # tree for Samba / restic / Syncthing; do not mount that reexport.
+  # tree for Samba / restic; do not mount that reexport.
   server = "pve";
   nfsCommon = [
     "nfsvers=4.2"

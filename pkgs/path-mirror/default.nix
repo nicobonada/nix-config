@@ -5,7 +5,8 @@
   coreutils,
 }:
 # Generic one-way rsync with online check.
-# Music library replication is Syncthing; this CLI is for ad-hoc one-shot copies.
+# Music library replication is NFS (seats mount via music-nfs); this CLI
+# is for ad-hoc one-shot copies.
 writeShellApplication {
   name = "path-mirror";
   runtimeInputs = [
