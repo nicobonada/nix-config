@@ -26,9 +26,6 @@ pkgs: with pkgs; [
   # classic image pipeline (rules/capture-recurring.md) — identify / magick
   imagemagick
 
-  # scripts/nvd-if-changed — store-path closure diffs (informational, not a gate)
-  nvd
-
   # Official Nix formatter (RFC 166). Run on touched .nix files before recording
   # (rules/nix.md). nvim is set to the same via nvf format.type.
   nixfmt

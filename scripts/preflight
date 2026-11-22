@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-# Preflight for nix-config: eval both hosts + both homes, optionally build this host OS + home.
-# No activation. Exit 0 only if every step succeeds.
-#   ./scripts/preflight          # local: eval + build this host (before an OS switch)
-#   ./scripts/preflight --eval   # CI: eval only (runner hostname is not a NixOS host)
-# Agents run the full script only when nixos/, pkgs/, flake.nix, or flake.lock
-# changed. home-manager switch builds home on its own.
-# Optional closure hint (not a gate): ~/src/grok/scripts/nvd-if-changed os|home
+# Preflight for nix-config. No activation. Exit 0 only if every step
+# succeeds.
+#   ./scripts/preflight          # local: eval the other seat, nh-build this
+#                                # host OS + home (before an OS switch)
+#   ./scripts/preflight --eval   # CI: eval both OS + both homes (runner is
+#                                # not a NixOS host)
+# Agents run the full script only when nixos/, pkgs/, flake.nix, or
+# flake.lock changed. nh home switch builds home on its own. Apply is
+# nh, not this script.
 set -euo pipefail
 
 # Grok's idle inhibitor ends with the agent turn, and the laptop then
@@ -31,6 +33,8 @@ for arg in "$@"; do
     --eval | --eval-only) eval_only=true ;;
     -h | --help)
       printf 'usage: %s [--eval]\n' "$(basename "$0")"
+      printf '  (default)  eval the other seat; nh os/home build this host\n'
+      printf '  --eval     eval both OS + both homes (CI); no build\n'
       exit 0
       ;;
     *)
@@ -45,29 +49,48 @@ hostname_short="$(hostname -s 2>/dev/null || hostname)"
 log() { printf 'preflight: %s\n' "$*"; }
 fail() { printf 'preflight: FAIL: %s\n' "$*" >&2; exit 1; }
 
+eval_os() {
+  local host=$1
+  log "eval nixosConfigurations.${host}"
+  nix eval --raw \
+    ".#nixosConfigurations.${host}.config.system.build.toplevel.drvPath" \
+    >/dev/null
+}
+
+eval_home() {
+  local host=$1
+  log "eval homeConfigurations.nico@${host}"
+  # Quote the attribute: @ is not a bare Nix identifier.
+  nix eval --raw \
+    ".#homeConfigurations.\"nico@${host}\".activationPackage.drvPath" \
+    >/dev/null
+}
+
 log "repo=$ROOT host=$hostname_short eval_only=$eval_only"
 
-log "eval nixosConfigurations.oakhill"
-nix eval --raw '.#nixosConfigurations.oakhill.config.system.build.toplevel.drvPath' >/dev/null
-
-log "eval nixosConfigurations.seyruun"
-nix eval --raw '.#nixosConfigurations.seyruun.config.system.build.toplevel.drvPath' >/dev/null
-
-for seat in oakhill seyruun; do
-  log "eval homeConfigurations.nico@${seat}"
-  # Quote the attribute: @ is not a bare Nix identifier.
-  nix eval --raw ".#homeConfigurations.\"nico@${seat}\".activationPackage.drvPath" >/dev/null
-done
-
 if $eval_only; then
+  for host in oakhill seyruun; do
+    eval_os "$host"
+    eval_home "$host"
+  done
   log "OK (eval both hosts + both homes; no build, no switch)"
   exit 0
 fi
 
-log "nixos-rebuild build (this host)"
-nixos-rebuild build --flake "$ROOT#$hostname_short"
+case "$hostname_short" in
+  oakhill) other=seyruun ;;
+  seyruun) other=oakhill ;;
+  *) fail "unknown host ${hostname_short} (need oakhill or seyruun)" ;;
+esac
 
-log "home-manager build"
-home-manager build --flake "$ROOT#nico@${hostname_short}"
+# This-host eval is covered by the nh builds below. The peer is not.
+eval_os "$other"
+eval_home "$other"
 
-log "OK (eval both hosts + both homes; built OS+home for this machine; no switch)"
+log "nh os build (this host)"
+nh os build -H "$hostname_short" .
+
+log "nh home build (this host)"
+nh home build --configuration "nico@${hostname_short}" .
+
+log "OK (eval peer ${other}; built OS+home for ${hostname_short}; no switch)"

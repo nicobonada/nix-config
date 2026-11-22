@@ -9,7 +9,7 @@ let
 
   # Profile paths so sudoers tracks the active generation.
   # Agents run `sudo -n nh os switch -R` so nh is already root and does
-  # not sudo store-path activation. Keep nixos-rebuild for preflight.
+  # not sudo store-path activation. Preflight builds with nh as the user.
   nopasswdNh = "/run/current-system/sw/bin/nh";
   nopasswdRebuild = "/run/current-system/sw/bin/nixos-rebuild";
 in
