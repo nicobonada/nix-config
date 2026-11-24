@@ -43,5 +43,11 @@ in
 
   # Tailscale SSH (identity auth) as primary remote path; classic keys for
   # when the tailnet is down. Requires matching ACLs in tailscale-policy.
-  services.tailscale.extraSetFlags = [ "--ssh" ];
+  # Operator: nico may `tailscale set` without sudo. LAN access: keep LAN
+  # on Wi-Fi when an exit node is on.
+  services.tailscale.extraSetFlags = [
+    "--ssh"
+    "--operator=nico"
+    "--exit-node-allow-lan-access"
+  ];
 }
