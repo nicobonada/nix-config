@@ -15,6 +15,7 @@
     ./grok.nix
     ./herdr.nix
     ./aven.nix
+    ./opencode.nix
     ./media.nix
     ./networking.nix
     ./nvim.nix
