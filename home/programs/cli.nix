@@ -36,6 +36,7 @@
   home.packages = with pkgs; [
     # Push to cache.lab.bonada.ca (pull is nix.settings.extra-substituters).
     attic-client
+    binutils # strings, for reading binaries
     cowsay
     dua
     duf
@@ -43,6 +44,7 @@
     erdtree
     fd
     htop
+    imagemagick # classic image pipeline (identify / magick)
     inxi
     jq
     lazyjournal
@@ -54,12 +56,14 @@
     patool
     perlPackages.FileMimeInfo
     procs
+    (python3.withPackages (ps: [ ps.markdown ])) # agent scripts (trilium-save-note)
     ripgrep
     shellcheck
     systemctl-tui
     sysz
     tree
     typst
+    unzip
 
     custom.nix-pkgs-browse
   ];

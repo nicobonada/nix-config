@@ -32,6 +32,8 @@ in
           paths: ["~/src/homelab"]
         - project: grok
           paths: ["~/src/grok"]
+        - project: opencode
+          paths: ["~/src/opencode"]
         - project: personal
           paths: ["~/src/CV"]
   '';

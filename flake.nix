@@ -61,8 +61,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Grok Build (numtide). Wrapper + agent-apps live in pkgs/grok.
-    # Do not follow nixpkgs: their grok binary uses their toolchain.
+    # OpenCode 2 TUI + aven. Do not follow nixpkgs: their binaries use
+    # their own toolchain.
     llm-agents.url = "github:numtide/llm-agents.nix";
 
     # SDL battery reading for the Raiju V3 Pro (public).
@@ -128,9 +128,6 @@
               inherit pkgs;
               extraSpecialArgs = {
                 inherit inputs host custom;
-                grokPkg = pkgs.callPackage ./pkgs/grok {
-                  grok-unwrapped = inputs.llm-agents.packages.${system}.grok;
-                };
               };
               modules = [ ./home/nico.nix ];
             };

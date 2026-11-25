@@ -3,13 +3,12 @@
   pkgs,
   config,
   lib,
-  grokPkg,
   ...
 }:
 let
-  # Absolute path so nvim can spawn Grok even if PATH is thin (GUI launch).
-  # Uses SuperGrok OAuth via ~/.grok/auth.json — not the metered XAI_API_KEY.
-  grokBin = lib.getExe grokPkg;
+  # Absolute path so nvim can spawn OpenCode even if PATH is thin (GUI launch).
+  # Uses the provider credentials OpenCode already has (shared config/auth).
+  opencodeBin = lib.getExe config.programs.opencode.package;
 
   # mkspell rejects region names (E751), so hunspell es_AR is compiled as
   # es.utf-8.spl. :SpEs sets spelllang=es against that wordlist.
@@ -80,30 +79,23 @@ in
                 opts = {
                   show_presets = false,
                 },
-                -- Grok Build over ACP; auth is the same OAuth session as `grok` TUI.
-                grok = function()
+                -- OpenCode over ACP; provider auth is the shared opencode config.
+                opencode = function()
                   local helpers = require("codecompanion.adapters.acp.helpers")
                   return {
-                    name = "grok",
-                    formatted_name = "Grok Build",
+                    name = "opencode",
+                    formatted_name = "OpenCode",
                     type = "acp",
                     roles = {
                       llm = "assistant",
                       user = "user",
                     },
                     commands = {
-                      -- Permission prompts stay on (no --always-approve) for nvim-spawned agent.
+                      -- Permission prompts stay on; opencode manages its own
+                      -- approval policy per directory config.
                       default = {
-                        ${lib.strings.escapeNixString grokBin},
-                        "agent",
-                        "stdio",
-                      },
-                      -- Optional: :CodeCompanionChat adapter=grok command=yolo for tool auto-approve.
-                      yolo = {
-                        ${lib.strings.escapeNixString grokBin},
-                        "agent",
-                        "--always-approve",
-                        "stdio",
+                        ${lib.strings.escapeNixString opencodeBin},
+                        "acp",
                       },
                     },
                     defaults = {
@@ -125,7 +117,8 @@ in
                       setup = function(self)
                         return true
                       end,
-                      -- Grok authenticates via ~/.grok/auth.json inside the agent process.
+                      -- OpenCode authenticates with the provider credentials it
+                      -- already has; no per-client auth flow.
                       auth = function(self)
                         return true
                       end,
@@ -141,8 +134,8 @@ in
           '';
 
           interactions = {
-            chat.adapter = "grok";
-            inline.adapter = "grok";
+            chat.adapter = "opencode";
+            inline.adapter = "opencode";
           };
         };
       };

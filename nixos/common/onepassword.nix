@@ -12,7 +12,6 @@ let
   onePasswordMcpPatched = custom.onepassword-mcp-patched.override {
     gui = cfg.package;
   };
-  onePasswordMcpForGrok = custom.onepassword-mcp-for-grok;
 in
 {
   # Human desktop + CLI (Umbriel/Noctalia): setgid op, BrowserSupport, polkit owners.
@@ -49,8 +48,4 @@ in
     setuid = false;
     setgid = true;
   };
-
-  environment.systemPackages = lib.mkIf cfg.enable [
-    onePasswordMcpForGrok
-  ];
 }
