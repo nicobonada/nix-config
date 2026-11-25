@@ -22,6 +22,8 @@ in
       mkdir -p $out/bin
       ln -s ${lib.getExe llm.opencode2} $out/bin/opencode
     '')
+    # Desktop client. Shares the same sessions as the CLI.
+    llm.opencode2-desktop
   ];
 
   # Nix owns the binary; skip the in-app updater.
