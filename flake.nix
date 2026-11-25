@@ -49,6 +49,11 @@
     # Own nixpkgs pin (gdk-pixbuf 2.44.6 + glycin).
     luciole.url = "github:noctalia-dev/luciole";
 
+    # Own nixpkgs pin so the binary hits sonora.cachix.org (crane build
+    # on a rust-overlay toolchain pinned by the sonora flake itself).
+    # `stable` tracks the latest release, not main.
+    sonora.url = "github:sonorahq/sonora/stable";
+
     # Author's home-manager module. nixpkgs has the package;
     # the module is why this input exists.
     wayland-pipewire-idle-inhibit = {

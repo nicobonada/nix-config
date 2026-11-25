@@ -16,6 +16,7 @@
     ./aven.nix
     ./opencode.nix
     ./media.nix
+    ./sonora.nix
     ./networking.nix
     ./nvim.nix
     ./service-clients.nix
