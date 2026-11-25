@@ -19,7 +19,4 @@ rec {
   onepassword-mcp-patched = call ./onepassword-mcp/patched.nix {
     gui = pkgs._1password-gui;
   };
-  onepassword-mcp-for-grok = call ./onepassword-mcp/for-grok.nix {
-    adapter = ../scripts/1password-mcp-adapter.py;
-  };
 }
