@@ -34,8 +34,8 @@
     };
 
     # Own nixpkgs pin so packages hit noctalia.cachix.org.
-    # home-manager's programs.noctalia defaults to pkgs.noctalia; gui sets
-    # package to this flake's output.
+    # The module defaults to pkgs.noctalia; we set package to this flake's
+    # output.
     noctalia.url = "github:noctalia-dev/noctalia";
 
     noctalia-greeter = {

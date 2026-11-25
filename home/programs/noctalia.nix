@@ -12,14 +12,22 @@
     sopsFile = ../../secrets/noctalia.yaml;
   };
 
-  # home-manager ships programs.noctalia (since 03f4cd46); do not also import
-  # inputs.noctalia.homeModules.default or enable is declared twice.
+  # Upstream module (not home-manager's): it ships extraPackages, which
+  # HM's copy lacks, and disables both HM module paths itself.
+  imports = [ inputs.noctalia.homeModules.default ];
+
   programs.noctalia = {
     enable = true;
     systemd.enable = true;
-    # Flake pin so the binary hits noctalia.cachix.org (HM defaults to pkgs.noctalia).
+    # Flake pin so the binary hits noctalia.cachix.org (module defaults
+    # to pkgs.noctalia). extraPackages wraps it with ddcutil on Noctalia's
+    # own PATH, for external-monitor brightness under the systemd unit.
     package = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default;
+    extraPackages = [ pkgs.ddcutil ];
     settings = {
+      # ddcutil support is opt-in; the binary itself reaches Noctalia
+      # via extraPackages above.
+      brightness.enable_ddcutil = true;
       calendar = {
         enabled = true;
         refresh_minutes = 15;
