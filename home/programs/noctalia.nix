@@ -28,6 +28,33 @@
       # ddcutil support is opt-in; the binary itself reaches Noctalia
       # via extraPackages above.
       brightness.enable_ddcutil = true;
+      # Idle: lock at 5 min, monitors off at 7.5 min, suspend at 10 min.
+      # suspend re-locks first (no-op when already locked); order matches
+      # the timeouts.
+      idle = {
+        behavior_order = [
+          "lock"
+          "screen-off"
+          "suspend"
+        ];
+        behavior = {
+          lock = {
+            timeout = 300;
+            action = "lock";
+            enabled = true;
+          };
+          screen-off = {
+            timeout = 450;
+            action = "screen_off";
+            enabled = true;
+          };
+          suspend = {
+            timeout = 600;
+            action = "lock_and_suspend";
+            enabled = true;
+          };
+        };
+      };
       calendar = {
         enabled = true;
         refresh_minutes = 15;
