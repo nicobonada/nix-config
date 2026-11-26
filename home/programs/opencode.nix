@@ -15,9 +15,18 @@ in
     package = llm.opencode2;
   };
 
-  # llm-agents ships v2 as `opencode2` so v1 could coexist. Scripts, rules,
-  # and ACP clients expect the bare `opencode` name.
-  home.packages = [
+  # Packages the agent needs on PATH (rules/nix.md formatter, agent
+  # scripts like trilium-save-note). Interactive-only CLI tools stay in
+  # home/programs/cli.nix.
+  home.packages = with pkgs; [
+    binutils # strings, for reading binaries
+    imagemagick # classic image pipeline (identify / magick)
+    nixfmt
+    (python3.withPackages (ps: [ ps.markdown ])) # agent scripts (trilium-save-note)
+    unzip
+
+    # llm-agents ships v2 as `opencode2` so v1 could coexist. Scripts, rules,
+    # and ACP clients expect the bare `opencode` name.
     (pkgs.runCommand "opencode-alias" { } ''
       mkdir -p $out/bin
       ln -s ${lib.getExe llm.opencode2} $out/bin/opencode
