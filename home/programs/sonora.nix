@@ -9,10 +9,19 @@ let
   # Sonora ships neither fish completions nor man pages (HM's man-page
   # generator emits an empty sidecar), but the binary's native
   # `completions fish` runs headless - generate at build time.
+  # clap's fish output never disables default file completion, so every
+  # position offers paths too. Silence files for the whole command,
+  # then re-enable them for the only subcommands that take files or
+  # links.
   fishCompletions = pkgs.runCommand "sonora-fish-completions" { } ''
     mkdir -p $out/share/fish/vendor_completions.d
-    ${lib.getExe sonora} completions fish \
-      > $out/share/fish/vendor_completions.d/sonora.fish
+    {
+      echo 'complete -c sonora -f'
+      ${lib.getExe sonora} completions fish
+      echo "complete -c sonora -n '__fish_sonora_using_subcommand add' -F"
+      echo "complete -c sonora -n '__fish_sonora_using_subcommand play' -F"
+      echo "complete -c sonora -n '__fish_sonora_using_subcommand play-next' -F"
+    } > $out/share/fish/vendor_completions.d/sonora.fish
   '';
 in
 {
