@@ -20,6 +20,11 @@
   home.sessionVariables = {
     QT_AUTO_SCREEN_SCALE_FACTOR = 0;
     TERMINAL = "kitty";
+    # nh's flake. Also in the system env via programs.nh, but fish only
+    # imports that when the inherited __NIXOS_SET_ENVIRONMENT_DONE marker
+    # is absent — a stale session marker silently drops it. HM session
+    # vars are sourced unconditionally (hm-session-vars.fish).
+    NH_FLAKE = "/home/nico/src/nix-config";
   };
 
   programs.home-manager.enable = true;
